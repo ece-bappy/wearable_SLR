@@ -1,0 +1,161 @@
+{
+  "title": "SipDeep: Swallowing-Based Transparent Authentication via Bone-Conducted In-Ear Acoustics",
+  "year": 2024,
+  "venue": "IEEE Transactions on Mobile Computing",
+  "doi": "10.1109/TMC.2024.3450919",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "bone-conducted acoustics",
+      "swallowing sounds"
+    ],
+    "sensor": [
+      "inward-facing microphone"
+    ],
+    "device": [
+      "commercial earbuds"
+    ],
+    "body_location": "external auditory canal"
+  },
+  "data": [
+    {
+      "dataset_name": "SipDeep Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": 2100,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "TSCResNet",
+      "Triplet-Siamese Network",
+      "ResNet",
+      "CBAM"
+    ],
+    "input_representation": "RGB spectrograms, MFCC, MFCC Delta, MFCC Delta-Delta, Chroma features",
+    "training_strategy": "Triplet loss, real-time incremental learning, periodic retraining"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "25% training, 75% testing for authentic users; all samples used for spoof detection",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 17,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 17,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "Accuracy",
+        "value": 0.54
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": null
+    },
+    "reported_limitations": [
+      "high memory utilization",
+      "lengthy training duration",
+      "impact of ambient noise in street environments",
+      "cutlery noise in canteens",
+      "sensitivity to earphone wearing depth"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay",
+      "synthetic/deepfake"
+    ],
+    "liveness_detection": null,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [
+      "task-based evaluation"
+    ],
+    "usability_issues": "earbud tip size mismatch and wearing depth can reduce accuracy"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "Anatomical Structure Descriptors (ASD)",
+      "Liquid Intake Sound descriptors (LIS)",
+      "Liquid Intake Pattern descriptors (LIP)"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed SipDeep for transparent authentication using bone-conducted drinking sounds",
+      "Developed TSCResNet combining Triplet-Siamese and ResNet with CBAM attention",
+      "Implemented robust interference filtering for motion and heartbeat artifacts"
+    ],
+    "main_strength": [
+      "High temporal stability over 17 weeks",
+      "Compatible with commercial earbuds",
+      "High resistance to diverse spoofing attacks"
+    ],
+    "main_weakness": [
+      "Small sample size (15 subjects)",
+      "Computational complexity of the model"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "HEAVY_MODEL"
+    ],
+    "notes_for_review": "The paper reports high accuracy but does not provide the specific numerical values for EER, FAR, or FRR in the main text, referring instead to supplementary files."
+  },
+  "extraction_confidence": "high"
+}

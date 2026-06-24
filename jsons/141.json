@@ -1,0 +1,186 @@
+{
+  "title": "Continuous Authentication Using Human-Induced Electric Potential",
+  "year": 2023,
+  "venue": "Annual Computer Security Applications Conference (ACSAC '23)",
+  "doi": "10.1145/3627106.3627124",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "human-induced electric potential",
+      "touch timing"
+    ],
+    "sensor": [
+      "ADC pin",
+      "conductive tape"
+    ],
+    "device": [
+      "custom wearable prototype"
+    ],
+    "body_location": "various (tested head, wrist, arm, finger)"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 25,
+      "num_samples": 476,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 5,
+        "unit": "min"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Gaussian Mixtures Model (GMM)",
+      "Gammatone Frequency Cepstral Coefficients (GFCC)",
+      "Hilbert function"
+    ],
+    "input_representation": "30 GFCC features (including delta and delta-delta)",
+    "training_strategy": "Offline estimation using the iterative expectation-maximization (EM) algorithm"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 2.3,
+      "context": "Average EER reported across extensive evaluation"
+    },
+    {
+      "metric": "FAR",
+      "value": 1.5,
+      "context": "Achieved during 'sitting' body movement status"
+    },
+    {
+      "metric": "FRR",
+      "value": 3.2,
+      "context": "Achieved during 'sitting' body movement status"
+    }
+  ],
+  "evaluation_protocol": "Two-phase study: Phase-I for parameter optimization and Phase-II for real-world performance evaluation against innocent and malicious adversaries.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "FAR",
+      "value": 1.5
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance degradation with wet finger skin (soaked condition FAR: 7.82%, FRR: 21.6%)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 4.3,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 0.02,
+        "unit": "mAh"
+      }
+    ],
+    "usability_study": [
+      "SUS survey"
+    ],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "interaction timing",
+      "terminal fingerprint"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Attack Success Rate",
+        "value": 8.5,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "ZEBRA",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Introduction of human-induced electric potential for continuous authentication",
+      "Two-factor framework combining touch timing and terminal fingerprinting"
+    ],
+    "main_strength": [
+      "Low EER",
+      "Very low energy consumption",
+      "Agnostic to wearable placement on the body"
+    ],
+    "main_weakness": [
+      "Sensitivity to skin moisture"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_TEMPORAL_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The system provides strong resistance to behavioral mimicry by adding hardware fingerprinting of the terminal as a second factor."
+  },
+  "extraction_confidence": "high"
+}

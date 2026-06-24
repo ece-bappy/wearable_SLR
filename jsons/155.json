@@ -1,0 +1,131 @@
+{
+  "title": "Signing in the Air w/o Constraints: Robust Gesture-based Authentication for Wrist Wearables",
+  "year": 2017,
+  "venue": "IEEE",
+  "doi": null,
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gesture"
+    ],
+    "sensor": [
+      "gyroscope"
+    ],
+    "device": [
+      "smart watch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 11,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 1,
+        "unit": "month"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "Dynamic Time Warping (DTW)"
+    ],
+    "input_representation": "gyroscope-based wrist movement trajectory",
+    "training_strategy": "template matching"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Comparison of real-time input against pre-training templates using DTW distance and major voting.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "month"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "drift and error of low-cost off-the-shelf IMUs"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Previous IMU methods required multiple templates for different postures, which the authors identify as high overhead."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": null,
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed using only gyroscope sensors for air-signing authentication to eliminate the impact of gravity acceleration",
+      "Developed a wrist dynamic capturing method that extracts features from both time and shape domains"
+    ],
+    "main_strength": [
+      "Robustness to different user postures (sitting, standing, lying)"
+    ],
+    "main_weakness": [
+      "Small subject pool (11 users)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The paper reports 90.1% balanced accuracy, but per extraction rules, this is ignored in favor of target metrics (AUC, EER, FRR, FAR), which are not provided."
+  },
+  "extraction_confidence": "high"
+}

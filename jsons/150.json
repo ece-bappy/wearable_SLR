@@ -1,0 +1,5 @@
+{
+  "title": "GaitSense: Towards Ubiquitous Gait-Based Human Identification with Wi-Fi",
+  "relevance": "exclude",
+  "exclusion_reason": "The system utilizes stationary Wi-Fi infrastructure for passive sensing and does not use wearable, on-body, or mobile sensors. The authors explicitly state that the system is designed to sense 'without the requirement of on-body devices,' which places it in the same category as the excluded stationary wall cameras/CCTV."
+}

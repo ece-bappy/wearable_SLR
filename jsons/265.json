@@ -1,0 +1,152 @@
+{
+  "title": "Using ResNet Transfer Deep Learning Methods in Person Identification According to Physical Actions",
+  "year": 2020,
+  "venue": "IEEE Access",
+  "doi": "10.1109/ACCESS.2020.3040649",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "inertial signals"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "device": [
+      "Xsens MTx"
+    ],
+    "body_location": "chest, right wrist, left wrist, right leg (above knee), left leg (above knee)"
+  },
+  "data": [
+    {
+      "dataset_name": "Daily and Sports Activities Data Set",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 8,
+      "num_samples": 9120,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 5,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "transfer",
+    "model": [
+      "ResNet-18",
+      "ResNet-34",
+      "ResNet-50",
+      "ResNet-101",
+      "ResNet-152",
+      "ResNetV1",
+      "ResNetV2"
+    ],
+    "input_representation": "signal converted to images (125 x 45 pixels)",
+    "training_strategy": "Transfer learning using weights pre-trained on ImageNet"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Classification accuracy (success rate) across 19 different activities",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Lower performance on specific activities: standing in moving elevator, rowing, leaping, and basketball playing"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "UCI Daily and Sports Activities Data Set",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Applying ResNet transfer learning to wearable sensor data by converting 1D signals into 2D images for person identification"
+    ],
+    "main_strength": [
+      "High classification accuracy across a variety of physical activities"
+    ],
+    "main_weakness": [
+      "Extremely small sample size (8 subjects)",
+      "Failure to report standard biometric metrics like EER or FAR",
+      "Lack of security/spoofing evaluations"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The paper reports 'Success Rate' which is Accuracy; per instructions, no metrics were extracted as AUC, EER, FRR, and FAR were not provided."
+  },
+  "extraction_confidence": "high"
+}

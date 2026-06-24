@@ -1,0 +1,140 @@
+{
+  "title": "A Novel Heart Rate Robust Method for Short-Term Electrocardiogram Biometric Identification",
+  "year": 2019,
+  "venue": "Applied Sciences",
+  "doi": "10.3390/app9010201",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "ECG electrodes"
+    ],
+    "device": [
+      "wearable devices"
+    ],
+    "body_location": "Chest/Arm"
+  },
+  "data": [
+    {
+      "dataset_name": "ECG-ID",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 89,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 20,
+        "unit": "s"
+      }
+    },
+    {
+      "dataset_name": "MIT-BIH Arrhythmia database (MITDB)",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 47,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "PCANet",
+      "Linear-SVM"
+    ],
+    "input_representation": "QRS-centered resampled heartbeat (400 points)",
+    "training_strategy": "Combinatorial selection of recordings for training and testing"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Cross-validation and combinatorial training/testing sets",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Open-set classification (unknown individuals) not yet addressed"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "ECG-ID",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a QRS-centered resampling strategy to minimize heart rate (HR) variability influence",
+      "Implemented PCANet for robust feature extraction from short-term ECG signals"
+    ],
+    "main_strength": [
+      "High robustness to heart rate changes",
+      "Effective identification with very short signal lengths (as few as 1-5 heartbeats)"
+    ],
+    "main_weakness": [
+      "Focused on identification (closed-set) rather than verification (open-set)",
+      "Lack of explicit spoofing/presentation attack testing"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The paper reports high 'Accuracy' and 'F1-score', but does not report the target metrics (AUC, EER, FAR, FRR) required for this systematic review."
+  },
+  "extraction_confidence": "high"
+}

@@ -1,0 +1,146 @@
+{
+  "title": "Performance Characterization of Deep Learning Models for Breathing-based Authentication on Resource-Constrained Devices",
+  "year": 2018,
+  "venue": "Proc. ACM Interact. Mob. Wearable Ubiquitous Technol.",
+  "doi": "10.1145/3287036",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "breathing acoustics"
+    ],
+    "sensor": [
+      "microphone"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch",
+      "Raspberry Pi"
+    ],
+    "body_location": "mouth/nose"
+  },
+  "data": [
+    {
+      "dataset_name": "BreathPrint",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": null,
+      "collection_setting": null,
+      "duration": {
+        "value": 3,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "LSTM",
+      "MLP",
+      "SVM",
+      "GMM",
+      "Logistic Regression"
+    ],
+    "input_representation": "96 Mel Frequency Cepstral Coefficients (MFCC) features (32 MFCC, 32 Delta MFCC, 32 Double Delta MFCC)",
+    "training_strategy": "Adam optimizer, 1000 epochs, mini batches of size 32, early termination"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Five-fold cross-validation with 80% training, 10% validation, and 10% testing split per fold.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 4,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "F-scores may not be high enough for standalone primary authentication",
+      "Scalability concerns with increasing number of users"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 7.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requires user to perform specific breathing gestures (sniff, deep breathing)."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "BreathPrint",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Comparison of deep learning (LSTM, MLP) vs shallow models (SVM, GMM) for breathing authentication on resource-constrained hardware",
+      "Evaluation of weight quantization and matrix factorization for model compression",
+      "Analysis of GPU offloading to reduce inference latency on wearables"
+    ],
+    "main_strength": [
+      "Deployment on actual hardware (Pixel, LG G Watch R, Raspberry Pi 3)",
+      "Detailed study of model size vs inference time vs accuracy trade-offs"
+    ],
+    "main_weakness": [
+      "Small subject pool (10 users)",
+      "Lack of security/spoofing evaluations"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "Paper focuses heavily on the hardware efficiency and model compression of the biometric pipeline rather than the biometric security properties."
+  },
+  "extraction_confidence": "high"
+}

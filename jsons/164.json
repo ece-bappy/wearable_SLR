@@ -1,0 +1,149 @@
+{
+  "title": "In-air Signature Authentication Using Smartwatch Motion Sensors",
+  "year": 2021,
+  "venue": "2021 IEEE 45th Annual Computers, Software, and Applications Conference (COMPSAC)",
+  "doi": "10.1109/COMPSAC51774.2021.00061",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "in-air signature"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "in-air signature dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 22,
+      "num_samples": 3190,
+      "collection_setting": null,
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Recurrent Neural Network",
+      "Siamese architecture"
+    ],
+    "input_representation": "readings of gyroscope and accelerometer compensated by device attitude readings",
+    "training_strategy": null
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.83,
+      "context": "Proposed recurrent neural network-based in-air signature authentication system"
+    }
+  ],
+  "evaluation_protocol": null,
+  "real_world_tested": null,
+  "real_world_gap": {
+    "environments_compared": null,
+    "gap_acknowledged_in_text": null,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": []
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a Siamese RNN-based authentication system for in-air signatures using smartwatch motion sensors",
+      "Collected a new in-air signature dataset with 22 participants"
+    ],
+    "main_strength": [
+      "High accuracy with EER of 0.83%",
+      "Privacy preservation by storing signature representations instead of raw sensory data"
+    ],
+    "main_weakness": [
+      "Small subject sample size"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The system explicitly addresses the flexibility of in-air signing by using device attitude readings for compensation."
+  },
+  "extraction_confidence": "high"
+}

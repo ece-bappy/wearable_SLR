@@ -1,0 +1,147 @@
+{
+  "title": "Novel Robust Photoplethysmogram-Based Authentication",
+  "year": 2022,
+  "venue": "IEEE Sensors Journal",
+  "doi": "10.1109/JSEN.2022.3146291",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "photoplethysmogram (PPG)"
+    ],
+    "sensor": [
+      "pulse oximeter",
+      "LEDs",
+      "photodiode"
+    ],
+    "device": [
+      "wearable electronic devices",
+      "smart-watch-sized prototype"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "Combined dataset (IEEE TBME Respiratory Rate Benchmark, Real-World PPG, BioSec1. Lab PPG, and local dataset)",
+      "dataset_type": "combined",
+      "dataset_role": "combined",
+      "num_subjects": 120,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 3.0,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "unsupervised",
+    "model": [
+      "Autoencoder",
+      "Geronimo-Hardin-Massopust (GHM) multiwavelet",
+      "Multilayer Perceptron (MLP)"
+    ],
+    "input_representation": "multiwavelet-based feature extraction mapping to a latent space",
+    "training_strategy": "ten-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 5.5,
+      "context": "Achieved at the authentication stage using the proposed GHM multiwavelet and autoencoder system"
+    }
+  ],
+  "evaluation_protocol": "Ten-fold cross-validation; 12 authorized users and 108 unauthorized users per fold",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "difficulty to acquire real-world biometric data",
+      "short test signal sequences may not contain a complete template"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Potential impracticality if required sample size for registration/training is too large"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "IEEE TBME Respiratory Rate Benchmark dataset, Real-World PPG dataset, BioSec1. Lab PPG dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a PPG authentication system using GHM multiwavelet feature extraction and an autoencoder for dimensionality reduction",
+      "Developed a compact, smart-watch-sized wearable prototype for real-time authentication"
+    ],
+    "main_strength": [
+      "Higher accuracy/lower EER compared to scalar-wavelet and deep learning baselines",
+      "Low execution time making it suitable for wearables",
+      "Capability for continuous authentication"
+    ],
+    "main_weakness": [
+      "Lack of active spoofing/presentation attack testing",
+      "Reliance on a small local dataset for part of the evaluation"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The paper emphasizes the benefit of multiwavelets over scalar-wavelets in capturing richer biological information for PPG signals."
+  },
+  "extraction_confidence": "high"
+}

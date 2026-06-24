@@ -1,0 +1,154 @@
+{
+  "title": "Gait-based Authentication: Evaluation of Energy Consumption on Commercial Devices",
+  "year": 2022,
+  "venue": "WristSense 2022: Eighth Workshop on Sensing Systems and Applications Using Wrist Worn Smart Devices",
+  "doi": "10.1109/PerComWorkshops53856.2022.9767367",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "smartwatch",
+      "smartphone"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Dataset from [3]",
+      "dataset_type": null,
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "unsupervised",
+    "model": [
+      "Nearest-Neighbor distance",
+      "Anomaly Detection"
+    ],
+    "input_representation": "Acceleration features extracted from x, y, z components and magnitude (Euclidean norm)",
+    "training_strategy": "Semi-supervised anomaly detection based on distance to the legitimate user's pattern"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 5.0,
+      "context": "EER is below 5% when a sampling frequency of at least 25 Hz is used"
+    }
+  ],
+  "evaluation_protocol": "Comparing average EER across 20 volunteers across different sampling frequencies (12.5, 25, 50, 100 Hz)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Results are influenced by the specific application and experimental setup",
+      "Performance degrades significantly at low sampling frequencies (e.g., 12.5 Hz)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [
+      {
+        "value": 6.0,
+        "unit": "battery percentage per hour"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Energy consumption increases proportionally with sampling frequency; computation offloading via Bluetooth is less energy-efficient than local execution."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": null,
+    "datasets_any_public": null,
+    "benchmark_used": "Dataset from [3]",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Evaluated the trade-off between sampling frequency and authentication accuracy/energy consumption on commercial wearable devices",
+      "Demonstrated that local computation is more energy-efficient than offloading to a smartphone due to BLE transmission costs"
+    ],
+    "main_strength": [
+      "Implementation on commercial hardware (Android Wear OS)",
+      "Quantified energy impact of different architectural configurations"
+    ],
+    "main_weakness": [
+      "Accuracy evaluation relied on pre-collected traces rather than real-time interaction",
+      "No spoofing or active attack testing"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper highlights that for gait authentication, the energy cost of the radio (BLE) for offloading exceeds the energy cost of local CPU processing on modern smartwatches."
+  },
+  "extraction_confidence": "high"
+}

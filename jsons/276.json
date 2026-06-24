@@ -1,0 +1,171 @@
+{
+  "title": "Exploring Earable-Based Passive User Authentication via Interpretable In-Ear Breathing Biometrics",
+  "year": 2024,
+  "venue": "IEEE Transactions on Mobile Computing",
+  "doi": "10.1109/TMC.2024.3453412",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "in-ear breathing sounds"
+    ],
+    "sensor": [
+      "inward-facing microphone"
+    ],
+    "device": [
+      "commercial earphones",
+      "earables"
+    ],
+    "body_location": "ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": "private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 35,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 1,
+        "unit": "month"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Triplet network",
+      "Gaussian Mixture Model (GMM)",
+      " classifier"
+    ],
+    "input_representation": "Mel-Frequency Cepstral Coefficients (MFCCs), Cross-power spectral density (CPSD), Power cumulative distribution",
+    "training_strategy": "Data augmentation (amplitude scaling, timestretch, Gaussian noise, pitch shift, time shift) and Triplet loss function"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 2.72,
+      "context": "Achieved during random attacks for fast breathing"
+    },
+    {
+      "metric": "FAR",
+      "value": 1.87,
+      "context": "Achieved during bone-conducted replay attacks"
+    },
+    {
+      "metric": "FRR",
+      "value": 2.82,
+      "context": "Achieved during bone-conducted replay attacks"
+    }
+  ],
+  "evaluation_protocol": "30 legitimate users and 5 attackers; 20% training and 80% testing split per breathing type.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 32,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "accuracy",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "accuracy",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance drops during strenuous exercise (9km/h)",
+      "Ineffective for users with respiratory diseases (cold, chronic rhinitis, COPD)",
+      "Interference from music played through earphones"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "impersonation",
+      "replay"
+    ],
+    "liveness_detection": false,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 2.5,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Latency associated with signal collection in practical streaming"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "accuracy",
+        "value": 10,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "BreathPrint",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Exploration of in-ear breathing sounds as a biometric",
+      "Implementation of a Triplet network to extract behavior-independent features",
+      "Online user template update mechanism for temporal stability"
+    ],
+    "main_strength": [
+      "High resistance to replay attacks due to bone-conduction modality",
+      "Passive and transparent user experience"
+    ],
+    "main_weakness": [
+      "High sensitivity to respiratory health status",
+      "Vulnerability to strenuous physical activity"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The system leverages physical properties of the respiratory tract and ear canal, making it highly resistant to audio replay attacks but sensitive to physiological changes (disease/exercise)."
+  },
+  "extraction_confidence": "high"
+}

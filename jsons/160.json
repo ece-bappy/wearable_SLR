@@ -1,0 +1,158 @@
+{
+  "title": "Biometric Database for Human Gait Recognition using Wearable Sensors and a Smartphone",
+  "year": 2017,
+  "venue": "IEEE",
+  "doi": null,
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "Shimmer sensor module",
+      "Samsung Galaxy Note"
+    ],
+    "body_location": "leg, hand wrist, pant pocket, shirt pocket, bag, hand"
+  },
+  "data": [
+    {
+      "dataset_name": "Multi-model biometric database for human gait",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 50,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 4.5,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "Hamming distance",
+      "Manhattan distance"
+    ],
+    "input_representation": "normalized gait cycle feature vectors (100 samples duration)",
+    "training_strategy": "template matching using mean, median, and trimmed mean cycles"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.17,
+      "context": "Best result achieved using wearable sensors at different body locations across various walking scenarios"
+    }
+  ],
+  "evaluation_protocol": "Comparison of gait templates using distance metrics (Hamming and Manhattan) across different walking speeds (slow, normal, fast).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.17,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Small sample size",
+      "Single smartphone model used",
+      "Limited walking patterns",
+      "Data collected in a controlled indoor hall"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "wearable sensors",
+      "smartphone"
+    ],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Development of a public multi-model gait biometric database",
+      "Comparative analysis between industrial-grade wearable sensors and consumer smartphone sensors"
+    ],
+    "main_strength": [
+      "Comprehensive collection of subject co-variables including age, weight, and height",
+      "Evaluation of multiple sensor placement locations on the body"
+    ],
+    "main_weakness": [
+      "Lack of real-world environment testing",
+      "Absence of temporal robustness/cross-session evaluation",
+      "No security/spoofing analysis"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper primarily describes the creation of a database and baseline performance using simple distance metrics rather than advanced ML models."
+  },
+  "extraction_confidence": "high"
+}

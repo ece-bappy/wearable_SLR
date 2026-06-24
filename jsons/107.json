@@ -1,0 +1,146 @@
+{
+  "title": "User-Authentication on Wearable Devices Based on Punch Gesture Biometrics",
+  "year": 2017,
+  "venue": "ITM Web of Conferences",
+  "doi": "10.1051/itmconf/2017",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "punch gesture"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "Samsung Gear Fit 2"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 13000,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 20,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "One-class SVM (RBF kernel)"
+    ],
+    "input_representation": "16 statistical features including peaks, bandwidth, mean, standard deviation, duration, and initial acceleration along 3 axes",
+    "training_strategy": "Grid search for hyperparameters nu and gamma with 10-cross validation"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 4.0,
+      "context": "Achieved in attacking scenario with imitation"
+    },
+    {
+      "metric": "FAR",
+      "value": 5.0,
+      "context": "Worst case scenario (Volunteer 3) using at most 25 training observations"
+    }
+  ],
+  "evaluation_protocol": "Two sessions: Session 1 tested basic authentication against other users; Session 2 tested authentication against attackers attempting to imitate the legitimate user's gesture after watching a video.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 20,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Accelerometer data contains noise due to device slipping on the wrist"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requires the user to perform a specific physical action (punch) to unlock"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Implemented a biometric authentication system based on the unique behavioral patterns of a straight punch gesture using a smartwatch accelerometer"
+    ],
+    "main_strength": [
+      "High accuracy (95%+) achievable with a very small training set (approx 25 samples)"
+    ],
+    "main_weakness": [
+      "Requires explicit user action rather than passive monitoring",
+      "Evaluation performed on a small, homogeneous group of graduate students"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "LIMITED_ATTACK_TYPES"
+    ],
+    "notes_for_review": "The study specifically addresses the 'imitation' attack, which is critical for gesture-based biometrics."
+  },
+  "extraction_confidence": "high"
+}

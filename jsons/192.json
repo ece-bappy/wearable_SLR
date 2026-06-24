@@ -1,0 +1,164 @@
+{
+  "title": "A Wearable Wrist Band-Type System for Multimodal Biometrics Integrated with Multispectral Skin Photomatrix and Electrocardiogram Sensors",
+  "year": 2018,
+  "venue": "sensors",
+  "doi": "10.3390/s18082738",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "electrocardiogram",
+      "multispectral skin photomatrix"
+    ],
+    "sensor": [
+      "ECG electrodes",
+      "multi-wavelength LEDs",
+      "photodiodes"
+    ],
+    "device": [
+      "wearable wrist band",
+      "WSB-900"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "In-house dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 150,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 30,
+        "unit": "s"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "Euclidean distance",
+      "Majority Voting",
+      "Guided Filter"
+    ],
+    "input_representation": "averages of feature vectors (ECG pulses and MSP light intensities)",
+    "training_strategy": "User template constructed by averaging six feature vectors from two records"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.1,
+      "context": "Achieved using ECG and separate MSP sensor with MV(OR) fusion"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.2,
+      "context": "Achieved as FRR0 (FRR at FAR=0%) using ECG and separate MSP sensor with MV(OR) and GFECG,MSP"
+    }
+  ],
+  "evaluation_protocol": "Cross-validation using 15 combinations of 2/6 records for enrollment and 4/6 for testing per subject",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Data acquired on the same day",
+      "Controlled heart rate and heart orientation",
+      "MSP signals influenced by ambient light",
+      "Wrist position impacts MSP pattern"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": true,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "MSP sensor requires firm contact and is sensitive to ambient light; user must remain still during measurement"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "ECG",
+      "MSP"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 0.1,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Development of a wearable wrist band integrating MSP and ECG sensors for multimodal authentication",
+      "Implementation of a lightweight distance-based matching and majority voting fusion scheme"
+    ],
+    "main_strength": [
+      "High authentication performance (0.1% EER) with low computational complexity suitable for wearable devices"
+    ],
+    "main_weakness": [
+      "Lack of temporal validation (same-day data)",
+      "Lack of real-world/uncontrolled environment testing"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "NO_SPOOFING_TEST",
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "The paper claims spoof-resistance due to the contact-based nature of the sensors, but no actual presentation attacks were performed."
+  },
+  "extraction_confidence": "high"
+}

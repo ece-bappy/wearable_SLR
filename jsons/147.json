@@ -1,0 +1,167 @@
+{
+  "title": "EarGate: Gait-based User Identification with In-ear Microphones",
+  "year": 2022,
+  "venue": "ACM MobiCom '21",
+  "doi": "10.1145/3447993.3483240",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "acoustic-gait"
+    ],
+    "sensor": [
+      "in-ear facing microphone"
+    ],
+    "device": [
+      "earables"
+    ],
+    "body_location": "ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": "EarGate dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 31,
+      "num_samples": 26023,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 1.5,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "transfer",
+    "model": [
+      "SVM",
+      "One-Class SVM",
+      "XGBoost",
+      "VGGish"
+    ],
+    "input_representation": "MFCC, Chroma STFT, Mel Spectrogram, RMSE, Onsets",
+    "training_strategy": "Enrollment phase with legitimate user data; binary classification using balanced impostor data."
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 3.23,
+      "context": "Best reported overall result mentioned in abstract"
+    },
+    {
+      "metric": "FRR",
+      "value": 2.25,
+      "context": "Best reported overall result mentioned in abstract"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-subject-out iterative selection for legitimate user; comparison between One-Class SVM and Balanced Binary SVM (Balanced-5 protocol).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": null
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": null,
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "FAR",
+      "value": 7.73
+    },
+    "reported_limitations": [
+      "Requirement of an enrollment phase",
+      "Performance may vary with different footwear, potentially requiring re-training"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 74.25,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 167.27,
+        "unit": "mJ"
+      }
+    ],
+    "usability_study": [
+      "audio quality feedback"
+    ],
+    "usability_issues": "Enrollment requires approximately 30 seconds of continuous walking."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [
+      "left-ear acoustic",
+      "right-ear acoustic"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "BAC",
+        "value": 6.3,
+        "unit": "percentage points"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Leveraging the occlusion effect and bone-conducted sounds for gait identification via in-ear microphones",
+      "Demonstrated robustness to high-frequency noise like music and speech"
+    ],
+    "main_strength": [
+      "Passive and unobtrusive",
+      "High resistance to environmental audio noise due to low-pass filtering (<50Hz)"
+    ],
+    "main_weakness": [
+      "Sensitivity to footwear changes",
+      "Limited to laboratory-based data collection"
+    ],
+    "gap_category": [
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The study highlights that using both ear-sensors (multiplexing) significantly improves identification accuracy."
+  },
+  "extraction_confidence": "high"
+}

@@ -1,0 +1,167 @@
+{
+  "title": "A 1.06-μW Smart ECG Processor in 65-nm CMOS for Real-Time Biometric Authentication and Personal Cardiac Monitoring",
+  "year": 2019,
+  "venue": "IEEE Journal of Solid-State Circuits",
+  "doi": "10.1109/JSSC.2019.2912304",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "ECG sensor"
+    ],
+    "device": [
+      "wristband",
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "MIT-BIH Normal Sinus Rhythm Database (NSRDB)",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": 18,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "ECG-ID",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": 90,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "in-house ECG database",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 645,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 2,
+        "unit": "min"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Neural Network",
+      "Deep Belief Network"
+    ],
+    "input_representation": "Single-lead raw digitized ECG signal filtered via FIR filters",
+    "training_strategy": "Pre-training with Deep Belief Network followed by fine-tuning using identity labels with combined ID loss and verification loss"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.1,
+      "context": "Achieved on MIT-BIH NSRDB dataset"
+    }
+  ],
+  "evaluation_protocol": "One registration and three ID attempts per subject; cosine similarity thresholding",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": 0.1,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Temporal variability in ECG signals poses a challenge to accuracy"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 1,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 1.06,
+        "unit": "µW"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "MIT-BIH NSRDB, ECG-ID",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "First ASIC integrating both ECG-based biometric authentication and cardiac health monitoring",
+      "Significant NN compression (390x) using Lasso regression and low-precision quantization"
+    ],
+    "main_strength": [
+      "Ultralow power consumption (1.06 uW)",
+      "Evaluation on a large subject database (645 subjects)"
+    ],
+    "main_weakness": [
+      "Data collected while subjects sat calmly (lack of activity/motion testing)",
+      "No active spoofing attacks tested"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper focuses heavily on the hardware implementation and energy efficiency of the processor rather than the biometric algorithm's robustness to real-world noise."
+  },
+  "extraction_confidence": "high"
+}

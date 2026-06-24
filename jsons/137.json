@@ -1,0 +1,173 @@
+{
+  "title": "Continuous authentication through gait analysis on a wrist-worn device",
+  "year": 2021,
+  "venue": "Pervasive and Mobile Computing",
+  "doi": "10.1016/j.pmcj.2021.101483",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "wrist-worn device",
+      "smartwatch",
+      "Shimmer3"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Gait-based authentication dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 1332,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 4.2,
+        "unit": "s"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "semi-supervised",
+    "model": [
+      "Nearest Neighbor (NN)",
+      "Euclidean distance",
+      "One-Class SVM",
+      "Isolation Forest"
+    ],
+    "input_representation": "83 features (statistical and signal processing functions on acceleration vectors x, y, z, magnitude m, horizontal h, and vertical v)",
+    "training_strategy": "Leave-one-instance-out cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 2.3,
+      "context": "Achieved by POCKET approach using local/global coordinates"
+    },
+    {
+      "metric": "AUC",
+      "value": 99.7,
+      "context": "Achieved by POCKET approach using local/global coordinates"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-instance-out cross-validation with threshold averaging over 20 users",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 2.5,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Supervised walking performed in a controlled environment",
+      "Lack of long-term/cross-day evaluation"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 1.0,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 5.3,
+        "unit": "mW"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Development of a lightweight on-node authentication system for wrist-worn devices",
+      "Introduction of an autocorrelation-based (AC) filter to discard irregular gait segments and spurious hand movements",
+      "Analysis of local vs. global coordinate systems for wrist-worn sensors"
+    ],
+    "main_strength": [
+      "Extremely low computational requirements (8MHz MCU, 10KB RAM)",
+      "Significant energy efficiency gain (+60% battery duration) through on-node processing"
+    ],
+    "main_weakness": [
+      "Evaluation limited to a controlled lab setting",
+      "No testing for temporal robustness or long-term performance decay"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "NO_TEMPORAL_TEST",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The study highlights that for wrist-worn devices, local coordinate systems (WRIST_L) are far more effective than global ones (WRIST_G) because arm swinging makes gravity-based orientation estimation unstable."
+  },
+  "extraction_confidence": "high"
+}

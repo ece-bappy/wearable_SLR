@@ -1,0 +1,159 @@
+{
+  "title": "Usable User Authentication on a Smartwatch using Vibration",
+  "year": 2021,
+  "venue": "Proceedings of the 2021 ACM SIGSAC Conference on Computer and Communications Security (CCS ’21)",
+  "doi": "10.1145/3460120.3484553",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "vibration response"
+    ],
+    "sensor": [
+      "gyroscope",
+      "accelerometer"
+    ],
+    "device": [
+      "Apple Watch Series 3"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "Support Vector Machine (SVM)"
+    ],
+    "input_representation": "756 features including statistical features, and peak indices/heights from FFT, DCT, DWT, PSD, and auto-correlation",
+    "training_strategy": "Verification model combining a multi-class classifier (Random Forest) and a binary classifier (SVM)"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.0137,
+      "context": "Achieved on first-measured signals with 5 default users"
+    }
+  ],
+  "evaluation_protocol": "1:1 matching (verification) using a challenge-response scheme with a random sequence of five vibration types",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 7,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 7,
+        "unit": "days"
+      },
+      "drop_in_performance": {
+        "metric": "FNR",
+        "value": 0.0499
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "FNR",
+      "value": 0.0292
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "FNR",
+      "value": 0.0513
+    },
+    "reported_limitations": [
+      "High body fat rate (BFR) reduces distinguishability of vibration response signals",
+      "Requires vibration enrollment setup when smartwatch bands are changed"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 5,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Initial enrollment process requires significant time (approximately 9 minutes per vibration type)"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a challenge-response authentication method using default low-frequency vibrations and low-sampling frequency sensors on commercial smartwatches",
+      "Demonstrated that physical body structure (BFR, SMR) can be used for independent smartwatch authentication"
+    ],
+    "main_strength": [
+      "No additional sensors or hardware required",
+      "High usability as it requires no active user interaction"
+    ],
+    "main_weakness": [
+      "Sensitivity to user physical composition (specifically high Body Fat Rate)",
+      "Small sample size for evaluation"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The study highlights a tradeoff between Body Fat Rate and signal distinguishability."
+  },
+  "extraction_confidence": "high"
+}

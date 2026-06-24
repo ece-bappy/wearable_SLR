@@ -1,0 +1,196 @@
+{
+  "title": "Gait-Watch: A Context-aware Authentication System for Smart Watch Based on Gait Recognition",
+  "year": 2017,
+  "venue": "Proceedings of The 2nd ACM/IEEE International Conference on Internet-of-Things Design and Implementation (IoTDI 2017)",
+  "doi": "http://dx.doi.org/10.1145/3054977.3054991",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "smartwatch",
+      "Samsung Gear Live"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Activity dataset",
+      "dataset_type": "private",
+      "dataset_role": "training",
+      "num_subjects": 15,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 5,
+        "unit": "hours"
+      }
+    },
+    {
+      "dataset_name": "Gait dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 10,
+        "unit": "hours"
+      }
+    },
+    {
+      "dataset_name": "User Study",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 3,
+      "num_samples": 447,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 6,
+        "unit": "hours"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "k-NN",
+      "Sparse Representation based Classification (SRC)",
+      "l1-Homotopy"
+    ],
+    "input_representation": "Linear acceleration along gravity axis, linearly interpolated to 80 samples per gait cycle",
+    "training_strategy": "Offline dictionary training with column reduction and projection optimization via Tabu search"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 3.1,
+      "context": "Achieved with M=8 gait cycles during active imitation attack tests"
+    }
+  ],
+  "evaluation_protocol": "10-fold cross-validation",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "week"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": 1,
+        "unit": "week"
+      },
+      "drop_in_performance": {
+        "metric": "Accuracy",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 96.0
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance decreases when wearing different clothes or shoes",
+      "Susceptibility to terrain changes (e.g., grass vs asphalt)",
+      "Gait alone may not be absolutely secure for high-risk transactions"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "presentation/mask"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 894.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 644.6,
+        "unit": "mJ"
+      }
+    ],
+    "usability_study": [
+      "longitudinal user study"
+    ],
+    "usability_issues": "Requires multi-factor authentication for high-security access"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": 10.0,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Context-aware authentication system that leverages activity recognition to select the appropriate training dictionary",
+      "Sparse fusion model to combine multiple consecutive gait cycles for improved accuracy"
+    ],
+    "main_strength": [
+      "High robustness across different walking activities (texting, calling)",
+      "Successful real-world implementation and testing on commercial hardware"
+    ],
+    "main_weakness": [
+      "Very small sample size in the final user study (3 users)",
+      "Limited security against dedicated gait imitation"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "First work to use commercial smartwatches for gait-based authentication while considering activity context."
+  },
+  "extraction_confidence": "high"
+}

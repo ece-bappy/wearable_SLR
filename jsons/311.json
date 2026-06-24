@@ -1,0 +1,183 @@
+{
+  "title": "Quick-Pass Continuous Authentication With Real-Time Biometrics Extraction on COTS Earphones Using Out-Ear Microphones",
+  "year": 2026,
+  "venue": "IEEE Transactions on Mobile Computing",
+  "doi": "10.1109/TMC.2025.3606846",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "acoustic"
+    ],
+    "sensor": [
+      "out-ear microphones"
+    ],
+    "device": [
+      "COTS earphones"
+    ],
+    "body_location": "ear"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 36,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 7,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "ECAPA-TDNN"
+    ],
+    "input_representation": "MFCC (Mel Frequency Cepstrum Coefficient) profiles",
+    "training_strategy": "Fine-tuning for initial authentication; shared feature extractor for mobile deployment"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.026,
+      "context": "Achieved for 3-second continuous authentication on laptop prototype"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.0,
+      "context": "Achieved during continuous authentication against replay attacks (R1 and R2 microphones)"
+    }
+  ],
+  "evaluation_protocol": "80% training, 20% testing; comparison between initial (1s) and continuous (3s) authentication",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 3,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "accuracy",
+        "value": 2.0
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "accuracy",
+      "value": 80.0
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "accuracy",
+      "value": 90.0
+    },
+    "reported_limitations": [
+      "Performance degrades during intense motion (running)",
+      "Sensitivity to extremely tight or loose wearing positions",
+      "Limited effectiveness with open-ear earphones due to signal attenuation",
+      "Dependent on earphone default sampling rates (TWS 16kHz vs required 44.1kHz)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay",
+      "presentation/mask"
+    ],
+    "liveness_detection": true,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 102,
+        "unit": "ms"
+      },
+      {
+        "value": 138,
+        "unit": "ms"
+      },
+      {
+        "value": 1.53,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 75.9,
+        "unit": "mW"
+      }
+    ],
+    "usability_study": [
+      "perceptual quality study"
+    ],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed OnePiece for continuous authentication using COTS out-ear microphones",
+      "Designed a frequency-varying ultrasonic ramp modulation scheme for efficient biometric extraction",
+      "Implemented a wake-up mechanism to reduce power consumption",
+      "Introduced a frequency response compensation strategy for cross-device scalability"
+    ],
+    "main_strength": [
+      "High compatibility with COTS hardware",
+      "Operation-free/implicit authentication",
+      "Low energy overhead for wearable devices"
+    ],
+    "main_weakness": [
+      "Performance degradation during high-intensity physical activity",
+      "Reliance on high sampling rates not present in all TWS earbuds"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The system demonstrates strong resilience against replay and spoofing attacks (PVC/3D masks) due to the specific acoustic properties of human skin and fat."
+  },
+  "extraction_confidence": "high"
+}

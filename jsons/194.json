@@ -1,0 +1,188 @@
+{
+  "title": "A Data Driven In-Air-Handwriting Biometric Authentication System",
+  "year": 2017,
+  "venue": "IEEE International Joint Conference on Biometrics (IJCB)",
+  "doi": null,
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "in-air-handwriting",
+      "finger-gesture"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "data glove"
+    ],
+    "body_location": "index finger"
+  },
+  "data": [
+    {
+      "dataset_name": "Private prototype dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 116,
+      "num_samples": 200,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "Spoofing dataset",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 7,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "Longitudinal visualization dataset",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 7,
+      "num_samples": 17,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 4,
+        "unit": "weeks"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Support Vector Machine (SVM)"
+    ],
+    "input_representation": "Combination of Temporal Distance (TD) histograms and Statistical Similarity (SS) features",
+    "training_strategy": "Binary SVM classifier trained per account using enrollment data"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.1,
+      "context": "Achieved using per-account SVM classifier with both temporal distance and statistical similarity features on three segments"
+    },
+    {
+      "metric": "FAR",
+      "value": 1.5,
+      "context": "Reported as Zero-FMR for the SVM*(TD, SS) classifier"
+    }
+  ],
+  "evaluation_protocol": "Leave-some-out (5 enrollment samples, 5 testing samples per account)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": 0.1,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 4,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "behavior changing of the user over time"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 0.3,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "DTW (Dynamic Time Warping)",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a finger-gesture based authentication system using wearable IMU sensors",
+      "Combined both handwriting content and writing convention into a data-driven SVM framework"
+    ],
+    "main_strength": [
+      "Very low Equal Error Rate (0.1%)",
+      "Effective use of Dynamic Time Warping (DTW) for signal alignment"
+    ],
+    "main_weakness": [
+      "Small sample size for longitudinal testing",
+      "Private dataset"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The system demonstrates high accuracy in a lab setting using a custom data glove; however, real-world robustness across diverse environments was not tested."
+  },
+  "extraction_confidence": "high"
+}

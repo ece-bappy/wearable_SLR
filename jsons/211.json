@@ -1,0 +1,153 @@
+{
+  "title": "A Computationally Efﬁcient, Hardware Re-conﬁgurable Architecture for QRS Detection and ECG authentication",
+  "year": 2021,
+  "venue": "IEEE ASSCC 2021",
+  "doi": null,
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "single-lead ECG"
+    ],
+    "device": [
+      "PYNQ Z1 FPGA board"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "MITDB, QTDB, NSTDB, TWADB, STDB, SVDB, AFTDB, FANTASIADB, and INCARTDB",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": null,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "EA-BNN (ECG-Authentication binarized neural network)",
+      "CNN"
+    ],
+    "input_representation": "implicit spectrum feature extraction of single ECG beat",
+    "training_strategy": null
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 2.11,
+      "context": "Achieved using a single ECG beat for authentication"
+    }
+  ],
+  "evaluation_protocol": "Evaluated across 9 public ECG databases",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": []
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 250,
+        "unit": "ms"
+      },
+      {
+        "value": 1.25,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a hardware-efficient architecture for ECG authentication requiring only a single beat",
+      "Implemented a Binarized Neural Network (BNN) to reduce memory and latency on FPGA"
+    ],
+    "main_strength": [
+      "Significant reduction in memory (9 kB) and latency (1.25 s) compared to prior works",
+      "High efficiency utilizing a single ECG beat"
+    ],
+    "main_weakness": [
+      "Lack of real-world, in-the-wild testing",
+      "No active spoofing or presentation attack tests"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "Paper focuses heavily on the hardware implementation (FPGA) rather than the biometric algorithm development, but provides a key EER benchmark for single-beat authentication."
+  },
+  "extraction_confidence": "high"
+}

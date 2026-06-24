@@ -1,0 +1,155 @@
+{
+  "title": "BudsAuth: Toward Gesture-Wise Continuous User Authentication Through Earbuds Vibration Sensing",
+  "year": 2024,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2024.3380811",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "IMU",
+      "vibration"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smart earbuds"
+    ],
+    "body_location": "ear/face"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 28000,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "Domain Adversarial Learning (DAL)"
+    ],
+    "input_representation": "6-channel time series (accelerometer x,y,z and gyroscope x,y,z)",
+    "training_strategy": "Domain Adversarial Learning to minimize inter-gesture variance and maximize inter-identity variance; transfer learning for user registration fine-tuning."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.0003,
+      "context": "Continuous authentication using weighted voting on 7 consecutive samples of interactive gestures"
+    }
+  ],
+  "evaluation_protocol": "Cross-session evaluation: samples from the first session used for training and samples from the second session used for testing.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.0003,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": null,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "interference from body movement",
+      "interference from playing music",
+      "difficulty accessing raw IMU data from commercial earbuds"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 55.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 113.9,
+        "unit": "J/day"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Requires user to perform specific on-face interaction gestures; limited accessibility to raw sensor data in commercial hardware."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "score",
+    "benefit_over_unimodal": null
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "TouchPass",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed BudsAuth, the first system using on-face interaction gestures captured by earbud IMUs for continuous implicit authentication.",
+      "Introduced a CNN-based feature encoder with Domain Adversarial Learning (DAL) to decouple identity from gesture behavior.",
+      "Developed a distance-based weighted voting strategy for high-precision continuous authentication."
+    ],
+    "main_strength": [
+      "Extremely low EER (0.0003) when using consecutive samples.",
+      "Low energy consumption and storage overhead."
+    ],
+    "main_weakness": [
+      "Evaluation performed in a seated position, lacking robustness tests against real-world motion.",
+      "Dependency on specific interaction gestures rather than purely passive signals."
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "LAB_ONLY_DATASET",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The system effectively demonstrates the potential of ear-worn IMUs for behavioral biometrics but requires validation in uncontrolled environments to address the identified motion interference."
+  },
+  "extraction_confidence": "high"
+}

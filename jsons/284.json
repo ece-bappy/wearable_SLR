@@ -1,0 +1,215 @@
+{
+  "title": "\"I know it’s still you\": A study of using the PPG sensor to support zero re-authentications",
+  "year": 2021,
+  "venue": "MobiSys ’21",
+  "doi": "10.1145/3469260.3469669",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "PPG sensor"
+    ],
+    "device": [
+      "Empatica E4",
+      "Samsung Gear S3"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Dataset A",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 2,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "Dataset B1",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 2,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "Dataset B2",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 6,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "Dataset C",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 7,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 7,
+        "unit": "hours"
+      }
+    },
+    {
+      "dataset_name": "Dataset D",
+      "dataset_type": "private",
+      "dataset_role": "training",
+      "num_subjects": 2,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 20,
+        "unit": "hours"
+      }
+    },
+    {
+      "dataset_name": "Dataset E",
+      "dataset_type": "private",
+      "dataset_role": "training",
+      "num_subjects": 13,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 3,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Template matching",
+      "Dynamic Time Warping (DTW)",
+      "One-class SVM",
+      "Tree Bagger"
+    ],
+    "input_representation": "Pulse morphology features (Dicrotic Notch Amplitude, Ratio F2/F6, Ratio F2/Total pulse width)",
+    "training_strategy": "Subject-specific model training"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.41,
+      "context": "Best result achieved across 7 users using Template Matching on Dataset C"
+    }
+  ],
+  "evaluation_protocol": "Grid search for threshold optimization; majority voting for window-based verdicts",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 8,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Motion artifacts affecting signal quality",
+      "Breathing pattern variations",
+      "Variations in sensor contact/placement"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 21.0,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "High false positives in DTW and One-class SVM approaches"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Exploration of PPG for zero re-authentication in-situ",
+      "Comparison of four different PPG-based authentication techniques (Template, DTW, One-class SVM, Tree Bagger)",
+      "Collection of in-the-wild PPG datasets across multiple devices"
+    ],
+    "main_strength": [
+      "Use of real-world, in-situ data rather than just laboratory settings",
+      "Cross-device evaluation"
+    ],
+    "main_weakness": [
+      "Poor adversary detection (low precision) in ML-based approaches",
+      "Lack of active spoofing tests"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The paper focuses on 'zero re-authentication' (maintaining a session) rather than primary authentication."
+  },
+  "extraction_confidence": "high"
+}

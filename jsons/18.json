@@ -1,0 +1,150 @@
+{
+  "title": "CorNET: Deep Learning Framework for PPG-Based Heart Rate Estimation and Biometric Identification in Ambulant Environment",
+  "year": 2019,
+  "venue": "IEEE Transactions on Biomedical Circuits and Systems",
+  "doi": "10.1109/TBCAS.2019.2892297",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "green LED",
+      "photodiode"
+    ],
+    "device": [
+      "wristband"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "IEEE SPC 2015",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 22,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 5,
+        "unit": "minutes"
+      }
+    },
+    {
+      "dataset_name": "IMEC-Db",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 2,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 7,
+        "unit": "hours"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "LSTM",
+      "Dense Layer"
+    ],
+    "input_representation": "single-channel PPG signal",
+    "training_strategy": "Personalized data-driven approach (trained per subject)"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Leave-one-window-out validation for SPC; 80/20 train-validation split for IMEC-Db",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Class imbalance (1:19) for BId",
+      "Necessitates subject-specific data collection and training"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "IEEE SPC 2015",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed CorNET, a combined CNN-LSTM framework for simultaneous HR estimation and biometric identification",
+      "Demonstrated effectiveness of personalized models for PPG-based BId in ambulant environments"
+    ],
+    "main_strength": [
+      "Avoids hand-crafted features",
+      "Tested in naturalistic office environments (IMEC-Db)"
+    ],
+    "main_weakness": [
+      "Small sample size for real-world evaluation (2 subjects)",
+      "Requires per-user training"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The paper reports Accuracy (96%) for BId, but no AUC, EER, FAR, or FRR, so no metrics were extracted into the evaluation block per target rules."
+  },
+  "extraction_confidence": "high"
+}

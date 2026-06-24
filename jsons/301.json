@@ -1,0 +1,176 @@
+{
+  "title": "Posture and Body Movement Effects on Behavioral Biometrics for Continuous Smartphone Authentication",
+  "year": 2025,
+  "venue": "IEEE Transactions on Biometrics, Behavior, and Identity Science",
+  "doi": "10.1109/TBIOM.2024.3409349",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "posture",
+      "body movement",
+      "touchscreen swipes",
+      "phone movement"
+    ],
+    "sensor": [
+      "3D motion capture cameras",
+      "accelerometer",
+      "gyroscope",
+      "touchscreen"
+    ],
+    "device": [
+      "smartphone",
+      "3D motion capture system"
+    ],
+    "body_location": "full body (upper, center, lower)"
+  },
+  "data": [
+    {
+      "dataset_name": "NYIT LAMP Dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 39,
+      "num_samples": 29827,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "K-Nearest Neighbor",
+      "Scaled Manhattan Distance",
+      "One-Class Support Vector Machine"
+    ],
+    "input_representation": "Distance, accelerations, and velocities of 3D motion capture markers combined with touchscreen swipe metrics and IMU data.",
+    "training_strategy": "Verifier mode (one model per user)"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 5.4,
+      "context": "Achieved in sitting posture with 5-second authentication window using Random Forest with feature-level fusion of all body regions and baseline features."
+    }
+  ],
+  "evaluation_protocol": "Session 1 used for training; Session 2 used for testing (genuine and impostor).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 5.4,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "week"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 6.9
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Low training sample size for OSVM",
+      "Impracticality of using 3D motion capture markers in real-world deployment"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 1.0,
+        "unit": "seconds"
+      },
+      {
+        "value": 5.0,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "posture/body movement",
+      "touchscreen swipes",
+      "phone movement"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 10.3,
+        "unit": "percentage point reduction (15.7% vs 5.4%)"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Demonstrated that posture and body movement features can reduce authentication latency from 45-120 seconds down to 1-5 seconds."
+    ],
+    "main_strength": [
+      "Use of high-precision 3D motion capture to isolate the most valuable biometric features for later translation to wearables."
+    ],
+    "main_weakness": [
+      "Experimental results depend on markers and cameras that are not available in real-world smartphone usage."
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "Paper serves as a foundational study to justify the pursuit of body-tracking wearables for proactive continuous authentication."
+  },
+  "extraction_confidence": "high"
+}

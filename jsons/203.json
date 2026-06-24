@@ -1,0 +1,186 @@
+{
+  "title": "EarPrint: Earphone-Based Implicit User Authentication With Behavioral and Physiological Acoustics",
+  "year": 2024,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2024.3417622",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "behavioral acoustics",
+      "physiological acoustics"
+    ],
+    "sensor": [
+      "microphone"
+    ],
+    "device": [
+      "smart earphones",
+      "smartphone"
+    ],
+    "body_location": "ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 50,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 2,
+        "unit": "hours"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "ResNet18",
+      "Deep Metric Learning (DML)",
+      "Attention Mechanism (CBAM)"
+    ],
+    "input_representation": "spectrograms (64x64)",
+    "training_strategy": "semi-hard sampling with triplet loss"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 4.23,
+      "context": "Achieved in baseline setting with similarity threshold 0.29"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.58,
+      "context": "Achieved in baseline setting with similarity threshold 0.4"
+    },
+    {
+      "metric": "FRR",
+      "value": 10.9,
+      "context": "Achieved in baseline setting with similarity threshold 0.4"
+    }
+  ],
+  "evaluation_protocol": "Randomly divided into training set (40 people) and test set (10 people); repeated 10 times.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 4.23,
+    "real_world_performance_value": 18.3,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "month"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 2,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "FRR",
+        "value": 13.7
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 18.3
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 0.96
+    },
+    "reported_limitations": [
+      "Sensitivity to Motions",
+      "Relatively High FRR",
+      "Not suitable for semi-open headphones"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 2.3,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 33.0,
+        "unit": "percentage of battery per 3h"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "latency"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "behavioral acoustics",
+      "physiological acoustics"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "FAR",
+        "value": null,
+        "unit": null
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Passive authentication using combined behavioral and physiological ear-acoustics",
+      "Retraining-free authentication using Deep Metric Learning",
+      "Attention-based weighting of different acoustic channels"
+    ],
+    "main_strength": [
+      "High scalability (no retraining for new users)",
+      "Unobtrusive/Implicit operation",
+      "Robustness to wearing angle"
+    ],
+    "main_weakness": [
+      "Degraded performance during active movement (running, talking)",
+      "Higher FRR than FAR due to security tradeoff"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The paper demonstrates a strong technical approach to avoid retraining but admits that motion interference is a significant hurdle."
+  },
+  "extraction_confidence": "high"
+}

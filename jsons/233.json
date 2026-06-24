@@ -1,0 +1,171 @@
+{
+  "title": "ECG Authentication Based on Non-Linear Normalization under Various Physiological Conditions",
+  "year": 2021,
+  "venue": "Sensors",
+  "doi": "10.3390/s21216966",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "ECG electrodes",
+      "Biopac MP150",
+      "ECG100C ECG amplifier"
+    ],
+    "device": [
+      "Biopac MP150"
+    ],
+    "body_location": "skin"
+  },
+  "data": [
+    {
+      "dataset_name": "Private database",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": 1969,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 20,
+        "unit": "s"
+      }
+    },
+    {
+      "dataset_name": "ECG-ID database",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 90,
+      "num_samples": 310,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 20,
+        "unit": "s"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM-G",
+      "SVM-Q",
+      "kNN",
+      "Decision Tree"
+    ],
+    "input_representation": "29 fiducial features including amplitude, duration, slope, distance, and area of P wave, QRS complex, and T wave",
+    "training_strategy": "10-fold cross-validation, one-vs-rest approach"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.77,
+      "context": "Achieved using SVM-G model in the resting state"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.85,
+      "context": "Achieved using SVM-G model in the resting state"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.98,
+      "context": "Achieved using kNN model in the resting state"
+    }
+  ],
+  "evaluation_protocol": "10-fold cross-validation; model selection performed on resting state data, then tested across various physiological conditions (rest, music, video, exercise).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.77,
+    "real_world_performance_value": 9.83,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 11,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 15.86
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance degradation during high heart rate variability (exercise)",
+      "Need for amplitude normalization in addition to time normalization",
+      "Small sample size"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "ECG-ID database",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a non-linear normalization method for ECG beats that adapts to heart rate fluctuations",
+      "Developed a dataset encompassing various physiological and psychological states (rest, exercise, music, video)"
+    ],
+    "main_strength": [
+      "Addresses the non-linear morphological changes of ECG signals relative to heart rate",
+      "Evaluation includes longitudinal data collected over several months"
+    ],
+    "main_weakness": [
+      "Very small subject pool (15 people)",
+      "Significant performance drop during intense exercise"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper highlights that while time normalization helps, amplitude changes during exercise are a primary cause of authentication failure."
+  },
+  "extraction_confidence": "high"
+}

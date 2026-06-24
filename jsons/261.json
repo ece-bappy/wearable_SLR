@@ -1,0 +1,147 @@
+{
+  "title": "Received Signal Strength Based Gait Authentication",
+  "year": 2018,
+  "venue": "IEEE Sensors Journal",
+  "doi": "10.1109/JSEN.2018.2850908",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "RSSI"
+    ],
+    "device": [
+      "smartwatch",
+      "smartphone",
+      "radio transceiver"
+    ],
+    "body_location": "wrist and waist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private measurement campaign",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 2550,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 8,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Decision Tree",
+      "SVM",
+      "k-NN",
+      "ANN"
+    ],
+    "input_representation": "Time series, Auto-correlation function (ACF), Level Crossing Rate (LCR)",
+    "training_strategy": "10-fold cross-validation"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "10-fold cross-validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Limited to single trial per subject",
+      "No donning/doffing of transceivers"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed an authentication method using RSSI values from WBANs to recognize gait",
+      "Demonstrated that RSSI-based gait recognition is more energy-efficient than accelerometer-based methods as it uses existing communication overhead"
+    ],
+    "main_strength": [
+      "Zero additional hardware required",
+      "Low energy consumption"
+    ],
+    "main_weakness": [
+      "Small subject pool",
+      "Lack of temporal robustness testing (single session)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_CROSS_SESSION",
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The paper reports Accuracy, TPR, and TNR, but does not report the specific target metrics (AUC, EER, FAR, FRR) required for extraction."
+  },
+  "extraction_confidence": "high"
+}

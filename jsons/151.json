@@ -1,0 +1,190 @@
+{
+  "title": "Voice In Ear: Spoofing-Resistant and Passphrase-Independent Body Sound Authentication",
+  "year": 2021,
+  "venue": "Proc. ACM Interact. Mob. Wearable Ubiquitous Technol.",
+  "doi": "10.1145/3448113",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "body sound conduction",
+      "voice"
+    ],
+    "sensor": [
+      "inward-facing MEMS microphone",
+      "outward-facing MEMS microphone"
+    ],
+    "device": [
+      "earphones"
+    ],
+    "body_location": "ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": "Private EarPrint Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 23,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 180,
+        "unit": "minutes"
+      }
+    },
+    {
+      "dataset_name": "VCC2018",
+      "dataset_type": "public",
+      "dataset_role": "training",
+      "num_subjects": 12,
+      "num_samples": null,
+      "collection_setting": null,
+      "duration": null
+    },
+    {
+      "dataset_name": "VoxCeleb",
+      "dataset_type": "public",
+      "dataset_role": "training",
+      "num_subjects": 100,
+      "num_samples": null,
+      "collection_setting": null,
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "transfer",
+    "model": [
+      "CycleGAN",
+      "GMM-UBM",
+      "i-vector",
+      "Gentle-AdaBoost Ensemble Decision Tree"
+    ],
+    "input_representation": "Mel-spectrograms, MFCCs, Transfer function coefficients",
+    "training_strategy": "Pre-trained on public voice conversion and speaker verification datasets, then fine-tuned with subject-specific enrollment data."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 3.64,
+      "context": "Achieved with 75 seconds of enrollment data using CycleGAN and asymmetry features."
+    }
+  ],
+  "evaluation_protocol": "Cross-validation varying enrollment data length and number of enrolled subjects.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 3.64,
+    "real_world_performance_value": 4.06,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "month"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 3,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "FRR",
+        "value": 2.58
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 2.95
+    },
+    "reported_limitations": [
+      "Small subject pool",
+      "Susceptibility to body conditions (e.g., sore throat)",
+      "Interference from music playback in earphones"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "replay",
+      "presentation/mask"
+    ],
+    "liveness_detection": true,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 389,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [
+      "Likert Scale survey"
+    ],
+    "usability_issues": "Requires the user to speak to trigger authentication."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "air-conducted voice",
+      "in-ear body sound"
+    ],
+    "fusion_level": "score",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": null,
+        "unit": null
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed EarPrint utilizing in-ear body sound conduction and body asymmetry for authentication",
+      "Implementation of a CycleGAN-based feature transfer to enhance robustness against noise"
+    ],
+    "main_strength": [
+      "Strong resistance to replay attacks compared to standard voiceprints",
+      "Passphrase-independent authentication"
+    ],
+    "main_weakness": [
+      "Evaluation conducted on a small number of subjects (23)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The system effectively leverages the physical asymmetry of the human body and the unique propagation of sound through tissue/bone to thwart spoofing attacks that only mimic air-conducted voice."
+  },
+  "extraction_confidence": "high"
+}
