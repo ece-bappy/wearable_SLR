@@ -93,4 +93,7 @@ Each extracted paper record includes key research dimensions such as:
 
 ## Contact
 
-This repository is intended for research and review of wearable biometric authentication literature. For questions about the workflow, inspect the notebooks and the extraction rules defined in `extract_data.ipynb`.
+This repository is intended for research and review of wearable biometric authentication literature. You are welcome to contribute to this project. ping at `ece.bappy@gmail.com`
+
+## Cite
+This work is under submission. Citation details may be added once accepted.
