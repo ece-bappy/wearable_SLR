@@ -1,0 +1,182 @@
+{
+  "title": "Feasibility of Wrist-Worn, Cancelable, Real-Time Biometric Authentication via HD-sEMG and Dynamic Gestures",
+  "year": 2023,
+  "venue": "IEEE Transactions on Instrumentation and Measurement",
+  "doi": "10.1109/TIM.2023.3327490",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "HD-sEMG",
+      "dynamic gestures"
+    ],
+    "sensor": [
+      "high-density surface electromyography electrodes"
+    ],
+    "device": [
+      "wristband prototype"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Hyser dataset",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 20,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "training",
+      "num_subjects": 24,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Convolutional Neural Network (CNN)"
+    ],
+    "input_representation": "sEMG feature images (2x10 layout based on Mean Absolute Value)",
+    "training_strategy": "Cross-entropy loss with additive voting of gesture distribution probabilities across sliding windows"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.0039,
+      "context": "Achieved in Situation 2 (imposters performing correct gesture code) with a code length of 12"
+    },
+    {
+      "metric": "EER",
+      "value": 0.0018,
+      "context": "Achieved in Situation 3 (cancelability test where imposters use user's biometric traits)"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.0344,
+      "context": "Real-time authentication test with a single user vs 23 imposters"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.0,
+      "context": "Real-time authentication test with a single user vs 23 imposters"
+    }
+  ],
+  "evaluation_protocol": "Three situations: Situation 1 (imposters unknown code), Situation 2 (imposters known code), and Situation 3 (cancelability/biometric trait leakage). User-specific models trained on individual data.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": null,
+        "unit": "days"
+      },
+      "drop_in_performance": {
+        "metric": "EER",
+        "value": 0.0044
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 35.49
+    },
+    "reported_limitations": [
+      "Performance degradation due to electrode shifts between days",
+      "Influence of different arm postures on sEMG signals",
+      "User adaptation/motor learning affecting stability"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "heuristic"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 64.75,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Long code lengths required for between-day stability hinder fast access"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "sEMG (physiological)",
+      "gestures (behavioral)"
+    ],
+    "fusion_level": "score",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "Hyser dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Verified feasibility of 16-channel wrist-worn HD-sEMG for biometric authentication",
+      "Implementation of cancelable authentication via dynamic gesture codes",
+      "Real-time prototype achieving low latency (64.75ms)"
+    ],
+    "main_strength": [
+      "High accuracy (EER < 0.01) with significantly fewer sensors than previous forearm-based systems",
+      "Faster authentication than static gesture methods"
+    ],
+    "main_weakness": [
+      "Significant performance drop in between-day tests",
+      "Testing limited to a single arm posture (elbow supported on table)"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The system demonstrates a strong trade-off between security (code length) and speed. Between-day degradation is a primary bottleneck."
+  },
+  "extraction_confidence": "high"
+}

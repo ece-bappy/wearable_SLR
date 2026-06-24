@@ -1,0 +1,157 @@
+{
+  "title": "Accelerometer-Based Speed-Adaptive Gait Authentication Method for Wearable IoT Devices",
+  "year": 2019,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2018.2860592",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "wearable IoT devices",
+      "smartphone",
+      "smartwatch",
+      "H-shirt"
+    ],
+    "body_location": "right wrist, left upper arm, right side of the pelvis, left thigh, right ankle"
+  },
+  "data": [
+    {
+      "dataset_name": "ZJU-GaitAcc",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 153,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "H-shirt self-collected dataset",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 10,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "Pearson Correlation Coefficient (PCC)",
+      "Fast Fourier Transform (FFT)",
+      "Cubic Spline Interpolation"
+    ],
+    "input_representation": "vertical acceleration signal",
+    "training_strategy": "Template construction using 1-minute walking acceleration data"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.01,
+      "context": "Achieved using ZJU-GaitAcc dataset when template and probe are from the same sensor location (diagonal of Table III)"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.05,
+      "context": "Achieved using ZJU-GaitAcc dataset when template and probe are from the same sensor location (diagonal of Table IV)"
+    }
+  ],
+  "evaluation_protocol": "Cross-validation between different body sensor locations and evaluation of authentication rates across varying walking speeds (2 to 6 km/h).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Gait Recognition Rate",
+      "value": 96.9
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Impact of clothing and footwear",
+      "Physical conditions like tiredness or illness",
+      "Gait fluctuations in older adults and children"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "ZJU-GaitAcc",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Speed-adaptive gait cycle segmentation using FFT for frequency estimation",
+      "Individualized matching threshold generation to balance FAR and FRR"
+    ],
+    "main_strength": [
+      "High robustness to walking speed variations compared to fixed-threshold methods",
+      "Detailed analysis of sensor placement on the body"
+    ],
+    "main_weakness": [
+      "Experimental data collected only in controlled settings (treadmill/flat floor)",
+      "Small subject pool for the speed-adaptive evaluation (10 users)"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The paper successfully addresses the problem of gait signal degradation due to speed changes, but lacks evaluation in uncontrolled environments."
+  },
+  "extraction_confidence": "high"
+}

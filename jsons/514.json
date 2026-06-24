@@ -1,0 +1,5 @@
+{
+  "title": "Hands-Free one-Time and continuous authentication using glass wearable devices",
+  "relevance": "exclude",
+  "exclusion_reason": "The authentication system (Gauth) is based on the possession of a wearable device acting as a hardware token using QR codes and Time-based One-Time Passwords (TOTP). It does not use physiological or behavioral biometric signals for authentication; voice commands are used only as a trigger for the application, not as a biometric identifier."
+}

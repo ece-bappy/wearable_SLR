@@ -1,0 +1,163 @@
+{
+  "title": "Smartwatch-based Gait Authentication Using Siamese LSTM Networks",
+  "year": 2024,
+  "venue": "2024 9th International Conference on Information Technology Research (ICITR)",
+  "doi": "10.1109/ICITR64794.2024.10857751",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "LG G Watch",
+      "Samsung Galaxy Watch 4 Classic"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "WISDM",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 51,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 3,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "few-shot",
+    "model": [
+      "Siamese LSTM"
+    ],
+    "input_representation": "10 second segments processed via first-order low-pass filter (0.5Hz cutoff)",
+    "training_strategy": "Pair-wise learning strategy using Contrastive loss and Euclidean distance/Cosine similarity"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.18,
+      "context": "Achieved by Model Configuration 2 (Contrastive loss and Euclidean distance)"
+    },
+    {
+      "metric": "FRR",
+      "value": 6.98,
+      "context": "Achieved by Model Configuration 4 (Contrastive loss and cosine similarity)"
+    },
+    {
+      "metric": "FAR",
+      "value": 6.72,
+      "context": "Achieved by Model Configuration 4 (Contrastive loss and cosine similarity)"
+    }
+  ],
+  "evaluation_protocol": "70-30 train-test split on WISDM dataset with equal ratio of positive and negative pairs",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Evaluation under real-world conditions was out of scope",
+      "High resource usage compared to traditional ML approaches"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Higher CPU (up to 51% average) and Memory (up to 144MB average) consumption during inference compared to non-DL methods"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "WISDM",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Implementation of a lightweight Siamese LSTM network for smartwatch gait authentication",
+      "Demonstration of the feasibility of on-device inference on a Samsung Galaxy Watch 4"
+    ],
+    "main_strength": [
+      "Very low EER (0.18%) achieved",
+      "Successful on-device deployment using quantization"
+    ],
+    "main_weakness": [
+      "Lack of real-world validation",
+      "Absence of security/spoofing tests"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The study highlights that while DL models like Siamese LSTMs provide high accuracy, they impose significantly higher resource overhead on wearables than traditional ML."
+  },
+  "extraction_confidence": "high"
+}

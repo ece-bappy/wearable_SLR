@@ -1,0 +1,157 @@
+{
+  "title": "Implicit IoT authentication using on-phone ANN models and breathing data",
+  "year": 2023,
+  "venue": "Internet of Things",
+  "doi": "10.1016/j.iot.2023.101003",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "breathing patterns"
+    ],
+    "sensor": [
+      "microphone"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": "mouth/nose"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": 13320,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 1.63,
+        "unit": "s"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "RNN",
+      "CNN",
+      "CRNN"
+    ],
+    "input_representation": "MFCC",
+    "training_strategy": "leave-one-event-out for testing and leave-one-subject-out as valid; data augmentation including pitch shifts, time-stretches, and noise imputations"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Leave-one-event-out for testing; leave-one-subject-out as valid",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Small cohort of 10 subjects",
+      "Potential impact of activity, mental state, and microphone proximity"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 5,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 22,
+        "unit": "% drop per hour"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Significant battery drain (22% per hour)"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "Compared against existing literature using Accuracy and usability metrics",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Implementation of a BTL Auth app using TensorFlow Lite for on-phone continuous breathing authentication",
+      "Evaluation of RNN, CNN, and CRNN architectures for temporal audio data"
+    ],
+    "main_strength": [
+      "Implicit/Passive nature requiring no user interaction",
+      "Very low memory footprint (64 KB for RNN model)"
+    ],
+    "main_weakness": [
+      "Extremely small sample size (10 users)",
+      "High energy consumption",
+      "Use of non-standard evaluation metrics (GRR/GAR) without standard FAR/FRR/EER reporting"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The authors report 'GRR' and 'GAR' and state that higher values for both are better. This contradicts standard biometric terminology where GRR (Genuine Rejection Rate) is synonymous with FRR and should be minimized. Because the reported values (0.935) would imply a failing system if interpreted as standard FRR, these were not extracted as target metrics."
+  },
+  "extraction_confidence": "high"
+}

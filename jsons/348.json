@@ -1,0 +1,167 @@
+{
+  "title": "Multi-factor Behavioral Authentication Using Correlations Enhanced by Neural Network-based Score Fusion",
+  "year": 2022,
+  "venue": "IEEE 19th Annual Consumer Communications & Networking Conference (CCNC)",
+  "doi": "10.1109/CCNC49033.2022.9700626",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "location",
+      "activity type"
+    ],
+    "sensor": [
+      "GPS",
+      "Wi-Fi",
+      "accelerometer"
+    ],
+    "device": [
+      "smartphone",
+      "activity tracker"
+    ],
+    "body_location": "wrist, pocket"
+  },
+  "data": [
+    {
+      "dataset_name": "MITHRA",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 59,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 3.5,
+        "unit": "months"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Neural Network",
+      "MLP"
+    ],
+    "input_representation": "Authentication scores based on behavioral correlations between GPS-Activity, Wi-Fi-Activity, and GPS-Wi-Fi pairs.",
+    "training_strategy": "Hold-out splitting (80% training, 20% testing) with Stratified 5-Fold cross-validation on the training set."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 8.0,
+      "context": "Reported as HTER (half total error rate) using Neural Network-based score fusion on the MITHRA dataset."
+    },
+    {
+      "metric": "FAR",
+      "value": 9.0,
+      "context": "Achieved using Neural Network-based score fusion."
+    },
+    {
+      "metric": "FRR",
+      "value": 6.9,
+      "context": "Achieved using Neural Network-based score fusion."
+    }
+  ],
+  "evaluation_protocol": "Binary classification of genuine users vs imposters using a global model.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": 8.0,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3.5,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Dependency on simultaneous availability of smartphone and wearable data",
+      "Sensitivity to GPS/Wi-Fi measurement intervals"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Battery consumption mentioned as a factor for future evaluation."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "GPS",
+      "Wi-Fi",
+      "Activity type"
+    ],
+    "fusion_level": "score",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 8.0,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "MITHRA",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed correlation-based behavioral authentication matching consistency across sensors rather than historical patterns",
+      "Implemented a NN-based score fusion to optimize weights of multi-factor authentication scores"
+    ],
+    "main_strength": [
+      "Requires significantly less preliminary data than traditional template or classification-based behavioral systems",
+      "Outperforms conventional classification methods on the same dataset"
+    ],
+    "main_weakness": [
+      "Lack of active spoofing/presentation attack testing",
+      "Requires two separate devices to be operational"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The method demonstrates that behavioral correlation (consistency) can be a more robust feature than historical patterns when dealing with non-ideal or limited data."
+  },
+  "extraction_confidence": "high"
+}

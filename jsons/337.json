@@ -1,0 +1,177 @@
+{
+  "title": "A 1.06 μW Smart ECG Processor in 65 nm CMOS for Real-Time Biometric Authentication and Personal Cardiac Monitoring",
+  "year": 2017,
+  "venue": "2017 Symposium on VLSI Circuits Digest of Technical Papers",
+  "doi": null,
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "ECG sensor"
+    ],
+    "device": [
+      "wearable processor",
+      "65 nm CMOS chip"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "MIT-BIH database",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": 18,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "ECG-ID database",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": 90,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "custom ECG database",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 645,
+      "num_samples": null,
+      "collection_setting": null,
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Neural Networks",
+      "Lasso regression"
+    ],
+    "input_representation": "normalized ECG beats (PQRST waves)",
+    "training_strategy": "Data-driven sparsity enhancement via Lasso regression and precision reduction"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.104,
+      "context": "Achieved on MIT-BIH database"
+    }
+  ],
+  "evaluation_protocol": "Cosine similarity between current feature vector and registered feature vector",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": null,
+    "lab_performance_value": 0.104,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": []
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": true,
+    "defense_type": null
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [
+      {
+        "value": 1.06,
+        "unit": "μW"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "MIT-BIH, ECG-ID",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Development of a low-power smart ECG processor for biometric authentication and cardiac monitoring",
+      "Application of Lasso regression to compress neural network weights by 24.4X",
+      "Implementation of low-precision techniques to reduce power consumption to 1.06 μW"
+    ],
+    "main_strength": [
+      "Extremely low power consumption suitable for wearable devices",
+      "Validated on a large custom dataset of 645 subjects"
+    ],
+    "main_weakness": [
+      "Lack of active spoofing/presentation attack testing",
+      "No evaluation of performance in uncontrolled real-world environments"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper focuses heavily on the hardware implementation (VLSI) and power optimization rather than the biometric algorithm itself."
+  },
+  "extraction_confidence": "high"
+}

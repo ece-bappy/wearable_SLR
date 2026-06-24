@@ -1,0 +1,155 @@
+{
+  "title": "Deep Arm/Ear-ECG Image Learning for Highly Wearable Biometric Human Identification",
+  "year": 2017,
+  "venue": "Annals of Biomedical Engineering",
+  "doi": "10.1007/s10439-017-1944-z",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "ECG electrodes"
+    ],
+    "device": [
+      "arm band",
+      "headsets",
+      "glasses"
+    ],
+    "body_location": "left upper-arm, behind the ears"
+  },
+  "data": [
+    {
+      "dataset_name": "SADB",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": null,
+      "num_samples": 5000,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 13,
+        "unit": "min"
+      }
+    },
+    {
+      "dataset_name": "EDB",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": null,
+      "num_samples": 4463,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 15,
+        "unit": "min"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Convolutional Neural Network (CNN)"
+    ],
+    "input_representation": "2D state space trajectory images generated via split-then-hit method",
+    "training_strategy": "10-fold cross validation"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "10-fold cross validation with 5 repeated trials",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Weak ECG signals from non-standard leads are more sensitive to noise/interferences",
+      "P and T waves are contaminated by noise in arm/ear configurations"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Demonstrated feasibility of using single-arm-ECG and ear-ECG for biometric identification",
+      "Developed a two-stage framework combining ECG imaging (state space reconstruction) and CNN feature learning"
+    ],
+    "main_strength": [
+      "High wearability due to non-standard lead configurations",
+      "Avoids heavy manual feature engineering"
+    ],
+    "main_weakness": [
+      "Lack of evaluation on standard biometric metrics (EER/FAR/FRR)",
+      "Lack of real-world testing"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The paper reports 'identification rate' (98.4% and 91.1%), which is accuracy and thus excluded from evaluation metrics per the systematic review guidelines."
+  },
+  "extraction_confidence": "high"
+}

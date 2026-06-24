@@ -1,0 +1,178 @@
+{
+  "title": "Vocal Resonance: Using Internal Body Voice for Wearable Authentication",
+  "year": 2018,
+  "venue": "Proc. ACM Interact. Mob. Wearable Ubiquitous Technol.",
+  "doi": "10.1145/3191751",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "vocal resonance",
+      "voice"
+    ],
+    "sensor": [
+      "piezo contact microphone",
+      "ambient microphone"
+    ],
+    "device": [
+      "Raspberry Pi Zero Wireless prototype"
+    ],
+    "body_location": "throat"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 29,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 107,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Gaussian Mixture Model (GMM)",
+      "Deep Neural Network (DNN)",
+      "Long Short Term Memory (LSTM)"
+    ],
+    "input_representation": "Mel-Frequency Cepstral Coefficients (MFCCs) and their deltas (26 features)",
+    "training_strategy": "EM algorithm for GMM; stochastic gradient descent for DNN"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.962,
+      "context": "DNN method on the uniqueness test"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.012,
+      "context": "DNN method for identification on the uniqueness test"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.001,
+      "context": "DNN method for verification on the uniqueness test"
+    }
+  ],
+  "evaluation_protocol": "Cross-passage testing (Rainbow Passage for training, Wind in the Willows for testing)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 2,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "AUC",
+        "value": 0.005
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Small cohort size (29 subjects)",
+      "Short audio samples (1 second)",
+      "Lack of data in noisy real-world environments",
+      "Potential sensitivity to physiological changes (e.g., illness/hoarse voice)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay"
+    ],
+    "liveness_detection": true,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 2.17,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 8.5,
+        "unit": "J"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "DNN implementation requires remote server/network connection, raising privacy and availability concerns."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed vocal resonance as a biometric for wearable authentication",
+      "Developed a method to distinguish 'body voice' from 'air voice' to ensure the device is physically on the wearer"
+    ],
+    "main_strength": [
+      "Robustness against replay attacks where air voice is replayed through another body",
+      "High accuracy in distinguishing individuals"
+    ],
+    "main_weakness": [
+      "Data collected only in controlled lab settings",
+      "Computationally expensive DNN requires off-device processing"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The system effectively combines speaker identification with presence detection (on-body vs off-body)."
+  },
+  "extraction_confidence": "high"
+}

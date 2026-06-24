@@ -1,0 +1,157 @@
+{
+  "title": "Security Properties of Gait for Mobile Device Pairing",
+  "year": 2020,
+  "venue": "IEEE Transactions on Mobile Computing",
+  "doi": "10.1109/TMC.2019.2897933",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "smartphone",
+      "wearable sensors"
+    ],
+    "body_location": "multiple (waist, shin, torso, lower back, upper right arm, right ear)"
+  },
+  "data": [
+    {
+      "dataset_name": "Mannheim walking dataset",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 15,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 10,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "SAPHE",
+      "Walkie-Talkie",
+      "BANDANA",
+      "IPI",
+      "Gait-Key"
+    ],
+    "input_representation": "acceleration sequences",
+    "training_strategy": null
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 1.52588e-05,
+      "context": "One-shot success probability (worst-case impersonation) for SAPHE and Walkie-Talkie"
+    }
+  ],
+  "evaluation_protocol": "Comparison of four quantization schemes using intra-body vs inter-body similarity and statistical randomness tests (DieHarder, ENT).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "similarity",
+      "value": null
+    },
+    "reported_limitations": [
+      "SMALL_SAMPLE_SIZE",
+      "vulnerability to video-based attacks",
+      "biases in BANDANA and IPI quantization",
+      "inter-body similarity in IPI protocol"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "Mannheim walking dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Comprehensive security analysis of four gait-based quantization schemes",
+      "Empirical demonstration that video recording can be used to estimate acceleration and breach gait-based pairing"
+    ],
+    "main_strength": [
+      "Strong statistical analysis of key randomness",
+      "Novel attack vector analysis (video-based impersonation)"
+    ],
+    "main_weakness": [
+      "Small number of subjects (15)"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The paper focuses more on device pairing than authentication, but uses biometric gait as the source. It highlights that gait-based systems are vulnerable to sophisticated visual attacks."
+  },
+  "extraction_confidence": "high"
+}

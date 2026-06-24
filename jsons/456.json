@@ -1,0 +1,153 @@
+{
+  "title": "A Feasibility Study on Biometric Identification Using Multimodal Signal Analysis of Photoplethysmogram and Phonocardiogram",
+  "year": 2024,
+  "venue": "2024 International Conference on Smart Healthcare and Wearable Intelligent Devices (SHWID 2024)",
+  "doi": "10.1145/3703847.3703858",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "Photoplethysmogram (PPG)",
+      "Phonocardiogram (PCG)"
+    ],
+    "sensor": [
+      "PPG sensor",
+      "PCG sensor"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "left wrist and left chest"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 59,
+      "num_samples": 6616,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 30,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Modified-BiometricNet",
+      "ResNet18"
+    ],
+    "input_representation": "individual cardiac cycles (heartbeats)",
+    "training_strategy": "Hold-out method (8:2 training/test split), Adam optimizer, cross-entropy loss"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Stratified sampling for hold-out validation (80% training, 20% testing).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Small sample size",
+      "Need for more diverse cardiac signals"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requirement to press the device closely against the chest"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "PPG",
+      "PCG"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": 94.71,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Demonstrated that multimodal fusion of PPG and PCG signals improves biometric identification accuracy compared to unimodal signals",
+      "Compared the performance of a specialized CNN-LSTM architecture (Modified-BiometricNet) against ResNet18 for cardiac signal identification"
+    ],
+    "main_strength": [
+      "Use of multimodal cardiac signals to reduce overfitting and enhance feature extraction"
+    ],
+    "main_weakness": [
+      "Lack of evaluation using standard biometric metrics like EER or FAR",
+      "Lab-only data collection with controlled subject movement"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The paper reports only Accuracy, Precision, Recall, and F1, which are excluded from the primary evaluation extraction per guidelines. However, the fusion benefit is clearly quantified via Accuracy."
+  },
+  "extraction_confidence": "high"
+}

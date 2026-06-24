@@ -1,0 +1,159 @@
+{
+  "title": "Simple Siamese Model with Long Short-Term Memory for User Authentication with Field-Programmable Gate Arrays",
+  "year": 2024,
+  "venue": "Electronics",
+  "doi": "10.3390/electronics13132584",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "electromyogram (EMG)"
+    ],
+    "sensor": [
+      "BIOPAC systems MP160"
+    ],
+    "device": [
+      "wristwatch",
+      "FPGA"
+    ],
+    "body_location": "right arm (palmaris longus and extensor digitorum)"
+  },
+  "data": [
+    {
+      "dataset_name": "Chosun University’s EMG dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 100,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 4.0,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "few-shot",
+    "model": [
+      "SSiamese-LSTM",
+      "CNN",
+      "LSTM"
+    ],
+    "input_representation": "Empirical Mode Decomposition (EMD) residual signal",
+    "training_strategy": "Categorical cross-entropy loss with Adam and AdaGrad optimizers, Bayesian optimization via Keras Tuner"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 1.0,
+      "context": "Achieved on training data from 80 individuals"
+    }
+  ],
+  "evaluation_protocol": "80 subjects used for training/validation (25% split) and 20 subjects used for independent testing.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "slightly slower processing speed due to limited hardware resources",
+      "need for further integration and optimization for practical applications"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 7.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Processing speed is slightly slower on FPGA (7ms) compared to CPU (2.5ms)."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "Chosun University’s EMG dataset",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed SSiamese-LSTM architecture to minimize hardware resource consumption while maintaining high authentication accuracy",
+      "Implementation of EMG biometric authentication on FPGA for edge devices"
+    ],
+    "main_strength": [
+      "Extremely low parameter count (17,268) suitable for wearable ICs",
+      "High reported accuracy (99%+) on the tested dataset"
+    ],
+    "main_weakness": [
+      "Lack of evaluation in uncontrolled, real-world settings",
+      "No longitudinal or cross-session testing"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "NO_TEMPORAL_TEST",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The authors claim 'non-aware authentication' in the abstract, but the methodology relies on 'fist-clenching', which is an explicit user action."
+  },
+  "extraction_confidence": "high"
+}

@@ -1,0 +1,5 @@
+{
+  "title": "Near-Sensor Reservoir Computing for Gait Recognition via a Multi-Gate Electrolyte-Gated Transistor",
+  "relevance": "exclude",
+  "exclusion_reason": "The paper focuses on activity recognition and disease diagnosis (classifying types of gait such as walking, jumping, and Parkinson's-related gaits) rather than biometric authentication or the identification of specific individuals."
+}

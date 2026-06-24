@@ -1,0 +1,160 @@
+{
+  "title": "Biometric Authentication Using Chest Wall Displacement Recorded by VHF-Band Loop Antenna",
+  "year": 2024,
+  "venue": "IEEE Access",
+  "doi": "10.1109/ACCESS.2024.3521013",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "chest wall displacement"
+    ],
+    "sensor": [
+      "VHF-band small-loop antenna",
+      "Near-field sensor (NFS)"
+    ],
+    "device": [
+      "wearable NFS module"
+    ],
+    "body_location": "chest"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 13,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 1800,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM",
+      "Random Forest",
+      "XGBoost",
+      "MLP",
+      "1D CNN"
+    ],
+    "input_representation": "Non-fiducial features: Autocorrelation (AC), Discrete Cosine Transform (DCT), and Mel-frequency cepstrum coefficient (MFCC)",
+    "training_strategy": "Three-fold cross-validation for authentication; SMOTE applied to handle class imbalance."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.061,
+      "context": "Best result achieved in resting state (intra-state) using SVM with combined AC/DCT and MFCC features"
+    },
+    {
+      "metric": "AUC",
+      "value": 1.0,
+      "context": "Activity recognition models (except SVM) achieved AUC > 0.950; user authentication SVM model categorized as excellent (0.900 < AUC < 1.000)"
+    }
+  ],
+  "evaluation_protocol": "Three-fold cross-validation for user authentication; five-fold cross-validation for activity recognition.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a non-contact biometric authentication system using chest wall displacement via a wearable VHF-band loop antenna",
+      "Integrated activity recognition to dynamically select the optimal authentication model based on user state (resting vs. working)"
+    ],
+    "main_strength": [
+      "Eliminates the need for skin-contact electrodes (reducing physical restriction)",
+      "Immune to light source interference compared to PPG"
+    ],
+    "main_weakness": [
+      "Limited number of participants (13)",
+      "Testing restricted to semi-controlled settings; lack of evaluation during high-mobility activities like walking"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The study demonstrates feasibility but explicitly notes that future work is required for liveness detection and presentation attack (PA) countermeasures."
+  },
+  "extraction_confidence": "high"
+}

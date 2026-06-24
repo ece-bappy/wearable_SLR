@@ -1,0 +1,154 @@
+{
+  "title": "Hybrid Smartwatch Multi-factor Authentication",
+  "year": 2023,
+  "venue": "2023 IEEE 17th International Symposium on Medical Information and Communication Technology (ISMICT)",
+  "doi": "10.1109/ISMICT58261.2023.10152114",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "accelerometer"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 4,
+      "num_samples": 246,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "Dynamic Time Warping (DTW)",
+      "Cumulative Distribution Function Analysis (CDFA)"
+    ],
+    "input_representation": "Raw X, Y, Z accelerometer sensor data",
+    "training_strategy": "Template matching based on Euclidean Distance"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.0,
+      "context": "Minimum EER observed across various analysis methods and experiment types"
+    }
+  ],
+  "evaluation_protocol": "Comparison of genuine and impostor samples using threshold-based EER calculation with min-max scaling",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Dependency on battery life and proper functioning of the smartwatch",
+      "Gestures occasionally performed worse than passive behavior in identification"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": null,
+        "unit": "virtually no latency"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Battery life dependence"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "knowledge-based credentials (PIN/Password/Pattern)",
+      "behavioral accelerometer data"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed HS-MFA as a secondary authentication layer using smartwatch accelerometer data to identify users during smartphone unlocking"
+    ],
+    "main_strength": [
+      "Transparent/implicit authentication",
+      "Accessibility for vision-impaired users"
+    ],
+    "main_weakness": [
+      "Extremely small sample size (4 users)",
+      "High variance in EER (up to 67%)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The study found that passive behavior sometimes outperformed intentional subtle gestures for authentication."
+  },
+  "extraction_confidence": "high"
+}

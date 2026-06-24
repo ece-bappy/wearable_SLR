@@ -1,0 +1,165 @@
+{
+  "title": "P2Auth: Two-factor Authentication Leveraging PIN and Keystroke-induced PPG measurements",
+  "year": 2023,
+  "venue": "2023 IEEE 43rd International Conference on Distributed Computing Systems (ICDCS)",
+  "doi": "10.1109/ICDCS57875.2023.00074",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "Photoplethysmography (PPG)",
+      "Keystroke dynamics"
+    ],
+    "sensor": [
+      "MAX30101 PPG sensor"
+    ],
+    "device": [
+      "Smartwatch prototype"
+    ],
+    "body_location": "Wrist (inner side)"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 8,
+        "unit": "weeks"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "miniRocket",
+      "Ridge Regression"
+    ],
+    "input_representation": "Multivariate PPG time series induced by keystrokes",
+    "training_strategy": "Binary classification separating legitimate users from third-party/attacker data"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.02,
+      "context": "Derived from a reported mean True Rejection Rate of 98% against random and emulating attacks"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.02,
+      "context": "Derived from the best reported authentication accuracy of 98% for one-handed cases"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-out or split-set binary classification testing against legitimate users and simulated attackers",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.98,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 8,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Sensitivity to sensor placement (inner wrist vs back of hand)",
+      "Small sample size",
+      "Overfitting risk with larger third-party training sets"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "heuristic"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 0.302,
+        "unit": "sec"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requires specific watch wearing position (inside of wrist)"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "PIN",
+      "PPG"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "UCR archive (for miniRocket validation)",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed P2Auth system integrating PIN and keystroke-induced PPG",
+      "Implemented a lightweight feature extraction approach using miniRocket",
+      "Designed a waveform fusion mechanism for privacy enhancement"
+    ],
+    "main_strength": [
+      "Low computational overhead",
+      "Effective resistance to emulating attacks",
+      "Seamless integration into existing PIN entry behavior"
+    ],
+    "main_weakness": [
+      "Lab-only data collection",
+      "Very small user study (15 participants)",
+      "Requires specific device orientation"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The paper reports 'True Rejection Rate' and 'Accuracy'; these were converted to FAR and FRR (1 - TRR and 1 - Acc) to comply with target metrics."
+  },
+  "extraction_confidence": "high"
+}

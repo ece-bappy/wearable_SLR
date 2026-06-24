@@ -1,0 +1,146 @@
+{
+  "title": "Data Improvement Model Based on ECG Biometric for User Authentication and Identification",
+  "year": 2020,
+  "venue": "Sensors",
+  "doi": "10.3390/s20102920",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "ECG sensor"
+    ],
+    "device": [
+      "wearable devices"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "PhysioNet Computing in Cardiology 2018 (You Snooze You Win)",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 1985,
+      "num_samples": 158800,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "One-vs-Rest"
+    ],
+    "input_representation": "Handcrafted features (P, Q, R, S, T wave amplitudes and durations)",
+    "training_strategy": "80% training, 20% testing, grid search for hyperparameter tuning, 3-subset cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 3.3e-05,
+      "context": "Achieved using the DETECT model on the PhysioNet 2018 dataset with 1985 subjects"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.064003,
+      "context": "Achieved using the DETECT model on the PhysioNet 2018 dataset with 1985 subjects"
+    }
+  ],
+  "evaluation_protocol": "One-vs-rest classification using Random Forest base estimators, 80/20 split, 3-fold cross-validation for tuning.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.9,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance reduces as the number of target classes (subjects) increases",
+      "Need for periodic training set updates due to natural anatomical variability over time"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": null
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "PhysioNet Computing in Cardiology 2018",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed DETECT data improvement model incorporating data augmentation and IQR-based outlier removal",
+      "Demonstrated ECG biometric scalability using a large-scale dataset of ~2000 subjects"
+    ],
+    "main_strength": [
+      "Significantly larger subject population than most existing ECG biometric studies",
+      "Systematic evaluation of data improvement steps (augmentation, outlier removal)"
+    ],
+    "main_weakness": [
+      "Used lab-collected sleep data rather than real-world wearable data",
+      "No testing against active spoofing or presentation attacks"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The paper emphasizes that data quality and quantity are more critical than the specific ML algorithm for large-scale biometric identification."
+  },
+  "extraction_confidence": "high"
+}

@@ -1,0 +1,155 @@
+{
+  "title": "Smart Watch based Body-Temperature Authentication",
+  "year": 2017,
+  "venue": "ICCNI 2017: International Conference on Computing, Networking and Informatics (IEEE)",
+  "doi": null,
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "Skin Temperature",
+      "Galvanic Skin Response (GSR)"
+    ],
+    "sensor": [
+      "skin temperature sensor",
+      "GSR sensor"
+    ],
+    "device": [
+      "Microsoft Band 2"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 30,
+      "num_samples": 1800,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 4.0,
+        "unit": "hours per day"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Neural Network Feedforward (NN-FF)"
+    ],
+    "input_representation": "Wavelet Packet Entropy features (6 features per modality)",
+    "training_strategy": "Intra-day training (Day 1) and Inter-day training (Day 1-2 for training, Day 3 for testing)"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.54,
+      "context": "Achieved after applying the best performance scoring algorithm"
+    }
+  ],
+  "evaluation_protocol": "Comparison of intra-day and inter-day classification performance using EER",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 3,
+        "unit": "days"
+      },
+      "drop_in_performance": {
+        "metric": "EER",
+        "value": 1.94
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Instability due to environmental factors",
+      "Small sample size of subjects",
+      "Short time period for data collection"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "Skin Temperature",
+      "Galvanic Skin Response (GSR)"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed BT-Authen for continuous user authentication using skin temperature and GSR from a smartwatch",
+      "Implementation of a best performance scoring algorithm to mitigate temporal variance"
+    ],
+    "main_strength": [
+      "Uses non-intrusive physiological signals",
+      "Tested across multiple days in a naturalistic environment"
+    ],
+    "main_weakness": [
+      "Lack of spoofing/attack testing",
+      "Small dataset"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The study demonstrates that while EER degrades over several days (1.46% to 3.4%), a scoring algorithm can optimize results to 0.54%."
+  },
+  "extraction_confidence": "high"
+}

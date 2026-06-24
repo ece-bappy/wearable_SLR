@@ -1,0 +1,148 @@
+{
+  "title": "DeepSense-Inception: Gait Identiﬁcation from Inertial Sensors with Inception-like Architecture and Recurrent Network",
+  "year": 2017,
+  "venue": "13th International Conference on Computational Intelligence and Security",
+  "doi": "10.1109/CIS.2017.00138",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "UCI Human Activity Recognition dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 9,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Inception-like module",
+      "CNN",
+      "GRU",
+      "Softmax"
+    ],
+    "input_representation": "Fourier transform of inertial signals flattened into vectors",
+    "training_strategy": "10-fold cross-validation"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "10-fold cross-validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Lack of real-world scenario evaluation",
+      "Small number of users in the dataset"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "UCI Human Activity Recognition dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed DeepSense-Inception (DSI) which replaces standard CNN layers with Inception-like modules for gait identification",
+      "Reduced model complexity (parameters) while maintaining or improving accuracy"
+    ],
+    "main_strength": [
+      "High efficiency: significantly fewer parameters (149K) compared to DeepSense (529K) while achieving high accuracy"
+    ],
+    "main_weakness": [
+      "Evaluated only on a small, lab-based public dataset",
+      "No evaluation of security/spoofing or temporal decay"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper focuses on architectural efficiency and accuracy but does not report any of the specific biometric security metrics (EER, FAR, FRR) required for the review."
+  },
+  "extraction_confidence": "high"
+}

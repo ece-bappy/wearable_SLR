@@ -1,0 +1,167 @@
+{
+  "title": "Self-supervised Transformer with Masked Latent Representations For Multimodal Biometric Authentication",
+  "year": 2025,
+  "venue": "13th International Workshop on Biometrics and Forensics (IWBF)",
+  "doi": "10.1109/IWBF63717.2025.11113468",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "BVP",
+      "EDA",
+      "Skin Temperature"
+    ],
+    "sensor": [
+      "Empatica E4"
+    ],
+    "device": [
+      "Empatica E4"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "WESAD",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 2.0,
+        "unit": "hours"
+      }
+    },
+    {
+      "dataset_name": "VERBIO",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 55,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 5.0,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "self-supervised",
+    "model": [
+      "Transformer",
+      "Temporal Convolutional Network (TCN)",
+      "Encoder-Decoder"
+    ],
+    "input_representation": "60s windowed physiological signal segments",
+    "training_strategy": "Self-supervised pre-training using masked latent representations followed by supervised fine-tuning"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.06,
+      "context": "Best result achieved on WESAD dataset using the proposed self-supervised method"
+    },
+    {
+      "metric": "EER",
+      "value": 0.13,
+      "context": "Best result achieved on VERBIO dataset using the proposed self-supervised method"
+    }
+  ],
+  "evaluation_protocol": "Randomly divided into training (50%), validation (10%), and testing (40%)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 4.0,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Variability of physiological signals affected by physical activity",
+      "Emotional state impact",
+      "Electrode positioning variability"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "BVP",
+      "EDA",
+      "TEMP"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "WESAD, VERBIO",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a self-supervised transformer framework for physiological biometric authentication",
+      "Implemented a masking strategy to enhance robustness against missing modalities",
+      "Utilized TCN encoders to better capture intra-modal temporal features"
+    ],
+    "main_strength": [
+      "Strong performance under scenarios with limited labeled data",
+      "Resilience to missing data modalities"
+    ],
+    "main_weakness": [
+      "Lack of testing in uncontrolled real-world environments",
+      "Absence of presentation attack/spoofing tests"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The model demonstrates that self-supervised pre-training significantly helps in biometric verification when labels are scarce or sensors fail (missing modalities)."
+  },
+  "extraction_confidence": "high"
+}

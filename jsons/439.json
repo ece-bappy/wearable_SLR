@@ -1,0 +1,145 @@
+{
+  "title": "PPG Based Biometric Authentication System",
+  "year": 2024,
+  "venue": "2024 International Conference on Science Technology Engineering and Management (ICSTEM)",
+  "doi": "10.1109/ICSTEM61137.2024.10561095",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "photoplethysmography (PPG)"
+    ],
+    "sensor": [
+      "PPG sensor"
+    ],
+    "device": [
+      "smartphones",
+      "smartwatches"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "PUT Vein dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": null,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Homomorphic classifier"
+    ],
+    "input_representation": "preprocessed PPG signals (noise removal, quality screening, feature extraction)",
+    "training_strategy": "Bifurcated Training and Testing phases utilizing Homomorphic encryption"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.25,
+      "context": "Achieved using the PUT Vein dataset"
+    }
+  ],
+  "evaluation_protocol": "",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": []
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "PUT Vein dataset",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Implementation of a PPG-based authentication system using Homomorphic encryption for secure processing"
+    ],
+    "main_strength": [
+      "Focuses on continuous user verification",
+      "Integration of privacy-preserving encryption within the classifier"
+    ],
+    "main_weakness": [
+      "Lack of detailed model architecture",
+      "No active spoofing or presentation attack testing",
+      "Very limited quantitative evaluation results provided in the text"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_TEMPORAL_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The paper claims real-world data usage and high accuracy (98%), but only reports EER in the target metrics. The security focus is on encryption rather than anti-spoofing."
+  },
+  "extraction_confidence": "high"
+}

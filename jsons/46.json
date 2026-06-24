@@ -1,0 +1,163 @@
+{
+  "title": "You Walk, We Authenticate: Lightweight Seamless Authentication Based on Gait in Wearable IoT Systems",
+  "year": 2019,
+  "venue": "IEEE Access",
+  "doi": "10.1109/ACCESS.2019.2906663",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 51,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 500,
+        "unit": "meters"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest"
+    ],
+    "input_representation": "Feature matrix consisting of 37 features (24 statistical and 13 behavioral/mechanical features including pitch, roll, yaw, and force)",
+    "training_strategy": "70% training set and 30% testing set via random shuffling"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 8.2,
+      "context": "Average EER achieved on 51 participants"
+    }
+  ],
+  "evaluation_protocol": "Multi-class classification (identifying the specific user among 51 classes)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "sensor fault",
+      "temporarily abrupt or inconsistent physical movement",
+      "impact of carrying heavy weights or injuries on arm swing",
+      "performance degradation as number of users increases"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 1.0,
+        "unit": "second"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Continuous authentication is not desirable due to limited battery life of IoT devices"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed LiSA-G framework that uses both statistical and human-action-related (mechanical) features for gait authentication",
+      "Eliminated gait cycle detection to reduce authentication time and data volume",
+      "Demonstrated high accuracy using only one sampling period of sensor data"
+    ],
+    "main_strength": [
+      "Lightweight and efficient for wearable devices",
+      "No manual sensor calibration required",
+      "Implicit authentication with no user interaction"
+    ],
+    "main_weakness": [
+      "Lack of evaluation against impersonation/spoofing attacks",
+      "Only considers normal walking patterns",
+      "Private dataset limits generalizability"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper emphasizes that adding physical/mechanical traits (pitch, roll, yaw) significantly helps in distinguishing users compared to using only statistical features."
+  },
+  "extraction_confidence": "high"
+}

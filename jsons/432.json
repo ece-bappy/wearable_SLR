@@ -1,0 +1,178 @@
+{
+  "title": "Inertial Gait-based Person Authentication Using Siamese Networks",
+  "year": 2021,
+  "venue": "2021 International Joint Conference on Neural Networks (IJCNN)",
+  "doi": "10.1109/IJCNN52387.2021.9534261",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartphone",
+      "wearable device"
+    ],
+    "body_location": "multiple (waist, right pocket, left calf)"
+  },
+  "data": [
+    {
+      "dataset_name": "OU-ISIR",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 744,
+      "num_samples": null,
+      "collection_setting": null,
+      "duration": {
+        "value": 5.98,
+        "unit": "seconds per subject"
+      }
+    },
+    {
+      "dataset_name": "MMUISD",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 120,
+      "num_samples": null,
+      "collection_setting": null,
+      "duration": {
+        "value": 23.25,
+        "unit": "seconds per subject"
+      }
+    },
+    {
+      "dataset_name": "EJUST-GINR1",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": null,
+      "collection_setting": null,
+      "duration": {
+        "value": 868.51,
+        "unit": "seconds per subject"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "few-shot",
+    "model": [
+      "Siamese Network",
+      "CNN"
+    ],
+    "input_representation": "raw 6-axis inertial signal segments (100x6)",
+    "training_strategy": "End-to-end training using cross-entropy loss and Adam optimizer"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 3.24,
+      "context": "Achieved on OU-ISIR dataset using CNN(256-D) with batch normalization and no weight decay"
+    }
+  ],
+  "evaluation_protocol": "Cross-subject evaluation: models trained on a set of subjects and tested on completely different unseen subjects",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance drop observed during transfer learning across different datasets"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "OU-ISIR",
+    "reproducibility_score": "high"
+  },
+  "insights": {
+    "key_contribution": [
+      "Implementation of Siamese Network for inertial gait authentication to enable portability (unseen users) without retraining",
+      "Demonstrated effectiveness using very few samples per subject",
+      "Evaluated generalization capability via transfer learning across three datasets"
+    ],
+    "main_strength": [
+      "High accuracy on large-scale dataset (OU-ISIR)",
+      "Code and datasets are publicly available",
+      "Model is portable and does not require per-user retraining"
+    ],
+    "main_weakness": [
+      "Lack of testing in uncontrolled/real-world environments",
+      "No evaluation of spoofing or presentation attacks"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper successfully addresses the 'portability' issue of deep learning in biometrics by using a metric learning (Siamese) approach."
+  },
+  "extraction_confidence": "high"
+}

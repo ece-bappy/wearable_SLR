@@ -1,0 +1,211 @@
+{
+  "title": "PhysioGait: Context-Aware Physiological Context Modeling for Person Re-identification Attack on Wearable Sensing",
+  "year": 2022,
+  "venue": "2022 18th International Conference on Mobility, Sensing and Networking (MSN)",
+  "doi": "10.1109/MSN57253.2022.00062",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "photoplethysmography",
+      "electrodermal activity",
+      "accelerometer"
+    ],
+    "sensor": [
+      "PPG",
+      "EDA",
+      "Accelerometer"
+    ],
+    "device": [
+      "Empatica E4 watch",
+      "Everion (Biovotion AG)"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "D1: Gamer’s Fatigue Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 5,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 7,
+        "unit": "days"
+      }
+    },
+    {
+      "dataset_name": "D2: Restaurant Data",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 8,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 20,
+        "unit": "minutes"
+      }
+    },
+    {
+      "dataset_name": "D3: Older Adults Data",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 22,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "D4: Healthy Adults Fatigue Dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 28,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 7,
+        "unit": "days"
+      }
+    },
+    {
+      "dataset_name": "D5: Combined (D1, D2, D3)",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 35,
+      "num_samples": null,
+      "collection_setting": null,
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "D6: Combined (D1, D2, D3, D4)",
+      "dataset_type": "null",
+      "dataset_role": "combined",
+      "num_subjects": 63,
+      "num_samples": null,
+      "collection_setting": null,
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Multi-Modal Siamese Convolutional Neural Network (mmSNN)",
+      "CNN",
+      "LSTM"
+    ],
+    "input_representation": "Recurrence Plot (RP) images for accelerometer data; time-series for physiological signals",
+    "training_strategy": "Contrastive loss for similarity learning and softmax loss for joint identification"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Random selection of 300 episodes of detected gestures for training pairs generation",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 219,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": []
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "heart rate",
+      "breathing rate",
+      "electrodermal activity"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "accuracy",
+        "value": 93.45,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "D4 Healthy Adults Fatigue Dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Development of PhysioGait, a framework for person re-identification using spatiotemporal fusion of accelerometer and physiological signals",
+      "Use of Recurrence Plots to represent accelerometer data as images for CNN processing"
+    ],
+    "main_strength": [
+      "Demonstrates that multimodal physiological/physical data carries unique biometric signatures that can be exploited for privacy attacks"
+    ],
+    "main_weakness": [
+      "Evaluation relies on accuracy rather than standard biometric metrics (EER, FAR, FRR)",
+      "No anti-spoofing or adversarial testing"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The paper frames the system as a 'privacy attack' to show that de-identified wearable data is still vulnerable to re-identification."
+  },
+  "extraction_confidence": "high"
+}

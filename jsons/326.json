@@ -1,0 +1,174 @@
+{
+  "title": "GrasOpen: Biometric Authentication via Reach-and-Grasp for Smart Door Access Using Smartwatch",
+  "year": 2025,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2025.3557392",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "reach-and-grasp motion",
+      "arm movement trajectory"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 30,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "modified ConvBoost",
+      "ShuffleNet (for activity recognition)"
+    ],
+    "input_representation": "Magnitude of Linear Acceleration (MLA) and Complementary Filter (CF) fused roll and pitch angles",
+    "training_strategy": "Frame loss module for signal disruption, random number module for perturbations, and hybrid module for synthetic data generation to handle class imbalance"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.9879,
+      "context": "Overall ability of the identity authentication model to distinguish positive and negative classes"
+    },
+    {
+      "metric": "EER",
+      "value": 0.013,
+      "context": "Average across subjects"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.0114,
+      "context": "Average FRR of the GrasOpen system"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.0,
+      "context": "Achieved during zero-effort attack scenario"
+    }
+  ],
+  "evaluation_protocol": "Binary classification (one legitimate user vs. others as illegitimate); 30% of data used for testing; 30 distinct models developed (one per user).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": null,
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "TAR",
+      "value": 0.97
+    },
+    "reported_limitations": [
+      "Class imbalance between legitimate and illegitimate users",
+      "Interference from user activities and ambient noise",
+      "Biometric behavioral features change over time"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay",
+      "presentation/mask",
+      "synthetic/deepfake",
+      "adversarial"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 1.77,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [
+      "questionnaire survey"
+    ],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a biometric authentication system using natural reach-and-grasp motion",
+      "Developed a lightweight activity recognition model for on-device deployment",
+      "Implemented a hybrid module to solve class imbalance in behavioral biometrics"
+    ],
+    "main_strength": [
+      "High accuracy and natural user experience",
+      "Strong resistance to impersonation attacks"
+    ],
+    "main_weakness": [
+      "Data collected exclusively in a laboratory setting",
+      "Lack of public dataset for benchmarking"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "The system successfully separates the activity recognition (edge) from the authentication (server) to balance efficiency and security."
+  },
+  "extraction_confidence": "high"
+}

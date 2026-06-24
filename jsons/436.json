@@ -1,0 +1,191 @@
+{
+  "title": "ECG Biometrics on Mobile Devices: High-Accuracy Authentication Using i-Vectors and Cepstral Coefficients",
+  "year": 2025,
+  "venue": "IEEE Access",
+  "doi": "10.1109/ACCESS.2025.3553423",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "electrocardiogram (ECG)"
+    ],
+    "sensor": [
+      "BMD101",
+      "ReadMyHeart"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch",
+      "phone case"
+    ],
+    "body_location": "fingertips"
+  },
+  "data": [
+    {
+      "dataset_name": "ECG-ID",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 200,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 20.0,
+        "unit": "seconds"
+      }
+    },
+    {
+      "dataset_name": "BMD101 Custom Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 45,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 20.0,
+        "unit": "seconds"
+      }
+    },
+    {
+      "dataset_name": "Heartprint",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 199,
+      "num_samples": 1539,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 15.0,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "i-vector",
+      "Gaussian Mixture Model (GMM)",
+      "Universal Background Model (UBM)",
+      "Linear Discriminant Analysis (LDA)"
+    ],
+    "input_representation": "Mel Frequency Cepstral Coefficients (MFCC) and Gammatone Frequency Cepstral Coefficients (GFCC)",
+    "training_strategy": "UBM trained on development set to capture global variability, followed by user-specific i-vector extraction and LDA projection for class separability."
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 5.61,
+      "context": "Achieved on Heartprint dataset using 5-second signals and 32 Gaussian mixtures"
+    },
+    {
+      "metric": "EER",
+      "value": 6.53,
+      "context": "Achieved on Heartprint dataset using 5-second signals and 32 Gaussian mixtures"
+    }
+  ],
+  "evaluation_protocol": "Random data partitioning into development, training, and test sets; results averaged over multiple runs to mitigate random split influence.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 10.0,
+      "unit": "years"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Limited availability of ECG recordings",
+      "Need for efficient hyperparameter optimization",
+      "Real-time embedded system implementation not yet realized"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 84.33,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requires 4-5 seconds of signal acquisition for enrollment and verification."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [
+      "MFCC",
+      "GFCC"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": 94.39,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "Heartprint",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Integration of MFCC and GFCC spectral features within an i-vector framework for computationally efficient ECG authentication on mobile devices."
+    ],
+    "main_strength": [
+      "Low computational and memory overhead compared to deep learning",
+      "Strong performance on large-scale datasets with short (5s) recordings"
+    ],
+    "main_weakness": [
+      "No actual real-time mobile prototype implemented",
+      "No active spoofing/presentation attack tests conducted"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The study focuses on the feasibility for mobile deployment by using lightweight features and the i-vector model, demonstrating competitive accuracy compared to CNNs/RNNs with significantly lower latency."
+  },
+  "extraction_confidence": "high"
+}

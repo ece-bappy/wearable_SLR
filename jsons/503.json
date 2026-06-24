@@ -1,0 +1,168 @@
+{
+  "title": "FingerAuth: 3D magnetic finger motion pattern based implicit authentication for mobile devices",
+  "year": 2020,
+  "venue": "Future Generation Computer Systems",
+  "doi": "10.1016/j.future.2018.02.006",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "finger motion pattern"
+    ],
+    "sensor": [
+      "magnetometer"
+    ],
+    "device": [
+      "smartphone",
+      "magnetic ring"
+    ],
+    "body_location": "index finger"
+  },
+  "data": [
+    {
+      "dataset_name": "Study 1 (Typing)",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": null
+    },
+    {
+      "dataset_name": "Study 2 (Permanence)",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 8,
+        "unit": "weeks"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "Support Vector Machine",
+      "Naive Bayes"
+    ],
+    "input_representation": "Statistical features (Mean, Median, Variance, etc.) and Geometric features (line segment length, vector angles, etc.)",
+    "training_strategy": "10-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 4.06,
+      "context": "Average achieved by Random Forest in the first usability study (typing scenario)"
+    },
+    {
+      "metric": "FRR",
+      "value": 3.18,
+      "context": "Average achieved by Random Forest in the first usability study (typing scenario)"
+    }
+  ],
+  "evaluation_protocol": "10-fold cross-validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 8,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 2,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "Accuracy",
+        "value": 10.59
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Typing gestures are relatively simple and may lack robust biometric information",
+      "Necessity of wearing a magnetic ring limits wide deployment"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [
+      "task-based evaluation"
+    ],
+    "usability_issues": "Requirement of a wearable magnetic accessory"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed implicit authentication using 3D magnetic finger motion patterns captured by a smartphone magnetometer and a magnetic ring"
+    ],
+    "main_strength": [
+      "Low hardware cost using built-in mobile sensors",
+      "Demonstrated permanence over an 8-week period"
+    ],
+    "main_weakness": [
+      "Reliance on a physical accessory (ring)",
+      "Performance degradation in simple interaction scenarios"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The system relies on a magnetic ring to amplify the behavioral signal. The 'permanence' test actually combined a time gap with a change in scenarios, though they report the overall accuracy drop."
+  },
+  "extraction_confidence": "high"
+}

@@ -1,0 +1,192 @@
+{
+  "title": "ThreatCog: An adaptive and lightweight mobile user authentication system with enhanced motion sensory signals",
+  "year": 2025,
+  "venue": "Journal of Information Security and Applications",
+  "doi": "10.1016/j.jisa.2025.104142",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "motion patterns"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "gravity sensor"
+    ],
+    "device": [
+      "smartphone",
+      "tablet"
+    ],
+    "body_location": "hand/arm"
+  },
+  "data": [
+    {
+      "dataset_name": "DataSet I",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 1513,
+      "num_samples": 1492253,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 10,
+        "unit": "days"
+      }
+    },
+    {
+      "dataset_name": "DataSet II",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 8,
+      "num_samples": 74156,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 1,
+        "unit": "day"
+      }
+    },
+    {
+      "dataset_name": "DataSet III",
+      "dataset_type": "private",
+      "dataset_role": "validation",
+      "num_subjects": 100,
+      "num_samples": 103526,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 10,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "few-shot",
+    "model": [
+      "Siamese Network",
+      "Bi-LSTM",
+      "Attention Mechanism"
+    ],
+    "input_representation": "9-dimensional sensor signal (3x accelerometer, 3x gyroscope, 3x gravity) segmented with 50% overlap",
+    "training_strategy": "Contrastive learning using Empirical Wavelet Transform (EWT) for data augmentation and feature enhancement"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 2.9,
+      "context": "Derived from TNR = 97.10% reported in Table 6"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.0,
+      "context": "Derived from TPR = 100% reported in Table 6"
+    }
+  ],
+  "evaluation_protocol": "Randomly selected test set of 1000 people; used a configurable threshold (Thr=0.5) for decision",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 10,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Poor performance in stationary states (device lying flat)",
+      "Lack of testing in extreme environmental conditions (vehicle vibrations, magnetic interference)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 3.324,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 0.02,
+        "unit": "mAh"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "System is ineffective when the device is in a stationary state"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "gravity sensor"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Use of Empirical Wavelet Transform (EWT) for behavior feature augmentation",
+      "Integration of Attention mechanism into a Bi-LSTM Siamese network for behavioral commonality extraction",
+      "Application of few-shot learning for rapid new-user registration"
+    ],
+    "main_strength": [
+      "Very large user dataset (1513 subjects)",
+      "High accuracy and fast adaptation (1-shot/5-shot recognition)"
+    ],
+    "main_weakness": [
+      "Inability to authenticate in static/stationary scenarios",
+      "Private dataset prevents external verification"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The system specifically targets the 'point-of-entry' phase (opening an application) rather than continuous authentication to save battery and avoid privacy concerns."
+  },
+  "extraction_confidence": "high"
+}

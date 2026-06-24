@@ -1,0 +1,166 @@
+{
+  "title": "BrainNet: Improving Brainwave-based Biometric Recognition with Siamese Networks",
+  "year": 2023,
+  "venue": "2023 IEEE International Conference on Pervasive Computing and Communications (PerCom)",
+  "doi": "10.1109/PERCOM56429.2023.10099367",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "EEG"
+    ],
+    "sensor": [
+      "30-electrode EEG headset",
+      "32-electrode EEG cap"
+    ],
+    "device": [
+      "EEG wearable",
+      "VR headset",
+      "earbuds"
+    ],
+    "body_location": "head"
+  },
+  "data": [
+    {
+      "dataset_name": "P300:ERP CORE",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 40,
+      "num_samples": 1345,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "N400:ERP CORE",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 40,
+      "num_samples": 2268,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "P300:bi2015a",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 40,
+      "num_samples": 10614,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "few-shot",
+    "model": [
+      "Siamese Neural Network",
+      "Convolutional Neural Network"
+    ],
+    "input_representation": "Event-Related Potentials (ERPs)",
+    "training_strategy": "Triplet loss function"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.14,
+      "context": "Achieved on P300:bi2015a dataset using Strategy S3 (Tailored Threshold) in verification mode with unseen attackers"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.0,
+      "context": "Achieved on P300:bi2015a dataset using Strategy S3 at FAR=1% with seen attackers"
+    }
+  ],
+  "evaluation_protocol": "Group 8-fold cross-validation (unseen attackers) and stratified cross-validation (seen attackers)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.14,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Datasets based on single-session data",
+      "Use of medical-grade sensors instead of consumer-grade",
+      "Small sample size (40 subjects per task)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requires user to be exposed to specific stimuli to generate ERPs"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "ERP CORE, bi2015a",
+    "reproducibility_score": "high"
+  },
+  "insights": {
+    "key_contribution": [
+      "Implementation of Siamese Network with triplet loss for EEG biometrics",
+      "Utilization of Event-Related Potentials (ERPs) to improve accuracy and support revocability",
+      "Elimination of the need for retraining when enrolling new users"
+    ],
+    "main_strength": [
+      "High accuracy (0.14% EER) on unseen attackers",
+      "Open-source code and benchmark provided"
+    ],
+    "main_weakness": [
+      "Lack of multi-session and real-world consumer-grade device testing"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The system performs exceptionally well in lab settings, but the authors explicitly acknowledge the gap between medical-grade EEG and consumer-grade wearables."
+  },
+  "extraction_confidence": "high"
+}

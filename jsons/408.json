@@ -1,0 +1,175 @@
+{
+  "title": "Hand Gesture-Based Biometric Verification and Identification Using Embedded-STQNet Deep Neural Architecture in Security-Oriented Systems",
+  "year": 2026,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2026.3675359",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "sEMG"
+    ],
+    "sensor": [
+      "monopolar electrode arrays"
+    ],
+    "device": [
+      "wearable ring-style electrode arrays"
+    ],
+    "body_location": "forearm and wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "GRABMyo sEMG database",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 43,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 5,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Embedded-STQNet",
+      "CNN",
+      "ResNet-18"
+    ],
+    "input_representation": "log-magnitude short-time Fourier Transform (STFT) spectrogram",
+    "training_strategy": "three-stage metric learning: Siamese contrastive pre-training, triplet-margin tuning, and quadruplet loss optimization"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.0155,
+      "context": "Achieved by Siamese configuration on the GRABMyo dataset"
+    },
+    {
+      "metric": "AUC",
+      "value": 0.9994,
+      "context": "Achieved by Siamese configuration"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.015,
+      "context": "Achieved by Siamese configuration"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.016,
+      "context": "Achieved by Siamese configuration"
+    }
+  ],
+  "evaluation_protocol": "80/20 stratified subject-level split with session-based held-out validation to assess temporal generalization",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.0155,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Controlled conditions with consistent sensor placement",
+      "Difficulty generalizing to skin conductivity changes, muscle fatigue, or electrode movement",
+      "Lack of integrated online adaptation mechanism",
+      "Restricted set of predefined gestures"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 7.86,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Potential challenges in memory, latency, and battery consumption for ultra-low-power wearable devices"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "GRABMyo sEMG database",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Dual-path architecture combining local spectral CNN and ResNet-18 for sEMG biometrics",
+      "Three-stage metric learning strategy for enhanced inter-class separation",
+      "End-to-end system removing the need for auxiliary gesture classifiers"
+    ],
+    "main_strength": [
+      "Very low EER (0.0155)",
+      "High real-time throughput (7.86ms latency)",
+      "Effective multi-session generalization"
+    ],
+    "main_weakness": [
+      "Evaluation limited to a lab-collected public dataset",
+      "No testing against active presentation attacks (spoofing)"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The Siamese configuration significantly outperformed Triplet and Quadruplet losses in both verification and identification tasks."
+  },
+  "extraction_confidence": "high"
+}

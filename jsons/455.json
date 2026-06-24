@@ -1,0 +1,169 @@
+{
+  "title": "Wearable Technology for Safeguarding Real-Time Biometrics During Connected Clinical Care Environments",
+  "year": 2025,
+  "venue": "2025 3rd International Conference on Cyber Resilience (ICCR)",
+  "doi": "10.1109/ICCR67387.2025.11291952",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG",
+      "PPG",
+      "SpO2",
+      "Skin Temperature"
+    ],
+    "sensor": [
+      "ECG patches",
+      "SpO2 sensors",
+      "Skin temperature sensors",
+      "Accelerometers",
+      "Gyroscopes"
+    ],
+    "device": [
+      "Wearable sensors",
+      "Edge nodes"
+    ],
+    "body_location": "Chest, Fingers, Wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private prototype dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": null,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "Lightweight AI models"
+    ],
+    "input_representation": "Weighted sum of raw physiological signals",
+    "training_strategy": "Edge-tailored models for identity verification and anomaly detection"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Comparison against traditional IoT-based monitoring systems and BioMEMS in a simulated clinical environment.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "UPFRONT_COSTS",
+      "HIGH_ENERGY_COST",
+      "SENSOR_CALIBRATION_INCONSISTENCIES",
+      "NETWORK_INFRASTRUCTURE_DEPENDENCE",
+      "PATIENT_MOVEMENT_DYNAMICS"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": null,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 90.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Potential high energy costs and upfront deployment costs."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "ECG",
+      "PPG",
+      "SpO2",
+      "Temperature"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed EAI-SMSF framework integrating edge AI and multi-sensor fusion for secure patient authentication in ICUs.",
+      "Implementation of lightweight encryption (AES-128, ECC) and biometric hashing at the edge to reduce latency and enhance privacy."
+    ],
+    "main_strength": [
+      "Significantly lower latency (90ms) compared to cloud-based IoT systems.",
+      "Decentralized architecture reduces the attack surface."
+    ],
+    "main_weakness": [
+      "Lack of standard biometric performance metrics (FAR, FRR, EER).",
+      "Tested in a simulated environment rather than a real-world clinical setting.",
+      "No active spoofing/presentation attack testing."
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_PUBLIC_DATASET",
+      "NO_BASELINE_COMPARISON"
+    ],
+    "notes_for_review": "The paper reports a 'genuine acceptance rate' of 96%, but does not provide the corresponding FAR or EER required for a rigorous biometric evaluation."
+  },
+  "extraction_confidence": "high"
+}

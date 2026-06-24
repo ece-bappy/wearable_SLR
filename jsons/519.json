@@ -1,0 +1,167 @@
+{
+  "title": "Secure UHF RFID Authentication With Smart Devices",
+  "year": 2023,
+  "venue": "IEEE Transactions on Wireless Communications",
+  "doi": "10.1109/TWC.2022.3226753",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "accelerometer",
+      "RF phase"
+    ],
+    "sensor": [
+      "accelerometer",
+      "RFID reader"
+    ],
+    "device": [
+      "smartwatch",
+      "UHF RFID tag"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Dataset-VI",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 20,
+      "num_samples": 3000,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM",
+      "Random Forest",
+      "k-NN",
+      "CNN",
+      "LSTM"
+    ],
+    "input_representation": "time series (acceleration and phase data)",
+    "training_strategy": "10-fold cross-validation for ML; binary cross entropy for Deep Correlation Network"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.998,
+      "context": "Achieved by the deep correlation network module"
+    },
+    {
+      "metric": "EER",
+      "value": 0.017,
+      "context": "Achieved by the deep correlation network module"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.0066,
+      "context": "Achieved by the deep correlation network module"
+    }
+  ],
+  "evaluation_protocol": "Comparison between traditional feature-based ML (SVM, RF, k-NN) and a deep correlation network using paired phase-acceleration data.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Deep correlation network requires more training data than feature-based correlation detection"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 2.205,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [
+      "survey"
+    ],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "RF phase"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "FAR",
+        "value": 0.0066,
+        "unit": ""
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed SmartRFID, which uses the correlation between wearable accelerometer data and RF backscattered phase signals to authenticate users via intentional gestures."
+    ],
+    "main_strength": [
+      "Effectively thwarts RFID tag cloning/theft by requiring a paired smart device and specific behavioral gestures."
+    ],
+    "main_weakness": [
+      "Limited subject pool (20 users) and lab-based evaluation."
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The system uses 'intentional gestures' as a form of behavioral biometric/password, making it an explicit authentication system."
+  },
+  "extraction_confidence": "high"
+}

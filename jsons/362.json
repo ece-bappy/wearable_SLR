@@ -1,0 +1,138 @@
+{
+  "title": "Low Complexity ECG Biometric Authentication for IoT Edge Devices",
+  "year": 2020,
+  "venue": "2020 IEEE International Conference on Integrated Circuits, Technologies and Applications (ICTA)",
+  "doi": "10.1109/ICTA50426.2020.9332012",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "ECG sensor"
+    ],
+    "device": [
+      "IoT edge devices",
+      "wearable IoT devices"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "PTB Diagnostic ECG Database",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 290,
+      "num_samples": 549,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN"
+    ],
+    "input_representation": "QRS complexes (200 samples per complex, 20 complexes per subject)",
+    "training_strategy": "Gradient descent, 20 epochs, batch size 16"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Randomly divided the dataset into intruders and users for login test; used Euclidean Distance between extracted high-dimensional features and stored database templates.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Binarization of weights leads to loss of information and decreased accuracy"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "PTB Diagnostic ECG Database",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a low-complexity CNN-based ECG authentication system using binary and approximate weights to reduce CPU cycles for IoT edge deployment"
+    ],
+    "main_strength": [
+      "Significant reduction in computational complexity via weight optimization while maintaining high accuracy"
+    ],
+    "main_weakness": [
+      "Lack of standardized biometric metrics (EER, FAR, FRR), no spoofing tests, and reliance on a clinical dataset despite claims of uncontrolled conditions"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The authors report accuracy (up to 99.63%) but do not provide the specific target metrics (EER, FAR, FRR) requested for this review."
+  },
+  "extraction_confidence": "high"
+}

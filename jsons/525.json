@@ -1,0 +1,5 @@
+{
+  "title": "SAW: Wristband-based Authentication for Desktop Computers",
+  "relevance": "exclude",
+  "exclusion_reason": "The system is primarily token-based (the wristband is explicitly described as the 'identity token'); behavioral signals (accelerometer/gyroscope) are used for intentionality and liveness correlation (matching the timing of a physical action to a desktop input) rather than for unique biometric identification or authentication based on unique user traits."
+}
