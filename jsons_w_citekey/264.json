@@ -1,0 +1,156 @@
+{
+  "title": "Mobile Sensor-based Biometrics using Common Daily Activities",
+  "year": 2017,
+  "venue": "IEEE",
+  "doi": "10.1109/uemcon.2017.8249001",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "motion"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": "front right pocket (smartphone), dominant hand (smartwatch)"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 51,
+      "num_samples": 64800,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 3.0,
+        "unit": "minutes per activity"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "Decision Tree",
+      "k-Neighbors"
+    ],
+    "input_representation": "43 descriptive high-level features (Average, Standard Deviation, Average Absolute Difference, Time Between Peaks, Average Resultant Acceleration, Binned Distribution)",
+    "training_strategy": "Stratified 10-fold cross-validation for identification; Binary classification with 1:3 user-to-imposter under-sampling for authentication."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 5.4,
+      "context": "Best result achieved on 'Pasta' eating activity using the 'Accel' sensor combination (phone and watch accelerometers) with Random Forest and voting."
+    }
+  ],
+  "evaluation_protocol": "Majority voting using 5 examples (50 seconds of data) to improve identification and authentication results.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": null
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Activities involving eating or drinking had the worst performance overall",
+      "Writing and typing are less practical due to requirement of external equipment",
+      "Exercise related activities require open space and equipment"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requirement for specific equipment (keyboard, pen, food) for several of the tested activities."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 0.3,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Comprehensive evaluation of 18 daily activities for biometric efficacy",
+      "Comparison of 9 sensor combinations across smartphone and smartwatch"
+    ],
+    "main_strength": [
+      "Large subject pool (51) compared to typical motion biometric studies",
+      "Demonstration that activity labels are not strictly necessary for high identification accuracy"
+    ],
+    "main_weakness": [
+      "Data collected in a single session (no temporal robustness)",
+      "Lab-based structured data collection"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper establishes a strong baseline for multiple activities but highlights the need for longitudinal data to verify stability over time."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Yoneda_2017"
+}

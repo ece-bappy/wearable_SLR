@@ -1,0 +1,7 @@
+{
+  "title": "Au-Id: Automatic User Identification and Authentication through the Motions Captured from Sequential Human Activities Using RFID",
+  "relevance": "exclude",
+  "exclusion_reason": "Not wearable/on-body/mobile; the system uses stationary RFID tag arrays for device-free sensing, which is analogous to stationary wall cameras.",
+  "doi": "10.1145/3328919",
+  "citekey": "Huang_2019"
+}

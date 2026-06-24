@@ -1,0 +1,165 @@
+{
+  "title": "PalmEcho: Multimodal Authentication for Smartwatch via Beating Gestures",
+  "year": 2023,
+  "venue": "20th Annual IEEE International Conference on Sensing, Communication, and Networking (SECON)",
+  "doi": "10.1109/secon58729.2023.10287520",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "Wrist Vibration",
+      "Acoustic/Sound"
+    ],
+    "sensor": [
+      "Microphone",
+      "Gyroscope"
+    ],
+    "device": [
+      "Smartwatch"
+    ],
+    "body_location": "Wrist/Palm"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 21,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "few-shot",
+    "model": [
+      "BeatNet",
+      "Prototypical Network",
+      "BiLSTM",
+      "CNN"
+    ],
+    "input_representation": "Stacked time-domain signals (gyroscope and audio) and time-frequency diagrams (STFT of audio)",
+    "training_strategy": "Prototypical network learning a mapping from signal space to embedding space"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "9 subjects for training, 12 subjects for evaluation; prototype generated with 5 samples per user for registration.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "Segmentation Detection Rate",
+      "value": 0.98
+    },
+    "reported_limitations": [
+      "Wet palms reduce authentication accuracy",
+      "Clapping hands gesture is less stable than snapping or covering fists"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "replay"
+    ],
+    "liveness_detection": true,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 362.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 44.764,
+        "unit": "mAh"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Interference from palm moisture"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "Wrist Vibration",
+      "Sound"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Introduction of resonant echo from palm cavity as a biometric feature",
+      "Multimodal fusion of sound and vibration to resist replay attacks",
+      "Implementation of a prototypical network (BeatNet) for few-shot registration"
+    ],
+    "main_strength": [
+      "Strong defense against replay attacks via multimodal synchronization",
+      "Low registration burden (only 5 samples needed)"
+    ],
+    "main_weakness": [
+      "Lack of evaluation on cross-session/longitudinal stability",
+      "Sensitivity to physiological state (palm moisture)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "LIMITED_ATTACK_TYPES"
+    ],
+    "notes_for_review": "The paper reports high F1-scores (avg 94%), but does not provide EER, FAR, or FRR as required by the target metrics."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Guo_2023"
+}

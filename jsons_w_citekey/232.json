@@ -1,0 +1,151 @@
+{
+  "title": "CROSS-DOMAIN ADAPTATION FOR BIOMETRIC IDENTIFICATION USING PHOTOPLETHYSMOGRAM",
+  "year": 2020,
+  "venue": "ICASSP 2020",
+  "doi": "10.1109/icassp40776.2020.9053604",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "PPG sensor",
+      "photodiode",
+      "LED"
+    ],
+    "device": [
+      "wearable devices",
+      "wristband"
+    ],
+    "body_location": "finger, thumb, wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "TROIKA",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 12,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "in-house dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "unsupervised",
+    "model": [
+      "PPG-MobileNet",
+      "CycleGAN",
+      "MobileNetV2"
+    ],
+    "input_representation": "1D PPG signal (100x1)",
+    "training_strategy": "Cross-domain adaptation using unsupervised and semi-supervised adversarial learning"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Multi-class and binary classification tasks; cross-domain inference where the model is trained on one sensor wavelength (Domain B) and tested on another (Domain A).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "5.41% accuracy gap between cross-domain adaptation and direct classification from original domain"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": null,
+    "user_interaction_required": null,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "High computational cost of standard DNNs on wearable devices (addressed by using MobileNetV2 architecture)"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "TROIKA",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed PPG-MobileNet, a compact DNN for biometric identification on wearables",
+      "Implemented CycleGAN for unsupervised and semi-supervised cross-domain adaptation to handle sensor wavelength variation"
+    ],
+    "main_strength": [
+      "Address the practical problem of sensor variation across different devices/wavelengths"
+    ],
+    "main_weakness": [
+      "Lack of real-world 'in-the-wild' testing",
+      "Performance still lags behind original domain classification"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper reports only Accuracy; target metrics (AUC, EER, FAR, FRR) are not provided."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Lee_2020"
+}

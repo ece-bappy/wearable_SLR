@@ -1,0 +1,181 @@
+{
+  "title": "Real-world continuous smartwatch-based user authentication",
+  "year": 2025,
+  "venue": "The Computer Journal",
+  "doi": "10.1093/comjnl/bxae144",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait",
+      "typing",
+      "mobile gaming"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Controlled",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 60,
+      "num_samples": 21600,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 60,
+        "unit": "h"
+      }
+    },
+    {
+      "dataset_name": "Real-Life",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 30,
+      "num_samples": 124971,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 1200,
+        "unit": "h"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Feedforward Multi-Layer Perceptron (FF MLP)"
+    ],
+    "input_representation": "10-second segment-based time and frequency domain features",
+    "training_strategy": "Dynamic feature selection to create user-specific optimized feature vectors"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.29,
+      "context": "Best-case result for Normal Walk (NW) activity in controlled environment using optimized feature vector (OFV) under cross-day (CD) scenario"
+    },
+    {
+      "metric": "EER",
+      "value": 0.7,
+      "context": "Best-case result for real-world (uncontrolled) experiment using fusion of accelerometer and gyroscope with OFV for Fast Walk (FW)"
+    }
+  ],
+  "evaluation_protocol": "Same-day (SD) and Cross-day (CD) scenarios; 60% training, 40% testing split",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.29,
+    "real_world_performance_value": 0.7,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 10,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 1,
+        "unit": "day"
+      },
+      "drop_in_performance": {
+        "metric": "EER",
+        "value": 0.56
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Increased noise in real-world signals",
+      "Battery consumption during continuous sensing",
+      "Dependency on activity-specific classifiers for real-world viability"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Noticeable impact on battery life due to continuous sensor collection"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 0.81,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": null,
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Demonstrated the viability of smartwatch-based continuous authentication in unconstrained real-world settings",
+      "Proposed a dynamic, user-specific feature selection method to optimize classifier complexity",
+      "Compared single vs activity-specific multi-classifier approaches"
+    ],
+    "main_strength": [
+      "Large real-world dataset (1200 hours)",
+      "Rigorous comparison between lab and real-life environments",
+      "Implementation of cross-day evaluation"
+    ],
+    "main_weakness": [
+      "Lack of empirical spoofing/presentation attack testing",
+      "High battery drain"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "HIGH_ENERGY_COST"
+    ],
+    "notes_for_review": "Paper strongly emphasizes that real-world viability is only achieved through activity-specific multi-classifiers rather than a generic single model."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Al_Naffakh_2025"
+}

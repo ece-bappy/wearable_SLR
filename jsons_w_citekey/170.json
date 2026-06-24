@@ -1,0 +1,168 @@
+{
+  "title": "The vibration knows who you are! A further analysis on usable authentication for smartwatch users",
+  "year": 2023,
+  "venue": "Computers & Security",
+  "doi": "10.1016/j.cose.2022.103040",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "vibration response"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "Apple Watch Series 3"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 3000,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 10,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "SVM"
+    ],
+    "input_representation": "statistical features (std, rms, var, etc.) and peak-based features from time and frequency domains (FFT, DCT, DWT, PSD)",
+    "training_strategy": "5-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.0125,
+      "context": "Achieved with 7 default users in the verification model"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.0,
+      "context": "Observed in multiple impersonation attack pairs (e.g., Participant 08 vs 16)"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.012,
+      "context": "Average overall FNR across 12 different arm/wrist poses"
+    }
+  ],
+  "evaluation_protocol": "One-to-one authentication (verification) using a challenge-response structure with 5 random vibrations",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.0125,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "week"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 1,
+        "unit": "week"
+      },
+      "drop_in_performance": {
+        "metric": "FRR",
+        "value": 0.0499
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "FRR",
+      "value": 0.012
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance decreases as BMI and Body Fat Rate (BFR) increase",
+      "Obese users are more vulnerable to not-in-wear attacks"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a challenge-response authentication method using default smartwatch vibrations",
+      "Analyzed the impact of body obesity (BMI/BFR) on vibration-based biometric stability",
+      "Proposed adaptive challenge lengths based on user obesity to mitigate not-in-wear attacks"
+    ],
+    "main_strength": [
+      "Does not require additional sensors or user interaction",
+      "Secure against advanced impersonation attacks by accomplices with similar physical indicators"
+    ],
+    "main_weakness": [
+      "Small sample size",
+      "Performance degradation for obese users"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper effectively demonstrates a seamless auth method but relies on a very small student cohort (n=20) in a controlled setting."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Lee_2023"
+}

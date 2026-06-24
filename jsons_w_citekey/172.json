@@ -1,0 +1,174 @@
+{
+  "title": "MagAuth: Secure and Usable Two-Factor Authentication With Magnetic Wrist Wearables",
+  "year": 2023,
+  "venue": "IEEE Transactions on Mobile Computing",
+  "doi": "10.1109/tmc.2021.3072598",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "finger movement",
+      "magnetic field distortion"
+    ],
+    "sensor": [
+      "magnetometer",
+      "touchscreen"
+    ],
+    "device": [
+      "smartphone",
+      "magnetic wrist wearable"
+    ],
+    "body_location": "wrist/hand"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 23,
+      "num_samples": 1800,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "SVM",
+      "Naive Bayes",
+      "Neighborhood Component Analysis (NCA)"
+    ],
+    "input_representation": "Scalar vectors of RMS values derived from 19 features (FFT, energy, zero crossing, etc.) of displacement and orientation vectors.",
+    "training_strategy": "5-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.1,
+      "context": "Reported as below 0.1 for all unlock patterns and gestures"
+    },
+    {
+      "metric": "FAR",
+      "value": 5.5,
+      "context": "Lowest reported 'highest FPR' among tested patterns (Pattern 1)"
+    }
+  ],
+  "evaluation_protocol": "Comparison of legitimate users against Type-II (random/imposter), Type-III (one-time observation mimicry), and Type-IV (five-time observation mimicry) attackers.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 91.4,
+    "real_world_performance_value": 98.1,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "week"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 1,
+        "unit": "week"
+      },
+      "drop_in_performance": {
+        "metric": "recognition error",
+        "value": 10.0
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "accuracy",
+      "value": 92.0
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "accuracy",
+      "value": 91.4
+    },
+    "reported_limitations": [
+      "Performance drops with fast swiping speeds due to 100Hz sampling rate constraint",
+      "Accuracy decreases significantly with loose wrist band tightness"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 1.2,
+        "unit": "s"
+      },
+      {
+        "value": 1.5,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": null,
+    "usability_study": [
+      "task-based evaluation"
+    ],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "password/pattern",
+      "behavioral magnetic features"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": null
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a two-factor authentication scheme utilizing commercial off-the-shelf magnetic wrist wearables",
+      "Leveraged the relative 3D movement between fingertip and wrist captured via smartphone magnetometer"
+    ],
+    "main_strength": [
+      "High resilience to mimicry attacks (even with multiple observations)",
+      "Compatibility with existing COTS wearables and smartphones"
+    ],
+    "main_weakness": [
+      "Dependence on wrist band tightness",
+      "Sensitivity to input speed given current sensor sampling rates"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "The system effectively combines a secret (pattern) with a biometric (finger-wrist movement), making it much harder to spoof than simple touch-biometrics."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Zhang_2023"
+}

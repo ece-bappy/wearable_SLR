@@ -1,0 +1,154 @@
+{
+  "title": "EarPPG: Securing Your Identity with Your Ears",
+  "year": 2023,
+  "venue": "28th International Conference on Intelligent User Interfaces (IUI ’23)",
+  "doi": "10.1145/3581641.3584070",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "photoplethysmography (PPG)",
+      "speaking behavior"
+    ],
+    "sensor": [
+      "PPG sensor",
+      "accelerometer"
+    ],
+    "device": [
+      "earbuds",
+      "earable devices"
+    ],
+    "body_location": "inner ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 25,
+      "num_samples": 5000,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "ReGRU",
+      "ResNet",
+      "GRU"
+    ],
+    "input_representation": "raw PPG signals (filtered and segmented)",
+    "training_strategy": "5-fold cross-validation with data augmentation (time-warping and random rotation)"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "5-fold cross-validation; 10% testing and 90% training split",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "week"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 1,
+        "unit": "week"
+      },
+      "drop_in_performance": {
+        "metric": "Accuracy",
+        "value": 8.94
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 85.76
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 92.0
+    },
+    "reported_limitations": [
+      "Performance degradation during walking",
+      "Interference between sensor and mask cords",
+      "Limited subject pool",
+      "Potential instability over longer periods"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Elastic cords from face masks can cause ear canal deformation and device displacement."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "PPG",
+      "speaking behavior"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Introduction of EarPPG: a modality combining physiological PPG and behavioral speaking patterns",
+      "Implementation of a segmentation algorithm using CWT and statistical analysis to isolate speaking events"
+    ],
+    "main_strength": [
+      "Robustness to ambient light due to in-ear placement",
+      "Effective operation during mouth occlusion (wearing masks)"
+    ],
+    "main_weakness": [
+      "Small sample size for real-world validation (N=4 for in-the-wild study)",
+      "Absence of active spoofing/presentation attack tests",
+      "Performance drop during walking"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper focuses heavily on Accuracy and F1-score, providing no AUC, EER, FAR, or FRR metrics as required for the primary evaluation extraction."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Choi_2023"
+}

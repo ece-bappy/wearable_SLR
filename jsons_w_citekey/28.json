@@ -1,0 +1,164 @@
+{
+  "title": "A Continuous Identity Authentication Scheme Based on Physiological and Behavioral Characteristics",
+  "year": 2018,
+  "venue": "Sensors",
+  "doi": "10.3390/s18010179",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "PPG",
+      "Accelerometer",
+      "Gyroscope"
+    ],
+    "sensor": [
+      "LSM9DS0",
+      "Pulse Sensor Amped"
+    ],
+    "device": [
+      "fingertip sensor device"
+    ],
+    "body_location": "fingertip"
+  },
+  "data": [
+    {
+      "dataset_name": "own-built",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 40,
+      "num_samples": 72000,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 30,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "unsupervised",
+    "model": [
+      "One-Class SVM",
+      "Autoencoder",
+      "k-NN"
+    ],
+    "input_representation": "Time-domain, frequency-domain, and wavelet-domain features extracted from PPG and motion data",
+    "training_strategy": "Two-step authentication: first step is human activity recognition (HAR) to determine motion state, second step is state-specific one-class identity authentication."
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.0,
+      "context": "Achieved by the proposed continuous authentication scheme for several volunteers (Volunteers 3, 5, 7, 8, 10)"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.0,
+      "context": "Achieved by the proposed continuous authentication scheme across all volunteers"
+    }
+  ],
+  "evaluation_protocol": "For authentication: 40% of legal user data used for training, remaining legal and imposter data used for testing. For HAR: 10-fold cross-validation.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 30,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 99.87
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Potential for undecided states if authentication results oscillate between True and False"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Decision sequence oscillations may delay final authentication decision"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "PPG",
+      "Accelerometer",
+      "Gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": 25.0,
+        "unit": "percentage"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a two-step continuous authentication framework combining activity recognition and biometric verification",
+      "Developed a custom fingertip device integrating PPG and IMU sensors"
+    ],
+    "main_strength": [
+      "Hybrid use of physiological and behavioral traits",
+      "Continuous and unobtrusive operation"
+    ],
+    "main_weakness": [
+      "Lack of active spoofing/presentation attack testing",
+      "Reliance on a remote computer for processing"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The paper demonstrates that knowing the user's activity state significantly improves the accuracy of the biometric matcher."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Wu_2018"
+}

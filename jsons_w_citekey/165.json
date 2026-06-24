@@ -1,0 +1,151 @@
+{
+  "title": "Data-Driven Behavioural Biometrics for Continuous and Adaptive User Verification Using Smartphone and Smartwatch",
+  "year": 2022,
+  "venue": "Sustainability",
+  "doi": "10.3390/su14127362",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "motion"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": "pocket (smartphone), dominant hand (smartwatch)"
+  },
+  "data": [
+    {
+      "dataset_name": "WISDM Smartphone and Smartwatch Activity and Biometrics Dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 51,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 3,
+        "unit": "minutes per activity"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "SVM",
+      "XGBoost"
+    ],
+    "input_representation": "10-second segmented time-series sensor data with 43 extracted features",
+    "training_strategy": "Stratified 10-fold cross-validation"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Two-step verification: a multi-class identification model followed by a binary authentication model for each user/activity.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Vulnerability to adversarial attacks",
+      "Performance depends on activity frequency in dataset",
+      "Human behavior evolves over time"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "adversarial"
+    ],
+    "liveness_detection": false,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "smartphone accelerometer",
+      "smartphone gyroscope",
+      "smartwatch accelerometer",
+      "smartwatch gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "WISDM",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Two-step verification algorithm (Identification + Authentication) for motion biometrics",
+      "Integration of behavioural biometrics into Multi-Factor Authentication (MFA)",
+      "Empirical analysis of black-box adversarial attacks (ZOO) on motion-based biometrics",
+      "Proposed a confidence-threshold defense mechanism"
+    ],
+    "main_strength": [
+      "Comprehensive use of both smartphone and smartwatch sensors",
+      "Direct focus on adversarial robustness"
+    ],
+    "main_weakness": [
+      "No explicit numerical reporting of EER/FAR/FRR in text (only graphs)",
+      "No testing on longitudinal data to evaluate behavioral drift"
+    ],
+    "gap_category": [
+      "NO_CROSS_SESSION",
+      "REAL_WORLD_MISSING",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper provides significant insights into the security vulnerabilities (adversarial attacks) of motion-based biometrics but lacks a precise table of the target biometric metrics (EER, FAR, FRR) required for meta-analysis."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Verma_2022"
+}

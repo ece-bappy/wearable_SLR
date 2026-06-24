@@ -1,0 +1,7 @@
+{
+  "title": "Sensing with Earables: A Systematic Literature Review and Taxonomy of Phenomena",
+  "relevance": "exclude",
+  "exclusion_reason": "The paper is a systematic literature review and taxonomy; it does not implement or evaluate a specific biometric authentication system.",
+  "doi": "10.1145/3550314",
+  "citekey": "R_ddiger_2022"
+}

@@ -1,0 +1,179 @@
+{
+  "title": "Multifactor User Authentication with In-Air-Handwriting and Hand Geometry",
+  "year": 2018,
+  "venue": "International Conference on Biometrics",
+  "doi": "10.1109/icb2018.2018.00046",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "in-air-handwriting",
+      "hand geometry"
+    ],
+    "sensor": [
+      "depth camera",
+      "Leap Motion controller"
+    ],
+    "device": [
+      "VR platform",
+      "Leap Motion controller"
+    ],
+    "body_location": "hand"
+  },
+  "data": [
+    {
+      "dataset_name": "Dataset 1",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 100,
+      "num_samples": 2000,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "Dataset 2 (Spoofing)",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 7,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "Dataset 3 (Long-term)",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 22,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 4,
+        "unit": "weeks"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "TTV (Threshold-Then-Vote) algorithm",
+      "Dynamic Time Warping (DTW)"
+    ],
+    "input_representation": "3D coordinates of hand center (motion signal) and 22-component hand geometry vector (bone lengths and hand width)",
+    "training_strategy": "Template construction using mean and variance of 5 preprocessed and aligned signals"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.6,
+      "context": "Achieved by FUSION system without spoofing attack"
+    }
+  ],
+  "evaluation_protocol": "Comparison between TTV-based fusion and DTW-based fusion across true-user, false-user, and spoof classes",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.6,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 4,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 4,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "score",
+        "value": 1.75
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": null,
+    "robust_to_noise": null,
+    "reported_limitations": [
+      "long term permanence",
+      "requirement of template protection on the server side",
+      "need of parameter tweaking effort",
+      "constraints of sensor accuracy"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requirement of template protection and parameter tweaking"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "in-air-handwriting",
+      "hand geometry",
+      "signal length"
+    ],
+    "fusion_level": "score",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 0.6,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Multifactor framework combining handwriting behavior and hand physiology",
+      "TTV algorithm to prevent local mismatches from degrading overall distance",
+      "Analysis of feature importance for in-air-handwriting"
+    ],
+    "main_strength": [
+      "Significant improvement over DTW (0.6% vs 1.3% EER)",
+      "Low registration burden (works with 2 samples)"
+    ],
+    "main_weakness": [
+      "Template drift over time (score increases by 1.75x over 4 weeks without update)",
+      "Dependence on high-precision depth sensors"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_USER_STUDY",
+      "LIMITED_ATTACK_TYPES"
+    ],
+    "notes_for_review": "The study effectively demonstrates that fusing physiological hand geometry with behavioral handwriting significantly reduces EER compared to motion-only systems."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Lu_2018"
+}

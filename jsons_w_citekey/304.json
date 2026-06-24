@@ -1,0 +1,149 @@
+{
+  "title": "Continuous Mobile User Authentication Using a Hybrid CNN-Bi-LSTM Approach",
+  "year": 2023,
+  "venue": "Computers, Materials & Continua",
+  "doi": "10.32604/cmc.2023.035173",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "human activity recognition",
+      "motion patterns"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "carried"
+  },
+  "data": [
+    {
+      "dataset_name": "MotionSense",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 24,
+      "num_samples": 1039322,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "Bi-LSTM",
+      "Hybrid CNN-Bi-LSTM"
+    ],
+    "input_representation": "raw time-series sensor data",
+    "training_strategy": "CNN for feature extraction followed by Bi-LSTM for user identity classification"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Merged dataset split into training and testing sets for multi-class user identification.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "lack of covering all possible activities",
+      "does not investigate sudden change in the user's behavior"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "MotionSense",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Development of a hybrid CNN-Bi-LSTM model for continuous passive authentication using smartphone motion sensors"
+    ],
+    "main_strength": [
+      "High classification accuracy (98.4%) on the MotionSense dataset"
+    ],
+    "main_weakness": [
+      "Evaluation limited to a single lab-collected dataset",
+      "No testing of temporal robustness or active spoofing attacks"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper reports 'accuracy', 'precision', 'recall', and 'F1-score', but does not report the target metrics (AUC, EER, FAR, FRR) for the proposed model, only for baseline references in Table 8."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Alzahrani_2023"
+}

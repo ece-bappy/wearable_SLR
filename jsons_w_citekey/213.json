@@ -1,0 +1,156 @@
+{
+  "title": "A lightweight double-channel depthwise separable convolutional neural network for multimodal fusion gait recognition",
+  "year": 2021,
+  "venue": "Mathematical Biosciences and Engineering",
+  "doi": "10.3934/mbe.2022055",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "3D accelerometer",
+      "3D gyroscope"
+    ],
+    "device": [
+      "MTw wireless inertial-magnetic motion tracker"
+    ],
+    "body_location": "right side of the waist"
+  },
+  "data": [
+    {
+      "dataset_name": "HD Dataset",
+      "dataset_type": "private",
+      "dataset_role": "training",
+      "num_subjects": 24,
+      "num_samples": 2400,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 1,
+        "unit": "minute"
+      }
+    },
+    {
+      "dataset_name": "whuGait Dataset #1",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 118,
+      "num_samples": 36844,
+      "collection_setting": "in-the-wild",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "DC-DSCNN (Double-Channel Depthwise Separable Convolutional Neural Network)"
+    ],
+    "input_representation": "Time-series gait cycle data and Gramian Angular Field (GAF) images",
+    "training_strategy": "Adam optimizer, learning rate 0.001, 200 epochs"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "7:3 train-test split with random shuffle for HD Dataset; benchmark validation on whuGait",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Existing template matching methods have poor robustness in complex environments"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 1.7,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "time series",
+      "GAF images"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "accuracy",
+        "value": 0.69,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "whuGait",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a lightweight DC-DSCNN model for gait recognition",
+      "Utilized GAF algorithm to convert 1D time series to 2D images to preserve temporal correlation",
+      "Implemented multimodal fusion of time series and images"
+    ],
+    "main_strength": [
+      "Extremely low memory footprint (532 KB)",
+      "High classification accuracy on private dataset"
+    ],
+    "main_weakness": [
+      "Lack of security/spoofing evaluations",
+      "Lack of longitudinal temporal robustness testing"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper reports high accuracy but does not provide standard biometric verification metrics (EER/FAR/FRR)."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Liu_2021"
+}

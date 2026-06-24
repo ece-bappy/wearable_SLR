@@ -1,0 +1,168 @@
+{
+  "title": "ECG Authentication Hardware Design With Low-Power Signal Processing and Neural Network Optimization With Low Precision and Structured Compression",
+  "year": 2020,
+  "venue": "IEEE Transactions on Biomedical Circuits and Systems",
+  "doi": "10.1109/tbcas.2020.2974387",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "single-lead ECG sensor"
+    ],
+    "device": [
+      "ASIC",
+      "smartwatch",
+      "health band"
+    ],
+    "body_location": "arms (right arm negative terminal, left arm positive terminal)"
+  },
+  "data": [
+    {
+      "dataset_name": "in-house ECG database",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 741,
+      "num_samples": 71155,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 90,
+        "unit": "seconds"
+      }
+    },
+    {
+      "dataset_name": "PhysioNet databases",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": null,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Feed-forward Neural Network",
+      "Multi-layer Perceptron"
+    ],
+    "input_representation": "Normalized ECG segments (160 samples)",
+    "training_strategy": "Authentication-specific cost function (minimizing intra-individual distance, maximizing inter-individual distance); joint optimization of 2-bit low-precision weights and coarse-grain structured sparsity (CGS)."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 1.016,
+      "context": "Achieved using 4X compressed NN and averaging 30 beats on the 741-subject in-house database."
+    }
+  ],
+  "evaluation_protocol": "Cosine similarity comparison between registered ECG features and identification features; evaluated across different starting points in the ECG record.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 1.016,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": null
+    },
+    "reported_limitations": [
+      "Lack of dynamic voltage scaling",
+      "Fixed filter coefficients prevent reprogrammability"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 20,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 62.37,
+        "unit": "µW"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "PhysioNet",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Development of a low-power ASIC for ECG biometric authentication",
+      "Novel authentication-specific NN cost function to minimize EER",
+      "Hardware-friendly NN compression via joint low-precision and structured sparsity"
+    ],
+    "main_strength": [
+      "Extremely low power consumption (62.37 µW)",
+      "Effective scalability to a large subject pool (741 users)",
+      "High hardware efficiency (reduced SRAM footprint by 104X compared to floating-point)"
+    ],
+    "main_weakness": [
+      "No evaluation against active spoofing attacks",
+      "Evaluation limited to lab/in-house datasets without uncontrolled real-world testing"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "Focuses heavily on hardware efficiency (ASIC) rather than algorithmic novelty in signal processing, but introduces a specific cost function for authentication."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Cherupally_2020"
+}

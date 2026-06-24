@@ -1,0 +1,151 @@
+{
+  "title": "BiometricNet: Deep Learning based Biometric Identification using Wrist-Worn PPG",
+  "year": 2018,
+  "venue": "IEEE",
+  "doi": "10.1109/iscas.2018.8350983",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "pulse oximeter",
+      "green LED"
+    ],
+    "device": [
+      "smartwatch",
+      "wrist-worn sensor"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "TROIKA",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 12,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "LSTM",
+      "BiometricNET"
+    ],
+    "input_representation": "raw PPG signal (band-pass filtered and normalized)",
+    "training_strategy": "binary classification (one vs all) with weighted loss to handle class imbalance; five-fold cross-validation"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Five-fold cross-validation on a binary classification (one vs all) task for 12 subjects.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Network must be trained for each new user",
+      "High enrollment/training cost for commercial deployment",
+      "Potential for performance shift based on changing cardiac or physical conditions"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 452000,
+        "unit": "MACs"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "High training overhead per user"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "TROIKA",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed BiometricNET, a fully data-driven deep learning framework using CNN and LSTM for wrist-worn PPG identification",
+      "Eliminated the need for hand-crafted feature engineering in ambulatory PPG biometrics"
+    ],
+    "main_strength": [
+      "Effective at capturing temporal dependencies in cardiac signals using LSTM",
+      "Tested under motion conditions (treadmill activity)"
+    ],
+    "main_weakness": [
+      "Lack of scalability due to the requirement of a personalized model for every user",
+      "Evaluation based on classification accuracy rather than biometric authentication metrics (EER/FAR/FRR)"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper reports high accuracy (up to 98%) but does not provide AUC, EER, FAR, or FRR, making it difficult to compare with other biometric systems."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Everson_2018"
+}

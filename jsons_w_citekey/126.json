@@ -1,0 +1,7 @@
+{
+  "title": "Behavioral Biometrics for Continuous Authentication in the Internet-of-Things Era: An Artificial Intelligence Perspective",
+  "relevance": "exclude",
+  "exclusion_reason": "The paper is a survey/review article and does not implement or evaluate a specific biometric system.",
+  "doi": "10.1109/jiot.2020.3004077",
+  "citekey": "Liang_2020"
+}

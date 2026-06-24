@@ -1,0 +1,181 @@
+{
+  "title": "TrueHeart: Continuous Authentication on Wrist-worn Wearables Using PPG-based Biometrics",
+  "year": null,
+  "venue": "",
+  "doi": "10.1109/infocom41043.2020.9155526",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "green LED PPG sensor"
+    ],
+    "device": [
+      "Wrist-worn wearable",
+      "Smartwatch",
+      "Fitness tracker",
+      "Prototype wrist-worn PPG sensing platform"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 19200,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 10,
+        "unit": "minutes"
+      }
+    },
+    {
+      "dataset_name": "IEEE TBME Benchmark dataset",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": 42,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 8,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Gradient Boosting Tree (GBT)"
+    ],
+    "input_representation": "General fiducial features (Systolic Amplitude, Pulse Width, Ratio of Pulse Interval to Systolic amplitude, Crest Time, Ratio of Amplitude of b-wave and a-wave)",
+    "training_strategy": "Binary classifier per user with adaptive updating mechanism"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.1,
+      "context": "Derived from >90% Attack Detection Rate with sliding window of 6 or more segments"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.039,
+      "context": "Reported as Attack False Detection Rate with sliding window of 4 segments"
+    }
+  ],
+  "evaluation_protocol": "20 rounds of Monte Carlo cross-validation (5-min training, remainder for authentication)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": 5,
+      "unit": "hours"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 5,
+        "unit": "hours"
+      },
+      "drop_in_performance": {
+        "metric": "CA Accuracy",
+        "value": 7.0
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "CA Accuracy",
+      "value": 89.2
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Continuous near-wrist activity",
+      "Unexpected sickness causing cardiac status changes"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 3,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 4,
+        "unit": "mA"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "IEEE TBME Benchmark dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed TrueHeart for low-cost continuous authentication using wrist-worn PPG",
+      "Developed MA filtering and mitigation mechanisms specifically for wrist-worn artifacts",
+      "Implemented an adaptive GBT-based classifier to manage signal drift over time"
+    ],
+    "main_strength": [
+      "Addresses the difficulty of wrist-based PPG compared to fingertip PPG",
+      "Adaptive training effectively recovers performance after temporal drift"
+    ],
+    "main_weakness": [
+      "Small subject pool for the primary study",
+      "No testing against active presentation/spoofing attacks"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "SEMI_CONTROLLED_ONLY"
+    ],
+    "notes_for_review": "The authors define 'Attack False Detection Rate' as the rate at which the legitimate user is incorrectly flagged as an attacker, which maps to FRR. 'Attack Detection Rate' refers to the success of blocking imposters, the complement of which is FAR."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Zhao_2020"
+}

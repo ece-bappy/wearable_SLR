@@ -1,0 +1,7 @@
+{
+  "title": "A biometric dataset for unconditioned gait identification using onboard smartphone sensors",
+  "relevance": "exclude",
+  "exclusion_reason": "The paper is a data report that describes the collection and preprocessing of a gait dataset; it does not implement or evaluate a biometric authentication/identification system nor report any biometric performance metrics (e.g., EER, FAR, AUC).",
+  "doi": "10.3389/fcomp.2026.1752141",
+  "citekey": "Abdulrahman_2026"
+}

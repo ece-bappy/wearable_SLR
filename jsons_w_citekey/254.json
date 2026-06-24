@@ -1,0 +1,166 @@
+{
+  "title": "Wearable Device-Based Gait Recognition Using Angle Embedded Gait Dynamic Images and a Convolutional Neural Network",
+  "year": 2017,
+  "venue": "Sensors",
+  "doi": "10.3390/s17030478",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "pocket / waist"
+  },
+  "data": [
+    {
+      "dataset_name": "McGill University dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 15,
+        "unit": "min"
+      }
+    },
+    {
+      "dataset_name": "Osaka University (OU-ISIR) dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 744,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Convolutional Neural Network (CNN)"
+    ],
+    "input_representation": "Angle Embedded Gait Dynamic Image (AE-GDI)",
+    "training_strategy": "Adam optimizer, cross-entropy loss, dropout (0.5), mini-batch size 100"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "10-fold cross-validation on McGill dataset; gallery/probe split on OU-ISIR dataset",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 2,
+        "unit": "days"
+      },
+      "drop_in_performance": {
+        "metric": "Accuracy",
+        "value": 28.7
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "sensitive to sensor placement",
+      "intraclass variability",
+      "interclass similarity"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 0.02,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "sensitive to sensor placement"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "McGill University dataset, OU-ISIR dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed AE-GDI, a 2D representation invariant to rotation and translation",
+      "Integrated CNN for automatic feature extraction from gait images",
+      "Proposed grid-based greedy algorithm for gait cycle segmentation"
+    ],
+    "main_strength": [
+      "Orientation and translation invariance",
+      "Removal of hand-crafted feature extraction",
+      "Low inference latency suitable for real-time use"
+    ],
+    "main_weakness": [
+      "Significant performance drop in cross-day authentication",
+      "Sensitivity to the exact location of the sensor on the body"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The paper focuses heavily on accuracy for identification/labeling and authentication; however, it does not report standard biometric error rates like EER or FAR."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Zhao_2017"
+}
