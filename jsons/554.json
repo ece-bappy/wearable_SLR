@@ -1,0 +1,163 @@
+{
+  "title": "MetaEar: Imperceptible Acoustic Side Channel Continuous Authentication Based on ERTF",
+  "year": 2022,
+  "venue": "Electronics",
+  "doi": "10.3390/electronics11203401",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "acoustic",
+      "ultrasound"
+    ],
+    "sensor": [
+      "speaker",
+      "microphone"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "ear"
+  },
+  "data": [
+    {
+      "dataset_name": "private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 17,
+      "num_samples": 13260,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "One-Class SVM",
+      "PCA"
+    ],
+    "input_representation": "Ear Related Transfer Function (ERTF) / Channel Impulse Response (CIR)",
+    "training_strategy": "10-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 4.0,
+      "context": "Median FAR for impersonation attacks by other users"
+    }
+  ],
+  "evaluation_protocol": "10-fold cross-validation with data split: 70% training, 15% validation, 15% testing",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 96.19,
+    "real_world_performance_value": 92.02,
+    "drop_percentage": 4.17
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "accuracy",
+      "value": 91.6
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "accuracy",
+      "value": 92.02
+    },
+    "reported_limitations": [
+      "dependency on fixed posture",
+      "performance degradation during walking due to bone/muscle vibration",
+      "SNR decrease at distances greater than 5cm"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 0.939,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed MetaEar system using FMCW ultrasound to model unique ear biometrics (ERTF)",
+      "Implemented a lightweight SVM-based authentication pipeline for mobile devices",
+      "Demonstrated effectiveness across different environments (lab, hall, street) and devices"
+    ],
+    "main_strength": [
+      "Passive/imperceptible continuous authentication",
+      "Use of commercial off-the-shelf smartphones",
+      "Resilience to environmental noise through dual-microphone differential denoising"
+    ],
+    "main_weakness": [
+      "Small sample size (17 subjects)",
+      "Lack of testing against physical spoofing artifacts (e.g., 3D printed ears)",
+      "Sensitivity to device placement and user posture"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper heavily emphasizes 'continuous' and 'imperceptible' nature. While it mentions replay and counterfeiting attacks in the threat model, the evaluation only tests impersonation via other human users (zero-effort)."
+  },
+  "extraction_confidence": "high"
+}

@@ -1,0 +1,171 @@
+{
+  "title": "Making a good thing better: enhancing password/PIN-based user authentication with smartwatch",
+  "year": 2018,
+  "venue": "Cybersecurity",
+  "doi": "10.1186/s42400-018-0009-4",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "wrist motion",
+      "typing behavior"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartwatch",
+      "Moto 360 sport"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private user study",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 51,
+      "num_samples": 8289,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Bagged Decision Trees",
+      "SVM",
+      "k-NN",
+      "Naive Bayes",
+      "Discriminant Analysis",
+      "LSTM"
+    ],
+    "input_representation": "36 temporal features (Mean Strength, Standard Deviation, Average Deviation, Skewness, Kurtosis, RMS) across 3 axes for 2 sensors",
+    "training_strategy": "Randomly selected 50% training / 50% testing set, randomized 10 times"
+  },
+  "evaluation": [
+    {
+      "metric": "FRR",
+      "value": 4.58,
+      "context": "Achieved using Bagged Decision Trees on QWERTY keyboard (improved dataset)"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.12,
+      "context": "Achieved using Bagged Decision Trees on QWERTY keyboard (improved dataset)"
+    }
+  ],
+  "evaluation_protocol": "Cross-validation with 10 random splits of 50% training and 50% testing data per user",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "User must wear smartwatch on the hand used to type PINs",
+      "User must maintain consistent typing pattern",
+      "Keyboard specific (QWERTY/Numeric)",
+      "Not scalable if user has multiple passwords across websites"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "FRR",
+        "value": 3,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "Mimesis imitation system",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Demonstrated that smartwatch motion sensors can effectively differentiate users even when keystroke timings are imitated",
+      "Proposed a multi-factor approach combining traditional passwords with behavioral motion biometrics"
+    ],
+    "main_strength": [
+      "Resistant to sophisticated behavioral imitation attacks that defeat standard keystroke dynamics"
+    ],
+    "main_weakness": [
+      "Evaluation performed entirely in a laboratory setting",
+      "Dependent on the user wearing the device on the specific typing hand"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper specifically addresses 'imitation attacks' using a specialized training interface (Mimesis), which is a more targeted attack than simple zero-effort imposters."
+  },
+  "extraction_confidence": "high"
+}

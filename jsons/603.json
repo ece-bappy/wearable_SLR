@@ -1,0 +1,151 @@
+{
+  "title": "Waving Gesture Analysis for User Authentication in the Mobile Environment",
+  "year": 2020,
+  "venue": "IEEE Network",
+  "doi": "10.1109/MNET.001.1900184",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "hand-waving gesture"
+    ],
+    "sensor": [
+      "triaxial accelerometer"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "150-person-time hand-waving dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 9.0,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "one-class Manhattan (scaled) classifier"
+    ],
+    "input_representation": "distance-based features (f4 function)",
+    "training_strategy": "one-class learning using genuine user's hand-waving data"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 4.27,
+      "context": "Achieved in the zero-effort attacking scenario"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-out subject rotation: 1 genuine user and 9 imposters per test, repeated 10 times across 10 subjects and 10 sessions.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "EER",
+      "value": null
+    },
+    "reported_limitations": [
+      "Does not meet EU standard for commercial biometric technology (FAR 0.001%, FRR 1%)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [
+      "task-based evaluation"
+    ],
+    "usability_issues": "Short operation lengths (< 5s) lead to higher error rates."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a behavioral authentication mechanism using hand-waving gestures on smartwatches",
+      "Established a distance-based feature extraction method for hand-waving motion"
+    ],
+    "main_strength": [
+      "Effective against zero-effort and recall imitation attacks"
+    ],
+    "main_weakness": [
+      "Vulnerable to video imitation attacks (EER 23.14%)",
+      "Very small subject pool (10 people)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The study highlights the trade-off between sampling frequency and accuracy, finding 100Hz optimal for this modality."
+  },
+  "extraction_confidence": "high"
+}

@@ -1,0 +1,5 @@
+{
+  "title": "Wearable Security-Authentication using Smartwatches",
+  "relevance": "exclude",
+  "exclusion_reason": "The proposed system uses the smartwatch as a possession/ownership factor where the user selects and actuates a specific sensor/button as a secret key. It does not utilize physiological or behavioral biometric signals for identification or authentication."
+}

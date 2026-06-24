@@ -1,0 +1,160 @@
+{
+  "title": "Context-Aware Implicit Authentication of Smartphone Users Based on Multi-Sensor Behavior",
+  "year": 2019,
+  "venue": "IEEE Access",
+  "doi": "10.1109/ACCESS.2019.2936034",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "touch dynamics",
+      "gestures",
+      "body posture"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer",
+      "pressure sensor",
+      "touch screen"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "hands"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 87,
+      "num_samples": 10000,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 2,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "One-Class SVM (OC-SVM)",
+      "Random Forest"
+    ],
+    "input_representation": "multi-sensor feature set (gesture features and touch features)",
+    "training_strategy": "One-class classification"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.0071,
+      "context": "Achieved on the most complex password ('1-8-2-5-3-7') using all proposed features"
+    }
+  ],
+  "evaluation_protocol": "10-fold cross-validation for parameter adjustment and 10 repetitions of testing to calculate average performance",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.0,
+    "real_world_performance_value": 1.4,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 0.4663
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Vulnerability to environmental changes (weather, mood)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Depends on the user inputting a password (explicit interaction required for the biometric capture)"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "gesture features",
+      "touch features"
+    ],
+    "fusion_level": "score",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 0.4663,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a context-aware implicit authentication system that adapts to body posture",
+      "Introduction of an EER-weighted fusion rule for combining gesture and touch features",
+      "Use of OC-SVM to allow training on genuine user data only"
+    ],
+    "main_strength": [
+      "High accuracy for complex passwords",
+      "Improved robustness across different body postures (sitting, standing, walking)"
+    ],
+    "main_weakness": [
+      "Requires a password input to trigger authentication",
+      "Short temporal evaluation period (2 days)"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper demonstrates that body posture significantly impacts touch dynamics and that context-awareness can mitigate this degradation."
+  },
+  "extraction_confidence": "high"
+}

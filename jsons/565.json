@@ -1,0 +1,169 @@
+{
+  "title": "GrasOpen: Biometric Authentication via Reach-and-Grasp for Smart Door Access Using Smartwatch",
+  "year": 2025,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2025.3557392",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "reach-and-grasp motion",
+      "arm movement trajectory",
+      "muscle vibration"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 30,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Modified ConvBoost",
+      "ShuffleNet"
+    ],
+    "input_representation": "Magnitude of Linear Acceleration (MLA) and Complementary Filter (CF) for roll/pitch angle estimation",
+    "training_strategy": "Frame Loss Module (random frame omission), Random Number Module (perturbations), and Hybrid Module (linear interpolation for class imbalance)"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.9879,
+      "context": "Overall identity authentication performance"
+    },
+    {
+      "metric": "EER",
+      "value": 0.013,
+      "context": "Overall identity authentication performance"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.0114,
+      "context": "Average FRR across subjects"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.0,
+      "context": "Achieved during Zero-Effort Attack scenario"
+    }
+  ],
+  "evaluation_protocol": "One-vs-All binary classification (one legitimate user vs 29 illegitimate users), 30% testing split",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance slightly decreases as body weight increases due to body fat interfering with signal capture",
+      "Security slightly decreases for victims with similar height to the attacker"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 1.77,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [
+      "questionnaire survey"
+    ],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed GrasOpen system utilizing reach-and-grasp behavioral biometrics for seamless door access",
+      "Implemented a lightweight activity recognition model for on-device deployment to filter door-opening actions from daily life"
+    ],
+    "main_strength": [
+      "High implicit usability (no active user effort)",
+      "Strong resistance to behavioral impersonation"
+    ],
+    "main_weakness": [
+      "Data collected exclusively in a lab setting",
+      "Small sample size for specific demographic analyses (e.g., gender)"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_PUBLIC_DATASET",
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The paper specifically addresses the class imbalance issue common in binary biometric authentication using a custom Hybrid Module for synthetic data generation."
+  },
+  "extraction_confidence": "high"
+}

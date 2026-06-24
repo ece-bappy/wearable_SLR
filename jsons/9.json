@@ -1,0 +1,170 @@
+{
+  "title": "Gesture-Related Two-Factor Authentication for Wearable Devices via PPG Sensors",
+  "year": 2023,
+  "venue": "IEEE Sensors Journal",
+  "doi": "10.1109/JSEN.2023.3269440",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "photoplethysmography (PPG)"
+    ],
+    "sensor": [
+      "PPG sensor"
+    ],
+    "device": [
+      "wrist-worn wearable prototype"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 1,
+        "unit": "second"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest"
+    ],
+    "input_representation": "28-dimensional feature vector (8 specific gesture-related features and 20 general time/frequency/time-frequency domain features)",
+    "training_strategy": "Binary classification using labeled user and attacker samples with an adaptive update scheme to retrain the model daily."
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.62,
+      "context": "Achieved for attackers under the proposed authentication mechanism"
+    },
+    {
+      "metric": "FRR",
+      "value": 3.33,
+      "context": "Derived from 96.67% pass rate for legitimate users"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-subject-out (each participant acted as legitimate user once, others as attackers), with balanced negative samples per gesture.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": 84.77,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "week"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 7,
+        "unit": "days"
+      },
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "F1-score",
+      "value": 84.77
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Requires active user participation",
+      "Enrolment duration (up to 80s)",
+      "Inapplicable to users with hand/body control diseases"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 1,
+        "unit": "second"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "User must stop current activity to perform gestures."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "physiological heartbeat",
+      "behavioral gesture/wearing habits"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": null,
+        "unit": null
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed G-PPG, a two-factor authentication system using both heartbeat and gesture-related PPG signals",
+      "Proposed an adaptive update scheme for long-term temporal robustness",
+      "Introduced a user-defined security level (M, N) to balance security and convenience"
+    ],
+    "main_strength": [
+      "Lower sampling rate requirement (100Hz) compared to existing PPG authentication (300-400Hz)",
+      "Better robustness to movement than heartbeat-only PPG systems"
+    ],
+    "main_weakness": [
+      "Active interaction required (not implicit/continuous)",
+      "Small sample size for evaluation"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "USER_INTERACTION_REQUIRED"
+    ],
+    "notes_for_review": "The system effectively leverages the air gap between sensor and skin during movement as a behavioral biometric."
+  },
+  "extraction_confidence": "high"
+}

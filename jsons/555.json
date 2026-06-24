@@ -1,0 +1,164 @@
+{
+  "title": "EmotionPass: Unobtrusive Emotion-based User Authentication on Glasses",
+  "year": 2024,
+  "venue": "2024 IEEE Smart World Congress (SWC)",
+  "doi": "10.1109/SWC62898.2024.00156",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "facial expressions",
+      "muscle movements"
+    ],
+    "sensor": [
+      "IMU",
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smart glasses"
+    ],
+    "body_location": "face"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 23,
+      "num_samples": 3066,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Knowledge-Aware Network (KAN)",
+      "Random Forest",
+      "Supervised Contrastive Learning"
+    ],
+    "input_representation": "Time-frequency analysis including max, min, mean, variance, standard deviation, center frequency, and frequency variance via Fourier and wavelet transforms",
+    "training_strategy": "Three-stage pipeline: training (feature extractor using KAN and Supervised Contrastive Loss), registration (training Random Forest on user features), and authentication."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.0154,
+      "context": "Average EER in user attack scenarios"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.0154,
+      "context": "Average FAR in user attack scenarios"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.0,
+      "context": "Average FRR in user attack scenarios"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-out style attack test: trained feature extractor on 18 users, tested on remaining 5 users (1 legitimate, 4 attackers).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": null,
+        "unit": "epochs"
+      },
+      "drop_in_performance": {
+        "metric": "Accuracy",
+        "value": 94.66
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Diversity of facial movements makes them challenging to measure and test"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": null
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": null,
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed EmotionPass, the first system for unobtrusive, continuous, and passive authentication using IMUs in lightweight glasses",
+      "Integration of KAN and Supervised Contrastive Learning to handle diverse facial expressions"
+    ],
+    "main_strength": [
+      "High stability and accuracy even with unseen expressions (92.51%)",
+      "Robust performance across different data collection epochs (94.66%)"
+    ],
+    "main_weakness": [
+      "Small subject pool (23 participants)",
+      "Lack of presentation attack/spoofing evaluations"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "Uses the relatively new Kolmogorov-Arnold Network (KAN) for biometric feature extraction, showing better generalization than CNN/LSTM for this specific modality."
+  },
+  "extraction_confidence": "high"
+}

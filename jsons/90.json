@@ -1,0 +1,166 @@
+{
+  "title": "HeartPrint: Passive Heart Sounds Authentication Exploiting In-Ear Microphones",
+  "year": 2023,
+  "venue": "IEEE INFOCOM 2023",
+  "doi": "10.1109/INFOCOM53939.2023.10228921",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "heart sounds",
+      "phonocardiogram (PCG)"
+    ],
+    "sensor": [
+      "in-ear microphones",
+      "IEMs"
+    ],
+    "device": [
+      "ANC earphones",
+      "earables"
+    ],
+    "body_location": "ears"
+  },
+  "data": [
+    {
+      "dataset_name": "Private HeartPrint Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 45,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 200,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "Elastic Weight Consolidation (EWC)"
+    ],
+    "input_representation": "RGB image combining MFCCs, LPCs, and Euclidean Distances (EDs)",
+    "training_strategy": "Continual learning using EWC to adapt to biometric drifts and limited registration data"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 1.6,
+      "context": "Average over 45 participants in a static scenario using 5-fold-cross-validation"
+    },
+    {
+      "metric": "FRR",
+      "value": 1.8,
+      "context": "Average over 45 participants in a static scenario using 5-fold-cross-validation"
+    }
+  ],
+  "evaluation_protocol": "5-fold-cross-validation with 80% training and 20% testing data",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 12,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 12,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "FAR/FRR",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "FRR",
+      "value": 4.4
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "FRR",
+      "value": 4.4
+    },
+    "reported_limitations": [
+      "Energy computation not yet explored",
+      "Hardware differences between earphones not seriously studied",
+      "Impact of ambient noise not fully explored",
+      "Propagation patterns may change during speaking"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Potential high energy cost for resource-constrained earphones"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [
+      "binaural heart sounds"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed HeartPrint for passive authentication using binaural bone-conducted PCGs via commercial IEMs",
+      "Developed NMF-based interference elimination for body and audio noise",
+      "Implemented EWC-based continual learning to handle biometric drift"
+    ],
+    "main_strength": [
+      "Utilizes existing commercial hardware",
+      "Transparent and passive operation",
+      "Robust to long-term biometric drift"
+    ],
+    "main_weakness": [
+      "Lack of energy consumption quantification",
+      "Small dataset relative to commercial scale (though large for the specific earable field)"
+    ],
+    "gap_category": [
+      "HIGH_ENERGY_COST",
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "The system effectively uses binaural asymmetry as a key biometric feature to thwart replay attacks."
+  },
+  "extraction_confidence": "high"
+}

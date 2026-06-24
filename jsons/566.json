@@ -1,0 +1,142 @@
+{
+  "title": "Handwritten Signature and Text based User Verification using Smartwatch",
+  "year": 2020,
+  "venue": "2020 25th International Conference on Pattern Recognition (ICPR)",
+  "doi": "10.1109/ICPR48806.2021.9412048",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "handwriting",
+      "signature"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "dominant hand"
+  },
+  "data": [
+    {
+      "dataset_name": "Proposed dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 30,
+      "num_samples": 10800,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "ResNet50",
+      "Continuous Wavelet Transform (CWT)",
+      "Ensemble Classifier"
+    ],
+    "input_representation": "2D scalograms derived from CWT of accelerometer signals",
+    "training_strategy": "leave-one-out cross-validation (K=5)"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.0,
+      "context": "Achieved on both W1 and W2 smartwatches across all activities (signature, own sentence, common sentence) and mediums (iPad, paper) in Experiment-1."
+    }
+  ],
+  "evaluation_protocol": "Leave-one-out cross-validation (K=5), comparing enrollment and probe using the same device (Exp 1) and different devices (Exp 2).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 7,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance degrades in cross-device scenarios due to device-specific features",
+      "Common sentences provide less discriminatory features than self-chosen sentences"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "score",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "CNN-BiLSTM",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Introduction of a smartwatch-based writing dataset (30 subjects, 10.8k samples)",
+      "Proposed pipeline using CWT and pre-trained ResNet50 for feature extraction"
+    ],
+    "main_strength": [
+      "Strong performance across different writing mediums (paper vs tablet)",
+      "Comparison across different hardware devices"
+    ],
+    "main_weakness": [
+      "Lack of public data",
+      "High performance (0% EER) on a small subject pool suggests potential overfitting",
+      "Significant drop in cross-device verification"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The reported EER of 0% in the single-device scenario is exceptionally low and should be viewed with caution given the leave-one-out cross-validation on a small dataset."
+  },
+  "extraction_confidence": "high"
+}

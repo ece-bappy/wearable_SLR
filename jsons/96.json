@@ -1,0 +1,146 @@
+{
+  "title": "A residual deep learning network for smartwatch-based user identification using activity patterns in daily living",
+  "year": 2025,
+  "venue": "Computers and Electrical Engineering",
+  "doi": "10.1016/j.compeleceng.2024.109883",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "activity patterns"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "SP-SW HAR dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 23,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 10,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Att-ResBiLSTM",
+      "1D-CNN",
+      "ResBiLSTM",
+      "Attention mechanism"
+    ],
+    "input_representation": "normalized and filtered raw IMU sensor data",
+    "training_strategy": "5-fold cross-validation"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "5-fold cross-validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Poor performance during sedentary activities",
+      "Small sample size of subjects",
+      "Potential variance across different smartwatch hardware"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "SP-SW HAR dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed Att-ResBiLSTM hybrid network combining CNN, BiLSTM with residual connections, and attention mechanism for user identification."
+    ],
+    "main_strength": [
+      "High identification accuracy for dynamic activities like walking and turning."
+    ],
+    "main_weakness": [
+      "Model fails to capture distinctive patterns in sedentary/sitting activities."
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The paper reports high Accuracy and F1-score, but does not report the requested biometric metrics (AUC, EER, FAR, FRR)."
+  },
+  "extraction_confidence": "high"
+}

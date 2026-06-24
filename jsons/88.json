@@ -1,0 +1,144 @@
+{
+  "title": "BreathSign: Transparent and Continuous In-ear Authentication Using Bone-conducted Breathing Biometrics",
+  "year": 2023,
+  "venue": "IEEE INFOCOM 2023",
+  "doi": "10.1109/INFOCOM53939.2023.10229037",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "bone-conducted breathing sound"
+    ],
+    "sensor": [
+      "inward-facing microphones"
+    ],
+    "device": [
+      "commercial earphones"
+    ],
+    "body_location": "ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 2400,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 1,
+        "unit": "month"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Triplet network",
+      "Gaussian Mixture Model (GMM)",
+      "Maximal Overlap Discrete Wavelet Transform (MODWT)"
+    ],
+    "input_representation": "MFCCs, Sub-band Energy Ratio (SER), Pearson correlation coefficients",
+    "training_strategy": "Metric learning using Triplet Loss to reconstruct behavior-independent features"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "15 legitimate users, 5 spoofers; 20% training, 80% testing for legitimate users",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 32,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 80.0
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance drops significantly during strenuous exercise (9km/h)",
+      "Interference from sound playing in earphones (music)",
+      "Potential impact of respiratory diseases on biometric features"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "impersonation",
+      "replay"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requires the user to wear earphones; performance degraded by intense physical activity"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed BreathSign, using bone-conducted breathing sounds via inward-facing earphone microphones for continuous authentication",
+      "Designed a Triplet network to remove the impact of breathing behavior (fast, normal, deep) on biometric features"
+    ],
+    "main_strength": [
+      "High transparency (zero-effort)",
+      "Robustness to earphone wearing positions and daily environments",
+      "Strong resistance to air-conduction and bone-conduction replay attacks"
+    ],
+    "main_weakness": [
+      "Lack of evaluation while audio is playing in earphones",
+      "Performance degradation during high-intensity exercise"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "ENVIRONMENT: LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper reports 'Authentication Accuracy' and 'Spoofing Detection Rate' instead of EER/FAR/FRR. It demonstrates high temporal stability over 32 days."
+  },
+  "extraction_confidence": "high"
+}

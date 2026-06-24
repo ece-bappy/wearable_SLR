@@ -1,0 +1,161 @@
+{
+  "title": "M-PPG: A Nonintrusive Authentication for Wearable Devices via PPG Sensors With Motor Excitations",
+  "year": 2024,
+  "venue": "IEEE Sensors Journal",
+  "doi": "10.1109/JSEN.2024.3443914",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "photoplethysmography (PPG)"
+    ],
+    "sensor": [
+      "PPG sensor",
+      "vibration motor"
+    ],
+    "device": [
+      "wristband prototype"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 800,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 2,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest"
+    ],
+    "input_representation": "35 selected features comprising temporal statistics, frequency-domain (FFT), and time-frequency-domain (DWT) features from heartbeat-related, motor-related, and overall PPG signals",
+    "training_strategy": "Binary classifier trained for each legitimate user"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.6,
+      "context": "Pass rate of attackers with a well-designed authentication mechanism"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.1,
+      "context": "Derived from the legitimate user pass rate of 99.9%"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-user-out style where each participant acts as the legitimate user and the others act as attackers",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 10,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 92.5
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "F1-score",
+      "value": 81.49
+    },
+    "reported_limitations": [
+      "Performance decline when heart rate exceeds 100 bpm"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "heuristic"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 5,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 80,
+        "unit": "mA"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "Heartbeat PPG",
+      "Motor-induced PPG"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Introduced motor excitations as a stimulus to provide stable high-frequency signals in PPG for better authentication",
+      "Proposed a random challenge scheme and adaptive update mechanism for long-term security"
+    ],
+    "main_strength": [
+      "Effective noise reduction for indoor lighting strobe interference",
+      "Robustness against motion artifacts compared to passive PPG"
+    ],
+    "main_weakness": [
+      "Experimental security analysis is theoretical rather than empirical (no active spoofing tests performed)"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The paper uses 'Pass Rate' which maps to FAR for attackers and (1-FRR) for legitimate users."
+  },
+  "extraction_confidence": "high"
+}

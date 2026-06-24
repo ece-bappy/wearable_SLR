@@ -1,0 +1,162 @@
+{
+  "title": "Biometric User Identification Based on Human Activity Recognition Using Wearable Sensors: An Experiment Using Deep Learning Models",
+  "year": 2021,
+  "venue": "Electronics",
+  "doi": "10.3390/electronics10030308",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "human activity recognition",
+      "gait"
+    ],
+    "sensor": [
+      "tri-axial accelerometer",
+      "tri-axial gyroscope"
+    ],
+    "device": [
+      "smartphone",
+      "MotionNode"
+    ],
+    "body_location": "waist"
+  },
+  "data": [
+    {
+      "dataset_name": "UCI Human Activity Recognition Dataset (UCI HAR)",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 30,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "USC Human Activity Dataset (USC HAD)",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 14,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "LSTM",
+      "CNN-LSTM",
+      "ConvLSTM"
+    ],
+    "input_representation": "tri-axial linear acceleration and tri-axial angular velocity",
+    "training_strategy": "Hierarchical ensemble classifier consisting of an Activity Classifier (AC) and a User Classifier (UC)"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "70% training and 30% testing split",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "results are not state-of-the-art",
+      "lack of real-time experiments with subjects"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "UCI HAR, USC HAD",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a hierarchical ensemble framework for biometric user identification based on human activity recognition using deep learning"
+    ],
+    "main_strength": [
+      "Demonstrated high identification accuracy specifically for walking-related activities"
+    ],
+    "main_weakness": [
+      "Relies entirely on open benchmark datasets",
+      "Lack of security testing (spoofing)",
+      "No temporal or cross-session evaluation"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper reports Accuracy, Precision, Recall, and F1-score, but does not report EER, FAR, FRR, or AUC for its own proposed system."
+  },
+  "extraction_confidence": "high"
+}

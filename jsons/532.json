@@ -1,0 +1,163 @@
+{
+  "title": "3D Facial Tracking and User Authentication Through Lightweight Single-Ear Biosensors",
+  "year": 2025,
+  "venue": "IEEE Transactions on Mobile Computing",
+  "doi": "10.1109/TMC.2024.3470339",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "EMG",
+      "EOG",
+      "facial gestures"
+    ],
+    "sensor": [
+      "surface electrodes"
+    ],
+    "device": [
+      "single-earpiece biosensing system"
+    ],
+    "body_location": "ear"
+  },
+  "data": [
+    {
+      "dataset_name": "Self-collected",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 16,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 28,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "1D CNN",
+      "LSTM",
+      "CNN-LSTM",
+      "CBAM"
+    ],
+    "input_representation": "four channels of time-series biosignals (two EMG and two EOG)",
+    "training_strategy": "cross-modal transfer learning from visual facial landmark detection model to biosignal domain"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.9995,
+      "context": "Achieved with CBAM for five gestures in a series under credential-aware attack"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.24,
+      "context": "Reported as below 0.24% in abstract"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.2,
+      "context": "Derived from TPR > 99.8% for three gestures in series"
+    }
+  ],
+  "evaluation_protocol": "8:1:1 split for training, validation, and testing",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Requires user-specific training due to variance in biosignal strength and sensitivity"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [
+      "questionnaire"
+    ],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "EMG",
+      "EOG"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed BioFace-3D, a single-earpiece system capable of continuous 3D facial tracking and user authentication",
+      "Utilized cross-modal transfer learning to map biosignals to facial landmarks using visual ground truth"
+    ],
+    "main_strength": [
+      "Low obtrusiveness compared to multi-channel biosensing",
+      "High authentication accuracy against mimicry attacks"
+    ],
+    "main_weakness": [
+      "Dependency on user-specific model training"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The system effectively uses a two-factor approach combining behavioral (gestures) and physiological (biosignals) traits."
+  },
+  "extraction_confidence": "high"
+}

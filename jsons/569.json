@@ -1,0 +1,164 @@
+{
+  "title": "Preliminary Study of Step-Count Authentication using Wearable Device",
+  "year": 2025,
+  "venue": "I. J. Computer Network and Information Security",
+  "doi": "10.5815/ijcnis.2025.03.01",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "step counts"
+    ],
+    "sensor": [
+      "step-count sensor"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private research volunteer dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 11,
+      "num_samples": 6534,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 33,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "threshold range method",
+      "mean and standard deviation boundary"
+    ],
+    "input_representation": "hourly step counts",
+    "training_strategy": "Calculation of individual mean and standard deviation to establish threshold ranges for identification"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.715,
+      "context": "Achieved using the initial set of threshold ranges"
+    },
+    {
+      "metric": "EER",
+      "value": 0.27,
+      "context": "Calculated using tertiary threshold ranges"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.29,
+      "context": "Achieved using secondary threshold range (x̄ + 0.75S.D. ≤ Range ≤ x̄ + 1S.D.)"
+    },
+    {
+      "metric": "FRR",
+      "value": 12.29,
+      "context": "Achieved using tertiary threshold range (x̄ - 2S.D. ≤ Range ≤ x̄ + 2S.D.)"
+    }
+  ],
+  "evaluation_protocol": "Confusion matrix based on 30 days of baseline data and 3 days of testing data; tested against self (TP/FP) and 10 other participants (TN/FN)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.715,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 33,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST",
+      "SENSITIVITY_TO_OUTLIERS"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Dependence on regular daily walking routines; high false rejection rates for legitimate users in narrow ranges"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Preliminary feasibility study of step-count as a behavioral biometric factor",
+      "Proposal of a statistical threshold range method for authentication"
+    ],
+    "main_strength": [
+      "Passive data collection",
+      "Non-intrusive user experience",
+      "Low computational complexity"
+    ],
+    "main_weakness": [
+      "High EER",
+      "Limited subject pool",
+      "Controlled environment usage"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The authors define FN as FAR and FP as FRR, which is non-standard but internally consistent. Results show moderate potential for continuous auth but require ML refinement."
+  },
+  "extraction_confidence": "high"
+}

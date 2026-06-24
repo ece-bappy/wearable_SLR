@@ -1,0 +1,5 @@
+{
+  "title": "Behavioral Biometrics for Continuous Authentication in the Internet-of-Things Era: An Artificial Intelligence Perspective",
+  "relevance": "exclude",
+  "exclusion_reason": "The paper is a survey article that summarizes existing research; it does not implement or experimentally evaluate a specific biometric authentication system of its own."
+}

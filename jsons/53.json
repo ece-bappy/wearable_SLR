@@ -1,0 +1,161 @@
+{
+  "title": "Personalized Gait-based Authentication Using UWB Wearable Devices",
+  "year": 2019,
+  "venue": "27th Conference on User Modeling, Adaptation and Personalization (UMAP ’19)",
+  "doi": "10.1145/3320435.3320473",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "UWB transceiver"
+    ],
+    "device": [
+      "smart-glasses",
+      "smart-watch",
+      "smartphone",
+      "smart-shoes"
+    ],
+    "body_location": "head, right wrist, left pocket, right ankle"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset (available at author URL)",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 60,
+        "unit": "seconds per walking style"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "One-Class Gaussian",
+      "k-Nearest Neighbor",
+      "k-means",
+      "Naive Parzen",
+      "Auto-encoder",
+      "Minimum Spanning Tree"
+    ],
+    "input_representation": "distances between all pairs of UWB devices",
+    "training_strategy": "One-Class Classification (OCC)"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.95,
+      "context": "Achieved using Gaussian classifier with 2s window size"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.06,
+      "context": "Achieved using Naive Parzen classifier during fast walking style"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.04,
+      "context": "Achieved using MST classifier during normal walking style"
+    }
+  ],
+  "evaluation_protocol": "Ten-fold cross-validation; averaged across all users",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "BA",
+      "value": 0.91
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Gait model is less distinctive when walking at a slow pace or when carrying a bag"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "First use of UWB distance measurements for wearable biometric authentication",
+      "Implementation of One-Class Classification to authenticate users without requiring impostor data during training"
+    ],
+    "main_strength": [
+      "Reduced training effort by focusing only on the legitimate user"
+    ],
+    "main_weakness": [
+      "Small subject pool",
+      "Limited environmental variety (single corridor)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "Performance varies significantly by walking style; fast walking provided the best results."
+  },
+  "extraction_confidence": "high"
+}

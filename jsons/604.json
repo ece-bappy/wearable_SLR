@@ -1,0 +1,154 @@
+{
+  "title": "Wearables-Driven Freeform Handwriting Authentication",
+  "year": 2019,
+  "venue": "IEEE Transactions on Biometrics, Behavior, and Identity Science",
+  "doi": "10.1109/TBIOM.2019.2912401",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "handwriting"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "smartwatch",
+      "LG Urbane 2"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Freeform Handwriting Dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 53,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "BLSTM",
+      "Logistic Regression",
+      "Gaussian Naïve Bayes"
+    ],
+    "input_representation": "linear acceleration measurements across three axis (x, y, and z)",
+    "training_strategy": "Penalizing the dominant class and data augmentation (scaling and rotation)"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 5.51,
+      "context": "Achieved on Scenario E1 (copying same speech) using DNN with 49-window majority voting"
+    },
+    {
+      "metric": "FAR",
+      "value": 6.57,
+      "context": "Average population FAR for DNN after trained impersonation attacks"
+    }
+  ],
+  "evaluation_protocol": "Cross-day testing: training/validation on day 1, testing on day 2. Majority voting used to fuse decisions across multiple 5-second windows.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 5.51,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "EER is above acceptable levels for a standalone unimodal system",
+      "Higher cognitive load of freeform writing compared to signatures causes more variance"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "First study of wearable-driven freeform handwriting authentication",
+      "Comprehensive evaluation against trained impersonators using visual and video cues",
+      "Comparison between manual feature engineering and deep learning (CNN-BLSTM)"
+    ],
+    "main_strength": [
+      "Rigorous threat model with motivated, trained attackers",
+      "Cross-day validation to account for behavioral variance"
+    ],
+    "main_weakness": [
+      "Performance not sufficient for unimodal high-security applications",
+      "Dataset collected in a seated lab environment"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The authors suggest using this as part of a multimodal system due to the EER being around 5-7%."
+  },
+  "extraction_confidence": "high"
+}

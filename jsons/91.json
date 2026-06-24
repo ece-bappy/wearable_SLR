@@ -1,0 +1,141 @@
+{
+  "title": "PERSON IDENTIFICATION USING DEEP CONVOLUTIONAL NEURAL NETWORKS ON SHORT-TERM SIGNALS FROM WEARABLE SENSORS",
+  "year": 2020,
+  "venue": "ICASSP 2020",
+  "doi": null,
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "linear acceleration",
+      "angular velocity",
+      "heart rate"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "photoplethysmogram"
+    ],
+    "device": [
+      "Samsung Gear S3 Frontier smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Person ID Dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 60199,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 20,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "1D Convolutional Neural Network",
+      "Deep Neural Network"
+    ],
+    "input_representation": "Raw signals from three sensor streams",
+    "training_strategy": "SGD optimizer with momentum; batch normalization; ReLU; dropout; data augmentation via artificial noise contamination (zeroing STFT components and raw signal zeroing)"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "75% of recorded days for training, 25% for testing",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 20,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "Person vs Sensor Probability",
+      "value": 0.27
+    },
+    "reported_limitations": [
+      "Sensor coupling where the model identifies the specific device noise rather than the person, especially during low-activity states like sleep"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "heart rate"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Demonstrated that 10-minute windows of wearable data contain sufficient biometric information for person identification",
+      "Identified and addressed the 'sensor-fingerprint' problem where DNNs learn device-specific noise instead of human biometrics"
+    ],
+    "main_strength": [
+      "Use of in-the-wild continuous monitoring",
+      "Rigorous analysis of sensor-coupling effects"
+    ],
+    "main_weakness": [
+      "Small subject pool (20 persons)",
+      "Reliance on accuracy instead of biometric verification metrics (EER/FAR)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper focuses on identification (multi-class) rather than verification (1:1), which explains the lack of EER/FAR/FRR metrics."
+  },
+  "extraction_confidence": "high"
+}

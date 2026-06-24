@@ -1,0 +1,141 @@
+{
+  "title": "An Ear Canal Deformation Based Continuous User Authentication Using Earables",
+  "year": 2022,
+  "venue": "ACM MobiCom '21",
+  "doi": "10.1145/3447993.3482858",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "ear canal deformation",
+      "acoustic sensing"
+    ],
+    "sensor": [
+      "microphone",
+      "speaker"
+    ],
+    "device": [
+      "earables",
+      "earbuds"
+    ],
+    "body_location": "ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 24,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Adaptive Boosting Classifier"
+    ],
+    "input_representation": "fine-grained acoustic features from reflected inaudible beep signals",
+    "training_strategy": "Iteratively adding primary classifiers for each phoneme category"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Tested against a mimic attack where adversaries attempt to spoof the system by performing similar articulatory gestures.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": []
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "presentation/mask"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed EarDynamic, using ear canal deformation (static geometry + dynamic motion during speech) for authentication",
+      "Leveraged acoustic sensing via inaudible chirp signals in earables"
+    ],
+    "main_strength": [
+      "Transparent and passive authentication",
+      "Evaluation conducted in diverse real-world environments (grocery stores, vehicles, etc.)"
+    ],
+    "main_weakness": [
+      "Small subject pool (n=24)",
+      "Failure to report standard biometric metrics (EER, FAR, FRR)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_BASELINE_COMPARISON"
+    ],
+    "notes_for_review": "The paper reports Accuracy, Recall, Precision, and F1, but none of the target metrics (AUC, EER, FRR, FAR) required for the structured review."
+  },
+  "extraction_confidence": "high"
+}

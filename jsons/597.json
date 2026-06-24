@@ -1,0 +1,177 @@
+{
+  "title": "SNNAuth: Sensor-Based Continuous Authentication on Smartphones Using Spiking Neural Networks",
+  "year": 2024,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2024.3349533",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "motion"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "hand/waist"
+  },
+  "data": [
+    {
+      "dataset_name": "Our Data Set",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 100,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 100,
+        "unit": "minutes"
+      }
+    },
+    {
+      "dataset_name": "UCI HAR",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 30,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "WISDM HARB",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 51,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 54,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "self-supervised",
+    "model": [
+      "ANN-SNN",
+      "OC-kNN"
+    ],
+    "input_representation": "Normalized sensor time-series with positional encoding",
+    "training_strategy": "ANN-SNN conversion with self-supervised pretraining using signal transformations (noise, time warping)"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 1.85,
+      "context": "Achieved on 'Our Data Set' using SNNAuth with OC-kNN"
+    }
+  ],
+  "evaluation_protocol": "Five-fold cross-validation",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": null
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": null
+    },
+    "reported_limitations": [
+      "Sensitivity to sensor selection; single sensor performance is poor"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "accuracy",
+        "value": 1.31,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "UCI HAR, WISDM HARB",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed SNNAuth using Spiking Neural Networks for continuous authentication",
+      "Implemented ANN-SNN conversion to reduce power consumption while maintaining performance",
+      "Used OC-kNN for one-class biometric classification"
+    ],
+    "main_strength": [
+      "High accuracy and low EER across multiple datasets",
+      "Energy-efficient architecture suitable for neuromorphic hardware",
+      "Requires only one legitimate user's data for training"
+    ],
+    "main_weakness": [
+      "No evaluation of real-world spoofing attacks",
+      "No quantified energy measurement provided"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The system leverages self-supervised learning for feature extraction, making it more flexible than purely supervised counterparts."
+  },
+  "extraction_confidence": "high"
+}

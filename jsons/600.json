@@ -1,0 +1,161 @@
+{
+  "title": "Implicit authentication with sensor normalization and multi-modal domain adaption based on mobile crowd sensing",
+  "year": 2022,
+  "venue": "CCF Transactions on Pervasive Computing and Interaction",
+  "doi": "10.1007/s42486-022-00117-2",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "pattern lock swiping behavior"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "time"
+    ],
+    "device": [
+      "smartphone",
+      "tablet"
+    ],
+    "body_location": "hand"
+  },
+  "data": [
+    {
+      "dataset_name": "Private collection",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 40,
+      "num_samples": 28800,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "transfer",
+    "model": [
+      "OCSVM",
+      "Kernel Mean Matching (KMM)"
+    ],
+    "input_representation": "10 items: time, acceleration (x, y, z), angular velocity (x, y, z), and Eulerian angles (pitch, roll, yaw)",
+    "training_strategy": "Domain adaptation to transfer models from a source domain (abundant training data) to a target domain (small samples from actual scenarios)."
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 1.2,
+      "context": "Achieved on multi-modal situations with different pattern passwords"
+    },
+    {
+      "metric": "EER",
+      "value": 2.0,
+      "context": "Achieved using only 60 samples"
+    }
+  ],
+  "evaluation_protocol": "Comparison of OCSVM against iForest and LOF; evaluation of normalization and domain adaptation across heterogeneous devices (smartphones vs tablets).",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 91.7
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Training needs to be transferred to mobile devices for better feasibility"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "time"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed sensor normalization (S-T and S-S) to enable authentication across heterogeneous devices",
+      "Used domain adaptation to handle multi-modal/unpredictable user states and small sample sizes"
+    ],
+    "main_strength": [
+      "Effectively handles the transition between smartphones and tablets"
+    ],
+    "main_weakness": [
+      "Small subject pool (40 users)",
+      "Lack of active spoofing/presentation attack tests"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION",
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "The paper focuses on the transition between different device forms (phone to tablet) and the ability to authenticate with very few samples via transfer learning."
+  },
+  "extraction_confidence": "high"
+}

@@ -1,0 +1,165 @@
+{
+  "title": "Continuous Authentication of Smartphones Based on Application Usage",
+  "year": 2019,
+  "venue": "IEEE Transactions on Biometrics, Behavior, and Identity Science",
+  "doi": "10.1109/TBIOM.2019.2918307",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "application usage patterns"
+    ],
+    "sensor": [
+      "application logs"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "UMDAA-02",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 26,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 2,
+        "unit": "months"
+      }
+    },
+    {
+      "dataset_name": "Securacy",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 99,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 6,
+        "unit": "months"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Hidden Markov Model (HMM)",
+      "Markov Chain (MC)",
+      "Marginally Smoothed HMM (MSHMM)",
+      "Modified Edit-Distance (M-ED)"
+    ],
+    "input_representation": "Sequential application names combined with timezone and weekday/weekend flags",
+    "training_strategy": "State-space modeling utilizing marginal smoothing and Laplacian smoothing to handle unforeseen observations"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 16.16,
+      "context": "Achieved on Securacy dataset using Marginally Smoothed HMM (MSHMM)"
+    }
+  ],
+  "evaluation_protocol": "70% training / 30% testing split; intruder simulation by appending different user data to legitimate user sequences",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": 16.16,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 6,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "EER for diverse datasets remains around 16%",
+      "High dependency on sequence length (n) and sampling rate for latency and accuracy trade-off",
+      "Dataset size limitation for deep learning models"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 2.5,
+        "unit": "minutes"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Latency in decision making is influenced by the choice of sequence length and sampling rate"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "UMDAA-02, Securacy",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed the use of application usage patterns as a behavioral biometric for continuous authentication",
+      "Introduced the Marginally Smoothed HMM (MSHMM) and Modified Edit-Distance (M-ED) to handle unknown applications and unforeseen observations"
+    ],
+    "main_strength": [
+      "Validation on large-scale, in-the-wild datasets",
+      "Explicit handling of the 'unknown application' problem which is common in real-world app usage"
+    ],
+    "main_weakness": [
+      "Relatively high EER compared to traditional biometrics",
+      "Lack of evaluation against active spoofing/presentation attacks"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "MODEL_LIMITATIONS"
+    ],
+    "notes_for_review": "The paper highlights that ignoring unknown apps in the test set actually degrades performance, as the presence of unknown apps is itself a discriminative feature between users."
+  },
+  "extraction_confidence": "high"
+}

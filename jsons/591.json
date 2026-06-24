@@ -1,0 +1,164 @@
+{
+  "title": "Augmented PIN Authentication through Behavioral Biometrics",
+  "year": 2022,
+  "venue": "Sensors",
+  "doi": "10.3390/s22134857",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "smartphone movement"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gravity sensor",
+      "gyroscope",
+      "linear acceleration",
+      "rotation vector",
+      "orientation sensor"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "hand"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 12,
+      "num_samples": 5640,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "unsupervised",
+    "model": [
+      "Principal Component Analysis (PCA)",
+      "Kernel Principal Component Analysis (K-PCA)",
+      "One-Class Support Vector Machine (OC-SVM)",
+      "Local Outlier Factor (LOF)"
+    ],
+    "input_representation": "17 features comprising motion sensor readings, the pressed digit, and a calculated value M (pitch^2 + roll^2)",
+    "training_strategy": "Anomaly detection based on user-specific motion patterns during PIN insertion"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.04,
+      "context": "Achieved for 6-digit PINs using PCA"
+    },
+    {
+      "metric": "AUC",
+      "value": 0.9941,
+      "context": "Achieved for 6-digit PINs using PCA"
+    }
+  ],
+  "evaluation_protocol": "One-vs-all authentication problems; Monte Carlo method used to generate 500 combinations of N samples without replacement",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "User behavior is not necessarily repetitive",
+      "Ineffective if the smartphone is lying on a table during PIN insertion"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 0.1,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "score",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Augmented PIN authentication using behavioral motion biometrics to prevent unauthorized access even if the PIN is stolen"
+    ],
+    "main_strength": [
+      "Very low processing latency",
+      "High effectiveness with small training sets (as few as 50 samples)"
+    ],
+    "main_weakness": [
+      "Dependence on the user holding the device in a natural manner"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The system provides a significant security layer on top of traditional PINs, reducing successful attacker authentication from 100% to 4% for 6-digit PINs."
+  },
+  "extraction_confidence": "high"
+}

@@ -1,0 +1,154 @@
+{
+  "title": "Continuous m-Health Data Authentication Using Wavelet Decomposition for Feature Extraction",
+  "year": 2020,
+  "venue": "Sensors",
+  "doi": "10.3390/s20195690",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "Heart Rate Variability (HRV)"
+    ],
+    "sensor": [
+      "bioelectrical sensor"
+    ],
+    "device": [
+      "smartwatch",
+      "smartphone"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 30,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 4,
+        "unit": "hours"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Feed Forward Neural Network (FF-NN)"
+    ],
+    "input_representation": "12 statistical features extracted from biorthogonal wavelet decomposition (approximation and detail coefficients)",
+    "training_strategy": "Feature extraction from sub-bands followed by FF-NN classification"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 12.42,
+      "context": "Achieved in the use case experiment using 30 subjects with detail coefficient fusion"
+    }
+  ],
+  "evaluation_protocol": "Dataset divided into training and testing; 10 subjects as patients and 20 as non-patients for verification testing",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": 12.42,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Computational power of mobile devices limits large data processing",
+      "Success rate for patients (84%) is below ideal 100%"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [
+      "HRV approximation coefficients",
+      "HRV detail coefficients"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 13.8,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a framework for m-health data authentication using Biorthogonal Wavelet Decomposition of HRV signals",
+      "Evaluated the impact of different wavelet families and sub-band fusion on authentication performance"
+    ],
+    "main_strength": [
+      "Uses non-intrusive wearable devices for continuous authentication in daily life"
+    ],
+    "main_weakness": [
+      "High EER compared to state-of-the-art biometrics",
+      "Small subject pool"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The study confirms that fusion of detail coefficients from biorthogonal wavelets improves HRV-based authentication."
+  },
+  "extraction_confidence": "high"
+}

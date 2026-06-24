@@ -1,0 +1,175 @@
+{
+  "title": "SmartEar: Rhythm-Based Tap Authentication Using Earphone in Information-Centric Wireless Sensor Network",
+  "year": 2022,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2021.3063479",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "tapping rhythm",
+      "acceleration"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "earphone"
+    ],
+    "body_location": "ear"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": 750,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 6,
+        "unit": "s"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "Naive Bayes"
+    ],
+    "input_representation": "3-axis acceleration time-series mapped to 580x3 2-D tensor",
+    "training_strategy": "80-20 train-test split with SMOTE for data balancing"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 1.3,
+      "context": "Achieved during Brute Attack scenario"
+    },
+    {
+      "metric": "FRR",
+      "value": 1.1,
+      "context": "Achieved during Brute Attack scenario"
+    }
+  ],
+  "evaluation_protocol": "Binary classification for each legal user; 80% training, 20% testing",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": {
+      "FAR": 3.1,
+      "FRR": 2.96
+    },
+    "real_world_performance_value": {
+      "FAR": 4.0,
+      "FRR": 8.6
+    },
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "detection rate",
+      "value": 93.9
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance degradation in high-vibration environments (e.g., trains)",
+      "Data distribution changes based on user state and external environment"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 18.6,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 4.72,
+        "unit": "mW"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed SmartEar for authentication via rhythmic tapping on commercial earphones using built-in accelerometers",
+      "Designed an event detection algorithm to isolate taps from noise (Butterworth and Wavelet filtering)"
+    ],
+    "main_strength": [
+      "No hardware modifications required",
+      "Resistant to imitation attacks even when the rhythm is known"
+    ],
+    "main_weakness": [
+      "Sensitivity to external physical bumps (e.g., train travel)",
+      "Small sample size"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "NO_CROSS_SESSION",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "System uses a hybrid of CNN-extracted local features and manually calculated global features (tap energy, interval, time) passed to a Naive Bayes classifier."
+  },
+  "extraction_confidence": "high"
+}

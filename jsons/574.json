@@ -1,0 +1,158 @@
+{
+  "title": "MandiPass: Secure and Usable User Authentication via Earphone IMU",
+  "year": 2021,
+  "venue": "2021 IEEE 41st International Conference on Distributed Computing Systems (ICDCS)",
+  "doi": "10.1109/ICDCS51616.2021.00070",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "mandible vibration"
+    ],
+    "sensor": [
+      "IMU",
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "earphone"
+    ],
+    "body_location": "ear"
+  },
+  "data": [
+    {
+      "dataset_name": "Private collection",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 34,
+      "num_samples": 23408,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Two-branch deep neural network",
+      "CNN"
+    ],
+    "input_representation": "Gradient array (dimension 2 x 6 x n/2)",
+    "training_strategy": "Cross entropy loss with Adam optimizer"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 1.28,
+      "context": "Achieved with 34 volunteers using the proposed two-branch CNN biometric extractor"
+    }
+  ],
+  "evaluation_protocol": "80% training set, 20% testing set; classification experiment performed ten times",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2.0,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 2.0,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "VSR",
+        "value": 0.5
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "similarity",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "immunity",
+      "value": null
+    },
+    "reported_limitations": [
+      "Hardware imperfection of IMU",
+      "Motion noise"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 2.0,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed MandiblePrint, a new intracorporal biometric extracted from mandible vibrations via earphone IMUs",
+      "Designed a two-branch CNN for temporal-spatial feature extraction",
+      "Implemented cancelable templates using a Gaussian matrix to prevent replay attacks"
+    ],
+    "main_strength": [
+      "High accuracy (EER 1.28%)",
+      "Robustness to human activities (walking, running) and food/drink",
+      "Immunity to acoustic noise"
+    ],
+    "main_weakness": [
+      "Requires active user interaction (voicing 'EMM')"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The system leverages the physical properties of bone conduction to create a secure, intracorporal biometric."
+  },
+  "extraction_confidence": "high"
+}
