@@ -1,0 +1,185 @@
+{
+  "title": "EarPrint: Earphone-Based Implicit User Authentication With Behavioral and Physiological Acoustics",
+  "year": 2024,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2024.3417622",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "behavioral acoustics",
+      "physiological acoustics"
+    ],
+    "sensor": [
+      "electret microphone"
+    ],
+    "device": [
+      "smart earphones",
+      "Android smartphone"
+    ],
+    "body_location": "ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": "private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 50,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 120,
+        "unit": "samples per subject"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "ResNet18",
+      "CBAM (Convolutional Block Attention Module)",
+      "Deep Metric Learning"
+    ],
+    "input_representation": "64x64 spectrograms",
+    "training_strategy": "Semi-hard sampling with triplet loss"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.58,
+      "context": "Achieved in baseline setting (noise < 40dB, static, 0 degree angle)"
+    },
+    {
+      "metric": "EER",
+      "value": 4.23,
+      "context": "Achieved in baseline setting (noise < 40dB, static, 0 degree angle)"
+    },
+    {
+      "metric": "FRR",
+      "value": 10.9,
+      "context": "Achieved in baseline setting (noise < 40dB, static, 0 degree angle)"
+    }
+  ],
+  "evaluation_protocol": "Training on 40 subjects, testing on 10 subjects; 1 legitimate user vs 9 attackers per test; results averaged over 10 repetitions.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 4.23,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "month"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 2,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "FRR",
+        "value": 13.7
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "FAR",
+      "value": 2.9
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 0.96
+    },
+    "reported_limitations": [
+      "Sensitivity to human motions (especially running and talking)",
+      "Relatively high FRR",
+      "Not suitable for semi-open headphones"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 2.3,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 33.0,
+        "unit": "percentage drop in 3h"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Relatively high FRR may require multiple authentication trials."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "behavioral acoustics",
+      "physiological acoustics"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "FAR",
+        "value": null,
+        "unit": "improvement noted in ablation study"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed EarPrint, a passive authentication system combining behavioral (putting on earphones) and physiological (heartbeat, breathing) acoustics.",
+      "Implemented a retraining-free Deep Metric Learning network with attention mechanisms."
+    ],
+    "main_strength": [
+      "High scalability (no retraining for new users)",
+      "Low FAR",
+      "Implicit and unobtrusive"
+    ],
+    "main_weakness": [
+      "Performance degradation during high-intensity movement",
+      "High FRR compared to FAR"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "USER_INTERACTION_REQUIRED"
+    ],
+    "notes_for_review": "System demonstrates strong potential for continuous, implicit authentication, but the tradeoff between FAR and FRR remains a significant usability hurdle."
+  },
+  "extraction_confidence": "high"
+}

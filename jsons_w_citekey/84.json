@@ -1,0 +1,173 @@
+{
+  "title": "In-Ear EEG Biometrics for Feasible and Readily Collectable Real-World Person Authentication",
+  "year": 2018,
+  "venue": "IEEE Transactions on Information Forensics and Security",
+  "doi": "10.1109/tifs.2017.2763124",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "EEG"
+    ],
+    "sensor": [
+      "viscoelastic generic in-ear EEG sensor",
+      "flexible electrodes"
+    ],
+    "device": [
+      "In-ear EEG headset"
+    ],
+    "body_location": "Left ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": "SR",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 190,
+        "unit": "seconds"
+      }
+    },
+    {
+      "dataset_name": "SN",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 5,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 190,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Cosine Distance",
+      "Linear Discriminant Analysis (LDA)",
+      "Support Vector Machine (SVM)"
+    ],
+    "input_representation": "Autoregressive (AR) coefficients and Power Spectral Density (PSD) features (specifically alpha band ratios and peak power)",
+    "training_strategy": "5-fold cross-validation within the training matrix for SVM hyper-parameter tuning"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.3,
+      "context": "Achieved in Setup-B (biased) using SVM for registered imposters (derived from TPR=99.7%)"
+    },
+    {
+      "metric": "FRR",
+      "value": 10.7,
+      "context": "Achieved in Setup-B (biased) using SVM for clients (derived from TPR=89.3%)"
+    }
+  ],
+  "evaluation_protocol": "Compared two scenarios: Setup-R (Rigorous, training and validation from different days) and Setup-B (Biased, training and validation mix data from the same day)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 15,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 10,
+        "unit": "days"
+      },
+      "drop_in_performance": {
+        "metric": "HTER",
+        "value": 10.3
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Sensitivity to drowsiness/fatigue causing alpha attenuation",
+      "Requirement for eyes-closed resting state",
+      "Performance drop when training/testing are on different days"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requires the user to be in a resting state with eyes closed"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Demonstrated feasibility of in-ear EEG for biometric authentication",
+      "Introduced a 'rigorous' evaluation protocol to avoid data leakage between recording days"
+    ],
+    "main_strength": [
+      "High collectability via wearable in-ear sensor",
+      "Experimental focus on temporal reproducibility across different days"
+    ],
+    "main_weakness": [
+      "Small subject sample size",
+      "Data collected exclusively in a controlled lab setting",
+      "Dependence on specific mental state (eyes closed)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The authors highlight a significant performance gap between biased (same-day) and rigorous (cross-day) setups, suggesting that many existing EEG biometric studies overestimate performance."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Nakamura_2018"
+}

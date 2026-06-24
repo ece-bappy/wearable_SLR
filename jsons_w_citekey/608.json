@@ -1,0 +1,181 @@
+{
+  "title": "Wrist in Motion: A Seamless Context-Aware Continuous Authentication Framework Using Your Clickings and Typings",
+  "year": 2020,
+  "venue": "IEEE Transactions on Biometrics, Behavior, and Identity Science",
+  "doi": "10.1109/TBIOM.2020.2997004",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "mouse dynamics",
+      "keystroke dynamics",
+      "wrist motion"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartwatch",
+      "mouse",
+      "keyboard"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 44,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 2.0,
+        "unit": "weeks"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest Ensemble Classifier (RFEC)",
+      "Sequential Sampling Analysis (SSA)",
+      "SSA Dynamic Trust Model (SSA-DTM)"
+    ],
+    "input_representation": "Angle-based probability distributions for mouse, context-aware latency feature cells for keystrokes, and acceleration/angular acceleration probability distributions for wrist motion.",
+    "training_strategy": "One-vs-all classification with iterative feature filtering (gene selection) to optimize feature sets per user."
+  },
+  "evaluation": [
+    {
+      "metric": "FRR",
+      "value": 0.92,
+      "context": "Best reported for genuine users using SSA-DTM on mixed keyboard/mouse data with wrist motion"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.0,
+      "context": "Best reported for attackers using SSA-DTM"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-out style for genuine users; training on 60% genuine and 6% imposter data, testing on 20% genuine and 94% imposter/entire intruder data.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 10.0,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 10.0,
+        "unit": "days"
+      },
+      "drop_in_performance": {
+        "metric": "FRR",
+        "value": 0.62
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Early stage of research",
+      "Limited scale of study"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 34.9,
+        "unit": "mixed actions"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "mouse dynamics",
+      "keystroke dynamics",
+      "wrist motion"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "efficiency",
+        "value": null,
+        "unit": "actions"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Integrated wrist motion with mouse and keystroke dynamics for continuous authentication",
+      "Context-aware keystroke latency feature generation",
+      "SSA Dynamic Trust Model for seamless transition between input modes"
+    ],
+    "main_strength": [
+      "Multi-modal approach increases robustness",
+      "Device-independent angle-based features",
+      "Low FAR in SSA-DTM mode"
+    ],
+    "main_weakness": [
+      "Data collection limited to lab settings",
+      "No active spoofing/presentation attack testing",
+      "Relatively small subject pool"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET",
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The paper emphasizes 'device-independence' by testing on cross-platform hardware, which is a strong point for behavioral biometrics."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Li_2020_1"
+}

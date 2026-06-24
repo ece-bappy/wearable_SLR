@@ -1,0 +1,177 @@
+{
+  "title": "WatchAuth: User Authentication and Intent Recognition in Mobile Payments using a Smartwatch",
+  "year": 2022,
+  "venue": "IEEE 7th European Symposium on Security and Privacy (EuroS&P)",
+  "doi": "10.1109/EuroSP53844.2022.00031",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gesture"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "linear accelerometer",
+      "gyroscope rotation vector"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "in-lab user study",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 16,
+      "num_samples": 3360,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "out-of-lab activity data",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 9,
+      "num_samples": 32441,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 1088,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest"
+    ],
+    "input_representation": "Feature vector of 220 statistical members extracted from 4 inertial sensors",
+    "training_strategy": "User-dependent and terminal-agnostic for authentication; user-agnostic for intent recognition"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.04,
+      "context": "Best result achieved by the user-agnostic intent recognition model"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.13,
+      "context": "Average FAR for the optimized model used for retrospective fraud detection"
+    }
+  ],
+  "evaluation_protocol": "Stratified 10-fold cross-validation for intent recognition; temporal split (first/second sessions for training, third session for testing) for authentication",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "day"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 185,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 1.5,
+        "unit": "% battery capacity per hour"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "linear accelerometer",
+      "gyroscope rotation vector"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": null
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Demonstrated that the 'tap' gesture for NFC payments is a viable biometric for implicit authentication",
+      "Introduced a user-agnostic intent-to-pay recognition model to prevent accidental/malicious payments"
+    ],
+    "main_strength": [
+      "Terminal-agnostic approach ensures flexibility across different POS heights/angles",
+      "Low battery and latency overhead suitable for wearable deployment"
+    ],
+    "main_weakness": [
+      "Small subject pool (n=16)",
+      "Positive samples collected in a lab setting rather than in-the-wild"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The study effectively separates authentication (who is it?) from intent recognition (did they mean to pay?), which is a critical distinction for mobile payments."
+  },
+  "extraction_confidence": "high"
+}

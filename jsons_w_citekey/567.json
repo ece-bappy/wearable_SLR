@@ -1,0 +1,161 @@
+{
+  "title": "Handwritten Signature Authentication Using Smartwatch Motion Sensors",
+  "year": 2020,
+  "venue": "IEEE 44th Annual Computers, Software, and Applications Conference (COMPSAC)",
+  "doi": "10.1109/COMPSAC48688.2020.00-28",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "handwritten signature"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartwatch",
+      "Apple Watch Series 3"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "private signature dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 400,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 6,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Siamese Recurrent Neural Network",
+      "Bidirectional LSTM (BLSTM)",
+      "SoftMax"
+    ],
+    "input_representation": "12-dimensional temporal signals (raw 3-axis acc/gyro + first-order derivatives)",
+    "training_strategy": "Global model trained on 80% of pairwise aligned signature data to minimize discriminative loss."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.78,
+      "context": "Achieved using combined accelerometer and gyroscope data"
+    }
+  ],
+  "evaluation_protocol": "80% training, 20% testing split on 2900 signature pairs",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.78,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Limited size and diversity of subjects",
+      "Data collected using only one type of smartwatch"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 0.78,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a smartwatch-based signature verification system using Siamese BLSTMs to automate feature extraction",
+      "Implemented a global model that allows enrollment of new users without requiring forged samples"
+    ],
+    "main_strength": [
+      "High accuracy (0.78% EER)",
+      "Eliminates need for manual feature engineering"
+    ],
+    "main_weakness": [
+      "Small sample size",
+      "Laboratory-only data collection"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The paper demonstrates that gyroscope data is more discriminative than accelerometer data for signature verification on wearables."
+  },
+  "extraction_confidence": "high"
+}

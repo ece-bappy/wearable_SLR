@@ -1,0 +1,164 @@
+{
+  "title": "Biometric Recognition Using Multimodal Physiological Signals",
+  "year": 2019,
+  "venue": "IEEE Access",
+  "doi": "10.1109/ACCESS.2019.2923856",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "heart rate",
+      "breathing rate",
+      "palm electrodermal activity",
+      "perinasal perspiration"
+    ],
+    "sensor": [
+      "Shimmer3 GSR sensor",
+      "Zephyr BioHarness 3.0",
+      "S-Interface software"
+    ],
+    "device": [
+      "wearable sensors",
+      "driving simulator"
+    ],
+    "body_location": "palm, perinasal, chest"
+  },
+  "data": [
+    {
+      "dataset_name": "Taamneh et al. [16]",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 37,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 70,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "1D-CNN",
+      "Ensemble of 1D-CNNs",
+      "k-NN",
+      "SVM",
+      "ANN"
+    ],
+    "input_representation": "window of the raw signals stacked along the channel dimension (1 x 60 x 4)",
+    "training_strategy": "Sequential Model-Based Global Optimization (SMBO) for hyperparameters, 5-fold cross-validation, and Gaussian noise data augmentation"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "five-fold cross-validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "limited amount of training data"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "heart rate",
+      "breathing rate",
+      "palm EDA",
+      "perinasal EDA"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "top-1 accuracy",
+        "value": 34.04,
+        "unit": "percentage points"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "Taamneh et al. [16]",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Application of 1D-CNNs to multimodal physiological signals for closed-set identification",
+      "Use of Sequential Model-Based Optimization (SMBO) for automatic architecture and hyperparameter tuning"
+    ],
+    "main_strength": [
+      "High accuracy achieved using raw signals without manual feature engineering",
+      "Effective use of an ensemble approach to further boost performance"
+    ],
+    "main_weakness": [
+      "Small subject pool (37 subjects)",
+      "Testing conducted solely in a controlled simulator environment"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The study focuses on closed-set identification rather than open-set verification. Target metrics (EER, AUC, FAR, FRR) were not reported; only Top-k Accuracy was used."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Bianco_2019"
+}

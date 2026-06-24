@@ -1,0 +1,7 @@
+{
+  "title": "Design and Evaluation of an Authentication Framework for Wearable Devices",
+  "relevance": "exclude",
+  "exclusion_reason": "The paper proposes a conceptual framework and conducts a user perception study using a mockup app (where security levels were manually toggled by the experimenter), but it does not implement or evaluate a functional biometric authentication system using actual biometric signals or data.",
+  "doi": "10.1109/ACCESS.2020.2990861",
+  "citekey": "Alharbi_2020"
+}

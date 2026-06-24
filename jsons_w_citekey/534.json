@@ -1,0 +1,184 @@
+{
+  "title": "AttAuth: An Implicit Authentication Framework for Smartphone Users Using Multimodality Data",
+  "year": 2024,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2023.3314717",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "motion",
+      "touchscreen"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "orientation",
+      "magnetometer",
+      "touchscreen sensor"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "hand"
+  },
+  "data": [
+    {
+      "dataset_name": "real-world multimodality smartphone usage data set",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 100,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 10,
+        "unit": "hours"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "TCA-RNN",
+      "LSTM",
+      "CNN"
+    ],
+    "input_representation": "Processed multichannel motion sensor data segments and discrete touchscreen features",
+    "training_strategy": "Sequential training and testing scheme using first 70% for training, 10% for validation, and 20% for testing"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 2.5,
+      "context": "Best reported result across all multimodality baselines on the real-world dataset"
+    },
+    {
+      "metric": "FAR",
+      "value": 2.4,
+      "context": "Achieved using the AttAuth framework on the real-world dataset"
+    },
+    {
+      "metric": "FRR",
+      "value": 2.7,
+      "context": "Achieved using the AttAuth framework on the real-world dataset"
+    }
+  ],
+  "evaluation_protocol": "Sequential training/testing; 100 volunteers; 1 legitimate user vs 99 impostors per trial; data split 70/10/20.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance varies by application scenario (TikTok high, WeChat low)",
+      "Limited coarse-grained context awareness",
+      "Biased dataset due to uniform age, occupation, and device model"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [
+      {
+        "value": 126.4,
+        "unit": "mAh per day"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Model training requires remote server, posing potential privacy risks during data transmission"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "motion",
+      "touchscreen"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 5.4,
+        "unit": "percentage point improvement over touchscreen-only baseline"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "TCA-RNN architecture for integrating dense motion data and sparse touch events",
+      "Crossed channelwise attention and touch-guided timewise attention mechanisms"
+    ],
+    "main_strength": [
+      "High accuracy (2.5% EER) using uncontrolled in-the-wild data",
+      "Low operational overhead on mobile devices"
+    ],
+    "main_weakness": [
+      "Homogeneous user group in dataset",
+      "No evaluation against active spoofing/presentation attacks"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "SINGLE_DATASET_ONLY",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The system demonstrates that using touch events as a 'guidance' for motion sensor attention significantly improves implicit authentication performance compared to simple feature concatenation."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Zhao_2024_1"
+}

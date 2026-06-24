@@ -1,0 +1,151 @@
+{
+  "title": "TinyML Based Biometric Authentication Using PPG Signals for Edge Devices",
+  "year": 2025,
+  "venue": "Great Lakes Symposium on VLSI 2025 (GLSVLSI ’25)",
+  "doi": "10.1145/3716368.3735271",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "Plux pulse sensor",
+      "reflective sensors"
+    ],
+    "device": [
+      "ESP-EYE",
+      "ESP32"
+    ],
+    "body_location": "fingertip"
+  },
+  "data": [
+    {
+      "dataset_name": "BioSec.Lab PPG Dataset",
+      "dataset_type": null,
+      "dataset_role": "combined",
+      "num_subjects": 86,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "DNN",
+      "1D-CNN",
+      "2D-CNN"
+    ],
+    "input_representation": "Spectrogram",
+    "training_strategy": "TinyML optimization (INT8 quantization)"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Single-session evaluation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": 17,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance drops when scaled to larger subject pools (from 96.64% for 30 subjects to 81% for 86 subjects)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 29.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": null,
+    "datasets_any_public": null,
+    "benchmark_used": "BioSec.Lab PPG Dataset",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Implementation of a TinyML-based PPG authentication system on the ESP32 edge device",
+      "Comparative analysis of DNN, 1D-CNN, and 2D-CNN architectures for PPG spectrogram features"
+    ],
+    "main_strength": [
+      "Low-power, on-device execution without cloud dependency",
+      "Effective use of spectrograms over time-domain/spectral features"
+    ],
+    "main_weakness": [
+      "Lack of cross-session and real-world testing",
+      "Reduced accuracy as the number of users increases"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "NO_SPOOFING_TEST",
+      "SINGLE_DATASET_ONLY"
+    ],
+    "notes_for_review": "The paper reports accuracy (96.64%), but per extraction rules, no Target Metrics (AUC, EER, FRR, FAR) were provided and thus were not extracted."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Thota_2025"
+}

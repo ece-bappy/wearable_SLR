@@ -1,0 +1,150 @@
+{
+  "title": "IMU-Based Gait Recognition Using Convolutional Neural Networks and Multi-Sensor Fusion",
+  "year": 2017,
+  "venue": "Sensors",
+  "doi": "10.3390/s17122735",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "IMU",
+      "Shimmer sensor platform"
+    ],
+    "body_location": "chest, lower-back, right hand wrist, right knee, and right ankle"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": 4178,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "DCNN",
+      "Convolutional Neural Network"
+    ],
+    "input_representation": "2D spectro-temporal expansion via Smoothed Wigner-Ville Distribution (SWVD)",
+    "training_strategy": "10-fold cross validation with SoftMax loss and gradient descent"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "10-fold cross validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Sensor orientation relative to the body is not fixed over sessions",
+      "Small sample size of subjects"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Dependence on sensor placement and orientation"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "hybrid",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a 2D spectro-temporal expansion of gait cycles for DCNN input",
+      "Developed the Minimum Error Score Fusion (MESF) method for late fusion of IMU sensors"
+    ],
+    "main_strength": [
+      "Effective integration of multiple sensor locations to improve identification accuracy"
+    ],
+    "main_weakness": [
+      "Extremely small subject pool (10 people)",
+      "Lack of evaluation using standard biometric error rates (EER/FAR/FRR)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The paper reports high accuracy (up to 97.06%) for a 10-class identification task but does not provide target metrics like EER, FAR, or FRR."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Dehzangi_2017"
+}

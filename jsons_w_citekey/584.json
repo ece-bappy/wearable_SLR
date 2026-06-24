@@ -1,0 +1,177 @@
+{
+  "title": "Sensor-based Implicit Authentication of Smartphone Users",
+  "year": 2017,
+  "venue": "IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)",
+  "doi": "10.1109/DSN.2017.21",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "motion patterns"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": "wrist and hand"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 35,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 2.0,
+        "unit": "weeks"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Kernel Ridge Regression (KRR)",
+      "Random Forest (for context detection)"
+    ],
+    "input_representation": "Time and frequency domain features (mean, variance, max, min, peak amplitude, main frequency, secondary amplitude)",
+    "training_strategy": "10-fold cross-validation repeated for 1000 iterations"
+  },
+  "evaluation": [
+    {
+      "metric": "FRR",
+      "value": 0.9,
+      "context": "Achieved using combination of smartphone and smartwatch data with context detection"
+    },
+    {
+      "metric": "FAR",
+      "value": 2.8,
+      "context": "Achieved using combination of smartphone and smartwatch data with context detection"
+    }
+  ],
+  "evaluation_protocol": "10-fold cross-validation",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2.0,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 1.0,
+        "unit": "week"
+      },
+      "drop_in_performance": {
+        "metric": "Confidence Score",
+        "value": 0.2
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 98.1
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Behavioral drift over time"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 21.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 2.4,
+        "unit": "%"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "smartphone sensors",
+      "smartwatch sensors"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": 8.1,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Context-aware implicit authentication system using dual-device (smartphone + smartwatch) behavioral data",
+      "Systematic evaluation of sensor, feature, and model design alternatives"
+    ],
+    "main_strength": [
+      "Very high accuracy (98.1%)",
+      "Low computational overhead",
+      "Resilience to mimicry attacks"
+    ],
+    "main_weakness": [
+      "Use of private dataset",
+      "Susceptibility to behavioral drift requiring periodic retraining"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "The system's strongest result comes from combining context detection (stationary vs moving) with multimodal sensor fusion."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Lee_2017_1"
+}

@@ -1,0 +1,157 @@
+{
+  "title": "WoX+: A Meta-Model-Driven Approach to Mine User Habits and Provide Continuous Authentication in the Smart City",
+  "year": 2022,
+  "venue": "Sensors",
+  "doi": "10.3390/s22186980",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "user habits"
+    ],
+    "sensor": [
+      "smart mobility sensors",
+      "smart metering sensors",
+      "smart home sensors",
+      "wearables"
+    ],
+    "device": [
+      "smartphones",
+      "smartwatches",
+      "IoT devices"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "synthesized dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": 1080,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Graph-based mining algorithm",
+      "WoX+ meta-model"
+    ],
+    "input_representation": "IoT interactions composed of sensor identifier, date, and time",
+    "training_strategy": "Adjacency matrix based graph construction with a multiplication factor for temporal weight decay"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Synthetic data generation based on user-reported habits followed by rule reconstruction accuracy measurement",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 4.0,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "MSEP",
+      "value": 0.04
+    },
+    "reported_limitations": [
+      "no difference between weekdays and holidays",
+      "not able to find periodical events or seasonal behavior",
+      "rules strictly related to datetime information"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 1102.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [
+      "interview",
+      "qualitative evaluation"
+    ],
+    "usability_issues": "The system is in an early stage and currently relies on synthetic data for validation."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "smart mobility",
+      "smart metering",
+      "smart home",
+      "wearables"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": null,
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a meta-model-driven approach (WoX+) to automatically mine user habits for continuous authentication",
+      "Developed a graph-based ML block to extract behavioral rules from heterogeneous IoT data"
+    ],
+    "main_strength": [
+      "High unobtrusiveness (zero-effort)",
+      "Hardware independence due to the meta-model abstraction"
+    ],
+    "main_weakness": [
+      "Lack of real-world data validation (used synthetic data)",
+      "Limited temporal modeling (cannot handle seasons or holidays)"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper focuses more on the framework and the ability to mine habits than on standard biometric performance metrics like EER or FAR."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Mainetti_2022"
+}

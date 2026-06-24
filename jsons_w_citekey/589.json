@@ -1,0 +1,152 @@
+{
+  "title": "Hands-Free Authentication for Virtual Assistants with Trusted IoT Device and Machine Learning",
+  "year": 2022,
+  "venue": "Sensors",
+  "doi": "10.3390/s22041325",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "smart home behavior",
+      "energy consumption patterns"
+    ],
+    "sensor": [
+      "energy monitoring sensors",
+      "smart plugs",
+      "smart meter"
+    ],
+    "device": [
+      "Android smartphone",
+      "Raspberry Pi 3"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "smart home testbed",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 4,
+      "num_samples": 1683,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 2,
+        "unit": "months"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM (Support Vector Machine)",
+      "Lasso Regression"
+    ],
+    "input_representation": "Energy consumption time series from 7 sensors, weekday, and hour",
+    "training_strategy": "5-fold cross validation with GridSearchCV for hyperparameter tuning"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "5-fold cross validation on a private smart home dataset",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "behavioral biometrics are less likely to express authentication intent",
+      "highly dependable on the deployment context",
+      "vulnerability to shared key capture in the mobile device"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 383.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "cost of trusted device is not negligible per user"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "possession-based trusted IoT device",
+      "behavioral energy consumption patterns"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Combination of a trusted IoT device challenge-response protocol and continuous behavioral authentication using smart home energy data",
+      "Non-invasive authentication for voice assistants"
+    ],
+    "main_strength": [
+      "In-the-wild validation over 2 months",
+      "Formal security analysis using Scyther tool"
+    ],
+    "main_weakness": [
+      "Very small sample size (4 users)",
+      "No empirical spoofing tests for the behavioral model"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper focuses heavily on the cryptographic protocol for the trusted device, but the biometric part is the behavioral energy consumption. No standard biometric metrics (EER/FAR) were reported; only Accuracy and Recall."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Hayashi_2022"
+}

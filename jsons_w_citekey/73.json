@@ -1,0 +1,151 @@
+{
+  "title": "Gait-based Human Identification Using Deep Learning and Multiple-position Wearable Data",
+  "year": 2023,
+  "venue": "2023 International Conference on Advanced Mechatronic Systems (ICAMechS)",
+  "doi": "10.1109/icamechs59878.2023.10272945",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "device": [
+      "Captiv inertial motion capture sensor platform"
+    ],
+    "body_location": "multiple (head, back of hands, chest, waist, lower arms, upper arms, feet, upper legs)"
+  },
+  "data": [
+    {
+      "dataset_name": "private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "TNET (LSTM)",
+      "SNET (CNN)"
+    ],
+    "input_representation": "time windows with a 50% overlap rate (32 samples per window)",
+    "training_strategy": "70% training, 30% testing"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "n-class classification (10 subjects)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "small number of participants",
+      "limited diversity of walking conditions",
+      "potential redundancy in all-position data fusion"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "wearing comfort in real use"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "multiple body position inertial data"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Analysis of the contribution of individual body positions to gait-based identification",
+      "Development of temporal (TNET) and spatial (SNET) networks for GHID",
+      "Demonstrated that fusing Hip and Elbow data improves identification performance"
+    ],
+    "main_strength": [
+      "Comprehensive use of 15 sensor units covering the whole body"
+    ],
+    "main_weakness": [
+      "Very small subject pool (n=10)",
+      "Lack of target biometric metrics (EER, FAR, FRR)",
+      "No testing in uncontrolled environments"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper exclusively reports 'Accuracy', which is ignored per extraction rules. It identifies the Right Hip as the most discriminative single position."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Geng_2023"
+}

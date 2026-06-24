@@ -1,0 +1,184 @@
+{
+  "title": "Secure User Verification and Continuous Authentication via Earphone IMU",
+  "year": 2023,
+  "venue": "IEEE Transactions on Mobile Computing",
+  "doi": "10.1109/TMC.2022.3193847",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "mandible vibration"
+    ],
+    "sensor": [
+      "IMU",
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "earphone"
+    ],
+    "body_location": "ear"
+  },
+  "data": [
+    {
+      "dataset_name": "Verification Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 34,
+      "num_samples": 23408,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 0.2,
+        "unit": "seconds"
+      }
+    },
+    {
+      "dataset_name": "Continuous Authentication Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": 5000,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 1.0,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "3D Adversarial Network",
+      "Knowledge Distillation"
+    ],
+    "input_representation": "gradient array of vibration signals (positive and negative directions)",
+    "training_strategy": "Cross-entropy loss with Adam optimizer; knowledge distillation for model compression from teacher to student network"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 1.28,
+      "context": "Achieved during user verification with 34 volunteers"
+    },
+    {
+      "metric": "FAR",
+      "value": 1.64,
+      "context": "Achieved during continuous authentication with MandiblePrint length of 512"
+    },
+    {
+      "metric": "FRR",
+      "value": 1.0,
+      "context": "Reported as 'always lower than 1%' during continuous authentication"
+    }
+  ],
+  "evaluation_protocol": "80% training, 20% testing for classifier evaluation; leave-one-user-out for verification templates",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3.0,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 3.0,
+        "unit": "months"
+      },
+      "drop_in_performance": {
+        "metric": "VSR",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "VSR",
+      "value": 99.0
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Computational overhead of deep adversarial networks (mitigated by distillation)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 2.0,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed MandiblePrint, a new intracorporal biometric extracted via earphone IMU",
+      "Developed a system supporting both one-time explicit verification and continuous authentication",
+      "Implemented a 3D adversarial network to remove semantic influence from speech vibration"
+    ],
+    "main_strength": [
+      "Robustness to acoustic noise and physical activities (walking, running)",
+      "Defense against replay attacks using cancelable templates (Gaussian matrix)"
+    ],
+    "main_weakness": [
+      "Lack of a large-scale public dataset",
+      "No formal usability study with end-users"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The system successfully distinguishes between identity and speech semantics using an adversarial approach, ensuring the biometric is stable regardless of what the user is saying."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Liu_2023_1"
+}

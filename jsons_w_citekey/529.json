@@ -1,0 +1,158 @@
+{
+  "title": "UWB-Auth: A UWB-based Two Factor Authentication Platform",
+  "year": 2024,
+  "venue": "Proceedings of the 17th ACM Conference on Security and Privacy in Wireless and Mobile Networks (WiSec ’24)",
+  "doi": "10.1145/3643833.3656113",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "fingerprint",
+      "motion signature"
+    ],
+    "sensor": [
+      "fingerprint sensor",
+      "IMU"
+    ],
+    "device": [
+      "smartwatch",
+      "smartring"
+    ],
+    "body_location": "finger"
+  },
+  "data": [
+    {
+      "dataset_name": "Custom Motion Signature Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 18,
+      "num_samples": 1559,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Siamese Neural Network (SNN)",
+      "SVM",
+      "OC-SVM",
+      "Canonical Time Warping (CTW)"
+    ],
+    "input_representation": "3-axis acceleration raw IMU data",
+    "training_strategy": "k-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.1,
+      "context": "Achieved using SNN for motion signature authentication on Smartring (reported as false positive rate)"
+    },
+    {
+      "metric": "FRR",
+      "value": 4.8,
+      "context": "Achieved using SNN for motion signature authentication on Smartring (reported as false negative rate)"
+    }
+  ],
+  "evaluation_protocol": "k-fold cross-validation for biometric motion signature; distance/angle threshold testing for UWB location",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": null,
+    "robust_to_noise": null,
+    "reported_limitations": [
+      "front-back angle ambiguity in AoA",
+      "small-scale user study (18 volunteers)",
+      "only right-handed volunteers tested"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 3.95,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 108,
+        "unit": "mW"
+      }
+    ],
+    "usability_study": [
+      "task-based evaluation"
+    ],
+    "usability_issues": "overhead of wearing the watch or ring"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "UWB location",
+      "Fingerprint",
+      "Motion signature"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a 2FA platform that flips the authentication order (location first, then biometric/knowledge) to prevent phishing",
+      "Implemented multi-form factor wearables (watch, ring) for biometric authentication"
+    ],
+    "main_strength": [
+      "High-precision location bounding via UWB effectively mitigates co-located and phishing attacks"
+    ],
+    "main_weakness": [
+      "Biometric evaluation is limited to a small sample size",
+      "Lack of active spoofing/presentation attack testing"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper focuses heavily on the UWB proximity logic, but provides valuable data on SNN-based motion signature authentication on a wearable ring."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Cao_2024"
+}

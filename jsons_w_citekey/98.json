@@ -1,0 +1,161 @@
+{
+  "title": "Activity-aware electrocardiogram biometric verification utilising deep learning on wearable devices",
+  "year": 2025,
+  "venue": "EURASIP Journal on Information Security",
+  "doi": "10.1186/s13635-025-00193-8",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "electrodes",
+      "textile sensors"
+    ],
+    "device": [
+      "Hexoskin Hx1",
+      "eMotion Faros 360",
+      "NeXus-10 MKII"
+    ],
+    "body_location": "chest"
+  },
+  "data": [
+    {
+      "dataset_name": "Vollmer dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 13,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 20,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "ResNet50",
+      "DenseNet201",
+      "GoogleNet"
+    ],
+    "input_representation": "Time-frequency images (Scalograms, Spectrograms, Mel-spectrograms)",
+    "training_strategy": "Transfer learning for activity classification; trained from scratch for biometric verification"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.49,
+      "context": "Achieved on Hexoskin device using DenseNet201 with 4-s Scalogram images during Standing activity"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.49,
+      "context": "Reported for the best-performing case (Hexoskin, DenseNet201, Sc4, Standing)"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.0,
+      "context": "Reported for the best-performing case (Hexoskin, DenseNet201, Sc4, Standing)"
+    }
+  ],
+  "evaluation_protocol": "K-fold cross-validation (k=5) used initially for Sc4 scenario; then random train/test split with unseen subject pairs",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.49,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 0.49
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "insufficient accuracy rates obtained from DL models in activity classification",
+      "limited amount of training data"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "Vollmer dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed an activity-aware biometric verification framework using DL and ECG",
+      "Comparison of medical-grade (Faros) vs consumer-grade (Hexoskin) wearable devices",
+      "Evaluation of various time-frequency representations (Scalogram, Spectrogram, Mel-spectrogram)"
+    ],
+    "main_strength": [
+      "Demonstrated that activity-aware models outperform direct verification",
+      "Successful verification with very short enrollment times (2s)"
+    ],
+    "main_weakness": [
+      "Low accuracy in automatic activity classification",
+      "Small sample size (13 subjects)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The authors had to resort to manual activity labeling for the biometric verification phase because the DL activity classifiers were not accurate enough."
+  },
+  "extraction_confidence": "high",
+  "citekey": "B_akc_Ye_ilkaya_2025"
+}

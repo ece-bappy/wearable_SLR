@@ -1,0 +1,169 @@
+{
+  "title": "Deep Residual Network for Smartwatch-Based User Identification through Complex Hand Movements",
+  "year": 2022,
+  "venue": "Sensors",
+  "doi": "10.3390/s22083094",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "Hand movements"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "UT-Smoke",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 11,
+      "num_samples": 3544000,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 3,
+        "unit": "months"
+      }
+    },
+    {
+      "dataset_name": "WISDM-HARB",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 51,
+      "num_samples": 3380000,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 3,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "1D-ResNet-SE",
+      "CNN",
+      "LSTM",
+      "1D-ResNet"
+    ],
+    "input_representation": "10s sliding window of filtered (3rd order Butterworth) and Min-Max normalized triaxial sensor data",
+    "training_strategy": "Stratified 10-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 2.32,
+      "context": "Achieved on UT-Smoke dataset for Eating activity using Accelerometer + Gyroscope + Magnetometer with 1D-ResNet-SE"
+    }
+  ],
+  "evaluation_protocol": "10-fold stratified cross-validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Sensor data investigated in only one position (wrist)",
+      "Lack of transitional tasks between activities"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 11.56,
+        "unit": "percentage points"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "UT-Smoke, WISDM-HARB",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed 1D-ResNet-SE model for user identification using complex hand movements",
+      "Integration of Squeeze-and-Excitation blocks into 1D-ResNet to improve feature recalibration"
+    ],
+    "main_strength": [
+      "Strong performance on complex activities (Eating, Smoking, Drinking)",
+      "Effective use of multimodal sensor fusion"
+    ],
+    "main_weakness": [
+      "No security testing against adversarial attacks or spoofing",
+      "Lack of real-world environment comparison"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY",
+      "SEMI_CONTROLLED_ONLY"
+    ],
+    "notes_for_review": "The paper focuses on identity classification using behavior; however, it lacks a true security evaluation (spoofing) common in authentication research."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Mekruksavanich_2022"
+}

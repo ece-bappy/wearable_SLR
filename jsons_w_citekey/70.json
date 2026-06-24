@@ -1,0 +1,144 @@
+{
+  "title": "Ternary Neural Networks for Gait Identification in Wearable Devices",
+  "year": 2024,
+  "venue": "IEEE International Workshop on Information Forensics and Security (WIFS)",
+  "doi": "10.1109/wifs61860.2024.10810715",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "IMU"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "whuGAIT (Dataset 1)",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 118,
+      "num_samples": 36844,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Ternary Neural Network",
+      "CNN",
+      "TernaryConv",
+      "TernaryFC"
+    ],
+    "input_representation": "IMU signals",
+    "training_strategy": "Straight Through Estimator (STE) with Delta-growth regimes"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "For each subject, the first 90% of samples were used for training and the remaining 10% for testing, with no overlap between subsets.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Training becomes unstable for Delta_max > 0.3",
+      "High sparsity rates may lead to greater variability in performance"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "whuGAIT",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Introduced a lightweight deep classifier using Ternary Neural Networks (TNN) for gait identification",
+      "Developed Delta-growth regimes to balance sparsity and classification performance"
+    ],
+    "main_strength": [
+      "Achieves extremely high sparsity (>90%) and low entropy (<1 bit/sym) while maintaining competitive accuracy",
+      "Significant reduction in memory and computational requirements compared to full-precision and binary networks"
+    ],
+    "main_weakness": [
+      "Evaluated on only one public dataset",
+      "Lack of security evaluation (spoofing/presentation attacks)"
+    ],
+    "gap_category": [
+      "SINGLE_DATASET_ONLY",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The paper focuses on the efficiency of the model (quantization/pruning) rather than biometric robustness or security. Only Accuracy is reported, so target metrics (EER, FAR, etc.) are missing."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Agnetti_2024"
+}

@@ -1,0 +1,180 @@
+{
+  "title": "SonicPrint: A Generally Adoptable and Secure Fingerprint Biometrics in Smart Devices",
+  "year": 2020,
+  "venue": "MobiSys '20",
+  "doi": "10.1145/3386901.3388939",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "fingerprint"
+    ],
+    "sensor": [
+      "microphone"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch",
+      "headphones",
+      "Google Echo",
+      "Logitech mouse"
+    ],
+    "body_location": "fingertip"
+  },
+  "data": [
+    {
+      "dataset_name": "private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 31,
+      "num_samples": 4572,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 2,
+        "unit": "months"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Logistic Regression",
+      "Support Vector Machine",
+      "Random Forest",
+      "Linear Discriminant Analysis",
+      "Gaussian Mixture Model",
+      "Ensemble Classifier"
+    ],
+    "input_representation": "Multi-level friction descriptors (MFCC, LPCC, RASTA-PLP, LPC, LSF, log filter bank, spectral statistics, wavelet cross-level coefficients, amplitude spectra)",
+    "training_strategy": "10-fold stratified cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.03,
+      "context": "Achieved during Action 3 (2Hand-1cm-leather swipes)"
+    },
+    {
+      "metric": "AUC",
+      "value": 0.975,
+      "context": "Achieved during Action 3 (2Hand-1cm-leather swipes)"
+    }
+  ],
+  "evaluation_protocol": "10-fold stratified cross-validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 3,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "general performance",
+        "value": 38.0
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "BAC",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "BAC",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance degradation on smooth surfaces",
+      "Significant performance decay over time due to aging",
+      "Sensitivity to fingertip moisture/lotions"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "presentation/mask",
+      "replay"
+    ],
+    "liveness_detection": true,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 1,
+        "unit": "second"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 100,
+        "unit": "mW"
+      }
+    ],
+    "usability_study": [
+      "SUS survey",
+      "Likert scale"
+    ],
+    "usability_issues": "Fingernails may collide with surface during tip swipes, causing signal distortion."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed SonicPrint, the first biometric system leveraging Fingerprint-induced Sonic Effect (FiSe) for user identification across diverse smart devices using existing microphones."
+    ],
+    "main_strength": [
+      "Hardware-agnostic (uses off-the-shelf microphones)",
+      "High resilience to fake-finger and replay attacks"
+    ],
+    "main_weakness": [
+      "Strong temporal decay in performance",
+      "Dependency on surface texture"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The paper demonstrates that acoustic signatures of fingerprints are viable for identification but identifies a significant stability issue over time (38% drop in 3 weeks)."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Rathore_2020"
+}

@@ -1,0 +1,145 @@
+{
+  "title": "A Robust Biometric Authentication System for Handheld Electronic Devices by Intelligently Combining 3D Finger Motions and Cerebral Responses",
+  "year": 2021,
+  "venue": "IEEE Transactions on Consumer Electronics",
+  "doi": "10.1109/TCE.2021.3055419",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "air signature",
+      "EEG"
+    ],
+    "sensor": [
+      "motion sensor",
+      "EEG sensor"
+    ],
+    "device": [
+      "handheld electronic device",
+      "headband EEG"
+    ],
+    "body_location": "finger, head"
+  },
+  "data": [
+    {
+      "dataset_name": "Private lab dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 600,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Hidden Markov Model (HMM)",
+      "Random Forest (RF)"
+    ],
+    "input_representation": "3D global feature vector (centroid-based direction ratios and distance) for motion; Gamma band standard deviation for EEG",
+    "training_strategy": "Baum-Welch training for HMM; Bagging for RF"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Two-stage process: 1. Signature spotting using 3D motion global features and DTW. 2. Signature verification using EEG gamma features via HMM and RF.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Hardware discomfort for users"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [
+      "user feedback"
+    ],
+    "usability_issues": "discomfort from attaching additional gadgets"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "3D finger motion",
+      "EEG"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a two-stage authentication system combining behavioral air signatures and physiological EEG responses to mitigate shoulder surfing attacks."
+    ],
+    "main_strength": [
+      "Multimodal approach providing higher robustness than single-modality tracking systems"
+    ],
+    "main_weakness": [
+      "Lack of real-world testing",
+      "No experimental verification of spoofing/shoulder surfing attacks (theoretical analysis only)",
+      "Reliance on cumbersome EEG headbands"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper reports high accuracy (98.5% for RF), but does not provide the target metrics (EER, FAR, FRR) required for the final SLR table."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Behera_2021"
+}

@@ -1,0 +1,162 @@
+{
+  "title": "DialerAuth: A Motion-assisted Touch-based Smartphone User Authentication Scheme",
+  "year": 2018,
+  "venue": "Proceedings of Eighth ACM Conference on Data and Application Security and Privacy (CODASPY’18)",
+  "doi": "10.1145/3176258.3176318",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "touch-stroke timing",
+      "hand micro-movements"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "touchscreen"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "hand"
+  },
+  "data": [
+    {
+      "dataset_name": "DialerAuth dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 97,
+      "num_samples": 10500,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 3,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Multilayer Perceptron (MLP)",
+      "Bayesian Networks",
+      "K-Nearest Neighbors",
+      "Random Forest"
+    ],
+    "input_representation": "Fused feature vector of 70 features (32 inertial features, 38 timing-based features)",
+    "training_strategy": "One-class classification (anomaly detection) with 5-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "FRR",
+      "value": 14.23,
+      "context": "Derived from the best TAR of 85.77% achieved in the sitting activity using MLP with 9 hidden layers"
+    },
+    {
+      "metric": "FAR",
+      "value": 6.99,
+      "context": "Achieved in the walking downstairs activity using MLP with 4 hidden layers"
+    }
+  ],
+  "evaluation_protocol": "Owner vs. all non-owners (one-class classification) across four different physical postures",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "TAR",
+      "value": 85.77
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Overall performance is lower than fixed-text keystroke dynamics",
+      "Requires a relatively large amount of training patterns (30 samples)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [
+      "SUS survey"
+    ],
+    "usability_issues": "Some users found the enrollment/training process (30 patterns) cumbersome"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "touch-stroke timing",
+      "hand micro-movements"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": null,
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a bimodal system using text-independent dialing behavior and inertial micro-movements",
+      "Evaluated system across multiple postures in an unsupervised field setting"
+    ],
+    "main_strength": [
+      "Large-scale dataset for behavioral biometrics (97 users)",
+      "Includes a comprehensive usability study using SUS"
+    ],
+    "main_weakness": [
+      "Lower accuracy compared to state-of-the-art fixed-text schemes",
+      "High training requirement"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The system is designed for 'one-shot' authentication at login, though the authors suggest potential for continuous authentication in future work."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Buriro_2018_1"
+}

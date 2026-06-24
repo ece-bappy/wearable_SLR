@@ -1,0 +1,172 @@
+{
+  "title": "VOGUE: Secure User Voice Authentication on Wearable Devices using Gyroscope",
+  "year": 2022,
+  "venue": "2022 19th Annual IEEE International Conference on Sensing, Communication, and Networking (SECON)",
+  "doi": "10.1109/secon55815.2022.9918548",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "speech movement sequence"
+    ],
+    "sensor": [
+      "gyroscope"
+    ],
+    "device": [
+      "smart glasses",
+      "smartwatch",
+      "smartphone"
+    ],
+    "body_location": "various (head, wrist, hand)"
+  },
+  "data": [
+    {
+      "dataset_name": "Trace A",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": 45000,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 30,
+        "unit": "days"
+      }
+    },
+    {
+      "dataset_name": "Trace B",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 15,
+      "num_samples": 5000,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "one-class SVM",
+      "KNN",
+      "VA-DTW"
+    ],
+    "input_representation": "Distance vectors consisting of VA-DTW distance and warping scores",
+    "training_strategy": "Offline enrollment using several repetitions of a predetermined passphrase to build a one-class classifier"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 2.23,
+      "context": "Mean FAR across all devices and users"
+    },
+    {
+      "metric": "FRR",
+      "value": 2.48,
+      "context": "Mean FRR across all devices and users"
+    },
+    {
+      "metric": "EER",
+      "value": 2.83,
+      "context": "Best EER achieved on smartphone with T=8 training samples"
+    }
+  ],
+  "evaluation_protocol": "The system compares a single testing passphrase sample against the Top-K training templates using a one-class classifier.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 30,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Requires speaker to be stationary",
+      "Limited number of users in the study"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay"
+    ],
+    "liveness_detection": true,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requires the user to speak a predetermined passphrase"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "audio",
+      "gyroscope"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed VOGUE, a liveness detection system using gyroscope sensors to capture speech movement sequences",
+      "Introduced Voice Aware DTW (VA-DTW) to align motion signals with audio signals to reduce mismatching"
+    ],
+    "main_strength": [
+      "Robustness against mimicry and replay attacks",
+      "Hardware-agnostic regarding placement (works on head, wrist, or hand)"
+    ],
+    "main_weakness": [
+      "System fails if the user is not stationary",
+      "Small subject pool"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "This paper focuses on liveness detection to augment voice authentication rather than replacing the voice biometric itself."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Chang_2022_1"
+}

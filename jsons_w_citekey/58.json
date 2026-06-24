@@ -1,0 +1,167 @@
+{
+  "title": "Smartphone and Smartwatch-Based Biometrics Using Activities of Daily Living",
+  "year": 2019,
+  "venue": "IEEE Access",
+  "doi": "10.1109/access.2019.2940729",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "motion"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": "right pants pocket and dominant hand/wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "WISDM human activity recognition and biometrics data set",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 51,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 3,
+        "unit": "minutes per activity"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "Decision Tree",
+      "k-Neighbors"
+    ],
+    "input_representation": "Forty-three high-level features (mean, std dev, etc.) extracted from 10-second windows",
+    "training_strategy": "Stratified 10-fold cross validation for identification; specific partitioning with 1:3 class ratio for authentication"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.05,
+      "context": "Achieved for Jogging activity using Accels (phone+watch accelerometers) with majority voting (50s data)"
+    }
+  ],
+  "evaluation_protocol": "Authentication evaluated via EER; Identification evaluated via accuracy (though accuracy is not extracted per rules). Decision making compared between single 10s example and majority voting over five 10s examples.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Laboratory setting may introduce bias",
+      "Performance is quite sensitive to the amount of training data"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 0.07,
+        "unit": "absolute difference"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "WISDM human activity recognition and biometrics data set",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Comprehensive evaluation of 18 different activities of daily living for biometrics",
+      "Comparison between smartphone, smartwatch, and combined sensor configurations",
+      "Analysis of the impact of training data volume on EER and accuracy"
+    ],
+    "main_strength": [
+      "Broad range of tested activities",
+      "Use of a public dataset",
+      "Systematic comparison of multiple ML algorithms and sensor combinations"
+    ],
+    "main_weakness": [
+      "Data collected in a controlled laboratory environment",
+      "Lack of active spoofing/presentation attack testing"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The study demonstrates that accelerometers are significantly more effective than gyroscopes for behavioral biometrics and that combining sensors from both a phone and a watch provides the best performance."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Weiss_2019"
+}

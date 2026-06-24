@@ -1,0 +1,7 @@
+{
+  "title": "Empirical Evaluation of Secured Intra-Data Communication via Human Body using Wearable Technology Association",
+  "relevance": "exclude",
+  "exclusion_reason": "The primary focus of the paper is on secure data transmission using Body Coupled Communication (BCC) and a general IoT health monitoring framework. While it mentions the use of biometrics as part of a multi-factor authentication (MFA) system to access the network, it does not propose, evaluate, or analyze a biometric authentication/identification system itself. The reported metrics focus on transmission rates, latency, and anomaly detection for health monitoring rather than biometric performance (e.g., EER, FAR).",
+  "doi": "10.1109/ICONAT61936.2024.10775061",
+  "citekey": "Tamilselvi_2024"
+}

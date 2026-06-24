@@ -1,0 +1,155 @@
+{
+  "title": "Secure and Usable User-in-a-Context Continuous Authentication in Smartphones Leveraging Non-Assisted Sensors",
+  "year": 2018,
+  "venue": "Sensors",
+  "doi": "10.3390/s18041219",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "battery usage patterns",
+      "data transmission rates",
+      "ambient noise",
+      "ambient light"
+    ],
+    "sensor": [
+      "battery sensor",
+      "network interface",
+      "microphone",
+      "ambient light sensor"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "hand/pocket"
+  },
+  "data": [
+    {
+      "dataset_name": "Sherlock",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 50,
+      "num_samples": 614256549,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 24,
+        "unit": "months"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "K-Nearest Neighbor (KNN)",
+      "Naive Bayes (NB)",
+      "Hoeffding Adaptive Tree (HAT)"
+    ],
+    "input_representation": "discretized sensor readings",
+    "training_strategy": "incremental data stream mining"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "All-vs-all interleaved classification and robbery simulation (User vs Attacker)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 24,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Mimicry attacks are out of scope",
+      "Micro-robbery (seconds) not detected"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 100,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Trade-off between immediacy and undue rejections controlled by sensitivity threshold ST"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "battery",
+      "ambient audio",
+      "ambient light"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "Sherlock",
+    "reproducibility_score": "high"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a 'user-in-a-context' authentication system using only non-assisted sensors",
+      "Introduced a tunable sensitivity threshold (ST) to balance security and usability"
+    ],
+    "main_strength": [
+      "High device autonomy (no reliance on GPS/Cell Towers)",
+      "Extensive longitudinal dataset (24 months)"
+    ],
+    "main_weakness": [
+      "Lack of formal biometric error metrics (EER/FAR/FRR)",
+      "No testing against active spoofing/mimicry attacks"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "LIMITED_ATTACK_TYPES"
+    ],
+    "notes_for_review": "The paper reports accuracy (97.05%) and detection time (TSEC), but does not provide the target metrics AUC, EER, FRR, or FAR for its own system."
+  },
+  "extraction_confidence": "high",
+  "citekey": "De_Fuentes_2018"
+}

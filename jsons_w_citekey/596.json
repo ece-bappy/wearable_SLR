@@ -1,0 +1,181 @@
+{
+  "title": "Smartwatch-Based Open-Set Driver Identification by Using GMM-Based Behavior Modeling Approach",
+  "year": 2021,
+  "venue": "IEEE Sensors Journal",
+  "doi": "10.1109/JSEN.2020.3030810",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "hand movement",
+      "driving habits"
+    ],
+    "sensor": [
+      "accelerometer",
+      "orientation sensor"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Simulated environment dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 90,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "Real environment dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Gaussian Mixture Model (GMM)",
+      "Support Vector Machine (SVM)",
+      "Stacking Generalization"
+    ],
+    "input_representation": "10 features derived from 3-axis Acc and 2-axis Ori signals, including Delta Coefficients",
+    "training_strategy": "Combination of Individual Driver Model (IDM) and Universal Driver Model (UDM) combined via stacking meta-learner SVM"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 10.5,
+      "context": "Best result achieved by OAO-IUGA method in simulated environment"
+    },
+    {
+      "metric": "EER",
+      "value": 16.66,
+      "context": "Best result achieved by OAO-IUGA method in real environment"
+    }
+  ],
+  "evaluation_protocol": "Repeated sampling strategy (900 rounds) with 4 registrants and 11 non-registrants per sample",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 10.5,
+    "real_world_performance_value": 16.66,
+    "drop_percentage": 58.67
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Computational cost increases with more GMM components",
+      "OAO-IUGA requires significantly more storage space due to number of classifiers"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "High storage requirements for the most accurate model (OAO-IUGA)"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "orientation"
+    ],
+    "fusion_level": "score",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 12.64,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "City Car Driving simulation software",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "First smartwatch-based open-set driver identification system",
+      "Comparative analysis of OAA vs OAO strategies for biometric driver identification"
+    ],
+    "main_strength": [
+      "Validation across both simulated and real-world driving environments",
+      "Implementation of open-set (unknown user rejection) capability"
+    ],
+    "main_weakness": [
+      "Small sample size for real-world evaluation (20 subjects)",
+      "Lack of active spoofing/impersonation attack testing"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper demonstrates a significant performance drop when moving from simulation to real-world settings (EER 10.5% to 16.66%)."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Mardi_Putri_2021"
+}

@@ -1,0 +1,194 @@
+{
+  "title": "IncreAuth: Incremental-Learning-Based Behavioral Biometric Authentication on Smartphones",
+  "year": 2024,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2023.3289935",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "touch behavior",
+      "motion behavior"
+    ],
+    "sensor": [
+      "touchscreen API",
+      "capacitive touchscreen sensor",
+      "accelerometer",
+      "gyroscope",
+      "magnetometer",
+      "orientation sensor",
+      "GPS",
+      "light sensor"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "hands"
+  },
+  "data": [
+    {
+      "dataset_name": "private smartphone usage data set",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 100,
+      "num_samples": 200000,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 2,
+        "unit": "months"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "GBDTNN",
+      "Gradient Boosting Decision Tree",
+      "Neural Network"
+    ],
+    "input_representation": "context-aware feature set (context, touch, and motion features)",
+    "training_strategy": "incremental learning via knowledge distillation from GBDT to NN with drift detection-based updating"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 4.01,
+      "context": "Best overall performance on general user authentication"
+    },
+    {
+      "metric": "FAR",
+      "value": 4.88,
+      "context": "Best overall performance on general user authentication"
+    },
+    {
+      "metric": "FRR",
+      "value": 3.03,
+      "context": "Best overall performance on general user authentication"
+    }
+  ],
+  "evaluation_protocol": "Sequential training and testing scheme with chronological data blocks for long-term evaluation",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": 8.77,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 2,
+        "unit": "months"
+      },
+      "drop_in_performance": {
+        "metric": "EER",
+        "value": 4.76
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Limited authentication error rate (8.77%) in long-term unconstrained scenarios",
+      "Dependence on negative data sets from intruders for training",
+      "Privacy concerns regarding sensitive data collection"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 11.98,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 140,
+        "unit": "MB"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Privacy concerns regarding GPS and App usage data"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "touch",
+      "motion",
+      "context"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "accuracy",
+        "value": null,
+        "unit": null
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed IncreAuth framework for long-term continuous authentication",
+      "Developed GBDTNN model combining GBDT's tabular feature handling with NN's incremental learning",
+      "Implemented drift detection-based model updating (Major/Minor updates)"
+    ],
+    "main_strength": [
+      "High stability over 2-month period",
+      "Resource-efficient incremental updates compared to full retraining",
+      "Comprehensive context-aware feature set"
+    ],
+    "main_weakness": [
+      "Required intruder data for binary classification",
+      "No active spoofing/presentation attack testing"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper focuses heavily on the 'behavior drift' problem and proposes a solution that balances performance and computational overhead on mobile devices."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Shen_2024"
+}
