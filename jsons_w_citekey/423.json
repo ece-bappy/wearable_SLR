@@ -1,0 +1,156 @@
+{
+  "title": "EarPass: Continuous User Authentication with In-ear PPG",
+  "year": 2023,
+  "venue": "UbiComp/ISWC ’23 Adjunct",
+  "doi": "10.1145/3594739.3610670",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "PPG sensor (LED and ambient light sensor)"
+    ],
+    "device": [
+      "earable prototype"
+    ],
+    "body_location": "ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 10,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM"
+    ],
+    "input_representation": "Five fiducial features from PPG segments: systolic amplitude, pulse width, ratio of pulse interval to systolic amplitude, crest time, and ratio of b-wave to a-wave amplitude.",
+    "training_strategy": "Binary SVM classifier with Radial Basis Function (RBF) kernel"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.04,
+      "context": "Calculated as 1 minus the reported 96% Attack Detection Rate (ADR)"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.08,
+      "context": "Mapped from the reported 8% Attack False Detection Rate (AFDR)"
+    }
+  ],
+  "evaluation_protocol": "Three continuous windows through voting; tested across static and head-motion scenarios.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "CA Accuracy",
+      "value": 0.98
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Hardware imperfections leading to amplitude variance"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "First investigation of in-ear PPG for continuous user authentication",
+      "Proposed pipeline for MA detection and removal using KL divergence"
+    ],
+    "main_strength": [
+      "Noise-resistant and privacy-protective compared to audio-based earable auth",
+      "Effective removal of head-motion artifacts"
+    ],
+    "main_weakness": [
+      "Very small sample size (10 participants)",
+      "Evaluation limited to lab settings"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper primarily demonstrates feasibility. The 'attacks' tested were simply other users (zero-effort), not sophisticated spoofing."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Li_2023_1"
+}

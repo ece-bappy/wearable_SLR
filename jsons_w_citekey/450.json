@@ -1,0 +1,155 @@
+{
+  "title": "Smartwatch Multifactor Authentication for Keyboard based Methods",
+  "year": 2022,
+  "venue": "International Telecommunications Conference (ITC-Egypt)",
+  "doi": "10.1109/itc-egypt55520.2022.9855757",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "wrist gestures",
+      "keystroke dynamics"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "smartwatch",
+      "Fossil DW10F1"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 3,
+      "num_samples": 49,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "unsupervised",
+    "model": [
+      "Dynamic Time Warping (DTW)"
+    ],
+    "input_representation": "raw accelerometer signal (X, Y, Z axes)",
+    "training_strategy": "template matching via Euclidean distance alignment"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.0,
+      "context": "Best case reported for certain users/scenarios (e.g., User 2, Gesture Replication, Not Preprocessed)"
+    }
+  ],
+  "evaluation_protocol": "Comparison of genuine vs. impostor samples using DTW distances and a threshold optimized to find the Equal Error Rate (EER).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.187,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_AUTOMATED_PREPROCESSING"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a multifactor authentication (MFA) system using a smartwatch to capture subtle wrist gestures performed during keyboard-based login."
+    ],
+    "main_strength": [
+      "Transparent and unobtrusive user experience",
+      "Demonstrated low EER for specific users"
+    ],
+    "main_weakness": [
+      "Extremely small subject pool (n=3)",
+      "Controlled laboratory setting without real-world environmental noise"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "LIMITED_ATTACK_TYPES"
+    ],
+    "notes_for_review": "The system relies on DTW for signal alignment and uses raw accelerometer data without high-level feature extraction."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Maes_2022"
+}

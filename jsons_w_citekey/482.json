@@ -1,0 +1,156 @@
+{
+  "title": "Phase-domain Deep Patient-ECG Image Learning for Zero-effort Smart Health Security",
+  "year": 2019,
+  "venue": "IEEE",
+  "doi": "10.1109/embc.2019.8856515",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "Electrocardiogram (ECG)"
+    ],
+    "sensor": [
+      "ECG sensor"
+    ],
+    "device": [
+      "wearable cardiac monitor",
+      "Zio Patch"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "MIT-BIH Atrial Fibrillation Database (AFDB)",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 23,
+      "num_samples": 11500,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 2,
+        "unit": "seconds"
+      }
+    },
+    {
+      "dataset_name": "MIT-BIH Arrhythmia Database (ARDB)",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 47,
+      "num_samples": 23500,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 2,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Convolutional Neural Network (CNN)",
+      "Fully Connected Neural Network"
+    ],
+    "input_representation": "2-D binary ECG images generated via phase-domain transformation",
+    "training_strategy": "50% training, 50% testing split; evaluation repeated five times to average results"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "5-fold repeated evaluation on split datasets (50% train/50% test)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": null
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": null
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Application of CNN in biometric user identification is still limited",
+      "Need to explore further patient ECG databases"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "AFDB, ARDB",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Introduced phase-domain transformation to enable blind ECG signal segmentation (hiding phase and heartbeat count differences)",
+      "Proposed an image-based CNN framework to avoid manual feature engineering for ECG biometrics",
+      "Demonstrated viability of ECG identification for patient populations with diverse cardiac morphologies"
+    ],
+    "main_strength": [
+      "High generalization ability across different patient databases",
+      "Zero-effort approach removing the need for R-peak localization"
+    ],
+    "main_weakness": [
+      "No evaluation on real-world data outside of established clinical databases",
+      "Absence of security testing against active spoofing/attacks"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "Paper reports high accuracy (up to 97.6%) but does not provide EER, FAR, or FRR as requested by the target metrics list."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Zhang_2019"
+}

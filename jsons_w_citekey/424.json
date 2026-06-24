@@ -1,0 +1,166 @@
+{
+  "title": "Enhancing User Authentication with Wearable Data: Evaluating Sampling Strategies and Classifiers Using Apple Watch Sensor Logs",
+  "year": 2026,
+  "venue": "18th International Conference on COMmunication Systems & NETworkS (COMSNETS)",
+  "doi": "10.1109/comsnets67989.2026.11418085",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "accelerometer",
+      "pedometer"
+    ],
+    "sensor": [
+      "accelerometer",
+      "pedometer"
+    ],
+    "device": [
+      "Apple Watch Series 8"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 110,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 70,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "XGBoost",
+      "Logistic Regression"
+    ],
+    "input_representation": "Combination of statistical (mean, std, var, skew, kurt), time-domain (RMS, correlation, ZCR), and pedometer features (total steps, mean pace, cadence, distance)",
+    "training_strategy": "One-vs-Rest (OvR) framework using StratifiedShuffleSplit (80/20) and GridSearchCV for hyperparameter tuning. Evaluated SMOTE, Random Under-sampling (RUS), and weight-balancing."
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.001,
+      "context": "Achieved with XGBoost using S7 feature set; reported as fewer than 1 in 1,000 impostors falsely accepted even with 100 users"
+    }
+  ],
+  "evaluation_protocol": "5-fold cross-validation; one-vs-rest classification; group size scaled from 10 to 100 users",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Class imbalance inherent in one-vs-rest framework",
+      "Trade-off between usability (TAR/FRR) and security as the user group size increases"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Slight degradation of TAR and increase in FRR as the number of users in the system increases"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "pedometer"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": null,
+        "unit": ""
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Demonstrated that weight-balancing in XGBoost outperforms SMOTE and RUS for wearable biometric authentication",
+      "Validated scalability of the proposed system from 10 to 100 users",
+      "Identified pedometer features as highly significant for user identification"
+    ],
+    "main_strength": [
+      "Strong scalability",
+      "Very low False Accept Rate (FAR)"
+    ],
+    "main_weakness": [
+      "Data collected only in a controlled lab setting",
+      "Lack of active spoofing/presentation attack testing"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "Paper highlights that while accuracy remains high, F1-score and TAR decline as the population size grows, emphasizing the need for personalized models."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Sevwandi_Perera_2026"
+}

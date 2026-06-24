@@ -1,0 +1,152 @@
+{
+  "title": "BehaveSense: Continuous authentication for security-sensitive mobile apps using behavioral biometrics",
+  "year": 2019,
+  "venue": "Ad Hoc Networks",
+  "doi": "10.1016/j.adhoc.2018.09.015",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "touch operations"
+    ],
+    "sensor": [
+      "touch screen",
+      "pressure sensor"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "fingers"
+  },
+  "data": [
+    {
+      "dataset_name": "Private WeChat dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 45,
+      "num_samples": 250000,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 2,
+        "unit": "weeks"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "unsupervised",
+    "model": [
+      "One-Class SVM",
+      "Isolation Forest"
+    ],
+    "input_representation": "Feature vectors (coordinates, pressure, velocity, duration) extracted from four types of touch operations (clicking, vertical sliding, horizontal sliding, oblique sliding)",
+    "training_strategy": "Anomaly detection based on the owner's behavioral patterns to distinguish owner from unknown impostors."
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Leave-one-out subject-wise validation; owner model trained on a subset of samples and tested against remaining owner samples and samples from all other participants acting as impostors.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Difficulty in collecting enough samples for infrequent touch operations (e.g., zoom)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 0.01,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 6.82,
+        "unit": "mAh"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [
+      "clicking",
+      "vertical sliding",
+      "horizontal sliding",
+      "oblique sliding"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed BehaveSense, a continuous authentication system using one-class anomaly detection (OCSVM) on touch sequences to avoid the need for impostor training data.",
+      "Implemented a Bayesian-based confidence level calculation and an improved expectedprob algorithm for sequence authentication."
+    ],
+    "main_strength": [
+      "Evaluated on a real-world dataset of users interacting with a popular app (WeChat) over two weeks.",
+      "Extremely low energy overhead and computational latency."
+    ],
+    "main_weakness": [
+      "Lack of active spoofing/presentation attack testing.",
+      "Use of private data and no provided code inhibits reproducibility."
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "The paper reports high accuracy (95.85%), but does not explicitly report the target metrics (AUC, EER, FAR, FRR) in the text or tables using standard terminology, despite providing confusion matrices."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Yang_2019"
+}

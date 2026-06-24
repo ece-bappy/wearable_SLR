@@ -1,0 +1,180 @@
+{
+  "title": "EMG Biometric Systems Based on Different Wrist-Hand Movements",
+  "year": 2021,
+  "venue": "IEEE Access",
+  "doi": "10.1109/access.2021.3050704",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "electromyogram (EMG)"
+    ],
+    "sensor": [
+      "surface EMG sensors"
+    ],
+    "device": [
+      "EMG-sensing armband",
+      "Myo Armband"
+    ],
+    "body_location": "lower forearm"
+  },
+  "data": [
+    {
+      "dataset_name": "Custom Multi-session Dataset",
+      "dataset_type": "private",
+      "dataset_role": "training",
+      "num_subjects": 5,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 4,
+        "unit": "weeks"
+      }
+    },
+    {
+      "dataset_name": "Raurale et al. dataset",
+      "dataset_type": "private",
+      "dataset_role": "training",
+      "num_subjects": 10,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "Angeles et al. dataset",
+      "dataset_type": "public",
+      "dataset_role": "training",
+      "num_subjects": 50,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Multi-layer Perceptron (MLP)",
+      "Radial Basis Function (RBF) neural network",
+      "Linear Discriminant Analysis (LDA)",
+      "Kernel Fisher Discrimination (KFD)"
+    ],
+    "input_representation": "Time-domain features: Band Power (BP) and Root absolute Sum Square (RSS)",
+    "training_strategy": "5-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 15.98,
+      "context": "Best achieved for the Biometric Verification system in on-going mode"
+    },
+    {
+      "metric": "EER",
+      "value": 16.42,
+      "context": "Best achieved for the Biometric Identification system in on-going mode"
+    }
+  ],
+  "evaluation_protocol": "k-fold cross-validation (k=5), majority-voting (5-majority configuration)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 4,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "EMG signal is highly dynamic and varies significantly between users",
+      "Performance is lower compared to ECG-based systems"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 1.06,
+        "unit": "ms"
+      },
+      {
+        "value": 1.61,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Users must perform specific wrist-hand gestures for authentication"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "Angeles et al. dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "First EMG biometric system using wrist-hand gestures for both verification and identification in a wearable context",
+      "Implementation on ARM Cortex A-53 for real-time on-device processing"
+    ],
+    "main_strength": [
+      "Extremely low latency ( < 2ms)",
+      "Use of a multi-session dataset over 4 weeks"
+    ],
+    "main_weakness": [
+      "Relatively high EER (~16%)",
+      "Data collection limited to lab settings (seated)"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper differentiates between one-time and on-going authentication, with on-going showing slightly better EER."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Raurale_2021"
+}

@@ -1,0 +1,169 @@
+{
+  "title": "Multimodal Gait Recognition and Temporal Parameter Estimation Using IMU & Visual Sensors",
+  "year": 2025,
+  "venue": "International Conference on Artificial Intelligence, Computer, Data Sciences and Applications (ACDSA)",
+  "doi": "10.1109/acdsa65407.2025.11166097",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "IMU (MPU6050)",
+      "camera"
+    ],
+    "device": [
+      "wearable sensor belt",
+      "tripod-mounted camera"
+    ],
+    "body_location": "shanks and feet"
+  },
+  "data": [
+    {
+      "dataset_name": "ADU-Gait",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 4800,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 20,
+        "unit": "seconds"
+      }
+    },
+    {
+      "dataset_name": "Miraldo",
+      "dataset_type": "public",
+      "dataset_role": "training",
+      "num_subjects": 22,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "Mendeley Gait Video Dataset",
+      "dataset_type": "public",
+      "dataset_role": "training",
+      "num_subjects": 44,
+      "num_samples": 396,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "OU-ISIR Treadmill Dataset A",
+      "dataset_type": "public",
+      "dataset_role": "training",
+      "num_subjects": 34,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Siamese Bi-LSTM",
+      "1D CNN"
+    ],
+    "input_representation": "skeletal keypoints and IMU gyroscope/accelerometer signals",
+    "training_strategy": "subject-wise 70%-30% data split"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Subject-wise 70% training and 30% testing split across multiple datasets",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": null,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Video-based methods sensitive to viewpoint, clothing, and lighting",
+      "Sensor-based systems may suffer from signal noise or inconsistent placement"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "IMU",
+      "video"
+    ],
+    "fusion_level": "score",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "Miraldo, Mendeley, OU-ISIR",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a multimodal gait recognition system fusing IMU and video pose estimation",
+      "Introduced the ADU-Gait dataset",
+      "Developed a web-based interface for biometric onboarding and verification"
+    ],
+    "main_strength": [
+      "Multimodal approach reduces vulnerability to lighting and occlusions",
+      "Integration of clinical gait parameter estimation with identity verification"
+    ],
+    "main_weakness": [
+      "No reporting of standard biometric error rates (EER, FAR, FRR)",
+      "Lack of spoofing or adversarial attack testing",
+      "Small sample size for the new dataset"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_BASELINE_COMPARISON"
+    ],
+    "notes_for_review": "The paper reports accuracy instead of EER/FAR, making it difficult to compare with standard biometric literature."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Ajmal_2025"
+}

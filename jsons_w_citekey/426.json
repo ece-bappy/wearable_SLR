@@ -1,0 +1,158 @@
+{
+  "title": "AirSign: A Gesture-based Smartwatch User Authentication",
+  "year": 2018,
+  "venue": "IEEE",
+  "doi": "10.1109/ccst.2018.8585571",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gesture",
+      "signing-in-the-air"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "Motorola Moto 360"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 11,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 3,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Dynamic Time Warping",
+      "One-class Multilayer Perceptron"
+    ],
+    "input_representation": "8-dimensional combined sensor vector (X, Y, Z, Magnitude for both accelerometer and gyroscope)",
+    "training_strategy": "One-class classification"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 11.45,
+      "context": "Achieved using DTW [14] with Squared Distance and T=0.5 on 10 training samples"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.26,
+      "context": "Derived from 99.74% TAR achieved using DTW [13] with Squared Distance and T=0.5 on 15 training samples"
+    }
+  ],
+  "evaluation_protocol": "Averaged results over 11 users; compared owner attempts (TAR/FRR) vs adversary attempts (FAR/TRR)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Small sample size",
+      "Lack of classifier tuning",
+      "Lack of detailed security testing"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "hybrid",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed AirSign, a behavioral biometric system based on signing-in-the-air gestures using smartwatch sensors"
+    ],
+    "main_strength": [
+      "Low hardware cost (uses built-in sensors)",
+      "Intuitive user gesture"
+    ],
+    "main_weakness": [
+      "Low number of participants",
+      "No formal spoofing/presentation attack evaluation"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "Paper highlights a trade-off between TAR and FAR in DTW settings; OMLP showed promising results with small training sets."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Buriro_2018"
+}

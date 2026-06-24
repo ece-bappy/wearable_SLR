@@ -1,0 +1,173 @@
+{
+  "title": "Walk to Show Your Identity: Gait-based Seamless User Authentication Framework Using Deep Neural Network",
+  "year": 2019,
+  "venue": "The 5th ACM Workshop on Wearable Systems and Applications (WearSys’19)",
+  "doi": "10.1145/3325424.3329666",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartwatch",
+      "smartphone"
+    ],
+    "body_location": "dominant arm (smartwatch), pocket (smartphone)"
+  },
+  "data": [
+    {
+      "dataset_name": "Private Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 51,
+      "num_samples": 8037,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "ZJU-dataset",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 153,
+      "num_samples": null,
+      "collection_setting": null,
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "DNN",
+      "CNN",
+      "RNN",
+      "LSTM"
+    ],
+    "input_representation": "Interpolated walk cycle (200 samples x 6 axes)",
+    "training_strategy": "Softmax cross entropy loss, Adam optimizer, Xavier initializer, Dropout (0.3)"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 1.8,
+      "context": "Achieved on private dataset with 51 participants using DNN"
+    },
+    {
+      "metric": "AUC",
+      "value": 0.99,
+      "context": "Reported for Deep Gait framework via ROC curve"
+    }
+  ],
+  "evaluation_protocol": "Randomly shuffle and split into 70% training and 30% testing sets",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance depends on the volume of training data"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "ZJU-dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed Deep Gait framework that uses raw sensor sequences without manual feature extraction",
+      "Reduced data requirement for authentication to a single walk cycle"
+    ],
+    "main_strength": [
+      "Higher accuracy (lower EER) compared to benchmarks",
+      "Low data requirement enabling seamless access"
+    ],
+    "main_weakness": [
+      "Lack of active spoofing/presentation attack testing",
+      "No evaluation of temporal robustness or cross-session decay"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The paper emphasizes a 'seamless' approach by reducing the number of gait cycles needed for a decision from 8-20 down to 1."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Baek_2019"
+}

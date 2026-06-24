@@ -1,0 +1,142 @@
+{
+  "title": "A Novel ECG - based identification scheme for wearable devices",
+  "year": 2023,
+  "venue": "2023 6th International Conference on Artificial Intelligence and Pattern Recognition (AIPR)",
+  "doi": "10.1145/3641584.3641687",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "single-lead ECG sensor"
+    ],
+    "device": [
+      "wearable device"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "ECG-ID",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": 2375,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 20,
+        "unit": "s"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "2D-LightCNN",
+      "1D-CNN",
+      "AlexNet"
+    ],
+    "input_representation": "Gramian Angular Summation Field (GASF) images of size 28x28 derived from QRS complexes (250 sample points)",
+    "training_strategy": "Cross entropy loss, Adam optimizer (learning rate 0.001), dropout (p=0.5), 70/30 train-test split"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Cross-validation using a 70% training and 30% testing split",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Easy loss of physiological signal events of wearable devices"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "ECG-ID",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a lightweight 2D-CNN using depthwise separable convolutions combined with GASF to process 1D ECG signals for biometric identification"
+    ],
+    "main_strength": [
+      "High classification accuracy (99.85%)",
+      "Reduced parameter count suitable for resource-constrained wearable devices"
+    ],
+    "main_weakness": [
+      "Evaluation conducted on a very small subset of the dataset (10 users)",
+      "Lack of real-world environmental testing and security/spoofing analysis"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper reports 'Accuracy', 'Sensitivity', and 'Specificity', but does not explicitly report the target metrics (AUC, EER, FAR, FRR). While Specificity is related to FAR, the prompt forbids inference."
+  },
+  "extraction_confidence": "high",
+  "citekey": "He_2023"
+}

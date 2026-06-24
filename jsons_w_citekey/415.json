@@ -1,0 +1,185 @@
+{
+  "title": "Global Feature Analysis and Comparative Evaluation of Freestyle In-Air-Handwriting Passcode for User Authentication",
+  "year": 2021,
+  "venue": "Annual Computer Security Applications Conference (ACSAC '21)",
+  "doi": "10.1145/3485832.3485906",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "in-air-handwriting"
+    ],
+    "sensor": [
+      "IMU",
+      "3D stereo camera"
+    ],
+    "device": [
+      "data glove",
+      "Leap Motion controller"
+    ],
+    "body_location": "hand"
+  },
+  "data": [
+    {
+      "dataset_name": "Dataset 1",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 180,
+      "num_samples": 3600,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "Dataset 2",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 10,
+      "num_samples": 18000,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM",
+      "DTW",
+      "Threshold-Then-Vote (TTV)"
+    ],
+    "input_representation": "six-degree-of-freedom rigid body motion of a point in 3D space (18 axes)",
+    "training_strategy": "Per-account SVM training using registration signals as positive samples and random signals from other accounts as negative samples."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.1,
+      "context": "Achieved by T-Fusion(E) using Camera device (without collision)"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.12,
+      "context": "Achieved by T-Fusion(E) using Camera device (without collision) at FAR = 10^-3"
+    },
+    {
+      "metric": "FAR",
+      "value": 3.5,
+      "context": "Achieved by T-Fusion(E) using Glove device (without collision) at FRR = 0"
+    }
+  ],
+  "evaluation_protocol": "Five repetitions for registration; five repetitions for login requests. Evaluated 'without collision' (random guessing) and 'with collision' (impostors knowing passcode content).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 10,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 10,
+        "unit": "days"
+      },
+      "drop_in_performance": {
+        "metric": "TAR",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Camera tracking degrades during fast hand movement or certain poses",
+      "Template quality is limited by few registration samples",
+      "Long-term behavior variation leads to increased FRR without updates"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [
+      "survey"
+    ],
+    "usability_issues": "Requirement to wear a glove; camera field-of-view restrictions."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "temporal",
+      "statistical",
+      "hand geometry"
+    ],
+    "fusion_level": "hybrid",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 0.61,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Unified framework for IMU and camera-based in-air handwriting",
+      "Detailed analysis of temporal and statistical features for behavioral biometrics"
+    ],
+    "main_strength": [
+      "Comparative analysis of multiple fusion strategies (S-Fusion vs F-Fusion)",
+      "Evaluation of persistence/decay over 10 days"
+    ],
+    "main_weakness": [
+      "Data collected entirely in a lab setting",
+      "High dependence on template updates to maintain performance"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_ADVERSARIAL_DEFENSE"
+    ],
+    "notes_for_review": "The system behaves more like a password system with a biometric layer than a pure biometric system, as the content secret is primary for security."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Lu_2021"
+}

@@ -1,0 +1,175 @@
+{
+  "title": "Taprint: Secure Text Input for Commodity Smart Wristbands",
+  "year": 2019,
+  "venue": "MobiCom '19",
+  "doi": "10.1145/3300061.3300124",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "vibration"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist/hand back"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 128,
+      "num_samples": 24360,
+      "collection_setting": "semi-controlled",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "KNN",
+      "DenID (Density-based one-class classifier)"
+    ],
+    "input_representation": "Amplitude Spectral Density (ASD) with position-sensitive and position-relevant weighted features",
+    "training_strategy": "Initial training set of 20 samples per key with real-time manual calibration and multi-threshold self-calibration"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 2.4,
+      "context": "Achieved for single-tap authentication using DenID classifier"
+    },
+    {
+      "metric": "FRR",
+      "value": 1.29,
+      "context": "Achieved at 5% FAR for single-tap authentication"
+    },
+    {
+      "metric": "FAR",
+      "value": 5.0,
+      "context": "Paired with 1.29% FRR for single-tap authentication"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-subject-out (each subject designated as legitimate user in turn, others as attackers)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 2.4,
+    "real_world_performance_value": 4.51,
+    "drop_percentage": 87.9
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1.0,
+      "unit": "month"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 1.0,
+        "unit": "month"
+      },
+      "drop_in_performance": {
+        "metric": "EER",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 4.51
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 3.35
+    },
+    "reported_limitations": [
+      "Performance degrades significantly if device displacement exceeds 12mm"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 232.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 48.2,
+        "unit": "mW"
+      }
+    ],
+    "usability_study": [
+      "comparative ranking study",
+      "Likert-scale question"
+    ],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a secure text input system using commodity smartwatch IMUs",
+      "Developed DenID density-based one-class classifier for vibration-based authentication",
+      "Implemented a multi-threshold calibration mechanism for temporal stability"
+    ],
+    "main_strength": [
+      "No additional hardware required",
+      "Robust to environmental noise and human mobility",
+      "Fast end-to-end latency"
+    ],
+    "main_weakness": [
+      "Sensitive to precise wristband placement",
+      "Requires a specific sampling rate (500Hz) not available in standard APIs (requiring kernel modification)"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The system uniquely combines a keypad interface with biometric authentication in a single gesture."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Chen_2019"
+}

@@ -1,0 +1,179 @@
+{
+  "title": "Deep Residual Networks for User Authentication via Hand-Object Manipulations",
+  "year": 2021,
+  "venue": "Sensors",
+  "doi": "10.3390/s21092981",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "hand-object manipulation"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "device": [
+      "IMU-embedded hand and wrist modules"
+    ],
+    "body_location": "finger and wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Targeted Box and Blocks Test (tBBT)",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 44,
+      "num_samples": 2032,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 1.5,
+        "unit": "s"
+      }
+    },
+    {
+      "dataset_name": "Smartphone manipulation scenario",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 9,
+      "num_samples": 185,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 1.5,
+        "unit": "s"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "ResNet-50",
+      "ResNet-101",
+      "ResNet-152",
+      "Simple LSTM",
+      "Bidirectional LSTM"
+    ],
+    "input_representation": "Normalized IMU signal sequence of 150 discrete decimal values",
+    "training_strategy": "Adam optimizer with cross-entropy loss"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 1.62,
+      "context": "Achieved by ResNet-152 in the smartphone manipulation scenario (Experiment 2)"
+    },
+    {
+      "metric": "FAR",
+      "value": 1.62,
+      "context": "Achieved by Bidirectional LSTM in the smartphone manipulation scenario (Experiment 2)"
+    },
+    {
+      "metric": "FRR",
+      "value": 8.34,
+      "context": "Achieved by ResNet-152 (and ResNet-50) in the smartphone manipulation scenario (Experiment 2)"
+    }
+  ],
+  "evaluation_protocol": "Binary classification comparing registered user data against unregistered imposter data",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Need for larger training datasets to improve F1-score and reduce EER",
+      "Model training time needs to be reduced for real-time authentication"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Potential for high FRR in some models leading to rejecting legitimate users"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "LSTMs (Simple and Bidirectional)",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "First application of Deep Residual Networks (ResNets) for hand-object manipulation biometrics",
+      "Demonstrated that deeper ResNets (up to 152 layers) handle complex behavioral patterns better than LSTMs"
+    ],
+    "main_strength": [
+      "High accuracy with very short signal windows (1.5s)",
+      "Strong performance in complex, naturalistic manipulation tasks"
+    ],
+    "main_weakness": [
+      "Very small subject pool for complex scenarios (n=9)",
+      "Lack of longitudinal or cross-session testing"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "Paper proves ResNet's superiority over RNNs for this specific behavioral modality, but the data volume is low."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Choi_2021"
+}

@@ -1,0 +1,180 @@
+{
+  "title": "Using recurrent neural networks for continuous authentication through gait analysis",
+  "year": 2021,
+  "venue": "Pattern Recognition Letters",
+  "doi": "10.1016/j.patrec.2021.03.010",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": "waist"
+  },
+  "data": [
+    {
+      "dataset_name": "UCI-HAR",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 30,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "HMOG",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 100,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "WISDM",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 51,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 54,
+        "unit": "min"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "RNN",
+      "LSTM",
+      "Autoencoder"
+    ],
+    "input_representation": "2D vector of dimension 9 x 128 (inertial sensor data)",
+    "training_strategy": "Data augmentation (permutation, scaling, jittering) and sliding window interval approach"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 2.36,
+      "context": "Achieved on WISDM dataset for walking (W) activity using Binary classifier with data augmentation"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.77,
+      "context": "Achieved on UCI-HAR walking forward behavior using a 4-sample sliding window interval"
+    }
+  ],
+  "evaluation_protocol": "Binary classification (authorized vs unauthorized) and Autoencoder-based anomaly detection; evaluation on known and unknown identities",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 7.9
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance decreases when aggregating different walking types (e.g., combining upstairs and downstairs) compared to individual activity training"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 161.37,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "UCI-HAR, WISDM, HMOG",
+    "reproducibility_score": "high"
+  },
+  "insights": {
+    "key_contribution": [
+      "Complete framework combining Human Activity Recognition (HAR), biometric verification, and Usage Control (UCS) for device access revocation",
+      "Implementation of LSTM-based supervised and unsupervised (Autoencoder) classifiers for gait authentication"
+    ],
+    "main_strength": [
+      "High accuracy for specific gait types",
+      "Effective use of data augmentation to improve generalization"
+    ],
+    "main_weakness": [
+      "Lack of spoofing/presentation attack testing",
+      "Performance degradation across heterogeneous activities"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The paper emphasizes the importance of an HAR layer to route data to specific verification models based on the activity (e.g., separate models for walking vs. climbing stairs)."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Giorgi_2021"
+}

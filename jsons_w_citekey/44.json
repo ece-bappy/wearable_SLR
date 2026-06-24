@@ -1,0 +1,179 @@
+{
+  "title": "GaitCode: Gait-based continuous authentication using multimodal learning and wearable sensors",
+  "year": 2021,
+  "venue": "Smart Health",
+  "doi": "10.1016/j.smhl.2020.100162",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "pressure sensors"
+    ],
+    "device": [
+      "smart socks",
+      "smart shoes"
+    ],
+    "body_location": "feet"
+  },
+  "data": [
+    {
+      "dataset_name": "Smart Socks Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": 4004,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 5,
+        "unit": "minutes"
+      }
+    },
+    {
+      "dataset_name": "Smart Shoes Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": 9357,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Autoencoder",
+      "SVM",
+      "Softmax"
+    ],
+    "input_representation": "normalized gait cycle vectors",
+    "training_strategy": "k-fold cross-validation and leave-one-out cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.01,
+      "context": "Achieved on smart socks platform using raw-stacked early fusion and SVM"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.54,
+      "context": "Achieved on smart socks platform using raw-stacked early fusion and SVM in leave-one-out authentication"
+    }
+  ],
+  "evaluation_protocol": "10-fold cross-validation for EER and leave-one-out cross-validation for FAR",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": false,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": null,
+        "unit": "same day (morning vs afternoon)"
+      },
+      "drop_in_performance": {
+        "metric": "EER",
+        "value": 7.11
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 4.56
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance degrades significantly when training data lacks diversity in walking speed",
+      "Fatigue affects authentication performance",
+      "Small subject population"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "ground contact force"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 0.16,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a multimodal gait authentication framework combining ACC and GCF data",
+      "Evaluated the impact of walking speed and fatigue on gait-based authentication",
+      "Implemented and compared early vs late sensor fusion using autoencoders"
+    ],
+    "main_strength": [
+      "Very low EER achieved",
+      "Tested against active gait mimicking attacks"
+    ],
+    "main_weakness": [
+      "Data collected in controlled hallway environments only",
+      "Limited number of participants"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "Early fusion of ACC and GCF was found to be most robust. GCF modality alone is more robust than ACC alone."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Papavasileiou_2021"
+}

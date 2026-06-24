@@ -1,0 +1,7 @@
+{
+  "title": "Beat-PIN: A User Authentication Mechanism for Wearable Devices Through Secret Beats",
+  "relevance": "exclude",
+  "exclusion_reason": "The authors explicitly define Beat-PIN as a 'rhythm-based password' and categorize it as 'something you know' rather than 'something you are', contrasting it directly with biometric systems like keystroke dynamics. As a password/PIN-based system, it meets the exclusion criteria.",
+  "doi": "10.1145/3196494.3196543",
+  "citekey": "Hutchins_2018"
+}

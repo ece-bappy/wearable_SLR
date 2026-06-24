@@ -1,0 +1,189 @@
+{
+  "title": "mWIoTAuth: Multi-wearable data-driven implicit IoT authentication",
+  "year": 2024,
+  "venue": "Future Generation Computer Systems",
+  "doi": "10.1016/j.future.2024.05.025",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "heart rate",
+      "oxygen saturation",
+      "calorie burn",
+      "step count"
+    ],
+    "sensor": [
+      "photoplethysmography (PPG)",
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "Wellue fitness band",
+      "Fitbit smartwatch"
+    ],
+    "body_location": "fingertip and wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Phase 1",
+      "dataset_type": "private",
+      "dataset_role": "training",
+      "num_subjects": 25,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 8,
+        "unit": "hours"
+      }
+    },
+    {
+      "dataset_name": "Phase 2",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 15,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 8,
+        "unit": "hours"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "Support Vector Machine (RBF)",
+      "Support Vector Machine (Polynomial)",
+      "Naive Bayes",
+      "k-Nearest Neighbor"
+    ],
+    "input_representation": "statistical features computed from 50-second non-overlapped windows",
+    "training_strategy": "90%–10% sequential split"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.89,
+      "context": "Achieved by binary SVM (RBF) WF model"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.05,
+      "context": "Achieved at 0.85 confidence threshold for multi-wearable models"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.1,
+      "context": "Achieved at 0.85 confidence threshold for multi-wearable models"
+    }
+  ],
+  "evaluation_protocol": "Pick-one-subject strategy where one subject is the valid user and others are imposters",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": 8,
+      "unit": "hours"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Context-dependency of soft biometrics",
+      "Sensor data gaps/missing values"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "heart rate",
+      "oxygen saturation",
+      "calorie burn",
+      "step count"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "ACC",
+        "value": 14,
+        "unit": "percentage"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "Comparative analysis with existing implicit authentication works",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed mWIoTAuth, a framework for implicit authentication using data from multiple market wearables (Wellue and Fitbit)"
+    ],
+    "main_strength": [
+      "Continuous and implicit verification without active user input",
+      "Demonstrated that multi-wearable fusion improves accuracy and robustness over single-device models"
+    ],
+    "main_weakness": [
+      "Small sample size",
+      "Short data collection duration (8 hours) lacking longitudinal temporal testing"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "NO_CROSS_SESSION",
+      "NO_SPOOFING_TEST",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The study emphasizes that combining diverse biometric modalities from different body locations (wrist vs fingertip) provides complementary information that enhances authentication performance."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Vhaduri_2024"
+}

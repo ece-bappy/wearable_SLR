@@ -1,0 +1,148 @@
+{
+  "title": "SonicPrint: Discovering the Voice of Fingerprint for Adoptable Biometrics",
+  "year": 2020,
+  "venue": "Proceedings of the 18th International Conference on Mobile Systems, Applications, and Services (MobiSys ’20)",
+  "doi": "10.1145/3457356.3457369",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "fingerprint (acoustic)"
+    ],
+    "sensor": [
+      "microphone"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch",
+      "headset",
+      "smart speaker",
+      "mouse"
+    ],
+    "body_location": "fingertip"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 5,
+      "num_samples": 1981,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "logistic regression",
+      "linear discriminant analysis",
+      "support vector machine",
+      "random forest",
+      "Gaussian mixture model"
+    ],
+    "input_representation": "temporal, perceptual, cepstral and physical features (Level I, II, and III fingerprint information)",
+    "training_strategy": "Ensemble classification approach with five weighted classifiers"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.03,
+      "context": "Achieved on Bose Headphones"
+    }
+  ],
+  "evaluation_protocol": "User identification tested across four different smart devices with varying curvatures.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Aging effects of material surfaces",
+      "Microphone sensitivity",
+      "Privacy risks due to audible nature of FiSe"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Swipes must occur in close proximity to the microphone."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": null,
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Introduced SonicPrint, a system that uses fingerprint-induced sonic effect (FiSe) for identification",
+      "Demonstrated that acoustic fingerprinting can work across diverse smart device surfaces without specialized hardware"
+    ],
+    "main_strength": [
+      "High adoptability across various device form factors",
+      "Low cost (uses off-the-shelf microphones)"
+    ],
+    "main_weakness": [
+      "Extremely small subject pool (n=5)",
+      "Lack of quantitative empirical results for spoofing and temporal decay"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper claims resilience to fake fingers and replay attacks in the highlights, but the evaluation section only provides EER for legitimate user identification, not attack success rates."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Rathore_2021"
+}

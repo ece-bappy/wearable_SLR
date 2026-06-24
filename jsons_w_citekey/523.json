@@ -1,0 +1,183 @@
+{
+  "title": "Continuous Authentication for Voice Assistants",
+  "year": 2017,
+  "venue": "MobiCom '17",
+  "doi": "10.1145/3117811.3117823",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "voice",
+      "body-surface vibrations"
+    ],
+    "sensor": [
+      "accelerometer",
+      "microphone"
+    ],
+    "device": [
+      "eyeglasses",
+      "earbuds",
+      "necklace"
+    ],
+    "body_location": "facial, throat, and sternum areas"
+  },
+  "data": [
+    {
+      "dataset_name": "VAuth User Study",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 18,
+      "num_samples": 540,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "Phonetic Baseline",
+      "dataset_type": "private",
+      "dataset_role": "training",
+      "num_subjects": 1,
+      "num_samples": 44,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM",
+      "Sequential Minimal Optimization (SMO)"
+    ],
+    "input_representation": "Normalized cross-correlation values (1001 points centered at the maximum)",
+    "training_strategy": "Trained offline using a single training set of 44 English phonemes"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.09,
+      "context": "Average across 18 users in still position"
+    }
+  ],
+  "evaluation_protocol": "Pairwise matching of accelerometer and microphone signals for 30 voice commands across different wearable positions and mobility states",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "TP",
+      "value": 97.0
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Lower performance for Korean language due to lack of nasal consonants generating fewer vibrations through the nasal bone"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "replay",
+      "synthetic/deepfake",
+      "zero-effort"
+    ],
+    "liveness_detection": true,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 364,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 10,
+        "unit": "mAh/day"
+      }
+    ],
+    "usability_study": [
+      "survey"
+    ],
+    "usability_issues": "Requires wearing an additional physical device in contact with skin"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "microphone"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed VAuth, the first system for continuous authentication of voice assistants using body-surface vibrations to verify the source of speech"
+    ],
+    "main_strength": [
+      "Effective against replay and mangled voice attacks",
+      "Robust to user mobility (jogging) and diverse accents/languages"
+    ],
+    "main_weakness": [
+      "Dependence on physical contact with the body",
+      "Performance degradation in specific languages (Korean)"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The system uses the accelerometer as a physical side-channel to ensure the voice originates from the owner's throat/chest, effectively providing a liveness check against remote audio injection."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Feng_2017"
+}

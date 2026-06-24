@@ -1,0 +1,173 @@
+{
+  "title": "Robust Continuous Authentication Using Cardiac Biometrics From Wrist-Worn Wearables",
+  "year": 2022,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/jiot.2021.3128290",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "photoplethysmography (PPG)"
+    ],
+    "sensor": [
+      "Green LED PPG sensor"
+    ],
+    "device": [
+      "smartwatch",
+      "fitness tracker",
+      "wrist-worn prototype"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private prototype dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 19200,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 10,
+        "unit": "minutes"
+      }
+    },
+    {
+      "dataset_name": "IEEE TBME Benchmark dataset",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": 42,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 8,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Gradient Boost Tree (GBT)"
+    ],
+    "input_representation": "5 general fiducial features based on systolic peaks",
+    "training_strategy": "Binary classifier per user with adaptive updating (retraining every 3 hours with 2 minutes of new data)"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 3.9,
+      "context": "Attack false detection rate achieved with a sliding window length of 4 PPG segments under random attack"
+    }
+  ],
+  "evaluation_protocol": "20 rounds of Monte Carlo cross-validation (5 min training, 5 min authentication)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 90.73,
+    "real_world_performance_value": 69.0,
+    "drop_percentage": 21.73
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": 5,
+      "unit": "hours"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 5,
+        "unit": "hours"
+      },
+      "drop_in_performance": {
+        "metric": "CA Accuracy",
+        "value": 7.0
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "CA Accuracy",
+      "value": 74.0
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Impact of human emotions (high arousal)",
+      "Impact of skin tone/melanin on green light absorption"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 3,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 7.5,
+        "unit": "mA"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Baseline drifts and motion artifacts in low-cost sensors"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "IEEE TBME Benchmark dataset",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Developed TrueHeart, a CA system using wrist-worn PPG",
+      "Proposed an MA detection and mitigation pipeline for both transient and continuous motion artifacts",
+      "Implemented an adaptive updating mechanism to handle cardiac signal drift"
+    ],
+    "main_strength": [
+      "Effective handling of continuous motion artifacts using VMD/CEEMDAN and FastICA",
+      "Low power consumption suitable for commodity wearables"
+    ],
+    "main_weakness": [
+      "Significant performance drop during continuous intense movement compared to static state"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper reports 'CA Accuracy' and 'Attack False Detection Rate'. Per guidelines, only the latter (mapped to FAR) is extracted as a target metric."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Zhao_2022"
+}

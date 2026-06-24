@@ -1,0 +1,145 @@
+{
+  "title": "PPG Sensor-Based Biometric Identification and Physiological Analysis via Temporal-Frequency Disentanglement With Liquid Neural Networks",
+  "year": 2025,
+  "venue": "IEEE Sensors Letters",
+  "doi": "10.1109/lsens.2025.3590543",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "PPG sensor",
+      "EVAL-ADPD4100Z-PPG evaluation board"
+    ],
+    "device": [
+      "wearable sensing system",
+      "fingertip PPG board"
+    ],
+    "body_location": "fingertip"
+  },
+  "data": [
+    {
+      "dataset_name": "unnamed multiphysiological PPG dataset",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 17,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 30,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Closed-form Continuous-time (CfC) liquid neural network",
+      "Temporal-frequency manifold disentanglement framework"
+    ],
+    "input_representation": "Concatenation of raw PPG signal and log-scaled magnitude spectrogram (STFT)",
+    "training_strategy": "Multitask learning using cross-entropy loss for identity, regression loss for physiological parameters, and an orthogonality regularization term (Lortho) to disentangle identity and physiology manifolds."
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Five-fold cross-validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": null
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": null
+      },
+      "drop_in_performance": {
+        "metric": null,
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Signal nonstationarity",
+      "Physiological variability"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a temporal-frequency manifold disentanglement framework using liquid neural networks to isolate identity from physiological state",
+      "Released the first open-access PPG dataset with synchronized annotations for BMI, blood pressure, blood glucose, and heart rate"
+    ],
+    "main_strength": [
+      "Strong performance (94.12% accuracy) compared to 8 state-of-the-art methods",
+      "Effective handling of nonstationary signals via continuous-time modeling"
+    ],
+    "main_weakness": [
+      "Very small subject pool (n=17)",
+      "Data collected exclusively in a controlled laboratory environment"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The paper emphasizes the 'dual characteristic' of PPG (physiological monitoring vs biometric identification) and explicitly aims to disentangle these to improve robustness."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Zhang_2025"
+}

@@ -1,0 +1,190 @@
+{
+  "title": "TouchTone: Smartwatch Privacy Protection via Unobtrusive Finger Touch Gestures",
+  "year": 2024,
+  "venue": "MOBISYS '24",
+  "doi": "10.1145/3643832.3661884",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "finger touch",
+      "acoustic",
+      "vibration"
+    ],
+    "sensor": [
+      "microphone",
+      "accelerometer",
+      "speaker"
+    ],
+    "device": [
+      "Samsung Galaxy Watch 4",
+      "Fossil Watch 6",
+      "Skagen Falster Watch 6"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 54,
+      "num_samples": 19440,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM",
+      "Profile Matching (Euclidean distance)"
+    ],
+    "input_representation": "Spectrograms, MFCC, and 52 statistical features (mean, std, variance, etc.)",
+    "training_strategy": "User enrollment to create a finger response profile using average statistic features and maximum deviation."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 2.48,
+      "context": "Achieved using press sides finger touch gesture across varied smartwatch hardware"
+    },
+    {
+      "metric": "FAR",
+      "value": 1.1,
+      "context": "Achieved using press top gesture with thresholds μ=85% and κ=30%"
+    },
+    {
+      "metric": "FRR",
+      "value": 2.9,
+      "context": "Derived from 97.1% True Positive Rate for press sides gesture"
+    }
+  ],
+  "evaluation_protocol": "Randomly split user samples: half used to build the legitimate user profile and half used as testing signals.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 6,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 6,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "EER",
+        "value": 4.13
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 6.77
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 3.67
+    },
+    "reported_limitations": [
+      "Impact of sweat on finger surfaces",
+      "Thick gloves obscuring finger shape",
+      "Potential interference from long sleeves"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay",
+      "presentation/mask"
+    ],
+    "liveness_detection": true,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 0.6,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 0.025,
+        "unit": "% battery capacity per authentication"
+      }
+    ],
+    "usability_study": [
+      "SUS survey"
+    ],
+    "usability_issues": "PIN is found to be distracting and tedious compared to TouchTone."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "acoustic",
+      "vibration"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Robustness",
+        "value": null,
+        "unit": "Qualitative: vibration domain mitigates acoustic noise and vice versa"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Cross-domain sensing (acoustic + vibration) for finger biometrics on smartwatches",
+      "Utilization of low-frequency (50Hz-500Hz) challenge signals to avoid smartwatch hardware limitations"
+    ],
+    "main_strength": [
+      "High robustness to environmental noise and body motion",
+      "Unobtrusive and low-effort user interaction"
+    ],
+    "main_weakness": [
+      "Susceptibility to physical barriers like thick gloves"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "The system uses a challenge-response mechanism specifically designed for the low sampling rates of consumer smartwatches."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Yang_2024"
+}

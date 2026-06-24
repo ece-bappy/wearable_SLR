@@ -1,0 +1,173 @@
+{
+  "title": "What the Heart Can(not) Tell: Potential and Pitfalls of Biometric Recognition Methods Based on Photoplethysmography",
+  "year": 2025,
+  "venue": "Sensors",
+  "doi": "10.3390/s25247586",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "photoplethysmography (PPG)"
+    ],
+    "sensor": [
+      "PPG sensor"
+    ],
+    "device": [
+      "Empatica E4"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "BIDMCPPG",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 53,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 480,
+        "unit": "seconds"
+      }
+    },
+    {
+      "dataset_name": "RWPPG",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 35,
+      "num_samples": 2074,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 6,
+        "unit": "seconds"
+      }
+    },
+    {
+      "dataset_name": "LAUREATE",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 42,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 700,
+        "unit": "hours"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "Siamese Neural Network",
+      "XGBoost"
+    ],
+    "input_representation": "Time-domain and frequency-domain features (FFT, Welch, Wavelets)",
+    "training_strategy": "Temporal splitting (first half of semester for training, second half for testing)"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Leave-one-out (BIDMCPPG) and temporal splitting (LAUREATE)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 13,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 6.5,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": null,
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Significant performance drop in real-world environments",
+      "Vulnerability to unseen users (open-set)",
+      "Overestimation of performance when using random train-test splits"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Signal degradation due to naturalistic movement in real-world settings"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "BIDMCPPG, RWPPG",
+    "reproducibility_score": "high"
+  },
+  "insights": {
+    "key_contribution": [
+      "Developed guidelines for the robust evaluation of PPG-based biometrics",
+      "Demonstrated the gap between lab and real-world performance",
+      "Quantified the inflation of results caused by random temporal splits"
+    ],
+    "main_strength": [
+      "Use of a longitudinal, in-the-wild dataset",
+      "Strict adherence to reproducibility (open code)"
+    ],
+    "main_weakness": [
+      "Lack of demographic diversity in the LAUREATE dataset",
+      "No active spoofing or presentation attack testing"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper highlights that many current PPG studies overestimate accuracy by using small datasets and random splits instead of temporal splits."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Alecci_2025"
+}
