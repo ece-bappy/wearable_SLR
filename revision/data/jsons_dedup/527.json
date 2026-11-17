@@ -1,0 +1,164 @@
+{
+  "title": "ToothSonic: Earable Authentication via Acoustic Toothprint",
+  "year": 2022,
+  "venue": "Proc. ACM Interact. Mob. Wearable Ubiquitous Technol.",
+  "doi": "10.1145/3534606",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "acoustic toothprint"
+    ],
+    "sensor": [
+      "inward-facing microphone"
+    ],
+    "device": [
+      "earable",
+      "prototype earbud"
+    ],
+    "body_location": "ear canal / mouth"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 25,
+      "num_samples": 12500,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "fully connected neural network",
+      "Hidden Markov Model (HMM)"
+    ],
+    "input_representation": "MFCC, Pitch, log spectrum, sonorant and fricative components",
+    "training_strategy": "10-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "FRR",
+      "value": 0.04,
+      "context": "Achieved using 5 most comfortable teeth gestures over 25 subjects"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.05,
+      "context": "Achieved using 5 most comfortable teeth gestures over 25 subjects"
+    }
+  ],
+  "evaluation_protocol": "10-fold cross-validation across 25 participants",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "FRR",
+      "value": 1.41
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "FRR",
+      "value": 2.57
+    },
+    "reported_limitations": [
+      "cannot be used while playing music",
+      "energy consumption of computing chips on earables",
+      "impact of dental works or aging on toothprint"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "replay"
+    ],
+    "liveness_detection": null,
+    "defense_type": "heuristic"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [
+      "survey"
+    ],
+    "usability_issues": "Some gestures (canine/molar) are harder to maintain consistency"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed ToothSonic for earable authentication using acoustic toothprints",
+      "Designed 10 representative teeth gestures and multi-level acoustic feature extraction",
+      "Leveraged the occlusion effect of the ear canal to boost signal capture"
+    ],
+    "main_strength": [
+      "Resistant to spoofing due to the private teeth-ear propagation channel",
+      "Hands-free and eye-free authentication"
+    ],
+    "main_weakness": [
+      "Small sample size for evaluation",
+      "Lack of temporal/longitudinal testing"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "NO_CROSS_SESSION",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The system demonstrates very high accuracy when combining multiple comfortable gestures, but the real-world utility is hindered by audio interference (music)."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Wang_2022"
+}

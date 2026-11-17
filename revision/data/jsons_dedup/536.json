@@ -1,0 +1,182 @@
+{
+  "title": "AUToSen: Deep-Learning-Based Implicit Continuous Authentication Using Smartphone Sensors",
+  "year": 2020,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/JIOT.2020.2975779",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "motion patterns"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer",
+      "elevation",
+      "screen touch"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "hand/pocket"
+  },
+  "data": [
+    {
+      "dataset_name": "AUToSen Private Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 84,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 5,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "LSTM",
+      "Bidirectional LSTM",
+      "Multilayer LSTM"
+    ],
+    "input_representation": "normalized sequential sensory readings",
+    "training_strategy": "stratified tenfold cross-validation with class weights to address imbalance"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.95,
+      "context": "Achieved using three sensors (AcGrMa) with a sampling period of one second"
+    },
+    {
+      "metric": "FRR",
+      "value": 6.67,
+      "context": "Achieved using three sensors (AcGrMa) with a sampling period of one second"
+    },
+    {
+      "metric": "EER",
+      "value": 0.09,
+      "context": "Achieved using three sensors (AcGrMa) with a sampling period of 0.5 seconds"
+    }
+  ],
+  "evaluation_protocol": "stratified tenfold cross-validation",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": 3,
+        "unit": "days"
+      },
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Requires periodic retraining every three days to handle behavioral changes",
+      "Adversarial machine learning attacks not yet addressed"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 0.5,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Need for model retraining over time"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "F1-score",
+        "value": 2.48,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed AUToSen for implicit continuous authentication using deep learning",
+      "Determined that three sensors (Acc, Gyro, Mag) are optimal for performance",
+      "Demonstrated feasibility of high-frequency authentication (every 0.5s)"
+    ],
+    "main_strength": [
+      "High-frequency authentication capability",
+      "In-the-wild data collection from 84 participants",
+      "Very low EER (0.09%)"
+    ],
+    "main_weakness": [
+      "No testing against active spoofing or adversarial attacks",
+      "Model degrades over a few days requiring retraining"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_ADVERSARIAL_DEFENSE",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The paper highlights that adding more sensors (elevation/touch) did not necessarily improve results and could introduce sensitivity to circumstantial changes."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Abuhamad_2020"
+}

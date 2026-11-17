@@ -1,0 +1,168 @@
+{
+  "title": "Ratio-Enhanced Feature Interaction for Few-Shot User Authentication Using Running Data in IoT Wearables",
+  "year": 2026,
+  "venue": "IEEE INTERNET OF THINGS JOURNAL",
+  "doi": "10.1109/jiot.2025.3650143",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "running data",
+      "heart rate",
+      "pace",
+      "distance",
+      "start time"
+    ],
+    "sensor": [
+      "pedometer",
+      "heart rate sensor"
+    ],
+    "device": [
+      "smartwatches",
+      "fitness trackers",
+      "smartphones"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Health App of Shanghai Jiao Tong University",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 71,
+      "num_samples": 63478,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 3,
+        "unit": "years"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Logistic Regression",
+      "SVM",
+      "Random Forest",
+      "XGBoost",
+      "MLP",
+      "PNN",
+      "Wide & Deep",
+      "DeepFM",
+      "Deep Cross Network",
+      "Siamese Network"
+    ],
+    "input_representation": "session-level wearable statistical features",
+    "training_strategy": "Ratio-Enhanced Feature Interaction (RE-FI) framework using Information Gain (IG)-based feature selection"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.977,
+      "context": "Achieved by Random Forest (RF) using RE-FI feature set"
+    }
+  ],
+  "evaluation_protocol": "Fivefold cross-validation with 80% training and 20% testing split per user",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3,
+      "unit": "years"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Evaluated only on running data",
+      "Other daily physical activities have not yet been evaluated"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 0.001,
+        "unit": "milliseconds"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "physiological",
+      "behavioral"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed RE-FI framework to construct second-order multiplicative and ratio-based cross features",
+      "Used IG-based selection to reduce dimensionality and mitigate overfitting in few-shot scenarios",
+      "Provided theoretical justification for ratio-based feature injection across linear, tree, and DNN models"
+    ],
+    "main_strength": [
+      "Strong performance in extreme few-shot settings (as low as 5 samples per user)",
+      "Architecture-independent feature enhancement"
+    ],
+    "main_weakness": [
+      "Reliance on a single activity type (running)",
+      "Private dataset limits verification"
+    ],
+    "gap_category": [
+      "SINGLE_DATASET_ONLY",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper emphasizes the value of ratio features (e.g., heart rate/pace) to capture individual physiological-behavioral couplings."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Chen_2026_1"
+}

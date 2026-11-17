@@ -1,0 +1,143 @@
+{
+  "title": "PulsePrint: Single-arm-ECG Biometric Human Identification Using Deep Learning",
+  "year": 2017,
+  "venue": "IEEE",
+  "doi": "10.1109/uemcon.2017.8249111",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "ECG electrodes"
+    ],
+    "device": [
+      "Wearable prototype"
+    ],
+    "body_location": "left upper-arm"
+  },
+  "data": [
+    {
+      "dataset_name": "single-arm-ECG dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": 5000,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 26,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Convolutional Neural Network (CNN)",
+      "Fully Connected Neural Network"
+    ],
+    "input_representation": "2D ECG representation (embedding strategy, 200x200 image)",
+    "training_strategy": "10-fold cross validation"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "10-fold cross validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Signal strength is only around 10% of chest-ECG",
+      "Acquired signal is much noisier than standard chest-ECG"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a highly wearable single-arm-ECG lead configuration",
+      "Used a 2D transformation and CNN to automatically learn features from raw ECG data"
+    ],
+    "main_strength": [
+      "Improved wearability compared to traditional chest or two-wrist configurations"
+    ],
+    "main_weakness": [
+      "Very small subject pool (10 subjects)",
+      "Lack of standard biometric metrics (EER, FAR, FRR)",
+      "No spoofing or presentation attack testing"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper reports an 'identification rate' of 98.4%, which is an accuracy metric and thus excluded per the extraction rules."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Zhang_2017"
+}

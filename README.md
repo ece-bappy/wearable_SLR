@@ -13,6 +13,30 @@ The project is built around:
 - `wearable_auth_final.json`: a final curated wearable authentication metadata collection.
 - `references.bib`: bibliography references used for the review.
 
+## Revised analysis (manuscript revision, November 2026)
+
+The revised manuscript is based on the files in `revision/`. Every statistic, figure, and table in the revised paper can be regenerated from them.
+
+**Corpus.** A DOI- and title-level audit found 16 papers that had been extracted twice. `revision/data/jsons_dedup/` is `jsons_w_citekey/` with those 16 duplicate records removed; their file numbers are listed in `revision/data/removed_duplicates.txt`. The final corpus contains **263 unique included studies**: 280 records, of which 17 are marked `exclude`.
+
+| Path | Purpose |
+|---|---|
+| `revision/phase2/analysis_revised.py` | Revised version of `analysis.ipynb`; every change is marked `# REV:`. Produces the RQ1–RQ3 figures and `numbers.json`. It covers the evidence tiers, the paired lab/field values, and one EER definition shared by all analyses: the first reported EER, taken as a percentage. |
+| `revision/phase3/analysis_phase3.py` | Hardware telemetry (latency and energy normalization), multimodal fusion vs. unimodal analysis, and the corpus table (`tables/S1_corpus_263.csv`, `.xlsx`). Produces `numbers_phase3.json`. |
+| `revision/phase3/prisma.py` | Draws the PRISMA flow diagram. The post-extraction counts are derived from the data. |
+| `revision/tools/make_highlights_ga.py`, `make_ga_v4.py` | Highlights and the graphical abstract. Every number is read from the JSON outputs. |
+| `revision/phase2/list_paired.py` | Lists the paired lab/field studies. Each pair was checked manually against the source article. `Camara_2023` is excluded because its two values come from different datasets, not from lab and field conditions. |
+
+**Reproduce** (Python 3.11+, with `pandas numpy scipy matplotlib seaborn python-docx openpyxl`). On Windows, set `PYTHONUTF8=1` first.
+
+```bash
+cd revision/phase2 && python analysis_revised.py
+cd ../phase3 && python analysis_phase3.py && python prisma.py
+cd ../.. && python revision/tools/make_highlights_ga.py && python revision/tools/make_ga_v4.py
+```
+
+The original notebook `analysis.ipynb` reads a folder named `jsons_test/`. To reproduce the originally submitted figures (279 records, before de-duplication), copy `jsons_w_citekey/` to `jsons_test/`.
+
 ## Purpose
 
 The repository supports research into wearable biometric authentication systems by capturing:

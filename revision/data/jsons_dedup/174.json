@@ -1,0 +1,158 @@
+{
+  "title": "Heart ID: Biometric Identification Using Wearable MIMO RF Heart Sensors",
+  "year": 2023,
+  "venue": "IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biology",
+  "doi": "10.1109/jerm.2022.3223034",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "internal cardiac dielectric boundary motion"
+    ],
+    "sensor": [
+      "MIMO RF antennas",
+      "near-field coherent sensing (NCS) sensors"
+    ],
+    "device": [
+      "wearable RF antenna array",
+      "USRP B210"
+    ],
+    "body_location": "chest"
+  },
+  "data": [
+    {
+      "dataset_name": "Private human study",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 16811,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "unsupervised",
+    "model": [
+      "Autoencoder",
+      "Nearest Neighbor Classifier",
+      "Ensemble Classification"
+    ],
+    "input_representation": "16-channel, 500 sample-per-channel filtered NCS waveform",
+    "training_strategy": "Unsupervised feature extraction via autoencoder followed by supervised nearest neighbor classification with ensemble voting."
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Training on deep relaxation and attention game routines; validation on unseen normal breathing routines. Longitudinal validation performed with 2 subjects returning after 2 weeks.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": 2,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": null,
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Small dataset size",
+      "Sensitivity to precise antenna positioning on the chest",
+      "Not suitable for identification during subject motion"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Inconsistent antenna placement between sessions affects longitudinal accuracy."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": 89.5,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Introduced Heart ID using MIMO RF near-field coherent sensing",
+      "Proposed an unsupervised autoencoder framework for heart-motion biometric features",
+      "Demonstrated that MIMO antenna arrays significantly increase biometric entropy compared to single-point sensors"
+    ],
+    "main_strength": [
+      "Non-invasive, over-clothing sensing",
+      "Potential for passive and continuous authentication",
+      "High accuracy using ensemble learning"
+    ],
+    "main_weakness": [
+      "Lack of robustness to body movement",
+      "Dependency on highly consistent sensor placement",
+      "Small subject sample size"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper focuses heavily on accuracy (which is excluded from metrics), but reports the system is highly effective for passive ID in static positions."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Conroy_2023"
+}

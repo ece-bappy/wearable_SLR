@@ -1,0 +1,169 @@
+{
+  "title": "WearID: Low-Effort Wearable-Assisted Authentication of Voice Commands via Cross-Domain Comparison without Training",
+  "year": 2020,
+  "venue": "ACSAC 2020",
+  "doi": "10.1145/3427228.3427259",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "voice",
+      "vibration"
+    ],
+    "sensor": [
+      "microphone",
+      "accelerometer"
+    ],
+    "device": [
+      "smartwatch",
+      "smartphone"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": 600,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 6,
+        "unit": "months"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "2D-serial correlation",
+      "spectrogram-based frequency conversion"
+    ],
+    "input_representation": "spectrogram",
+    "training_strategy": "None (training-free)"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.0,
+      "context": "Achieved in normal situation for both Huawei Watch 2 and LG W150"
+    },
+    {
+      "metric": "AUC",
+      "value": 0.945,
+      "context": "Best result achieved using Huawei Watch 2 under Random Attack"
+    }
+  ],
+  "evaluation_protocol": "Cross-domain similarity comparison between VA microphone data and wearable accelerometer data using 2D-serial correlation of spectrograms.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 6,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Short sensing range of accelerometers (<30cm)",
+      "Potential for replay attacks specifically designed for the vibration domain"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay",
+      "presentation/mask",
+      "synthetic/deepfake"
+    ],
+    "liveness_detection": true,
+    "defense_type": "heuristic"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 1.93,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 0.21,
+        "unit": "J"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "audio",
+      "vibration"
+    ],
+    "fusion_level": "score",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Training-free cross-domain authentication using audio and vibration domains",
+      "Spectrogram-based conversion algorithm to bridge the sampling rate gap between microphones and accelerometers"
+    ],
+    "main_strength": [
+      "Privacy-preserving as it requires no stored voice templates",
+      "Resistant to ultrasound and hidden voice command attacks due to accelerometer physics"
+    ],
+    "main_weakness": [
+      "Requires the wearable to be very close to the sound source (<30cm)"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The system uses the aliasing effect of low-sample-rate accelerometers as a feature rather than a limitation."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Shi_2020"
+}

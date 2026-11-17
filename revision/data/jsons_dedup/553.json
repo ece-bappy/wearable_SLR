@@ -1,0 +1,163 @@
+{
+  "title": "Advanced Authentication Method by Geometric Data Analysis Based on User Behavior and Biometrics for IoT Device with Touchscreen",
+  "year": 2021,
+  "venue": "Electronics",
+  "doi": "10.3390/electronics10212583",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "gesture",
+      "finger-geometry",
+      "wrist-motion"
+    ],
+    "sensor": [
+      "touchscreen",
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": "fingers, wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 2400,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "unsupervised",
+    "model": [
+      "Gaussian Mixture Model",
+      "Isolation Forest",
+      "Ensemble"
+    ],
+    "input_representation": "geometric features from touchscreen (distances, speed, angles) and root mean square of smartwatch accelerometer and gyroscope data",
+    "training_strategy": "Ensemble of Gaussian Mixture and Isolation Forest models"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 1.11,
+      "context": "Average attack success rate (ASR) using 100 training datasets"
+    }
+  ],
+  "evaluation_protocol": "100 samples for training and 20 samples for testing per user",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "month"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": 1,
+        "unit": "month"
+      },
+      "drop_in_performance": {
+        "metric": "accuracy",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Model uses many variables which may lead to optimal solution problems in greedy algorithms like Isolation Forest"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 0.82,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "touch-gesture",
+      "finger-geometry",
+      "wrist-motion"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a multimodal authentication system combining touchscreen-based finger geometry and behavior with smartwatch-based motion analysis"
+    ],
+    "main_strength": [
+      "Low FAR (1.11%) and fast execution time (<1s)"
+    ],
+    "main_weakness": [
+      "Lack of active spoofing tests; relies on zero-effort imposter attempts"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The study maps ASR to FAR. Accuracy is reported as 91.5% but excluded per extraction rules."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Lee_2021_1"
+}

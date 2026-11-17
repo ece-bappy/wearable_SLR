@@ -1,0 +1,153 @@
+{
+  "title": "User Authentication Method for Wearable Ring Devices using Active Acoustic Sensing",
+  "year": 2023,
+  "venue": "Proceedings of the 2023 International Symposium on Wearable Computers (ISWC ’23)",
+  "doi": "10.1145/3594738.3611357",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "active acoustic sensing"
+    ],
+    "sensor": [
+      "piezoelectric speaker",
+      "piezoelectric microphone"
+    ],
+    "device": [
+      "wearable ring"
+    ],
+    "body_location": "finger"
+  },
+  "data": [
+    {
+      "dataset_name": "Private experimental dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 14,
+      "num_samples": 700,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 10,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "Dynamic Time Warping (DTW)"
+    ],
+    "input_representation": "Frequency power spectrum (20,000 data points between 20,001 Hz and 40,000 Hz)",
+    "training_strategy": "Template registration and similarity thresholding"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.027,
+      "context": "Average EER achieved using the ring device with the participant gripping their hand"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-out owner rotation for FAR and FRR calculation across participants",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.027,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Lack of reproducibility in contact state for tape-based devices",
+      "Sensitivity to finger force and orientation",
+      "Instability of contact when ring size is too large"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed an active acoustic sensing method for ring-type devices leveraging unique finger acoustic characteristics",
+      "Demonstrated that a 3D-printed ring improves contact reproducibility compared to flexible tape"
+    ],
+    "main_strength": [
+      "Implicit and continuous authentication without user effort"
+    ],
+    "main_weakness": [
+      "Tested in a purely controlled lab environment",
+      "Small sample size",
+      "No testing against active spoofing attacks"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET",
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The study highlights the importance of mechanical fit (ring size) and hand posture (gripping) in maintaining stable acoustic biometric signatures."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Iwakiri_2023"
+}

@@ -1,0 +1,161 @@
+{
+  "title": "Wearable Device User Authentication Using Physiological and Behavioral Metrics",
+  "year": 2017,
+  "venue": "IEEE",
+  "doi": "10.1109/pimrc.2017.8292272",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "heart rate",
+      "calorie burn",
+      "metabolic equivalent of task (MET)",
+      "step count"
+    ],
+    "sensor": [
+      "heart rate sensor",
+      "accelerometer"
+    ],
+    "device": [
+      "Fitbit Charge HR"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "NetHealth Study",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 421,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 2,
+        "unit": "years"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Quadratic SVM",
+      "Ensemble (Bagged Tree)",
+      "J48 Decision Tree",
+      "Logistic Regression"
+    ],
+    "input_representation": "Statistical features (mean, std, percentiles, IQR, range, MAD, RMSE) computed over 5-minute windows",
+    "training_strategy": "75% training, 25% testing split"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.96,
+      "context": "Achieved using Quadratic SVM in one-to-one classification"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.07,
+      "context": "Achieved using Quadratic SVM in one-to-one classification (mapped from FPR)"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.07,
+      "context": "Achieved using Quadratic SVM in one-to-one classification (mapped from FNR)"
+    }
+  ],
+  "evaluation_protocol": "Compared one-to-many (1 vs 15) and one-to-one (pair-wise) classification scenarios.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "years"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Accuracy varies across individuals",
+      "Coarse-grained sampling (minute-level) limits precision"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "heart rate",
+      "calorie burn",
+      "MET",
+      "step count"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "First to use combined person-dependent physical activity and physiological data for continuous authentication using coarse-grained samples"
+    ],
+    "main_strength": [
+      "Large, longitudinal, in-the-wild dataset (421 subjects over 2 years)"
+    ],
+    "main_weakness": [
+      "Machine learning evaluation conducted on a much smaller subset (16 subjects) than the available data",
+      "No active spoofing/presentation attack testing"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper focuses on 'coarse-grained' data, which is a significant contrast to most biometric papers using raw high-frequency sensor data."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Vhaduri_2017"
+}

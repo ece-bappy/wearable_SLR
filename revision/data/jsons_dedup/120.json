@@ -1,0 +1,176 @@
+{
+  "title": "Eternity in a Second: Quick-pass Continuous Authentication Using Out-ear Microphones",
+  "year": 2024,
+  "venue": "SENSYS '24",
+  "doi": "10.1145/3666025.3699366",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ultrasound",
+      "acoustic"
+    ],
+    "sensor": [
+      "out-ear microphones"
+    ],
+    "device": [
+      "COTS earphones",
+      "wired earphones",
+      "wireless earphones"
+    ],
+    "body_location": "ear"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 36,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 7,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "ECAPA-TDNN"
+    ],
+    "input_representation": "Inverse MelSpectrogram (IMFCC)",
+    "training_strategy": "Supervised training using positive samples from enrolled users and equal number of negative samples from others."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.014,
+      "context": "Best result achieved on wireless earphones during continuous authentication"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.0,
+      "context": "Achieved during replay attack tests (E1 and E2 microphones) and spoofing attack tests (S2 3D masks)"
+    }
+  ],
+  "evaluation_protocol": "80% training, 20% testing; cross-device testing with frequency response compensation",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.97,
+    "real_world_performance_value": 0.97,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 3,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "Accuracy",
+        "value": 2.0
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance degrades significantly during running due to intense irregular motion",
+      "TWS earphones often have a default sampling rate of 16 kHz, which is insufficient for the 17-21 kHz ultrasound range"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 138.0,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 75.9,
+        "unit": "mW"
+      }
+    ],
+    "usability_study": [
+      "perceptual quality study"
+    ],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed OnePiece for whole-course continuous authentication using COTS out-ear microphones",
+      "Developed a frequency-varying ultrasonic modulation scheme (ramp signal) for fast biometric extraction",
+      "Introduced a frequency response compensation strategy for cross-device one-shot registration",
+      "Implemented a wake-up mechanism to reduce power consumption"
+    ],
+    "main_strength": [
+      "High accuracy with very low authentication time (1s initial, 3s continuous)",
+      "Works on COTS hardware without modifications",
+      "Resilient against replay and spoofing attacks"
+    ],
+    "main_weakness": [
+      "Sensitivity to intense motion (running)",
+      "Dependence on high sampling rates not available in some TWS devices"
+    ],
+    "gap_category": [
+      "ENVIRONMENT",
+      "MODEL_LIMITATIONS"
+    ],
+    "notes_for_review": "The system effectively bridges the gap between quick-pass initial authentication and long-term continuous monitoring using ubiquitous sensors."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Gao_2024"
+}

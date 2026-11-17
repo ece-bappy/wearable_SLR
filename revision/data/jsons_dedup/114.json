@@ -1,0 +1,159 @@
+{
+  "title": "Enabling Passive User Authentication via Heart Sounds on In-Ear Microphones",
+  "year": 2025,
+  "venue": "IEEE Transactions on Dependable and Secure Computing",
+  "doi": "10.1109/tdsc.2024.3429574",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "heart sounds",
+      "phonocardiogram (PCG)"
+    ],
+    "sensor": [
+      "in-ear microphones",
+      "IEMs"
+    ],
+    "device": [
+      "ANC earphones",
+      "earables"
+    ],
+    "body_location": "ear"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 45,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Convolutional Neural Network (CNN)",
+      "Transformer-based GAN",
+      "Elastic Weight Consolidation (EWC)"
+    ],
+    "input_representation": "CWT (Continuous Wavelet Transform) / spectrogram",
+    "training_strategy": "Continual learning via EWC to accommodate biometric drifts"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 1.6,
+      "context": "Extensive experiments with 45 participants"
+    },
+    {
+      "metric": "FRR",
+      "value": 1.8,
+      "context": "Extensive experiments with 45 participants"
+    }
+  ],
+  "evaluation_protocol": "Comparison between valid users and imposters (random and replay attacks)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": null,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Limited amount of registration data provided by users"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "replay"
+    ],
+    "liveness_detection": true,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "left ear bone-conducted PCG",
+      "right ear bone-conducted PCG"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Passive authentication using binaural bone-conducted heart sounds via IEMs",
+      "Interference elimination method combining modified NMF and adaptive filtering",
+      "Continual learning framework to handle biometric drift",
+      "GAN-based data augmentation for registration"
+    ],
+    "main_strength": [
+      "Truly passive (zero-effort) authentication",
+      "Leverages ubiquitous hardware (ANC earphones)",
+      "Addresses signal interference (audio and body sounds)"
+    ],
+    "main_weakness": [
+      "Private dataset prevents independent verification"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "First earable-based passive authentication system using binaural PCGs. Strong focus on interference removal and temporal drift."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Cao_2025"
+}

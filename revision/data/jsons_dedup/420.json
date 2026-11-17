@@ -1,0 +1,161 @@
+{
+  "title": "U-WeAr: User Recognition on Wearable Devices through Arm Gesture",
+  "year": 2022,
+  "venue": "IEEE Transactions on Human-Machine Systems",
+  "doi": "10.1109/thms.2022.3170829",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "arm gesture"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "custom wristband"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "U-WeAr",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 33,
+      "num_samples": 4125,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 2.5,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Bidirectional LSTM",
+      "Bidirectional GRU",
+      "F-BLSTM",
+      "F-BGRU"
+    ],
+    "input_representation": "500 x 6 vector (interpolated 6-DOF inertial signals)",
+    "training_strategy": "Cross-entropy loss combined with Fisher criterion using Adam optimizer"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 12.94,
+      "context": "Achieved in gesture-dependent user authentication setup using S-Euc-l2 distance metric with F-BLSTM features"
+    }
+  ],
+  "evaluation_protocol": "Five-fold cross-validation for identification; 28 users for training and 5 users for testing in authentication",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Limited number of users in the database",
+      "Need for better modeling of gesture subjectivity"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 0.002,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [
+      "SUS survey"
+    ],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Custom wristband hardware for inertial biometric authentication",
+      "Preprocessing technique for time and space invariance of gestures",
+      "Inclusion of a rejection class in the gesture dataset"
+    ],
+    "main_strength": [
+      "High accuracy for gesture recognition (>96%)",
+      "User-friendly hardware with high usability scores"
+    ],
+    "main_weakness": [
+      "Significantly higher EER for user authentication compared to gesture recognition"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The paper distinguishes between gesture-independent and gesture-dependent authentication, showing that requiring a specific gesture significantly improves biometric verification performance."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Bianco_2022"
+}

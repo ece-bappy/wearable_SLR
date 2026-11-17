@@ -1,0 +1,172 @@
+{
+  "title": "ZEMFA: Zero-Effort Multi-Factor Authentication based on Multi-Modal Gait Biometrics",
+  "year": 2019,
+  "venue": "IEEE",
+  "doi": "10.1109/pst47121.2019.8949032",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer",
+      "linear acceleration",
+      "rotation vector",
+      "gravity",
+      "game rotation",
+      "orientation"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": "pocket and wrist"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 18,
+      "num_samples": 900,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 10,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest"
+    ],
+    "input_representation": "336 features extracted from 8 sensors across two devices (mean, std dev, range, square, and square root of sum of squares for X, Y, Z axes)",
+    "training_strategy": "Leave-one-out cross validation"
+  },
+  "evaluation": [
+    {
+      "metric": "FRR",
+      "value": 0.025,
+      "context": "Achieved using Individualized classifier with the best sensor subset from both smartphone and smartwatch"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.052,
+      "context": "Achieved using Individualized classifier with the best sensor subset from both smartphone and smartwatch"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-out cross validation where one subject is held out as an impostor and others are used for training",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.052,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 60,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Small sample size",
+      "Fixed route in lab setting",
+      "Lack of automatic data collection implementation",
+      "Potential impact of phone placement (bag/hand)",
+      "Exclusion of people with disabilities"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "heuristic"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Potential for false negatives due to injury, stress, or changing how the device is carried"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "smartphone gait",
+      "smartwatch gait"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "FAR",
+        "value": 0.048,
+        "unit": "absolute decrease from phone-only"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": null,
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Multi-factor ZEA system combining smartphone and smartwatch gait biometrics",
+      "Evaluation of active imitation attacks against multi-device fusion"
+    ],
+    "main_strength": [
+      "Multi-device fusion significantly reduces FAR/FRR compared to single-device systems",
+      "High resistance to human-based imitation attacks"
+    ],
+    "main_weakness": [
+      "Lab-only evaluation",
+      "Small participant pool (18 users)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The authors highlight the use of uncorrelated features to defend against treadmill-based gait attacks."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Shrestha_2019"
+}

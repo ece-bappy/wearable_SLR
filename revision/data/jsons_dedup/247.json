@@ -1,0 +1,172 @@
+{
+  "title": "EPDF: A Dual-Channel Individual Classification and Authentication Method Based on Feature Fusion of ECG and PPG Signals in Wearable Devices",
+  "year": 2024,
+  "venue": "2024 7th International Conference on Information Communication and Signal Processing (ICICSP)",
+  "doi": "10.1109/icicsp62589.2024.10809335",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG",
+      "PPG"
+    ],
+    "sensor": [
+      "ECG sensor",
+      "PPG sensor"
+    ],
+    "device": [
+      "wearable devices"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "BIDMC",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 53,
+      "num_samples": null,
+      "collection_setting": null,
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "MultiRes blocks",
+      "Spatial Pyramid Pooling (SPP)",
+      "self-attention mechanism",
+      "Deep Neural Network"
+    ],
+    "input_representation": "224x224 images converted from signal segments",
+    "training_strategy": "10-fold cross-validation using Adam optimizer with joint Softmax and Center loss"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.68,
+      "context": "Achieved on BIDMC dataset using joint ECG-PPG authentication with SPP and Self-Attention"
+    },
+    {
+      "metric": "FRR",
+      "value": 1.37,
+      "context": "Achieved on BIDMC dataset using joint ECG-PPG authentication with SPP and Self-Attention at FAR of 0.1%"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.1,
+      "context": "Fixed FAR used for reporting FRR and EER"
+    }
+  ],
+  "evaluation_protocol": "10-fold cross-validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "signal interference",
+      "power consumption"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": null,
+    "user_interaction_required": null,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Challenge in managing device energy consumption"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "ECG",
+      "PPG"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "FRR",
+        "value": 0.98,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "BIDMC",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed EPDF dual-channel network using MultiRes blocks and SPP for ECG/PPG authentication",
+      "Implemented self-attention and multi-channel cascading to reduce information loss during feature fusion"
+    ],
+    "main_strength": [
+      "Low parameter count (14.65M) making it suitable for lightweight wearable devices",
+      "Outperforms traditional lightweight models like ResNet-18, VGG-16, and AlexNet"
+    ],
+    "main_weakness": [
+      "Evaluation limited to a single public dataset (BIDMC)",
+      "No evaluation of spoofing or presentation attacks"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "SINGLE_DATASET_ONLY"
+    ],
+    "notes_for_review": "The paper demonstrates a strong performance gain by moving from unimodal to multimodal biometric fusion on a public dataset, but lacks in-the-wild validation."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Fan_2024"
+}

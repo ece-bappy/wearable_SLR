@@ -1,0 +1,157 @@
+{
+  "title": "Smart Human Identification System Based on PPG and ECG Signals in Wearable Devices",
+  "year": 2021,
+  "venue": "International Wireless Communications and Mobile Computing (IWCMC)",
+  "doi": "10.1109/iwcmc51323.2021.9498956",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG",
+      "ECG"
+    ],
+    "sensor": [
+      "PPG sensor",
+      "ECG sensor"
+    ],
+    "device": [
+      "wearable devices"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "MIMIC",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": 50,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 1,
+        "unit": "minute"
+      }
+    },
+    {
+      "dataset_name": "CapnoBase",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": 39,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "Cross-correlation",
+      "Template matching"
+    ],
+    "input_representation": "Filtered PPG and ECG signal waves",
+    "training_strategy": "Template generation via correlation mean extraction"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "The system was evaluated using a threshold-based comparison between a generated Human ID (template) and a future ID. Performance was reported primarily via Accuracy and confusion matrix counts (TP, FP, TN, FN).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Data collection issues",
+      "Noise and electromagnetic interference",
+      "Variability in templates causing some users to have more false positives"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Sensor quality and user comfort"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "MIMIC and CapnoBase datasets",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a six-step algorithmic pipeline for human identification using PPG and ECG signals via cross-correlation templates."
+    ],
+    "main_strength": [
+      "Use of two diverse public datasets for validation."
+    ],
+    "main_weakness": [
+      "Lack of standard biometric metrics (EER, FAR, FRR) in results",
+      "No temporal or real-world robustness testing",
+      "No spoofing/presentation attack analysis"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "NO_SPOOFING_TEST",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper reports 'Accuracy', which is excluded per instructions. While it provides FP and TN counts, it does not explicitly state the final FAR/FRR values."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Bastos_2021"
+}

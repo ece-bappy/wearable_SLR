@@ -1,0 +1,152 @@
+{
+  "title": "A Low-Complexity Compressed Sensing Reconstruction Method for Heart Signal Biometric Recognition",
+  "year": 2019,
+  "venue": "Sensors",
+  "doi": "10.3390/s19235330",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG",
+      "PPG"
+    ],
+    "sensor": [
+      "AD8232-based ECG acquisition module",
+      "photoplethysmography sensor"
+    ],
+    "device": [
+      "wearable portable devices"
+    ],
+    "body_location": "chest (ECG), fingertip (PPG)"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 23,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM (Support Vector Machine)",
+      "SWAMP (Sparsity Weak Adaptive Matching Pursuit)",
+      "K-SVD",
+      "Discrete Wavelet Transform"
+    ],
+    "input_representation": "Distance and amplitude features extracted via wavelet transform",
+    "training_strategy": "One-to-one SVM classifiers trained between each pair of individuals using RBF kernel, with majority voting for final recognition."
+  },
+  "evaluation": [],
+  "evaluation_protocol": "10-fold cross-validation for SVM parameters; average of 10 reconstruction runs to mitigate Gaussian measurement matrix randomness.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Uncertainty of the random measurement matrix influences results",
+      "Quality of the acquired signal influences reconstruction effect"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": null,
+    "user_interaction_required": null,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "ECG",
+      "PPG"
+    ],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed an improved SWAMP algorithm for compressed sensing reconstruction of ECG and PPG signals to reduce resource consumption in wearables."
+    ],
+    "main_strength": [
+      "Demonstrates that signal reconstruction via compressed sensing does not significantly degrade biometric recognition accuracy."
+    ],
+    "main_weakness": [
+      "Small subject pool",
+      "Lack of real-world noise/motion testing",
+      "No active security/spoofing evaluation"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper reports 'recognition rates' (95.65% for ECG, 91.31% for PPG), but these are excluded per extraction rules as they are accuracy metrics, not AUC/EER/FRR/FAR."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Xiao_2019"
+}

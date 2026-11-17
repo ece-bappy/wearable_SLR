@@ -1,0 +1,144 @@
+{
+  "title": "Step Count Print: A Physical Activity-Based Biometric Identifier for User Identification and Authentication",
+  "year": 2025,
+  "venue": "IEEE Transactions on Biometrics, Behavior, and Identity Science",
+  "doi": "10.1109/TBIOM.2024.3466269",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "step count"
+    ],
+    "sensor": [
+      "pedometer",
+      "accelerometer"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": "wrist/pocket"
+  },
+  "data": [
+    {
+      "dataset_name": "SJTU Health app dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 7496,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 5,
+        "unit": "years"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Logistic Regression",
+      "Support Vector Machine",
+      "Random Forest",
+      "XGBoost"
+    ],
+    "input_representation": "Step Count Print (SCP) consisting of cadence distribution, average step count sequence, start/end times, and exercise frequency.",
+    "training_strategy": "Leave-one-out cross-validation for hyper-parameters; 70% training, 15% validation, and 15% testing split."
+  },
+  "evaluation": [],
+  "evaluation_protocol": "User identification (1:N) and user authentication (1:1) scenarios using k-NN for feature selection and various ML classifiers for evaluation.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 5,
+      "unit": "years"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Lack of permanence (requires regular template updates)",
+      "Difficulty distinguishing users with sedentary lifestyles",
+      "Performance decreases as the number of users in the system increases"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Introduction of Step Count Print (SCP) as a novel behavioral biometric derived from coarse-grained minute-level data",
+      "Demonstration of feasibility for both user identification and authentication using real-world longitudinal data"
+    ],
+    "main_strength": [
+      "Large-scale real-world dataset",
+      "Non-invasive and low-cost acquisition",
+      "Longitudinal analysis over 5 years"
+    ],
+    "main_weakness": [
+      "Significantly lower identification rates compared to physiological biometrics",
+      "Lack of permanence of behavioral patterns over time"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The paper focuses on coarse-grained data (minute-level) rather than the high-frequency raw sensor data typical in many wearable biometric studies."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Chen_2025"
+}

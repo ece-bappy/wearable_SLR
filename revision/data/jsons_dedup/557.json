@@ -1,0 +1,175 @@
+{
+  "title": "End-To-End Deep Multi-Modal Physiological Authentication With Smartbands",
+  "year": 2021,
+  "venue": "IEEE Sensors Journal",
+  "doi": "10.1109/JSEN.2021.3073888",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "electrodermal activity",
+      "blood volume pressure",
+      "skin temperature",
+      "accelerometer"
+    ],
+    "sensor": [
+      "EDA sensor",
+      "BVP sensor",
+      "skin temperature sensor",
+      "3D accelerometer"
+    ],
+    "device": [
+      "Empatica E4"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 74,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 5,
+        "unit": "days"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN-LSTM",
+      "CNN",
+      "LSTM",
+      "GRU",
+      "CNN-GRU",
+      "Random Forest",
+      "MLP",
+      "Logistic Regression"
+    ],
+    "input_representation": "Raw physiological signals sub-sampled to 2Hz for deep learning; hand-crafted time/frequency domain features for traditional ML",
+    "training_strategy": "First 4 days for training, last day for testing"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 9.31,
+      "context": "Achieved by CNN-LSTM2 model using early fusion"
+    }
+  ],
+  "evaluation_protocol": "Cross-day evaluation (4 days train, 1 day test), 10-fold cross-validation for hyperparameter tuning",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": 9.31,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 5,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Varying EER rates for specific users",
+      "Trade-off between authentication window size (accuracy) and response time"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 1.0,
+        "unit": "second"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Computational challenges regarding battery life, memory, and CPU/GPU usage for on-device deployment"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "EDA",
+      "BVP",
+      "ST",
+      "ACC"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 14.0,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Development of an end-to-end deep multi-sensor physiological authentication system",
+      "Collection of a large-scale daily life physiological dataset for authentication",
+      "Comparison between end-to-end DL and feature-based ML approaches"
+    ],
+    "main_strength": [
+      "Use of in-the-wild data over multiple days",
+      "Comprehensive comparison of different fusion methods (early, middle, late)"
+    ],
+    "main_weakness": [
+      "Lack of spoofing/presentation attack testing",
+      "Dataset is private"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "The paper emphasizes that CNN-LSTM combinations are particularly effective for this modality due to their ability to handle both spatial and temporal features of biometric signals."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Ekiz_2021"
+}

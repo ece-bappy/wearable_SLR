@@ -1,0 +1,335 @@
+{
+  "N": 263,
+  "telemetry": {
+    "latency_any": [
+      100,
+      38.0
+    ],
+    "latency_time_units": {
+      "n": 96,
+      "median_ms": 816.2,
+      "q1": 82.6,
+      "q3": 2042.5,
+      "min": 0.001,
+      "max": 150000.0,
+      "under_500ms": 45,
+      "over_1s": 39
+    },
+    "energy_any": [
+      48,
+      18.3
+    ],
+    "energy_unit_classes": {
+      "Current / charge": 13,
+      "Power (mW)": 13,
+      "Battery drain (%)": 9,
+      "Energy per operation (mJ)": 8,
+      "Other": 3,
+      "Battery lifetime": 2
+    },
+    "power_mw": {
+      "n": 13,
+      "median": 5.3,
+      "min": 0.001,
+      "max": 208.0
+    },
+    "energy_mj": {
+      "n": 8,
+      "median": 155.38
+    },
+    "both": [
+      39,
+      14.8
+    ],
+    "neither": [
+      154,
+      58.6
+    ],
+    "memory_note": "memory/RAM was not a field of the extraction schema; not analysed",
+    "latency_by_type": {
+      "behavioral": {
+        "n": 39,
+        "median_ms": 383.0
+      },
+      "hybrid": {
+        "n": 25,
+        "median_ms": 600.0
+      },
+      "physiological": {
+        "n": 32,
+        "median_ms": 1100.0
+      }
+    },
+    "latency_by_learning": {
+      "few-shot": {
+        "n": 4,
+        "median_ms": 184.5
+      },
+      "supervised": {
+        "n": 80,
+        "median_ms": 1000.0
+      },
+      "transfer": {
+        "n": 4,
+        "median_ms": 424.5
+      },
+      "unsupervised": {
+        "n": 5,
+        "median_ms": 10.0
+      }
+    }
+  },
+  "fusion": {
+    "counts": {
+      "Multimodal": 133,
+      "Unimodal": 130
+    },
+    "fusion_level": {
+      "feature": 103,
+      "decision": 15,
+      "score": 9,
+      "none": 3,
+      "hybrid": 3
+    },
+    "evidence_pct": {
+      "Multimodal": {
+        "Any field evidence": 46.6,
+        "Lab vs. field compared": 14.3,
+        "Motion robustness": 24.8,
+        "Noise robustness": 15.8,
+        "Cross-session": 58.6,
+        "Spoofing tested": 27.1
+      },
+      "Unimodal": {
+        "Any field evidence": 32.3,
+        "Lab vs. field compared": 10.0,
+        "Motion robustness": 27.7,
+        "Noise robustness": 14.6,
+        "Cross-session": 49.2,
+        "Spoofing tested": 21.5
+      }
+    },
+    "chi2_multi_vs_uni": {
+      "field": {
+        "chi2": 5.05,
+        "p": 0.025
+      },
+      "motion": {
+        "chi2": 0.15,
+        "p": 0.696
+      },
+      "noise": {
+        "chi2": 0.01,
+        "p": 0.926
+      },
+      "cross_session": {
+        "chi2": 1.98,
+        "p": 0.159
+      },
+      "spoofing": {
+        "chi2": 0.81,
+        "p": 0.368
+      }
+    },
+    "lab_eer": {
+      "multi": {
+        "n": 60,
+        "median": 1.16
+      },
+      "uni": {
+        "n": 55,
+        "median": 1.04
+      },
+      "mannwhitney_p": 0.689
+    },
+    "paired": {
+      "Multimodal": {
+        "n": 14,
+        "degraded": 13,
+        "err_pairs": 10,
+        "err_ratio_median": 1.69,
+        "acc_drop_median_pts": 1.57
+      },
+      "Unimodal": {
+        "n": 5,
+        "degraded": 4,
+        "err_pairs": 3,
+        "err_ratio_median": 1.88,
+        "acc_drop_median_pts": 12.95
+      }
+    },
+    "paired_by_level": {
+      "decision": {
+        "n": 3,
+        "degraded": 2
+      },
+      "feature": {
+        "n": 8,
+        "degraded": 8
+      },
+      "score": {
+        "n": 3,
+        "degraded": 3
+      },
+      "unimodal": {
+        "n": 5,
+        "degraded": 4
+      }
+    },
+    "paired_list": [
+      [
+        "Chen_2019",
+        "Unimodal",
+        "unimodal",
+        "Error rate",
+        2.4,
+        4.51
+      ],
+      [
+        "Wang_2019_1",
+        "Multimodal",
+        "score",
+        "Error rate",
+        0.0,
+        1.4
+      ],
+      [
+        "Gao_2021",
+        "Multimodal",
+        "score",
+        "Error rate",
+        3.64,
+        4.06
+      ],
+      [
+        "Hwang_2021",
+        "Unimodal",
+        "unimodal",
+        "Error rate",
+        0.77,
+        9.83
+      ],
+      [
+        "Mardi_Putri_2021",
+        "Multimodal",
+        "score",
+        "Error rate",
+        10.5,
+        16.66
+      ],
+      [
+        "Bi_2022",
+        "Multimodal",
+        "feature",
+        "Error rate",
+        3.1,
+        4.0
+      ],
+      [
+        "Chang_2022",
+        "Unimodal",
+        "unimodal",
+        "Accuracy-type",
+        96.19,
+        92.02
+      ],
+      [
+        "Shen_2022",
+        "Multimodal",
+        "feature",
+        "Error rate",
+        8.8,
+        14.9
+      ],
+      [
+        "Xie_2022",
+        "Multimodal",
+        "decision",
+        "Error rate",
+        1.6,
+        2.3
+      ],
+      [
+        "Zhao_2022",
+        "Unimodal",
+        "unimodal",
+        "Accuracy-type",
+        90.73,
+        69.0
+      ],
+      [
+        "Cao_2023",
+        "Multimodal",
+        "decision",
+        "Accuracy-type",
+        95.0,
+        93.88
+      ],
+      [
+        "Zhang_2023",
+        "Multimodal",
+        "decision",
+        "Accuracy-type",
+        91.4,
+        98.1
+      ],
+      [
+        "Gao_2024",
+        "Unimodal",
+        "unimodal",
+        "Error rate",
+        0.97,
+        0.97
+      ],
+      [
+        "Hu_2024",
+        "Multimodal",
+        "feature",
+        "Accuracy-type",
+        99.97,
+        92.0
+      ],
+      [
+        "Pan_2024",
+        "Multimodal",
+        "feature",
+        "Accuracy-type",
+        94.52,
+        92.5
+      ],
+      [
+        "Zou_2024",
+        "Multimodal",
+        "feature",
+        "Error rate",
+        4.23,
+        18.3
+      ],
+      [
+        "Al_Naffakh_2025",
+        "Multimodal",
+        "feature",
+        "Error rate",
+        0.29,
+        0.7
+      ],
+      [
+        "Zhou_2025",
+        "Multimodal",
+        "feature",
+        "Error rate",
+        1.57,
+        6.31
+      ],
+      [
+        "Zhou_2026",
+        "Multimodal",
+        "feature",
+        "Error rate",
+        0.41,
+        5.31
+      ]
+    ]
+  },
+  "corpus_table_rows": 263
+}

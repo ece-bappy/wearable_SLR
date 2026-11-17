@@ -1,0 +1,203 @@
+{
+  "title": "Bag of On-Phone ANNs to Secure IoT Objects Using Wearable and Smartphone Biometrics",
+  "year": 2024,
+  "venue": "IEEE Transactions on Dependable and Secure Computing",
+  "doi": "10.1109/TDSC.2023.3269037",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "heart rate",
+      "gait",
+      "breathing patterns"
+    ],
+    "sensor": [
+      "PPG",
+      "accelerometer",
+      "gyroscope",
+      "microphone"
+    ],
+    "device": [
+      "smartwatch",
+      "smartphone"
+    ],
+    "body_location": "wrist, mouth/nose area"
+  },
+  "data": [
+    {
+      "dataset_name": "Model Development Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "System Evaluation Dataset",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 25,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "RNN",
+      "CRNN"
+    ],
+    "input_representation": "Statistical features for HR and Gait; MFCCs for breathing",
+    "training_strategy": "leave-one-event-out and leave-one-subject validation"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.062,
+      "context": "Calculated as 1 - GRR (0.938) achieved by HRGB CNN model"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.024,
+      "context": "Calculated as 1 - GAR (0.976) achieved by HRGB RNN model"
+    }
+  ],
+  "evaluation_protocol": "leave-one-event-out validation approach",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 0.973
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 0.973
+    },
+    "reported_limitations": [
+      "breathing patterns can vary due to temporal contexts, activity, and proximity of microphone",
+      "limited pool of 10 subjects for model development",
+      "reliance on local server for multi-device communication"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 5,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 4,
+        "unit": "kJ/hour"
+      }
+    ],
+    "usability_study": [
+      "task-based evaluation",
+      "longitudinal user study"
+    ],
+    "usability_issues": "Users expressed nervousness about continuous audio recording and privacy despite filters"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "heart rate",
+      "gait",
+      "breathing"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": 0.358,
+        "unit": "absolute increase"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "US-8K and ESC-50 (for noise)",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a 'bag of models' approach that selects the best ANN based on current biometric availability",
+      "Implemented a real-time on-phone authentication app using TensorFlow Lite",
+      "Combined wearable and smartphone biometrics for implicit IoT security"
+    ],
+    "main_strength": [
+      "High accuracy when multiple biometrics are available",
+      "Low memory footprint (56-65KB)",
+      "Implicit and continuous authentication removing user burden"
+    ],
+    "main_weakness": [
+      "Very small subject pool for model training",
+      "No testing against active spoofing attacks",
+      "Lack of real-world/in-the-wild validation"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "Authors define GRR as the opposite of FAR and GAR as the opposite of FRR; metrics were converted accordingly."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Vhaduri_2024_1"
+}

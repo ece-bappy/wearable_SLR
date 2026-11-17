@@ -1,0 +1,152 @@
+{
+  "title": "Double Authentication Model based on PPG and ECG Signals",
+  "year": 2020,
+  "venue": "IEEE",
+  "doi": "10.1109/iwcmc48107.2020.9148521",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG",
+      "ECG"
+    ],
+    "sensor": [
+      "PPG sensor",
+      "ECG sensor"
+    ],
+    "device": [
+      "smartwatch",
+      "fitness bracelet"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "BIDMC",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 53,
+      "num_samples": 2809,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "cross-correlation",
+      "template matching"
+    ],
+    "input_representation": "average heartbeat waveform",
+    "training_strategy": "user template storage (creation of reference average heartbeat)"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Comparison of user authentication attempts against stored templates using a cross-correlation function and a custom error-reduction equation for PPG signals.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": null
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": null
+      },
+      "drop_in_performance": {
+        "metric": null,
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "susceptibility to noise and electromagnetic interference",
+      "variability in false positive rates across different users due to template generation"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "PPG",
+      "ECG"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "BIDMC",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a double authentication model combining PPG and ECG for wearable devices",
+      "Developed a mathematical equation to minimize PPG error rate and improve accuracy"
+    ],
+    "main_strength": [
+      "Low computational complexity suitable for microcontrollers in wearables",
+      "Multimodal approach to avoid dependence on a single biosignal"
+    ],
+    "main_weakness": [
+      "Evaluation conducted only on a controlled public dataset",
+      "No testing for active spoofing attacks",
+      "No temporal/longitudinal evaluation"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The paper reports high accuracy (up to 99.98%) but does not explicitly provide standard biometric rates (EER, FAR, FRR) in percentage form, providing only raw counts of False Positives and False Negatives."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Bastos_2020"
+}

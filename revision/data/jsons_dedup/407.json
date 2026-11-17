@@ -1,0 +1,138 @@
+{
+  "title": "Biometric Gait Recognition using BlazePose and Deep Learning",
+  "year": 2025,
+  "venue": "2025 12th International Conference on Information Technology, Computer, and Electrical Engineering (ICITACEE)",
+  "doi": "10.1109/icitacee66165.2025.11232826",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "camera"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "full body"
+  },
+  "data": [
+    {
+      "dataset_name": "Normal Walk",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 17,
+      "num_samples": 680,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 4.0,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "BlazePose",
+      "Multilayer Perceptron (MLP)"
+    ],
+    "input_representation": "35 engineered features (10 structural, 24 gait movement, 1 feature video)",
+    "training_strategy": "Adam optimizer, ReLU activation, Dropout (0.4), Batch Normalization"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.1838,
+      "context": "Best result achieved using MLP classifier on the Normal Walk test set"
+    }
+  ],
+  "evaluation_protocol": "20% validation set split; performance compared across multiple classifiers (MLP, XGBoost, LightGBM, SVM, KNN, etc.)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.1838,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Problematic Frames Percentage",
+      "value": 3.28
+    },
+    "robust_to_noise": null,
+    "reported_limitations": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Integration of BlazePose for markerless pose estimation with MLP for gait identification",
+      "Engineering of 35 specific anthropometric and kinematic features to improve discriminatory power"
+    ],
+    "main_strength": [
+      "High accuracy (97.06%) and low FAR",
+      "Robustness across multiple viewpoints (frontal and lateral)"
+    ],
+    "main_weakness": [
+      "Very small sample size (17 participants)",
+      "Highly controlled indoor environment lacking real-world ecological validity"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "While it uses smartphones as sensors, the setup was fixed on tripods, making it more like a camera-based system than a mobile wearable. However, it fits the 'mobile sensors/devices' inclusion criteria."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Williamsyah_2025"
+}

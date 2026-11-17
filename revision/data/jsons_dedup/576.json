@@ -1,0 +1,190 @@
+{
+  "title": "MMAuth: A Continuous Authentication Framework on Smartphones Using Multiple Modalities",
+  "year": 2022,
+  "venue": "IEEE Transactions on Information Forensics and Security",
+  "doi": "10.1109/TIFS.2022.3160361",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "motion movement pattern",
+      "touch dynamics",
+      "usage context"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "orientation sensor",
+      "magnetometer",
+      "touchscreen sensor"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "hand/finger"
+  },
+  "data": [
+    {
+      "dataset_name": "Our Real-World Unconstrained Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 100,
+      "num_samples": 30000000,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 2,
+        "unit": "months"
+      }
+    },
+    {
+      "dataset_name": "H-MOG",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 92,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "DeSVDD",
+      "Deep Neural Network",
+      "Voting-based decision maker"
+    ],
+    "input_representation": "time-extended behavioral feature set (TEB)",
+    "training_strategy": "One-class learning using a deep neural network to find a minimum volume hypersphere; hyper-parameters tuned via random search."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 8.8,
+      "context": "Achieved on H-MOG laboratory dataset"
+    },
+    {
+      "metric": "FAR",
+      "value": 8.4,
+      "context": "Achieved on H-MOG laboratory dataset"
+    },
+    {
+      "metric": "FRR",
+      "value": 9.2,
+      "context": "Achieved on H-MOG laboratory dataset"
+    }
+  ],
+  "evaluation_protocol": "Sequential training and testing strategy: model trained on 1,500 historical gestures, tested on 1,000 consecutive genuine gestures and 10 gestures per intruder.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 8.8,
+    "real_world_performance_value": 14.9,
+    "drop_percentage": 69.3
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "limited authentication accuracy in unconstrained environments",
+      "biased dataset (single smartphone model)",
+      "restricted subject demographic (college students)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [
+      {
+        "value": 191.5,
+        "unit": "mAh per day"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Short tapping operations (e.g., in WeChat) provide limited identity information."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "motion",
+      "touch",
+      "context"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 2.9,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": true,
+    "benchmark_used": "H-MOG",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed MMAuth framework integrating motion, touch, and context for continuous authentication",
+      "Developed TEB feature set to capture subtle motion patterns before/after touch",
+      "Developed DeSVDD one-class classifier for deep representation of behavioral biometrics",
+      "Collected a large-scale unconstrained dataset of 100 users over 2 months"
+    ],
+    "main_strength": [
+      "Extensive evaluation on both lab and in-the-wild datasets",
+      "Integration of usage context (app and time) to refine user profiles"
+    ],
+    "main_weakness": [
+      "Lack of active spoofing/presentation attack testing",
+      "Dependency on a single device model"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The study highlights a significant performance gap between lab (8.8% EER) and real-world (14.9% EER) settings."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Shen_2022"
+}

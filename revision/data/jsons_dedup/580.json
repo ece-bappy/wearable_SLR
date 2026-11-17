@@ -1,0 +1,150 @@
+{
+  "title": "Arm movement activity based user authentication in P2P systems",
+  "year": 2020,
+  "venue": "Peer-to-Peer Networking and Applications",
+  "doi": "10.1007/s12083-019-00775-7",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "EMG",
+      "Accelerometer",
+      "Gyroscope"
+    ],
+    "sensor": [
+      "3-axis accelerometer",
+      "3-axis gyroscope",
+      "surface EMG sensors"
+    ],
+    "device": [
+      "Myo armband"
+    ],
+    "body_location": "forearm"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 400,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 15,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Multi-class Support Vector Machine (MC-SVM)"
+    ],
+    "input_representation": "24-dimensional feature vector (9 accelerometer features, 9 gyroscope features, 6 EMG cepstrum coefficients)",
+    "training_strategy": "k-fold cross-validation (k=2)"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "k-fold cross-validation (k=2) with 5 trials per gesture",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": []
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "EMG",
+      "Accelerometer",
+      "Gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a hybrid biometric authentication system using both inertial (Accel/Gyro) and physiological (EMG) signals from a wearable armband.",
+      "Integrated the biometric system into a P2P authentication protocol using shared keys and hashes."
+    ],
+    "main_strength": [
+      "Use of multimodal data (EMG + IMU) to improve identification accuracy."
+    ],
+    "main_weakness": [
+      "Small sample size (20 subjects).",
+      "Lack of standard biometric metrics (EER, FAR, FRR) in favor of accuracy.",
+      "No evaluation of temporal robustness or real-world environmental degradation.",
+      "No active spoofing or presentation attack testing."
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper reports 98.70% accuracy but fails to provide FAR/FRR/EER, making it difficult to assess the actual security trade-offs. The P2P protocol section focuses on encryption rather than biometric liveness."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Shin_2019"
+}

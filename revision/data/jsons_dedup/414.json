@@ -1,0 +1,170 @@
+{
+  "title": "Smartwatch-Based Legitimate User Identification for Cloud-Based Secure Services",
+  "year": 2018,
+  "venue": "Mobile Information Systems",
+  "doi": "10.1155/2018/5107024",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait",
+      "physical activity"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 6,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 1,
+        "unit": "month"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Decision Tree",
+      "K-Nearest Neighbor",
+      "Support Vector Machine",
+      "Naive Bayes"
+    ],
+    "input_representation": "72 features extracted from 30-second sliding windows (time and frequency domain)",
+    "training_strategy": "10-fold-cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.0459,
+      "context": "Lowest FPR achieved using DT classifier with Gyroscope sensor for User 1"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.0057,
+      "context": "Lowest FNR achieved using DT classifier with Gyroscope sensor for User 2"
+    }
+  ],
+  "evaluation_protocol": "10-fold-cross-validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "month"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Small sample size of users",
+      "Signal variability"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 5.0,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "accuracy",
+        "value": null,
+        "unit": null
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a two-fold identification system combining activity recognition and user identification",
+      "Validated the feasibility of using smartwatch sensors for implicit continuous authentication"
+    ],
+    "main_strength": [
+      "High identification accuracy (up to 98.68%) using DT classifier",
+      "Longitudinal data collection over a month"
+    ],
+    "main_weakness": [
+      "Very small subject pool (n=6)",
+      "Lack of rigorous anti-spoofing/presentation attack testing"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper reports accuracy (ACC) as the primary metric, but provides TPR/TNR/FPR/FNR tables which allowed extraction of FAR and FRR."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Ahmad_2018"
+}

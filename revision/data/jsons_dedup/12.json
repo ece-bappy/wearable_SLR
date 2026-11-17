@@ -1,0 +1,156 @@
+{
+  "title": "PPGSign: Handwritten Signature Authentication using Wearable PPG Sensor",
+  "year": 2022,
+  "venue": "IEEE Wireless Communications and Networking Conference (WCNC)",
+  "doi": "10.1109/wcnc51071.2022.9771813",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "PPG sensor"
+    ],
+    "device": [
+      "wrist-worn wearable",
+      "PPGSign Band"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 5,
+      "num_samples": 3000,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "Support Vector Machine",
+      "Gradient Boosting",
+      "k-nearest neighbor",
+      "Multilayer Perceptron",
+      "Feed-Forward Neural Network",
+      "OnevsRest"
+    ],
+    "input_representation": "8 selected time-domain features extracted from raw PPG via tsfresh",
+    "training_strategy": "User-specific model training"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "User-specific model training with data splitting from 20% to 80% training sets; tested against random and skilled forgeries.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requires specific sensor placement (rotating the device to align with the median antebrachial vein)."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a signature authentication system using PPG sensors in wearables",
+      "Developed a segmentation method to isolate signature-induced motion from heart rate signals",
+      "Validated feasibility using a custom low-cost hardware prototype"
+    ],
+    "main_strength": [
+      "Non-intrusive",
+      "Low-cost implementation"
+    ],
+    "main_weakness": [
+      "Extremely small subject pool (n=5)",
+      "Requires non-standard device orientation for optimal signal capture"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "Paper reports F1 score (up to 98%) but does not provide target metrics (EER, FAR, FRR, AUC) required for the structured review."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Mohaimenur_Rahman_2022"
+}

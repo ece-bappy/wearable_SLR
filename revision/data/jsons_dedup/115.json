@@ -1,0 +1,151 @@
+{
+  "title": "Write to Know: On the Feasibility of Wrist Motion based User-Authentication from Handwriting",
+  "year": 2021,
+  "venue": "Conference on Security and Privacy in Wireless and Mobile Networks (WiSec ’21)",
+  "doi": "10.1145/3448300.3468290",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "handwriting motion"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "Sony Smartwatch 3",
+      "LG Watch Urbane"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 21,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM",
+      "Naive Bayes",
+      "DNN (CNN + Bi-LSTM)",
+      "Logistic Regression"
+    ],
+    "input_representation": "Raw sensor data, temporal features (mean, std, variance, peak values), frequency features (FFT, PSD, DCT)",
+    "training_strategy": "Per-participant binary classification"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.05,
+      "context": "Achieved by M01 (SVM) in the pencil-writing scenario"
+    }
+  ],
+  "evaluation_protocol": "Per-participant evaluation: target participant data labeled as authentic, others as impostors. Results averaged across all participants.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": null,
+    "cross_day_tested": null,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": null,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": null,
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": null
+    },
+    "reported_limitations": [
+      "High EER compared to static biometrics",
+      "Sensitivity to environmental noise",
+      "Performance degradation at lower sampling frequencies",
+      "User-dependent handwriting irregularities (e.g., stroke count)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "presentation/mask"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [
+      {
+        "value": 6.3,
+        "unit": "% battery power per hour at 200Hz"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "High battery drain for high-frequency sampling; long enrollment time may discourage users."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Comparative analysis of four state-of-the-art handwriting authentication frameworks on realistic, unconstrained data",
+      "Evaluation across three modalities: pencil, finger, and air writing"
+    ],
+    "main_strength": [
+      "Comprehensive testing of environmental noise and sampling frequency impact",
+      "Equitable comparison using a single unified dataset"
+    ],
+    "main_weakness": [
+      "Lack of a dedicated liveness detection mechanism",
+      "Small sample size (21 subjects)"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_USER_STUDY",
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The paper demonstrates that while M01 is promising, there is a significant gap between motion-based biometrics and mainstream static biometrics like fingerprints."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Wijewickrama_2021"
+}

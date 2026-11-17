@@ -1,0 +1,167 @@
+{
+  "title": "LR-Auth: Towards Practical Implementation of Implicit User Authentication on Earbuds",
+  "year": 2024,
+  "venue": "Proc. ACM Interact. Mob. Wearable Ubiquitous Technol.",
+  "doi": "10.1145/3699793",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ear canal geometry"
+    ],
+    "sensor": [
+      "in-ear microphone",
+      "out-ear microphone"
+    ],
+    "device": [
+      "earbuds"
+    ],
+    "body_location": "ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 30,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 1260,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "unsupervised",
+    "model": [
+      "linear regression",
+      "weighted cosine similarity"
+    ],
+    "input_representation": "linear correlation ratios of audio streams across frequencies",
+    "training_strategy": "Template generation via linear regression on synthesized audio stimulus"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 3.22,
+      "context": "Achieved in Scenario 1 (speaker off, noisy environment) using a single 100ms frame"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-subject-out cross-validation (1 legitimate user vs 29 imposters)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 99.97,
+    "real_world_performance_value": 92.0,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 12,
+        "unit": "days"
+      },
+      "drop_in_performance": {
+        "metric": "BAC",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "BAC",
+      "value": 8.0
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "BAC",
+      "value": 96.0
+    },
+    "reported_limitations": [
+      "Ear inflammation alters ear canal shape",
+      "Jaw movements during speaking and eating disrupt linear correlation",
+      "Insufficient energy in quiet environments without music"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 3.9,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 2.5,
+        "unit": "mJ"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Requires audio signal energy (music or noise) to function"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "in-ear audio",
+      "out-ear audio"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Lightweight implicit authentication using linear correlation of ear canal acoustic modulation",
+      "Synthesis of a 1-second stimulus for rapid enrollment",
+      "Scenario-adaptive authentication templates for noise and music"
+    ],
+    "main_strength": [
+      "Extremely low computational overhead (latency and energy)",
+      "High accuracy across multiple real-world scenarios"
+    ],
+    "main_weakness": [
+      "Vulnerability to jaw-related movements (eating/speaking)",
+      "Dependency on minimum ambient/internal sound levels"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The system is highly efficient but relies on the physics of acoustic impedance; it is not a traditional ML-based biometric system."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Hu_2024"
+}

@@ -1,0 +1,167 @@
+{
+  "title": "Personalized anomaly detection in PPG data using representation learning and biometric identification",
+  "year": 2024,
+  "venue": "Biomedical Signal Processing and Control",
+  "doi": "10.1016/j.bspc.2024.106216",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "optical sensor"
+    ],
+    "device": [
+      "wearable devices",
+      "smartwatches"
+    ],
+    "body_location": "left index finger palmar side"
+  },
+  "data": [
+    {
+      "dataset_name": "Pulse Transit Time PPG (PTT-PPG)",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 22,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "PPG-Dalia",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 14,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "self-supervised",
+    "model": [
+      "CNN",
+      "Multivariate Normal distribution (MVN)",
+      "Isolation Forest (IF)",
+      "PCA-Reconstruction"
+    ],
+    "input_representation": "8s windows, resampled to 512 size",
+    "training_strategy": "Leave-One-Subject-Out (LOSO) cross-validation and 5-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.86,
+      "context": "Best result for biometric identification achieved on PTT-PPG dataset using RL-MVN or RL-IF in the personalized scenario"
+    }
+  ],
+  "evaluation_protocol": "Leave-One-Subject-Out (LOSO) cross-validation for generalization; 5-fold cross-validation for personalization",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "inter-subject variability",
+      "need for evaluation on wider range of real-world anomalies"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "PTT-PPG, PPG-Dalia",
+    "reproducibility_score": "high"
+  },
+  "insights": {
+    "key_contribution": [
+      "Two-stage framework using representation learning (SSL) and unsupervised anomaly detection for biometric identification in PPG signals",
+      "Demonstration that personalized models significantly reduce inter-subject variability compared to generalized models"
+    ],
+    "main_strength": [
+      "Effective use of a pretext task (Signal Transformation Classification) to learn robust representations without labels",
+      "Consistency across multiple anomaly detection algorithms (MVN, IF, PCA)"
+    ],
+    "main_weakness": [
+      "Lack of active spoofing/presentation attack testing",
+      "Use of lab-collected public datasets instead of in-the-wild data"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper treats biometric identification as an anomaly detection task (identifying the intended user as the normal class and others as anomalies)."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Ghorbani_2024"
+}

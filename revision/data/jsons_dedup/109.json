@@ -1,0 +1,185 @@
+{
+  "title": "ECG Biometric Authentication Using Self-Supervised Learning for IoT Edge Sensors",
+  "year": 2024,
+  "venue": "IEEE Journal of Biomedical and Health Informatics",
+  "doi": "10.1109/jbhi.2024.3455803",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "non-invasive sensors"
+    ],
+    "device": [
+      "IoT edge sensors",
+      "nRF52840DK",
+      "ARM Cortex-M4F-based embedded microcontroller"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "PTB Diagnostic ECG Database (PTBDB)",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 290,
+      "num_samples": 549,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "MIT-BIH Arrhythmia Database (MITDB)",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": 47,
+      "num_samples": 48,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "ECG-ID Database (ECGIDDB)",
+      "dataset_type": "public",
+      "dataset_role": "testing",
+      "num_subjects": 90,
+      "num_samples": 310,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "self-supervised",
+    "model": [
+      "1D-CNN",
+      "Siamese Framework",
+      "Triplet Framework"
+    ],
+    "input_representation": "segmented ECG signals (1000 samples)",
+    "training_strategy": "Contrastive learning using triplet and siamese frameworks with model quantization and pruning"
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.99,
+      "context": "Achieved on PTBDB and ECGIDDB using Triplet Framework and NPD preprocessing"
+    }
+  ],
+  "evaluation_protocol": "One subject as registered user vs remaining as unregistered users; random 100 segments per group for testing.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Potential bias when training and testing segments originate from the same record",
+      "Sensitivity to physical activity, emotional state, and electrode placement",
+      "Simplification of positive/negative pairs based on records rather than subjects"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [
+      {
+        "value": 142.8,
+        "unit": "µA"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "PTBDB",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Application of self-supervised contrastive learning to ECG authentication to remove need for labeled data",
+      "Hardware optimization via quantization and pruning for ARM Cortex-M4F deployment",
+      "Validation of generalizability across three distinct public ECG datasets"
+    ],
+    "main_strength": [
+      "Strong generalizability on unseen datasets",
+      "Low energy and compute footprint suitable for IoT edge"
+    ],
+    "main_weakness": [
+      "Lack of testing in non-laboratory/naturalistic environments",
+      "No testing against active spoofing/presentation attacks"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The paper emphasizes deployment and generalizability, proving that a model trained on one public dataset can perform well on others without retraining."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Wang_2024"
+}

@@ -1,0 +1,141 @@
+{
+  "title": "BrainRun: A Behavioral Biometrics Dataset towards Continuous Implicit Authentication",
+  "year": 2019,
+  "venue": "Data",
+  "doi": "10.3390/data4020060",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gestures",
+      "IMU sensors"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer",
+      "touchscreen"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "hand"
+  },
+  "data": [
+    {
+      "dataset_name": "BrainRun",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 2218,
+      "num_samples": 3110000,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [],
+    "input_representation": "raw screen coordinates, timestamps, and IMU sensor readings",
+    "training_strategy": null
+  },
+  "evaluation": [],
+  "evaluation_protocol": null,
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 4,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": []
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "gestures",
+      "IMU sensors"
+    ],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "BrainRun",
+    "reproducibility_score": "high"
+  },
+  "insights": {
+    "key_contribution": [
+      "Creation and release of a large-scale, in-the-wild behavioral biometric dataset (BrainRun) featuring gestures and IMU data from over 2000 users."
+    ],
+    "main_strength": [
+      "Large sample size",
+      "Real-world data collection via a deployed mobile application",
+      "Multimodal data availability"
+    ],
+    "main_weakness": [
+      "No specific authentication model evaluated in the paper"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_BASELINE_COMPARISON"
+    ],
+    "notes_for_review": "This is a data descriptor paper. It provides the infrastructure and dataset for CIA but does not report specific performance metrics for a matcher."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Papamichail_2019"
+}

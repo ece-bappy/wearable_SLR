@@ -1,0 +1,149 @@
+{
+  "title": "Deep Neural Network-Based Gait Classification Using Wearable Inertial Sensor Data",
+  "year": 2019,
+  "venue": "IEEE",
+  "doi": "10.1109/embc.2019.8857872",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "Xsens MVN IMU-based motion capture system"
+    ],
+    "body_location": "posterior pelvis, both thighs, both shanks, and both feet"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 69,
+      "num_samples": 34776,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Fully Connected Neural Network",
+      "Convolutional Neural Network (CNN)"
+    ],
+    "input_representation": "temporal, spatial, and spatiotemporal gait parameters; STFT-based gait spectrograms",
+    "training_strategy": "4-fold cross-validation on 80% of samples; remaining 20% as test set"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "4-fold cross-validation and hold-out test set",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "poor frequency resolution of STFT",
+      "black-box nature of CNN",
+      "limited sample size and diversity",
+      "lack of multi-day reproducibility tests"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed CNN-based classification using gait spectrograms from wearable IMUs",
+      "Demonstrated feasibility of distinguishing gait patterns between athletes, normal, and deformed foot groups"
+    ],
+    "main_strength": [
+      "High classification accuracy using deep learning",
+      "Reduction of manual feature engineering through use of spectrograms and CNN"
+    ],
+    "main_weakness": [
+      "Focuses on group classification rather than individual-level authentication",
+      "Data collected exclusively in a controlled lab environment"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper reports 'Accuracy' which is excluded per extraction rules; therefore, the evaluation list is empty. The study is a group classification task framed as a feasibility study for authentication."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Jung_2019"
+}

@@ -1,0 +1,186 @@
+{
+  "title": "Deep Learning Approaches for Continuous Authentication Based on Activity Patterns Using Mobile Sensing",
+  "year": 2021,
+  "venue": "Sensors",
+  "doi": "10.3390/s21227519",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "physical activity patterns",
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "waist"
+  },
+  "data": [
+    {
+      "dataset_name": "UCI-HAR",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 30,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "WISDM-HARB",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 44,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 3,
+        "unit": "minutes"
+      }
+    },
+    {
+      "dataset_name": "HMOG",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 100,
+      "num_samples": 27000,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 24,
+        "unit": "periods"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "LSTM",
+      "DeepConvLSTM"
+    ],
+    "input_representation": "raw sensor readings with sliding window (128, 52, or 256 readings)",
+    "training_strategy": "10-fold cross-validation"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.01,
+      "context": "Achieved on HMOG dataset for Writing+Sitting and Mapping+Sitting activities using DeepConvLSTM"
+    }
+  ],
+  "evaluation_protocol": "10-fold cross-validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.01,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": 24,
+      "unit": "periods"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "High energy consumption of continuous monitoring",
+      "Battery drain due to multiple active sensors",
+      "Model training time"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "High battery capacity drain"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "UCI-HAR, WISDM-HARB, HMOG",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Developed DeepAuthen framework for continuous authentication",
+      "Proposed DeepConvLSTM hybrid model combining spatial (CNN) and temporal (LSTM) features"
+    ],
+    "main_strength": [
+      "Outperforms baseline CNN and LSTM models across three different datasets",
+      "Effective across static, simple, and complex activities"
+    ],
+    "main_weakness": [
+      "Evaluation limited to public datasets collected in controlled environments",
+      "No testing against active spoofing attacks"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "HIGH_ENERGY_COST"
+    ],
+    "notes_for_review": "The study highlights that simple linear walking patterns are the most easily identifiable, while complex activities show higher EER."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Mekruksavanich_2021"
+}

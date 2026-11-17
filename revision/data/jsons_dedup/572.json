@@ -1,0 +1,171 @@
+{
+  "title": "Continuous User Authentication on Multiple Smart Devices",
+  "year": 2023,
+  "venue": "Information",
+  "doi": "10.3390/info14050274",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait",
+      "handheld walking"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartphone",
+      "tablet"
+    ],
+    "body_location": "hand"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 25,
+        "unit": "mins"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "LSTM",
+      "Spatiotemporal Convolutional Neural Network"
+    ],
+    "input_representation": "grayscale images transformed from concatenated 6D sensor vectors (3-axis accelerometer, 3-axis gyroscope)",
+    "training_strategy": "1000 iterations with a learning rate of 0.0002"
+  },
+  "evaluation": [
+    {
+      "metric": "FRR",
+      "value": 0.0029,
+      "context": "Achieved on smartphone using the confidence-based authentication strategy"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.00108,
+      "context": "Achieved on smartphone during the user recognition stage using multi-device model"
+    }
+  ],
+  "evaluation_protocol": "8:1:1 split for training, validation, and testing",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 3,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Inter-device differences in user motion interfere with common feature extraction",
+      "Vulnerability to the environment of biobehavioral authentication"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 2.3,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": 0.012,
+        "unit": "absolute increase (smartphone)"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a continuous authentication framework across multiple devices",
+      "Utilized a spatiotemporal CNN (CNN+LSTM) to model common behavioral features from multiple motion sensors",
+      "Introduced an adaptive confidence-based strategy to reduce authentication fluctuations"
+    ],
+    "main_strength": [
+      "High accuracy (99.8% for smartphones, 99.2% for tablets)",
+      "Low latency (approx 2.3s)"
+    ],
+    "main_weakness": [
+      "Small subject pool (n=20)",
+      "Security testing limited to zero-effort imposter attacks"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The system focuses on seamless transition between devices by training a common model on multi-device data, improving recognition over single-device models."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Wang_2023"
+}

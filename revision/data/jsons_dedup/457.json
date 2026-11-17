@@ -1,0 +1,7 @@
+{
+  "title": "Tactical-Grade Wearables and Authentication Biometrics",
+  "relevance": "exclude",
+  "exclusion_reason": "The paper is a review article that synthesizes existing literature and explicitly states that no new experiments were conducted; it does not implement or evaluate an original biometric authentication system.",
+  "doi": "10.3390/s26030759",
+  "citekey": "Agiomavritis_2026"
+}

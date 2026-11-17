@@ -1,0 +1,147 @@
+{
+  "title": "Feasibility of biometric authentication using wearable ECG body sensor based on higher-order statistics",
+  "year": 2017,
+  "venue": "MIPRO 2017",
+  "doi": "10.23919/mipro.2017.7973431",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "Savvy ECG body sensor"
+    ],
+    "device": [
+      "chest-worn sensor",
+      "smartphone"
+    ],
+    "body_location": "chest"
+  },
+  "data": [
+    {
+      "dataset_name": "Private Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 4,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 6,
+        "unit": "hours"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Higher-Order Statistics (HOS)",
+      "1-Nearest Neighbor (1-NN)",
+      "Singular Value Decomposition (SVD)"
+    ],
+    "input_representation": "ECG sequences (fixed length, consecutive heartbeats, and unified heartbeat lengths)",
+    "training_strategy": "Enrolled patterns serve as the basis for distance-based authentication or training set for 1-NN identification"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 5.0,
+      "context": "Best result obtained by increasing ECG sequence lengths and the amount of enrolled data"
+    }
+  ],
+  "evaluation_protocol": "Chronologically ordered split of 6-hour data stream into enrollment and probe sets",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": 5.0,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Influence of sensor placement variability",
+      "Small number of subjects"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a framework for wearable ECG-based recognition using higher-order statistics on cyclostationary data",
+      "Demonstrated feasibility of unobtrusive authentication during daily activities"
+    ],
+    "main_strength": [
+      "Operates on raw signal sequences without needing precise fiducial point extraction",
+      "Tested in daily living environments"
+    ],
+    "main_weakness": [
+      "Extremely small sample size (4 subjects)",
+      "No testing of spoofing or adversarial attacks"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "Preliminary feasibility study showing that EER improves as enrollment data volume and sequence length increase."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Sprager_2017"
+}

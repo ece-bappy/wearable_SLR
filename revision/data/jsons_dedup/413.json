@@ -1,0 +1,178 @@
+{
+  "title": "SmartEar: Rhythm-Based Tap Authentication Using Earphone in Information-Centric Wireless Sensor Network",
+  "year": 2022,
+  "venue": "IEEE Internet of Things Journal",
+  "doi": "10.1109/jiot.2021.3063479",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "tap gesture",
+      "rhythm"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "earphone"
+    ],
+    "body_location": "ear"
+  },
+  "data": [
+    {
+      "dataset_name": "Private recruited dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 3450,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "Naive Bayes"
+    ],
+    "input_representation": "3-axis acceleration time-series mapped to 2D tensor (580x3)",
+    "training_strategy": "80-20 train-test split with SMOTE for data balancing"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 1.3,
+      "context": "Achieved during Brute Attack scenario using Naive Bayes classifier"
+    },
+    {
+      "metric": "FRR",
+      "value": 1.1,
+      "context": "Achieved during Brute Attack scenario using Naive Bayes classifier"
+    }
+  ],
+  "evaluation_protocol": "Binary classification for each legal user against a mix of illegal users and targeted attackers",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 3.1,
+    "real_world_performance_value": 4.0,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Detection Rate",
+      "value": 93.9
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "Detection Rate",
+      "value": 95.7
+    },
+    "reported_limitations": [
+      "Environmental changes can cause differences in data distribution",
+      "User state complexity",
+      "Need for industrial app development for online evaluation"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 18.6,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 4.72,
+        "unit": "mW"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "global rhythmic features",
+      "CNN local features"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a rhythm-based tap authentication system using standard commercial earphones",
+      "Designed a two-step filtering and event detection algorithm for tap signal segmentation",
+      "Combined global behavioral features with CNN-extracted local features for classification"
+    ],
+    "main_strength": [
+      "No hardware modification required",
+      "Robust against imitation attacks (FAR 3.1% in imitation scenario)",
+      "Very low latency and power consumption"
+    ],
+    "main_weakness": [
+      "Small subject sample size",
+      "Limited real-world testing (mainly lab and one train scenario)",
+      "Lack of longitudinal/cross-session evaluation"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_CROSS_SESSION",
+      "NO_TEMPORAL_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The system treats the 'secret rhythm' as a password and the physical execution as the biometric; this is a hybrid knowledge-based/behavioral system."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Bi_2022"
+}

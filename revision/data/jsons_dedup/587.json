@@ -1,0 +1,170 @@
+{
+  "title": "A Framework for Continuous Authentication Based on Touch Dynamics Biometrics for Mobile Banking Applications",
+  "year": 2021,
+  "venue": "Sensors",
+  "doi": "10.3390/s21124212",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "touch dynamics",
+      "location"
+    ],
+    "sensor": [
+      "touchscreen",
+      "accelerometer",
+      "gyroscope",
+      "magnetometer",
+      "GPS",
+      "rotation sensor"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "fingers"
+  },
+  "data": [
+    {
+      "dataset_name": "Biotouch",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 51,
+      "num_samples": 3443,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 2,
+        "unit": "weeks"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Random Forest",
+      "Naive Bayes Gaussian",
+      "Naive Bayes Bernoulli",
+      "SVM",
+      "Gradient Boosting",
+      "XGBoost"
+    ],
+    "input_representation": "feature vectors (29 for static verification, 31 for dynamic verification)",
+    "training_strategy": "Grid search for hyperparameter optimization with balanced data training"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 1.88,
+      "context": "Best average result achieved in Scenario 3 for Static Verification (SV) using the proposed framework"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.0,
+      "context": "Minimum Imposter FAR (I_FAR) observed for multiple users in SV and DV scenarios"
+    }
+  ],
+  "evaluation_protocol": "Three scenarios (S1, S2, S3) varying the number of training/testing templates per user; comparison of six different feature scopes (SA-SF)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 2,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Need for more training data for dynamic verification",
+      "Susceptibility to imitation attacks"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "touch dynamics",
+      "location"
+    ],
+    "fusion_level": "score",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": 98.25,
+        "unit": "percent"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "Comparison against related works [7, 8, 18, 19]",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a multi-scope framework combining static and dynamic verification for continuous authentication in mobile banking",
+      "Integrated a mandatory Imposter FAR (I_FAR) threshold of 10% to enhance model resilience"
+    ],
+    "main_strength": [
+      "Multimodal approach using diverse sensor data",
+      "Evaluation across different data volume scenarios"
+    ],
+    "main_weakness": [
+      "Small sample size (25 legitimate users)",
+      "Lack of active spoofing/presentation attack tests"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The authors emphasize that the F1 score was used as the primary metric to avoid accuracy inflation caused by true negatives in multiclass scopes."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Estrela_2021"
+}

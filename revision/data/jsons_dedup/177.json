@@ -1,0 +1,159 @@
+{
+  "title": "Towards Continuous User Recognition by Exploring Physiological Multimodality: An Electrocardiogram (ECG) and Blood Volume Pulse (BVP) Approach",
+  "year": 2018,
+  "venue": "IEEE",
+  "doi": "10.1109/issi.2018.8538075",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG",
+      "BVP"
+    ],
+    "sensor": [
+      "conductive fabric electrodes",
+      "BVP sensor"
+    ],
+    "device": [
+      "MOD ARM",
+      "MOD WRIST",
+      "MOD CHEST",
+      "BITalino"
+    ],
+    "body_location": "forearms, index finger, chest"
+  },
+  "data": [
+    {
+      "dataset_name": "Private HCI Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 53,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": 8,
+        "unit": "weeks"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "k-Nearest Neighbors",
+      "Naive-Bayes"
+    ],
+    "input_representation": "waveform amplitude values",
+    "training_strategy": "weighted 3-NN classifier with Bayesian decision fusion"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 4.13,
+      "context": "Best achieved for Forearm ECG modality during within-session across-task (WS-AT) analysis using task S1.3"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-out (LOO) with within-session within-task (WS-WT), within-session across-task (WS-AT), and across-session (AS) analysis.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 8,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 8,
+        "unit": "weeks"
+      },
+      "drop_in_performance": {
+        "metric": "EER",
+        "value": 13.42
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Avg. time used (%)",
+      "value": 24.0
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "BVP modality degrades performance due to significant noise",
+      "Finger movements severely contaminate the BVP signal with motion artifacts",
+      "Forearm ECG valid data percentage depends heavily on user interaction behavior"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "BVP signal is highly sensitive to finger movements during HCI tasks."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "ECG",
+      "BVP"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Evaluation of ECG and BVP for continuous recognition in an HCI setup",
+      "Analysis of the impact of ECG window length (PQRST vs PQRS vs QRS) on temporal stability",
+      "Investigation of within-session vs across-session performance degradation"
+    ],
+    "main_strength": [
+      "Longitudinal evaluation (8 weeks gap)",
+      "Use of task-based simulations to assess usability in a workspace environment"
+    ],
+    "main_weakness": [
+      "BVP modality provided little to no benefit and was highly noise-prone",
+      "Small sample size for across-session tests (15 subjects)"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The paper concludes that the PQRS complex of the ECG is more robust to temporal changes than the full PQRST complex."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Martinho_2018"
+}

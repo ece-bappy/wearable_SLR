@@ -1,0 +1,172 @@
+{
+  "title": "A Lightweight Embedded PPG-Based Authentication System for Wearable Devices via Hyperdimensional Computing",
+  "year": 2026,
+  "venue": "Algorithms",
+  "doi": "10.3390/a19010083",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "PPG",
+      "IMU"
+    ],
+    "sensor": [
+      "Photoplethysmography sensor",
+      "MPU6500 six-axis IMU"
+    ],
+    "device": [
+      "Wrist-worn prototype",
+      "Arduino UNO"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": 300,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 3,
+        "unit": "s"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Hyperdimensional Computing (HDC)",
+      "Dimension Regeneration Mechanism"
+    ],
+    "input_representation": "Standardized physiological and motion features mapped to high-dimensional hypervectors",
+    "training_strategy": "Adaptive learning process with iterative refinement of the user hypervector"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.16,
+      "context": "Attacker Pass Rate achieved at User-Defined Security Level L=3"
+    },
+    {
+      "metric": "FRR",
+      "value": 2.28,
+      "context": "Calculated as 100% minus Legitimate Pass Rate (97.72%) at Security Level L=1"
+    }
+  ],
+  "evaluation_protocol": "10 samples for training and 20 samples for testing per participant; imposters selected from other participants.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 10,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 93.07
+    },
+    "reported_limitations": [
+      "Small sample size",
+      "Impact of skin pigmentation/melanin on SNR",
+      "Sensor-skin interface gaps in users with small wrist circumferences",
+      "Pearson correlation limitation in detecting non-linear dependencies"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 333,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 24.97,
+        "unit": "mJ"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Initial enrollment time"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "PPG",
+      "IMU"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": null
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "SVM, RF, CNN, RNN, AdaptHD",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Integration of PPG and IMU using a lightweight HDC framework",
+      "Dimension regeneration mechanism to maximize information density of hypervectors",
+      "Adaptive update strategy to mitigate signal drift over time"
+    ],
+    "main_strength": [
+      "Very low computational and memory overhead (24.5 KB)",
+      "High accuracy with minimal training data (10 samples)",
+      "Stability across different skin moisture and hair density levels"
+    ],
+    "main_weakness": [
+      "Lack of active spoofing/presentation attack evaluations",
+      "Limited participant diversity (15 subjects)"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "The system focuses heavily on the hardware-efficiency aspect of HDC, making it a strong example for resource-constrained biometric deployments."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Zhuang_2026"
+}

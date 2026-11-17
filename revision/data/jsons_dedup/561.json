@@ -1,0 +1,174 @@
+{
+  "title": "FingerSlid: Towards Finger-Sliding Continuous Authentication on Smart Devices Via Vibration",
+  "year": 2024,
+  "venue": "IEEE Transactions on Mobile Computing",
+  "doi": "10.1109/TMC.2023.3315291",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "vibration"
+    ],
+    "sensor": [
+      "Linear Resonant Actuator (LRA)",
+      "accelerometer"
+    ],
+    "device": [
+      "smartphone",
+      "smartwatch"
+    ],
+    "body_location": "finger"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 40,
+      "num_samples": 21000,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 4,
+        "unit": "months"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Triplet network",
+      "Convolutional Neural Network (CNN)",
+      "Spatial Pyramid Pooling (SPP)"
+    ],
+    "input_representation": "Spliced feature matrices from Synchrosqueezed Wavelet Transform (SWT) and Empirical Wavelet Transform (EWT)",
+    "training_strategy": "Pre-training with 3 volunteers followed by incremental learning for registration"
+  },
+  "evaluation": [
+    {
+      "metric": "FRR",
+      "value": 1.28,
+      "context": "Achieved in the 'sitting in office' scenario"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.4,
+      "context": "Achieved under the 'Advanced Attack' scenario"
+    }
+  ],
+  "evaluation_protocol": "Cross-behavior validation (registration data from some behaviors, test data from other behaviors to ensure behavior-independence)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 4,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 100,
+        "unit": "days"
+      },
+      "drop_in_performance": {
+        "metric": "FRR",
+        "value": 2.5
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "FRR",
+      "value": 1.28
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance decreases with heavily sweaty or dusty fingers",
+      "Performance decreases with very hard sliding force",
+      "Hardware modifications required for COTS devices"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "replay",
+      "presentation/mask",
+      "synthetic/deepfake"
+    ],
+    "liveness_detection": true,
+    "defense_type": "heuristic"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 257,
+        "unit": "ms"
+      },
+      {
+        "value": 144,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Registration requires 6-7 sliding motions for optimal performance"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed FingerSlid for behavior-independent continuous authentication using active vibration",
+      "Developed a Triplet network to remove behavioral influences (force, path, duration)",
+      "Introduced a Random Frequency Segment (RFS) mechanism to prevent replay and advanced spoofing attacks"
+    ],
+    "main_strength": [
+      "Strong resistance to mimic and replay attacks",
+      "Long-term stability over 100 days",
+      "Cross-device applicability (smartphone and smartwatch)"
+    ],
+    "main_weakness": [
+      "Requires modified hardware for COTS devices",
+      "Sensitivity to finger surface conditions (sweat/dust)"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The system specifically addresses the 'behavior-independence' gap by using a Triplet network to ensure authentication depends on finger physical properties rather than sliding style."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Xie_2024"
+}

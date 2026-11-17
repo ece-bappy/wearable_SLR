@@ -1,0 +1,155 @@
+{
+  "title": "Signal enhancement and efficient DTW-based comparison for wearable gait recognition",
+  "year": 2024,
+  "venue": "Computers & Security",
+  "doi": "10.1016/j.cose.2023.103643",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "pelvis"
+  },
+  "data": [
+    {
+      "dataset_name": "ZJU-gaitacc",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 153,
+      "num_samples": 1836,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    },
+    {
+      "dataset_name": "OU-ISIR",
+      "dataset_type": "public",
+      "dataset_role": "benchmark",
+      "num_subjects": 40,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "MV-FWDTW",
+      "Fast Window Dynamic Time Warping"
+    ],
+    "input_representation": "3D accelerometer time series (X, Y, Z axes)",
+    "training_strategy": "No training phase; uses hand-crafted features and distance-based matching"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Closed-set identification using cross-session testing (one session for gallery, another for probe)",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "week"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Gait may lack sufficient permanence for very long-term applications",
+      "Performance drops significantly with very short walk signals"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 4,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "ZJU-gaitacc, OU-ISIR",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed MV-FWDTW algorithm for gait recognition using a single accelerometer",
+      "Introduced Fast Window DTW with relaxed endpoint constraints to improve speed and accuracy",
+      "Developed a signal enhancement pipeline including Z-score normalization, moving average, and Gaussian convolution"
+    ],
+    "main_strength": [
+      "High recognition rate in cross-session scenarios",
+      "No training data required, avoiding generalization issues of deep learning",
+      "Low computational complexity"
+    ],
+    "main_weakness": [
+      "Lack of experimental testing on uncontrolled, in-the-wild environments",
+      "No active spoofing/presentation attack testing conducted"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper reports Rank #1 (Recognition Rate) of 98.82%, but does not provide the specific target metrics (AUC, EER, FAR, FRR) requested for extraction."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Avola_2024"
+}

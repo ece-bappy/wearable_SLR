@@ -1,0 +1,7 @@
+{
+  "title": "A lightweight continuous authentication scheme for medical wireless body area networks",
+  "relevance": "exclude",
+  "exclusion_reason": "Purely theoretical protocol design. The paper proposes a cryptographic authentication scheme that utilizes a biometric key, but it does not implement or empirically evaluate the biometric system. The authors explicitly state that no studies with human participants were performed, and no biometric performance metrics (e.g., EER, FAR, FRR) are reported; evaluation is limited to theoretical computational/communication overhead and formal verification via BAN-Logic.",
+  "doi": "10.1007/s12083-021-01190-7",
+  "citekey": "Wan_2021"
+}

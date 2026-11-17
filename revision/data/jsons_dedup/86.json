@@ -1,0 +1,174 @@
+{
+  "title": "TeethPass: Dental Occlusion-based User Authentication via In-ear Acoustic Sensing",
+  "year": 2022,
+  "venue": "IEEE INFOCOM 2022",
+  "doi": "10.1109/infocom48880.2022.9796951",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "Acoustic",
+      "Bone-conducted sound"
+    ],
+    "sensor": [
+      "Inward-facing microphones"
+    ],
+    "device": [
+      "Earbuds"
+    ],
+    "body_location": "Binaural canals / Teeth"
+  },
+  "data": [
+    {
+      "dataset_name": "Private",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 22,
+      "num_samples": 2000,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Siamese Network",
+      "CNN"
+    ],
+    "input_representation": "Two-channel 36x36 bicolor images (MFCC, Delta MFCC, Delta2 MFCC) and zero-crossing sequences",
+    "training_strategy": "Incremental learning combined with data augmentation (time warping and frequency-time masking)"
+  },
+  "evaluation": [
+    {
+      "metric": "FRR",
+      "value": 1.6,
+      "context": "Achieved in the lab environment"
+    },
+    {
+      "metric": "FAR",
+      "value": 1.0,
+      "context": "Achieved under replay attacks with distance > 20cm"
+    }
+  ],
+  "evaluation_protocol": "Cross-validation using a training set and test set derived from data collected in 4 environments (lab, park, car, mall)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 1.6,
+    "real_world_performance_value": 2.3,
+    "drop_percentage": 0.7
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 90,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 90,
+        "unit": "days"
+      },
+      "drop_in_performance": {
+        "metric": "FRR",
+        "value": 2.3
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "FRR",
+      "value": 2.3
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "FRR",
+      "value": 2.3
+    },
+    "reported_limitations": [
+      "Not tested while music is playing in the earphones",
+      "Performance degradation after drinking high-viscosity liquids like cola"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "replay",
+      "presentation/mask"
+    ],
+    "liveness_detection": true,
+    "defense_type": "hybrid"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 277,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requires explicit dental occlusion; affected by oral environment"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "Skeletal features",
+      "Location features",
+      "Integral features"
+    ],
+    "fusion_level": "decision",
+    "benefit_over_unimodal": [
+      {
+        "metric": "FAR",
+        "value": 0.6,
+        "unit": "percentage points"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "First system to use bone-conducted sounds of dental occlusion via earbuds for authentication",
+      "Proposed an incremental learning-based Siamese network for low-registration-data efficiency"
+    ],
+    "main_strength": [
+      "High resistance to replay and mimic attacks",
+      "Stable performance across noisy real-world environments"
+    ],
+    "main_weakness": [
+      "Lack of testing with concurrent audio playback",
+      "Sensitivity to oral environment changes"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "ENVIRONMENT"
+    ],
+    "notes_for_review": "The system demonstrates strong temporal robustness over 90 days and effectively handles ambient noise better than voice-based systems."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Xie_2022"
+}

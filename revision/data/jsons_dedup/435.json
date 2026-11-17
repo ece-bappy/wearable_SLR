@@ -1,0 +1,168 @@
+{
+  "title": "User Authentication Method for Smart Rings Using Active Acoustic Sensing",
+  "year": 2025,
+  "venue": "IEEE Access",
+  "doi": "10.1109/access.2025.3549278",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "active acoustic sensing"
+    ],
+    "sensor": [
+      "piezoelectric speaker",
+      "piezoelectric microphone"
+    ],
+    "device": [
+      "smart ring",
+      "tape device"
+    ],
+    "body_location": "finger"
+  },
+  "data": [
+    {
+      "dataset_name": "Tape Device Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 7,
+      "num_samples": 350,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 10,
+        "unit": "seconds"
+      }
+    },
+    {
+      "dataset_name": "Ring Device Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 13,
+      "num_samples": 650,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 10,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "Dynamic Time Warping (DTW)",
+      "Fast Fourier Transform (FFT)"
+    ],
+    "input_representation": "frequency power spectrum",
+    "training_strategy": "Template registration of power spectrum samples"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.026,
+      "context": "Achieved using the ring device with the gripping hand state among 13 participants"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-subject-out rotation for FAR and cross-sample validation for FRR; intersection of FAR/FRR curves used for EER.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.026,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 0.078
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Dependency on device size and fit",
+      "Sensitivity to contact pressure and orientation",
+      "Potential impact of external noise and perspiration",
+      "Lack of outlier filtering in current data processing"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Current hardware implementation relies on bulky external audio interfaces and computers"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Development of a smart ring authentication system using active acoustic sensing",
+      "Evaluation of biometric stability across different hand states (relaxing, gripping, typing)"
+    ],
+    "main_strength": [
+      "Continuous and passive authentication",
+      "High accuracy when hand state is standardized (gripping)"
+    ],
+    "main_weakness": [
+      "Evaluated only in a controlled lab environment",
+      "Hardware is not yet miniaturized into a standalone ring"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The system shows promising results for implicit authentication, but the significant performance difference between 'gripping' (0.026) and 'typing' (0.078) suggests a high sensitivity to contact pressure."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Iwakiri_2025"
+}

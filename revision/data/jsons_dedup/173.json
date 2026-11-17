@@ -1,0 +1,152 @@
+{
+  "title": "Smartwatch User Authentication by Sensing Tapping Rhythms and Using One-Class DBSCAN",
+  "year": 2021,
+  "venue": "Sensors",
+  "doi": "10.3390/s21072456",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "tapping rhythms"
+    ],
+    "sensor": [
+      "touch screen"
+    ],
+    "device": [
+      "smartwatch",
+      "Moto 360"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Private tapping rhythm dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 600,
+      "num_samples": 6110,
+      "collection_setting": "lab",
+      "duration": null
+    }
+  ],
+  "method": {
+    "learning_type": "unsupervised",
+    "model": [
+      "One-Class DBSCAN"
+    ],
+    "input_representation": "Ratio of each duration or interval to the total duration of the tapping rhythm",
+    "training_strategy": "One-class clustering using core objects identified by DBSCAN parameters MinPts and epsilon"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.92,
+      "context": "Achieved with One-Class DBSCAN using MinPts = 2 and epsilon = 0.0973"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.63,
+      "context": "Best result achieved for tapping rhythm length N=8"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.69,
+      "context": "Best result achieved for tapping rhythm length N=8"
+    }
+  ],
+  "evaluation_protocol": "Cross-validation: 5 random samples for training and 5 for testing per user, repeated 10 times",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.92,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Tapping habits are unstable and change over time"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 10.58,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "Ben Hutchins et al. [27]",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed One-Class DBSCAN algorithm for behavioral authentication on smartwatches",
+      "Developed a security level detection method for tapping rhythms based on standard deviation"
+    ],
+    "main_strength": [
+      "Very low EER (0.92%) compared to prior tapping rhythm work",
+      "Extremely low authentication latency (10.58 ms)"
+    ],
+    "main_weakness": [
+      "Lack of temporal robustness testing",
+      "No evaluation against active spoofing attacks"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The authors use a custom 'One-Class DBSCAN' approach to handle the fact that they only have positive samples for the target user."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Zhang_2021_1"
+}

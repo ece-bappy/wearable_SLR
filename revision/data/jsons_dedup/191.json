@@ -1,0 +1,158 @@
+{
+  "title": "ECG Identification Based on the Gramian Angular Field and Tested with Individuals in Resting and Activity States",
+  "year": 2023,
+  "venue": "Sensors",
+  "doi": "10.3390/s23020937",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "ECG sensor"
+    ],
+    "device": [
+      "smartwatch",
+      "sports band"
+    ],
+    "body_location": "chest/wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "MIT-BIH Normal Sinus Rhythm Database",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": 30000,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 5,
+        "unit": "seconds"
+      }
+    },
+    {
+      "dataset_name": "ECG-GUDB",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": 1250,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 5,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "VGG19",
+      "CNN"
+    ],
+    "input_representation": "Gramian Angular Field (GAF) images",
+    "training_strategy": "Transfer learning using ImageNet weights, Adam optimizer, and early stopping"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.0093,
+      "context": "Achieved using ECG-GUDB dataset (individuals under activity states)"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.081,
+      "context": "Achieved using ECG-GUDB dataset (individuals under activity states)"
+    }
+  ],
+  "evaluation_protocol": "80% training, 10% validation, 10% testing (NSRDB); 80% training, 20% testing (ECG-GUDB)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.01022,
+    "real_world_performance_value": 0.0093,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": null,
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "FAR",
+      "value": 0.0093
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Small number of samples per subject in ECG-GUDB",
+      "Limited number of users used in experiments (10)"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "MIT-BIH NSRDB, ECG-GUDB",
+    "reproducibility_score": "high"
+  },
+  "insights": {
+    "key_contribution": [
+      "First use of Gramian Angular Field (GAF) images for ECG-based user identification",
+      "Evaluation of ECG biometrics under different activity states (sitting, walking, running, etc.) to simulate real-world usage"
+    ],
+    "main_strength": [
+      "Stable performance across resting and active states",
+      "Use of open-source datasets and available code"
+    ],
+    "main_weakness": [
+      "Very small subject pool (10 users)",
+      "Lack of security/spoofing analysis"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "The study demonstrates that GAF transformation preserves temporal dependencies in ECG signals and remains robust during physical activity."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Camara_2023"
+}

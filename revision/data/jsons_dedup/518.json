@@ -1,0 +1,170 @@
+{
+  "title": "Personalized user authentication system using wireless EEG headset and machine learning",
+  "year": 2024,
+  "venue": "Brain Organoid and Systems Neuroscience Journal",
+  "doi": "10.1016/j.bosn.2024.03.003",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "EEG"
+    ],
+    "sensor": [
+      "dry electrode"
+    ],
+    "device": [
+      "Mindwave Mobile 2"
+    ],
+    "body_location": "frontal lobe (FP1)"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 25,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 7,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Auto-WEKA"
+    ],
+    "input_representation": "8 power spectral features (delta, theta, low alpha, high alpha, low beta, high beta, low gamma, high gamma)",
+    "training_strategy": "User-specific classifier trained using 3 minutes of user data combined with 60 instances from a repository of 10 other participants."
+  },
+  "evaluation": [
+    {
+      "metric": "AUC",
+      "value": 0.8996,
+      "context": "Average AUC across 15 subjects"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.17,
+      "context": "Mean False Acceptance Rate across 15 subjects"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.12,
+      "context": "Mean False Rejection Rate across 15 subjects"
+    }
+  ],
+  "evaluation_protocol": "10-fold cross-validation during training; testing on separate 1-minute authentication window.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "low sampling rate",
+      "single-channel device",
+      "sensitivity to external influences (medication, caffeine, noise)",
+      "unknown permanence of brain waves over lifespan"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 1.0,
+        "unit": "minute"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Registration process requires 6 minutes (3 min collection, 3 min training)."
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Demonstrated feasibility of using a consumer-grade wireless single-channel EEG headset for authentication",
+      "Integrated Auto-WEKA for automated user-specific classifier selection"
+    ],
+    "main_strength": [
+      "High user convenience due to wireless mobile hardware",
+      "Comparable performance to multi-channel systems"
+    ],
+    "main_weakness": [
+      "Small sample size",
+      "Lack of real-world environmental testing",
+      "No active spoofing or liveness tests"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_CROSS_SESSION",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The study emphasizes the transition from medical-grade to consumer-grade hardware for EEG biometrics."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Baraku_2024"
+}

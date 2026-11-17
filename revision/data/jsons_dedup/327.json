@@ -1,0 +1,182 @@
+{
+  "title": "SonarAuth: Using Around Device Sensing to Improve Smartwatch Behavioral Biometrics",
+  "year": 2023,
+  "venue": "Adjunct Proceedings of the 2023 ACM International Joint Conference on Pervasive and Ubiquitous Computing & the 2023 ACM International Symposium on Wearable Computing (UbiComp/ISWC ’23 Adjunct)",
+  "doi": "10.1145/3594739.3610696",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "touch",
+      "motion",
+      "acoustic/sonar"
+    ],
+    "sensor": [
+      "touch screen",
+      "accelerometer",
+      "gyroscope",
+      "magnetometer",
+      "speaker",
+      "microphone"
+    ],
+    "device": [
+      "Samsung Galaxy Watch 4"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 24,
+      "num_samples": 5749,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "1D CNN",
+      "2D CNN",
+      "Multimodal deep learning classifier"
+    ],
+    "input_representation": "Sonar images (50x100) and concatenated motion/touch features (60x20)",
+    "training_strategy": "Randomly split 23 attackers into 17 for training and 6 for testing; 6 blocks of user data for training, 2 for validation."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 6.41,
+      "context": "Achieved using the multimodal classifier for single thumb tap"
+    },
+    {
+      "metric": "FAR",
+      "value": 8.02,
+      "context": "Achieved using the multimodal classifier for single thumb tap"
+    },
+    {
+      "metric": "FRR",
+      "value": 4.71,
+      "context": "Achieved using the multimodal classifier for single thumb tap"
+    }
+  ],
+  "evaluation_protocol": "Each user had a model trained against 17 attackers and tested against 6 remaining attackers.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 6.41,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": null,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Peak EER of 6.41% is not sufficient for effective real-world authentication",
+      "Validated without separate multi-recall sessions to test diverse variations",
+      "Thumb tap is less preferred by users"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [
+      "NASA-TLX",
+      "user preference survey"
+    ],
+    "usability_issues": "Thumb tap reported as least preferred due to requiring larger gross movements of the hand."
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "touch",
+      "motion",
+      "sonar"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 8.19,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed and evaluated the first around-device behavioral biometric system for smartwatches using active sonar"
+    ],
+    "main_strength": [
+      "Uses unmodified commercial hardware",
+      "Multimodal approach significantly improves performance over sonar-only"
+    ],
+    "main_weakness": [
+      "Lab-only dataset",
+      "Performance (EER) is not yet at a commercial-grade security level"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "SMALL_SAMPLE_SIZE",
+      "NO_TEMPORAL_TEST"
+    ],
+    "notes_for_review": "The study highlights that thumb taps provide the most distinctive features likely due to hand proximity and articulation differences."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Kim_2023"
+}

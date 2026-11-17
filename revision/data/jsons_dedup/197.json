@@ -1,0 +1,162 @@
+{
+  "title": "Finger ECG-based Authentication for Healthcare Data Security Using Artificial Neural Network",
+  "year": 2017,
+  "venue": "2017 IEEE 19th International Conference on e-Health Networking, Applications and Services (Healthcom)",
+  "doi": "10.1109/healthcom.2017.8210804",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "BMD101 chip",
+      "single lead electrode"
+    ],
+    "device": [
+      "BMD_Starter_Kit",
+      "smartphone",
+      "tablet"
+    ],
+    "body_location": "fingers"
+  },
+  "data": [
+    {
+      "dataset_name": "Private laboratory dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 50,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Artificial Neural Network",
+      "Feed-forward network"
+    ],
+    "input_representation": "Difference vectors of 7 features (Euclidean distance of QRST/QRS segments, Manhattan distance of R amplitude, and kurtosis of QRST/QRS segments) compared against a user template",
+    "training_strategy": "Two-phase authentication using a 'General' NN model for preliminary screening (population-based) followed by a 'Personal' NN model for fine-grained identification (individual-based)."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 2.61,
+      "context": "Achieved by the 'General' NN model"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.0,
+      "context": "Average result for sample size of 5 users"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.0,
+      "context": "Average result for sample size of 5 users"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-out (LOO) cross-validation repeated 100 times for various subset sizes (5, 10, 20, 30, 40, 50).",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": 30,
+      "unit": "minutes"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance decreases as the number of users increases",
+      "Kurtosis of QRS/QRST patterns are less distinguishable between groups"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 3,
+        "unit": "seconds"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Two-phase authentication combining a general population model and individual personal models",
+      "Reduced authentication time to 3 heartbeats (~3 seconds)"
+    ],
+    "main_strength": [
+      "Very low latency for authentication",
+      "Evaluated under different physical statuses (pre- and post-stress test)"
+    ],
+    "main_weakness": [
+      "Poor scalability (error rates increase with population size)",
+      "Only tested in a controlled lab environment"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "SMALL_SAMPLE_SIZE"
+    ],
+    "notes_for_review": "The paper claims this is the shortest authentication time reported for ECG to date."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Chen_2017"
+}

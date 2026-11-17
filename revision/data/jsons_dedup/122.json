@@ -1,0 +1,176 @@
+{
+  "title": "Multi-Modal Biometric-Based Implicit Authentication of Wearable Device Users",
+  "year": 2019,
+  "venue": "IEEE Transactions on Information Forensics and Security",
+  "doi": "10.1109/tifs.2019.2911170",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "step counts",
+      "heart rate",
+      "calorie burn",
+      "metabolic equivalent of task (MET)"
+    ],
+    "sensor": [
+      "heart rate sensor",
+      "accelerometer"
+    ],
+    "device": [
+      "Fitbit Charge HR"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "NetHealth study dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 421,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 17,
+        "unit": "months"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Quadratic Support Vector Machine (q-svm)",
+      "Gaussian Support Vector Machine (g-svm)"
+    ],
+    "input_representation": "Statistical features (mean, median, energy, power, skewness, kurtosis, etc.) from 5-minute non-overlapping windows of coarse-grained biometric data",
+    "training_strategy": "Binary and unary classification with 75% training and 25% testing split"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.05,
+      "context": "Achieved using KS-approach with hybrid biometrics (Calorie burn and MET) at a probability threshold of ≈0.95"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.02,
+      "context": "Reported as a trade-off point where accuracy increases above 0.97"
+    },
+    {
+      "metric": "FRR",
+      "value": 0.05,
+      "context": "Reported for sedentary periods at low probability thresholds"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-subject-out (binary) and unary classification tested on 25% of the dataset",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 17,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": null,
+        "unit": "sequential split"
+      },
+      "drop_in_performance": {
+        "metric": "ACC",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "ACC",
+      "value": 0.9
+    },
+    "robust_to_noise": {
+      "is_quantified": null,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Performance degradation during highly active periods",
+      "Dataset homogeneity regarding user age"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": null,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Longer windows incur long delays in accumulating data points"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "calorie burn",
+      "MET",
+      "heart rate",
+      "step counts"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "ACC",
+        "value": null,
+        "unit": "hybrid biometrics outperformed behavioral/physiological"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": null,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "NetHealth study",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "First use of three coarse-grained biometric types (behavioral, physiological, hybrid) for implicit wearable authentication",
+      "Demonstrated that hybrid biometrics (calorie burn, MET) are more effective than single behavioral or physiological sources"
+    ],
+    "main_strength": [
+      "Extensive in-the-wild data from a large cohort (400+ subjects) over a long period (17 months)"
+    ],
+    "main_weakness": [
+      "Lack of active presentation attack (spoofing) testing",
+      "User base limited to a narrow age range (college students)"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The authors suggest that a retraining interval of a week or a few weeks would be sufficient to handle biometric drift."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Vhaduri_2019"
+}

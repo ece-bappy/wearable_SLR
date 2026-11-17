@@ -1,0 +1,170 @@
+{
+  "title": "Shake, Shake, I Know Who You Are: Authentication Through Smart Wearable Devices",
+  "year": 2023,
+  "venue": "IEEE Sensors Journal",
+  "doi": "10.1109/JSEN.2023.3315523",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "heart rate",
+      "accelerometer",
+      "gyroscope"
+    ],
+    "sensor": [
+      "MAX30102 pulse oximeter",
+      "MPU 92/65 accelerometer",
+      "MPU 92/65 gyroscope"
+    ],
+    "device": [
+      "custom smart band",
+      "smartphone"
+    ],
+    "body_location": "left wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "homemade dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 8,
+      "num_samples": 8000,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "MRBLSTM (Multimodal Residual Bidirectional Long Short-Term Memory)"
+    ],
+    "input_representation": "Stacked motion sensor data and heart rate sensor data",
+    "training_strategy": "Fast Fourier Transform used for CNN input"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Accuracy-based classification on a custom dataset",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "week"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Lack of open programming interface for Google Smart Lock"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 18.625,
+        "unit": "ms"
+      },
+      {
+        "value": 2115,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 0.0195,
+        "unit": "mAh"
+      },
+      {
+        "value": 0.83,
+        "unit": "mAh"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "behavioral motion",
+      "physiological heart rate"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "Accuracy",
+        "value": 0.5,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a dual-model approach: lightweight CNN for wearables and high-performance MRBLSTM for smartphones to secure Smart Lock scenarios"
+    ],
+    "main_strength": [
+      "Consideration of hardware constraints by providing different models for different devices"
+    ],
+    "main_weakness": [
+      "Very small sample size (8 subjects)",
+      "Evaluation based on accuracy rather than standard biometric error rates (EER/FAR/FRR)",
+      "Data collected in a highly controlled laboratory setting"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper provides accuracy results but ignores the mandatory metrics (EER, FAR, FRR) required for this systematic review."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Guo_2023_1"
+}

@@ -1,0 +1,140 @@
+{
+  "title": "PPG-based Biometric Identiﬁcation: Discovering and Identifying a New User",
+  "year": 2021,
+  "venue": "43rd Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC)",
+  "doi": "10.1109/embc46164.2021.9630883",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "PPG sensor"
+    ],
+    "device": [
+      "wearable devices"
+    ],
+    "body_location": null
+  },
+  "data": [
+    {
+      "dataset_name": "BIDMC",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 53,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 8,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "CNN",
+      "LSTM",
+      "K-Means"
+    ],
+    "input_representation": "heartbeat cycle signal scaled to 128 samples via cubic spline interpolation",
+    "training_strategy": "Combined softmax loss and center loss to optimize feature extraction"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "80% training and 20% testing per user",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Training with more users increases training time without proportional performance gains"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "BIDMC",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a method to identify 'new' users (not seen during training) without retraining the deep neural network by using distance similarity to cluster centers"
+    ],
+    "main_strength": [
+      "Addresses the scalability issue of deep learning in identification (one-to-many) where new users typically require model retraining"
+    ],
+    "main_weakness": [
+      "Evaluation relies solely on accuracy rather than standard biometric metrics (EER, FAR, FRR)",
+      "Lack of real-world/naturalistic testing"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper focuses specifically on the 'open-set' problem of biometric identification."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Ye_2021"
+}

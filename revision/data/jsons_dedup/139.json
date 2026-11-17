@@ -1,0 +1,185 @@
+{
+  "title": "WatchAuth: User Authentication and Intent Recognition in Mobile Payments using a Smartwatch",
+  "year": 2022,
+  "venue": "IEEE 7th European Symposium on Security and Privacy (EuroS&P)",
+  "doi": "10.1109/eurosp53844.2022.00031",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gesture"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "linear accelerometer",
+      "gyroscope rotation vector"
+    ],
+    "device": [
+      "smartwatch"
+    ],
+    "body_location": "wrist"
+  },
+  "data": [
+    {
+      "dataset_name": "Lab Tap Dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 16,
+      "num_samples": 3360,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "Out-of-lab Activity Dataset",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 9,
+      "num_samples": 32441,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 1088,
+        "unit": "minutes"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "random forest"
+    ],
+    "input_representation": "220-member feature vector (statistical features, velocity, and displacement)",
+    "training_strategy": "User-dependent models for authentication; user-agnostic models for intent recognition using stratified 10-fold cross-validation."
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.04,
+      "context": "Best reported for the user-agnostic intent recognition model"
+    },
+    {
+      "metric": "EER",
+      "value": 0.08,
+      "context": "Average for the terminal-agnostic authentication model"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.13,
+      "context": "Average FAR for optimized models used for retrospective fraud detection"
+    }
+  ],
+  "evaluation_protocol": "Training data from sessions 1 & 2; testing data from session 3 to simulate enrollment and verification. Stratified 10-fold cross-validation for intent recognition.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "small sample size",
+      "lab-only collection for tap gestures",
+      "artificial lab setting"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 185,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 1.5,
+        "unit": "% per hour"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "linear accelerometer",
+      "rotation vector"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": null
+  },
+  "reproducibility": {
+    "code_available": true,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a system using tap gestures for simultaneous implicit authentication and intent-to-pay recognition",
+      "Developed a terminal-agnostic authentication model",
+      "Developed a user-agnostic intent recognition model"
+    ],
+    "main_strength": [
+      "Realistic terminal configurations and freestyle terminal inclusion",
+      "Analysis of retrospective fraud detection use-case"
+    ],
+    "main_weakness": [
+      "Small number of participants (n=16)",
+      "Positive samples collected in a lab environment"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "LAB_ONLY_DATASET",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper distinguishes between authentication (who is doing the tap) and intent recognition (is this a tap gesture)."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Sturgess_2022"
+}

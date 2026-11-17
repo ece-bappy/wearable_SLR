@@ -1,0 +1,148 @@
+{
+  "title": "Continuous User Authentication using IoT Wearable Sensors",
+  "year": 2021,
+  "venue": "2021 IEEE International Symposium on Circuits and Systems (ISCAS)",
+  "doi": "10.1109/ISCAS51556.2021.9401741",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "ECG"
+    ],
+    "sensor": [
+      "dry electrodes"
+    ],
+    "device": [
+      "wearable chest strap",
+      "MAXIM-ECG-MONITOR"
+    ],
+    "body_location": "chest"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 33,
+      "num_samples": null,
+      "collection_setting": "semi-controlled",
+      "duration": {
+        "value": null,
+        "unit": "hours"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM"
+    ],
+    "input_representation": "Discrete Cosine Transform (DCT) coefficients of weighted-averaged heartbeats",
+    "training_strategy": "Binary classifier per subject for verification"
+  },
+  "evaluation": [
+    {
+      "metric": "FAR",
+      "value": 0.0,
+      "context": "Lowest reported FPR across multiple subjects in Table I"
+    },
+    {
+      "metric": "FRR",
+      "value": 1.03,
+      "context": "Derived from highest TRP (98.97%) for subject 1669218"
+    }
+  ],
+  "evaluation_protocol": "Leave-one-out strategy for unseen intruders",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": "weeks"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Data primarily recorded in office environments (sitting at desks)",
+      "Privacy concerns regarding constant monitoring and sensitive medical data"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Users expressed concerns about constant monitoring in work environments"
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": null,
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Implementation of continuous ECG authentication using a commercial IoT wearable with dry electrodes"
+    ],
+    "main_strength": [
+      "Use of longitudinal data collected over several weeks across multiple sessions"
+    ],
+    "main_weakness": [
+      "Lack of diverse activity data (mostly stationary/office tasks)",
+      "No testing against active spoofing attacks"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_PUBLIC_DATASET"
+    ],
+    "notes_for_review": "The study emphasizes the difference between discrete identification and continuous verification, advocating for binary classifiers per user."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Smyth_2021"
+}

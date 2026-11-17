@@ -1,0 +1,148 @@
+{
+  "title": "Gait-based identification for elderly users in wearable healthcare systems",
+  "year": 2020,
+  "venue": "Information Fusion",
+  "doi": "10.1016/j.inffus.2019.06.023",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "IMU"
+    ],
+    "device": [
+      "wearable healthcare system",
+      "IMUZ sensors"
+    ],
+    "body_location": "waist"
+  },
+  "data": [
+    {
+      "dataset_name": "OU_ISIR",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 64,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": null,
+        "unit": ""
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "Pearson correlation coefficient (PCC)",
+      "Manhattan distance (MD)",
+      "Normalization cross-correlation (NCC)"
+    ],
+    "input_representation": "first principal component (PCA) of 3-axis acceleration signal",
+    "training_strategy": "gait template synthesis via averaging several gait cycles"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Template constructed from level walk1; tested against level walk2, upslope walk, and downslope walk.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "recognition rate",
+      "value": 0.82
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "intra-subject gait fluctuation of elderly users",
+      "sensor placement on sides of waist prone to interference from arm movement"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [],
+    "fusion_level": "score",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "OU_ISIR",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Gait template synthesis method to reduce intra-subject fluctuation in elderly users",
+      "Arbitration-based score level fusion of multiple matching algorithms"
+    ],
+    "main_strength": [
+      "High recognition accuracy specifically for the elderly population",
+      "Robustness across different ground slopes (upslope/downslope)"
+    ],
+    "main_weakness": [
+      "Lack of real-world, in-the-wild evaluation",
+      "No active spoofing or presentation attack testing"
+    ],
+    "gap_category": [
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "NO_CROSS_SESSION"
+    ],
+    "notes_for_review": "Focuses on elderly biometric challenges where intra-subject variance is high. Uses score-level fusion of different matchers rather than different modalities."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Sun_2020"
+}

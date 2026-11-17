@@ -1,0 +1,218 @@
+{
+  "title": "Speak and Be Known: Authenticating Users via Ear Canal Deformation on Earbuds",
+  "year": 2026,
+  "venue": "IEEE Transactions on Mobile Computing",
+  "doi": "10.1109/tmc.2026.3665282",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4",
+    "RQ5"
+  ],
+  "biometric": {
+    "type": "hybrid",
+    "modality": [
+      "Speech-aware Pressure Sequences (SPS)"
+    ],
+    "sensor": [
+      "MEMS barometer (Bosch BMP390)"
+    ],
+    "device": [
+      "Earbuds"
+    ],
+    "body_location": "ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": "Trace A",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 25,
+      "num_samples": null,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 30,
+        "unit": "days"
+      }
+    },
+    {
+      "dataset_name": "Trace B",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 25,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": null
+    },
+    {
+      "dataset_name": "Trace C",
+      "dataset_type": "private",
+      "dataset_role": "testing",
+      "num_subjects": 25,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 1,
+        "unit": "week"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "BaroIDNet",
+      "CNN",
+      "Inception modules",
+      "Cross-attention mechanism"
+    ],
+    "input_representation": "Time-domain pressure sequences and frequency-domain spectrograms (STFT)",
+    "training_strategy": "Hybrid loss (Cross-Entropy + Supervised Contrastive loss) with hard negative mining and data augmentation (time-stretching/compression)"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 1.02,
+      "context": "Achieved on Binaural channel using BaroIDNet with Mega training strategy"
+    },
+    {
+      "metric": "FAR",
+      "value": 0.41,
+      "context": "Achieved on Binaural channel using BaroIDNet with Mega training strategy"
+    },
+    {
+      "metric": "FRR",
+      "value": 1.23,
+      "context": "Achieved on Binaural channel using BaroIDNet with Mega training strategy"
+    }
+  ],
+  "evaluation_protocol": "One-vs-all verification protocol across 25 enrolled users",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": true,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": 0.41,
+    "real_world_performance_value": 5.31,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 6,
+      "unit": "months"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": true,
+      "time_delta": {
+        "value": 6,
+        "unit": "months"
+      },
+      "drop_in_performance": {
+        "metric": "FAR",
+        "value": 0.6
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "FAR",
+      "value": 5.31
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "FAR",
+      "value": 0.4
+    },
+    "reported_limitations": [
+      "Sensitivity to vigorous head movements causing seal loss",
+      "Performance degradation under high humidity (post-swim/shower)",
+      "Security-usability trade-off for short commands in knowledge-based attacks",
+      "Male-heavy and student-dominant cohort"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "presentation/mask"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "explicit",
+    "user_interaction_required": true,
+    "latency": [
+      {
+        "value": 220.42,
+        "unit": "ms"
+      },
+      {
+        "value": 403.16,
+        "unit": "ms"
+      }
+    ],
+    "energy_consumption": [
+      {
+        "value": 69,
+        "unit": "mJ"
+      },
+      {
+        "value": 218,
+        "unit": "mJ"
+      }
+    ],
+    "usability_study": [],
+    "usability_issues": "Requires user to speak a predefined passphrase"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "time-domain pressure signals",
+      "frequency-domain spectrograms"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "FAR",
+        "value": 1.57,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed BaroAuth system using MEMS barometers in earbuds to detect speech-induced ear canal deformation",
+      "Developed BaroIDNet integrating time-frequency features via cross-attention",
+      "Implemented EMD-based baseline drift elimination for mobile scenarios"
+    ],
+    "main_strength": [
+      "Immune to ambient acoustic noise",
+      "Low power consumption compared to ultrasound-based methods",
+      "Robust temporal stability over 6 months"
+    ],
+    "main_weakness": [
+      "Dependence on stable earbud seal",
+      "Knowledge-based imitation attacks are more effective on short passphrases"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_PUBLIC_DATASET",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "System demonstrates that longer commands (6-7 words) significantly enhance security against mimicry attacks."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Zhou_2026"
+}

@@ -1,0 +1,156 @@
+{
+  "title": "Analysis of Head and Torso movements for Authentication",
+  "year": 2018,
+  "venue": "IEEE 4th International Conference on Identity, Security, and Behavior Analysis (ISBA)",
+  "doi": "10.1109/isba.2018.8311460",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "head movement",
+      "torso movement"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "Google Glass",
+      "smartphone"
+    ],
+    "body_location": "head, front trouser pocket, back trouser pocket"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 17,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 120,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM",
+      "LDA",
+      "Logistic Regression",
+      "Random Forest"
+    ],
+    "input_representation": "96 features per device (including Mean, Std Dev, Band Power, Energy, Median Frequency, IQR, Range, SNR, Spectral Entropy, DTW, Mutual Information, Correlation)",
+    "training_strategy": "one session for training and one session for testing"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 0.3,
+      "context": "Achieved using GG with SF combination using LDA classifier in 'Activities with no Stairs' scenario"
+    }
+  ],
+  "evaluation_protocol": "Cross-session testing where training and testing were conducted in separate sessions spread across 28 days.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": false,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 28,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "EER",
+      "value": 5.0
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Google Glass has limited resources",
+      "GG gets overheated for higher sensor delay times"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "head movement",
+      "torso movement"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": 5.0,
+        "unit": "%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Demonstrated that head and torso movements are weakly correlated and can be combined to improve continuous authentication on Google Glass"
+    ],
+    "main_strength": [
+      "Evaluation includes cross-session testing over a 28-day period"
+    ],
+    "main_weakness": [
+      "Small subject pool (17)",
+      "No active spoofing or presentation attacks tested"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET"
+    ],
+    "notes_for_review": "The paper claims the low correlation between modalities prevents spoofing/replay, but this is a theoretical claim and not experimentally validated through an attack."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Parimi_2018"
+}

@@ -1,0 +1,172 @@
+{
+  "title": "Adaptive 1-dimensional time invariant learning for inertial sensor-based gait authentication",
+  "year": 2022,
+  "venue": "Neural Computing and Applications",
+  "doi": "10.1007/s00521-022-07741-0",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "multiple (left/right pocket, left/right hand, handbag, backpack)"
+  },
+  "data": [
+    {
+      "dataset_name": "MMUISD",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 144,
+      "num_samples": 5184,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 1,
+        "unit": "month"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "transfer",
+    "model": [
+      "Adaptive 1-Dimensional Time Invariant Learning (A1TIL)",
+      "Kernelized Domain Adaptation (KDA)"
+    ],
+    "input_representation": "1D Local Ternary Patterns (LTP) with adaptive threshold",
+    "training_strategy": "Unsupervised domain adaptation to align source and target gait distributions across time"
+  },
+  "evaluation": [
+    {
+      "metric": "EER",
+      "value": 4.38,
+      "context": "Achieved on MMUISD dataset for slow walking speed and right pocket position using Sigmoid activation"
+    },
+    {
+      "metric": "FAR",
+      "value": 5.3016,
+      "context": "Achieved on MMUISD dataset for slow walking speed and right pocket position using Sigmoid activation"
+    },
+    {
+      "metric": "FRR",
+      "value": 3.4644,
+      "context": "Achieved on MMUISD dataset for slow walking speed and right pocket position using Sigmoid activation"
+    }
+  ],
+  "evaluation_protocol": "One-to-one matching (verification)",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 1,
+      "unit": "month"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": 1,
+        "unit": "month"
+      },
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Poorest performance observed for bag positions due to instability and swinging"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [
+      {
+        "value": 0.46,
+        "unit": "s"
+      }
+    ],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": null
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": [
+      {
+        "metric": "EER",
+        "value": null,
+        "unit": null
+      }
+    ]
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "Pervasive, UCI HAPT, CNU, OU ISIR",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "First exploratory study investigating elapsed time (1 month) for IMU gait authentication",
+      "Proposed A1TIL framework utilizing 1D-LTP and Kernelized Domain Adaptation (KDA)",
+      "Introduced MMUISD dataset focusing on time-invariant inertial gait signals"
+    ],
+    "main_strength": [
+      "Effective use of domain adaptation to mitigate performance degradation caused by temporal shifts"
+    ],
+    "main_weakness": [
+      "Limited longitudinal window (1 month)",
+      "Lack of public availability of the proposed dataset at the time of publication"
+    ],
+    "gap_category": [
+      "NO_SPOOFING_TEST",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The study highlights that sensor position (pocket) and walking speed (slow) significantly influence EER, and that multimodal IMU data (acc + gyro) is superior to unimodal."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Permatasari_2022"
+}

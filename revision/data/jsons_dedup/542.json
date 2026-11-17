@@ -1,0 +1,146 @@
+{
+  "title": "BreathSign: Transparent and Continuous In-ear Authentication Using Bone-conducted Breathing Biometrics",
+  "year": 2023,
+  "venue": "IEEE INFOCOM",
+  "doi": "10.1109/INFOCOM53939.2023.10229037",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "bone-conducted breathing sounds"
+    ],
+    "sensor": [
+      "inward-facing microphones"
+    ],
+    "device": [
+      "commercial earphones"
+    ],
+    "body_location": "ear canal"
+  },
+  "data": [
+    {
+      "dataset_name": "Private dataset",
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 20,
+      "num_samples": 4800,
+      "collection_setting": "in-the-wild",
+      "duration": {
+        "value": 1,
+        "unit": "month"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "Triplet network",
+      "Gaussian Mixture Model",
+      "MODWT"
+    ],
+    "input_representation": "Multi-level features combining Sub-band Energy Ratio (SER), Pearson Correlation Coefficients (PCC), and reconstructed MFCC-based embeddings",
+    "training_strategy": "Triplet loss function to minimize intra-class distance and maximize inter-class distance"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "15 legitimate users and 5 spoofers; 20% training, 80% testing for legitimate users.",
+  "real_world_tested": true,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": true,
+    "cross_day_tested": true,
+    "longitudinal_duration": {
+      "value": 32,
+      "unit": "days"
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": null,
+      "drop_in_performance": null
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 80.0
+    },
+    "robust_to_noise": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 94.33
+    },
+    "reported_limitations": [
+      "Performance drops significantly during strenuous exercise (9km/h treadmill)",
+      "Interference from audio played through earphones",
+      "Potential impact of respiratory diseases"
+    ]
+  },
+  "security": {
+    "spoofing_tested": true,
+    "attack_types": [
+      "zero-effort",
+      "impersonation",
+      "replay"
+    ],
+    "liveness_detection": true,
+    "defense_type": "ML-based"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": false,
+    "modalities_combined": [
+      "bone-conduction descriptor",
+      "respiratory tract descriptor"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed BreathSign using bone-conducted breathing sounds for continuous authentication via commercial earphones",
+      "Implemented a Triplet network to remove breathing behavior-dependent variance"
+    ],
+    "main_strength": [
+      "Transparent/Implicit authentication",
+      "High resistance to audio replay attacks"
+    ],
+    "main_weakness": [
+      "Sensitivity to high-intensity physical activity",
+      "Lack of public dataset"
+    ],
+    "gap_category": [
+      "NO_PUBLIC_DATASET",
+      "REAL_WORLD_MISSING"
+    ],
+    "notes_for_review": "The paper reports 'Accuracy' and 'Detection Rate' instead of the target metrics (AUC, EER, FRR, FAR). The 5% FNR mentioned is a threshold for the ROC curve rather than a result."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Han_2023"
+}

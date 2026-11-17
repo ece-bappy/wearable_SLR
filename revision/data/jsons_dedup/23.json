@@ -1,0 +1,151 @@
+{
+  "title": "Simultaneous Measurement and Correlation of PPG Signals Taken from Two Different Body Parts for Enhanced Biometric Security via Two-level Authentication",
+  "year": 2017,
+  "venue": "Proceedings of the First ACM Workshop on the Internet of Safe Things (SafeThings’17)",
+  "doi": "10.1145/3137003.3137004",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "physiological",
+    "modality": [
+      "PPG"
+    ],
+    "sensor": [
+      "Pulse oximeter",
+      "Webcam"
+    ],
+    "device": [
+      "Pulse oximeter",
+      "Laptop"
+    ],
+    "body_location": "finger and face"
+  },
+  "data": [
+    {
+      "dataset_name": null,
+      "dataset_type": "private",
+      "dataset_role": "combined",
+      "num_subjects": 15,
+      "num_samples": null,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 30,
+        "unit": "seconds"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": null,
+    "model": [
+      "Pearson Correlation Coefficient"
+    ],
+    "input_representation": "instant heart rates (iHR)",
+    "training_strategy": "Fixed threshold based on average of minimum same-subject correlation and maximum different-subject correlation"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "Leave-one-out style validation using a threshold derived from a subset of 7 subjects (D1) and applied to the remaining 8 subjects in a full 15x15 cross-correlation matrix.",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": ""
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": ""
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": "",
+      "value": null
+    },
+    "reported_limitations": [
+      "Spurious peaks from lighting and motion artifacts",
+      "Small sample size",
+      "Lab-only environment"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [
+      "zero-effort"
+    ],
+    "liveness_detection": true,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "implicit",
+    "user_interaction_required": true,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": "Requires the user to keep still and use a physical pulse oximeter"
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "Face PPG",
+      "Finger PPG"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": false,
+    "datasets_any_public": false,
+    "benchmark_used": "",
+    "reproducibility_score": "low"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a two-level authentication system using Pearson correlation of heart signals from two different body parts (face and finger) to prevent spoofing of physical biometrics"
+    ],
+    "main_strength": [
+      "Uses involuntary physiological signals which are harder to mimic than fingerprints or facial appearance"
+    ],
+    "main_weakness": [
+      "Lacks experimental testing against actual spoofing attacks",
+      "Extremely small subject pool",
+      "High dependence on controlled lighting and lack of motion"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST",
+      "LAB_ONLY_DATASET",
+      "NO_USER_STUDY"
+    ],
+    "notes_for_review": "The paper claims 100% success, but does not provide standard metrics (EER/FAR/FRR). The a-priori thresholding on a small subset may lead to optimistic results."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Reddy_2017"
+}

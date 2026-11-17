@@ -1,0 +1,152 @@
+{
+  "title": "Continuous authentication of smartphone users based on activity pattern recognition using passive mobile sensing",
+  "year": 2018,
+  "venue": "Journal of Network and Computer Applications",
+  "doi": "10.1016/j.jnca.2018.02.020",
+  "relevance": "include",
+  "exclusion_reason": "",
+  "rq_category": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "biometric": {
+    "type": "behavioral",
+    "modality": [
+      "physical activity patterns",
+      "gait"
+    ],
+    "sensor": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "device": [
+      "smartphone"
+    ],
+    "body_location": "multiple (left pocket, right pocket, waist, upper arm, wrist)"
+  },
+  "data": [
+    {
+      "dataset_name": "Shoaib et al. (2013, 2014)",
+      "dataset_type": "public",
+      "dataset_role": "combined",
+      "num_subjects": 10,
+      "num_samples": 21300,
+      "collection_setting": "lab",
+      "duration": {
+        "value": 3.0,
+        "unit": "minutes per actor per activity/position"
+      }
+    }
+  ],
+  "method": {
+    "learning_type": "supervised",
+    "model": [
+      "SVM",
+      "Decision Tree",
+      "K-Nearest Neighbors"
+    ],
+    "input_representation": "192-dimensional feature vector comprising 16 time-domain features across 4 channels of 3 inertial sensors",
+    "training_strategy": "10-fold cross validation"
+  },
+  "evaluation": [],
+  "evaluation_protocol": "10-fold cross validation",
+  "real_world_tested": false,
+  "real_world_gap": {
+    "environments_compared": false,
+    "gap_acknowledged_in_text": true,
+    "lab_performance_value": null,
+    "real_world_performance_value": null,
+    "drop_percentage": null
+  },
+  "temporal_robustness": {
+    "cross_session_tested": false,
+    "cross_day_tested": false,
+    "longitudinal_duration": {
+      "value": null,
+      "unit": null
+    },
+    "performance_decay_over_time": {
+      "is_quantified": false,
+      "time_delta": {
+        "value": null,
+        "unit": null
+      },
+      "drop_in_performance": {
+        "metric": "",
+        "value": null
+      }
+    }
+  },
+  "performance_analysis": {
+    "robust_to_motion": {
+      "is_quantified": true,
+      "metric": "Accuracy",
+      "value": 97.95
+    },
+    "robust_to_noise": {
+      "is_quantified": false,
+      "metric": null,
+      "value": null
+    },
+    "reported_limitations": [
+      "Position sensitivity (upper arm position significantly degrades recognition performance)",
+      "Difficulty in collecting real-time data in open and dynamic environments"
+    ]
+  },
+  "security": {
+    "spoofing_tested": false,
+    "attack_types": [],
+    "liveness_detection": false,
+    "defense_type": "none"
+  },
+  "usability": {
+    "authentication_type": "continuous",
+    "user_interaction_required": false,
+    "latency": [],
+    "energy_consumption": [],
+    "usability_study": [],
+    "usability_issues": ""
+  },
+  "fusion": {
+    "is_multimodal": true,
+    "modalities_combined": [
+      "accelerometer",
+      "gyroscope",
+      "magnetometer"
+    ],
+    "fusion_level": "feature",
+    "benefit_over_unimodal": []
+  },
+  "reproducibility": {
+    "code_available": false,
+    "datasets_all_public": true,
+    "datasets_any_public": true,
+    "benchmark_used": "",
+    "reproducibility_score": "medium"
+  },
+  "insights": {
+    "key_contribution": [
+      "Proposed a continuous authentication scheme based on physical activity patterns using multi-sensor smartphone data",
+      "Analyzed the impact of smartphone placement on the body for user recognition"
+    ],
+    "main_strength": [
+      "Comprehensive analysis of multiple phone positions (pocket, waist, arm, wrist)",
+      "Evaluation across six different daily living activities"
+    ],
+    "main_weakness": [
+      "Small sample size (10 subjects)",
+      "Lack of spoofing/presentation attack tests",
+      "Use of a lab-based dataset instead of in-the-wild data"
+    ],
+    "gap_category": [
+      "SMALL_SAMPLE_SIZE",
+      "REAL_WORLD_MISSING",
+      "NO_SPOOFING_TEST"
+    ],
+    "notes_for_review": "The paper focuses on identification (multi-class) rather than verification (binary), which is why it reports overall accuracy and error rate instead of the target FAR/FRR/EER metrics."
+  },
+  "extraction_confidence": "high",
+  "citekey": "Ehatisham_ul_Haq_2018"
+}
