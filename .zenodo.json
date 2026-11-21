@@ -1,0 +1,24 @@
+{
+  "title": "Wearable Biometric Authentication SLR: data and analysis code for \"A Meta-Analytical Audit of Robustness, Reproducibility, and Deployability in Wearable Biometric Systems\"",
+  "upload_type": "software",
+  "license": "cc-by-4.0",
+  "description": "Data extraction outputs and analysis code for a PRISMA-guided meta-analytical audit of 263 wearable biometric authentication studies (2017-2026). Includes the LLM-assisted, human-verified per-study extraction records, the de-duplicated corpus, the scripts that regenerate every statistic, figure and table in the manuscript, and Supplementary Table S1 (full extraction matrix).",
+  "creators": [
+    {
+      "name": "Bappy, Md. Azizul Hakim",
+      "affiliation": "Institute of Information and Communication Technology, Bangladesh University of Engineering and Technology (BUET)"
+    },
+    {
+      "name": "Mustafa, Hossen A",
+      "affiliation": "Institute of Information and Communication Technology, Bangladesh University of Engineering and Technology (BUET)"
+    }
+  ],
+  "keywords": [
+    "wearable biometrics",
+    "continuous authentication",
+    "systematic literature review",
+    "meta-analysis",
+    "reproducibility",
+    "real-world evaluation"
+  ]
+}

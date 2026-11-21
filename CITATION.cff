@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this data or code, please cite it as below."
+title: "Wearable Biometric Authentication SLR: data and analysis code"
+type: software
+authors:
+  - family-names: Bappy
+    given-names: Md. Azizul Hakim
+    affiliation: "Institute of Information and Communication Technology, Bangladesh University of Engineering and Technology (BUET)"
+  - family-names: Mustafa
+    given-names: Hossen A
+    affiliation: "Institute of Information and Communication Technology, Bangladesh University of Engineering and Technology (BUET)"
+repository-code: "https://github.com/ece-bappy/wearable_SLR"
+license: MIT
+keywords:
+  - wearable biometrics
+  - continuous authentication
+  - systematic literature review
+  - meta-analysis
+  - reproducibility
