@@ -1,5 +1,9 @@
 # Wearable Biometric Authentication SLR Repository
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24414291.svg)](https://doi.org/10.5281/zenodo.24414291)
+
+Archived on Zenodo. Version v1.0.0, which matches the revised manuscript, is at https://doi.org/10.5281/zenodo.24414292. The badge above always points to the latest version.
+
 This repository contains the data extraction and analysis workflow for a systematic literature review (SLR) on wearable biometric authentication.
 
 ## Overview
